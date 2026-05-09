@@ -270,16 +270,6 @@ Se < 2 métricas avaliáveis (muitas NULL), veredito vira ⚪ cinza "Dados insuf
 - **A regra não conhece o contexto do dia.** Se você dormiu mal de propósito (ex: viagem) ou treinou pesado por estratégia, o score vai parecer ruim mas pode estar tudo bem.
 - **A regra é conservadora.** Em dia borderline (HRV 31), ela manda "atenção". A leitura humana pode ser "tá tudo bem, só o sensor pegou ruído".
 - **O HRV pesa muito.** Se cair 5+ ms, dá +1 modifier mesmo se valor absoluto ainda for OK. É proposital — quedas bruscas são mais informativas que valores absolutos.
-
-### Override manual
-
-Você pode forçar o veredito via CLI:
-
-```bash
-python dash_today.py --verdict "Hoje só caminhada" --color amber
-```
-
-Útil pros 10% dos dias em que você sabe algo que a regra não sabe.
 """,
     },
 ]
