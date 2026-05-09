@@ -370,40 +370,10 @@ body {
   margin-top: 12px;
 }
 
-/* === Modal raw_json === */
-.modal-bg {
-  position: fixed;
-  inset: 0;
-  background: rgba(0,0,0,0.4);
-  display: none;
-  align-items: center;
-  justify-content: center;
-  z-index: 100;
-}
-.modal-bg.show { display: flex; }
-.modal {
-  background: white;
-  border-radius: 14px;
-  padding: 22px;
-  max-width: 800px;
-  max-height: 80vh;
-  overflow: auto;
-  width: 90%;
-}
-.modal pre {
-  font-family: "SF Mono", Menlo, monospace;
-  font-size: 11px;
-  white-space: pre-wrap;
-  word-break: break-all;
-}
-.modal-close {
-  float: right;
-  background: none;
-  border: none;
-  font-size: 22px;
-  cursor: pointer;
-  opacity: 0.5;
-}
+/* (Modal raw_json removido — clique na linha do histórico agora pula pra análise diária) */
+
+/* Scroll-margin pra navegacao em ancora ficar bem posicionada */
+.journal-card { scroll-margin-top: 16px; }
 
 /* === Empty state === */
 .empty-state {

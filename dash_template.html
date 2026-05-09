@@ -199,7 +199,7 @@
         </thead>
         <tbody>
           {% for r in history %}
-          <tr data-raw="{{ r.raw_json_escaped|default('{}') }}" onclick="showRaw(this)">
+          <tr data-date="{{ r.date }}" onclick="jumpToJournal(this.dataset.date)">
             <td>{{ r.date_pretty }}</td>
             <td class="cell-{{ r.hrv_class|default('gray') }}">{{ r.hrv_pretty }}</td>
             <td>{{ r.sleep_pretty }}</td>
@@ -253,13 +253,6 @@
     </div>
     {% endif %}
 
-    <div class="modal-bg" id="modal-bg" onclick="if(event.target===this)hideModal()">
-      <div class="modal">
-        <button class="modal-close" onclick="hideModal()">×</button>
-        <h3 style="margin-bottom:12px">raw_json do dia</h3>
-        <pre id="modal-content"></pre>
-      </div>
-    </div>
   </div>
 
   {% endif %}
@@ -311,16 +304,12 @@ function exportCSV() {
   URL.revokeObjectURL(url);
 }
 
-function showRaw(tr) {
-  const raw = tr.dataset.raw || '{}';
-  let pretty;
-  try { pretty = JSON.stringify(JSON.parse(raw), null, 2); }
-  catch { pretty = raw; }
-  document.getElementById('modal-content').textContent = pretty;
-  document.getElementById('modal-bg').classList.add('show');
-}
-function hideModal() {
-  document.getElementById('modal-bg').classList.remove('show');
+function jumpToJournal(date) {
+  // Pula pra analise diaria daquele dia, abrindo se estiver colapsada
+  const target = document.getElementById('journal-' + date);
+  if (!target) return;
+  if (target.tagName === 'DETAILS') target.open = true;
+  target.scrollIntoView({behavior: 'smooth', block: 'start'});
 }
 
 // Period toggle (placeholder — re-render via Python; client-side só destaca o botão)

@@ -335,13 +335,6 @@ def build_context(today_row, history_with_verdicts, deltas, override=None, diari
         item["hrv_class"] = _hrv_class(r.get("hrv_avg_overnight"))
         item["bb_class"] = _bb_class(r.get("body_battery_max"))
         item["fcrep_class"] = _fcrep_class(r.get("resting_heart_rate"))
-        # Garantir que raw_json e JSON valido (Garmin pode mandar None ou string mal formada)
-        raw = r.get("raw_json") or "{}"
-        try:
-            json.loads(raw)  # valida
-            item["raw_json_escaped"] = raw  # autoescape do Jinja cuida da atribuicao HTML
-        except (ValueError, TypeError):
-            item["raw_json_escaped"] = "{}"
         history_render.append(item)
 
     days_collected = len(history_with_verdicts)
