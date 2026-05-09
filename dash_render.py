@@ -379,7 +379,18 @@ def build_context(today_row, history_with_verdicts, deltas, override=None, diari
         "history": history_render,
         # Diarios diarios (analises por dia em MD)
         "journals": journals,
+        # Glossário (carregado tardiamente abaixo)
+        "glossary": _load_glossary(),
     }
+
+
+def _load_glossary():
+    """Carrega entradas do glossário com HTML renderizado."""
+    try:
+        from dash_glossary import get_glossary
+        return get_glossary()
+    except ImportError:
+        return []
 
 
 def render_html(context, template_path="dash_template.html", css_path="dash_styles.css"):

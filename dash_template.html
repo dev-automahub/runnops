@@ -17,11 +17,13 @@
   <input type="radio" name="dashtab" id="r-hoje" class="dashtab-radio" checked>
   <input type="radio" name="dashtab" id="r-trends" class="dashtab-radio">
   <input type="radio" name="dashtab" id="r-historico" class="dashtab-radio">
+  <input type="radio" name="dashtab" id="r-glossario" class="dashtab-radio">
 
   <div class="tabs" role="tablist">
     <label for="r-hoje" class="tab tab-hoje">HOJE</label>
     <label for="r-trends" class="tab tab-trends">TRENDS</label>
     <label for="r-historico" class="tab tab-historico">HISTÓRICO</label>
+    <label for="r-glossario" class="tab tab-glossario">GLOSSÁRIO</label>
   </div>
 
   {% if empty_state %}
@@ -40,33 +42,34 @@
   <!-- ============ ABA HOJE (default visivel) ============ -->
   <div class="tab-content" id="tab-hoje">
 
-    <label for="r-historico" class="verdict {{ verdict.color }} verdict-clickable">
+    <div class="verdict {{ verdict.color }} verdict-clickable" onclick="goToHistorico()">
       <div class="verdict-label">VEREDITO · {{ today_pretty_upper }} <span class="verdict-hint">→ ver análise</span></div>
       <div class="verdict-headline">{{ verdict.headline }}</div>
       {% if verdict.subtitle %}
       <div class="verdict-sub">{{ verdict.subtitle }}</div>
       {% endif %}
-    </label>
+      <div class="verdict-help-link"><span class="pill-help">?</span> <a href="javascript:goToGlossary('veredito')" onclick="event.stopPropagation()">como funciona o veredito</a></div>
+    </div>
 
-    <!-- 4 pills com delta -->
+    <!-- 4 pills com delta — clicaveis (vao pro glossario) -->
     <div class="pills">
-      <div class="pill">
-        <div class="pill-label">SONO</div>
+      <div class="pill" onclick="goToGlossary('sono')">
+        <div class="pill-label">SONO <span class="pill-help">?</span></div>
         <div class="pill-value">{{ today.sleep_pretty|default("—") }}</div>
         {% if sleep_delta_pretty %}<div class="pill-delta {{ sleep_delta_class }}">{{ sleep_delta_pretty }}</div>{% endif %}
       </div>
-      <div class="pill">
-        <div class="pill-label">BODY BATTERY MAX</div>
+      <div class="pill" onclick="goToGlossary('body-battery')">
+        <div class="pill-label">BODY BATTERY MAX <span class="pill-help">?</span></div>
         <div class="pill-value">{{ today.body_battery_max|default("—") }}</div>
         {% if bb_delta_pretty %}<div class="pill-delta {{ bb_delta_class }}">{{ bb_delta_pretty }}</div>{% endif %}
       </div>
-      <div class="pill">
-        <div class="pill-label">FC REPOUSO</div>
+      <div class="pill" onclick="goToGlossary('fcrep')">
+        <div class="pill-label">FC REPOUSO <span class="pill-help">?</span></div>
         <div class="pill-value">{{ today.resting_heart_rate|default("—") }}</div>
         {% if fcrep_delta_pretty %}<div class="pill-delta {{ fcrep_delta_class }}">{{ fcrep_delta_pretty }}</div>{% endif %}
       </div>
-      <div class="pill">
-        <div class="pill-label">DISPOSIÇÃO</div>
+      <div class="pill" onclick="goToGlossary('disposicao')">
+        <div class="pill-label">DISPOSIÇÃO <span class="pill-help">?</span></div>
         <div class="pill-value">{{ today.training_readiness|default("—") }}</div>
         {% if ready_delta_pretty %}<div class="pill-delta {{ ready_delta_class }}">{{ ready_delta_pretty }}</div>{% endif %}
       </div>
@@ -255,6 +258,28 @@
 
   </div>
 
+  <!-- ============ ABA GLOSSÁRIO ============ -->
+  <div class="tab-content" id="tab-glossario">
+    <div class="glossary-intro">
+      <h2 class="journals-title">Glossário</h2>
+      <p class="glossary-intro-text">Definição e contexto dos termos técnicos usados no dashboard. Clique em qualquer card da aba <strong>HOJE</strong> pra pular direto pro termo correspondente.</p>
+    </div>
+
+    {% if glossary %}
+      {% for entry in glossary %}
+      <article class="glossary-entry" id="glossario-{{ entry.id }}">
+        <div class="glossary-header">
+          <h3 class="glossary-title" style="color:{{ entry.color }}">{{ entry.title }}</h3>
+          <span class="glossary-category">{{ entry.category }}</span>
+        </div>
+        <div class="journal-content glossary-content">{{ entry.html|safe }}</div>
+      </article>
+      {% endfor %}
+    {% else %}
+      <p class="journal-empty">Glossário vazio (módulo dash_glossary.py não carregou).</p>
+    {% endif %}
+  </div>
+
   {% endif %}
 
   <div class="footer">RunTechOps · {{ generated_at }}</div>
@@ -310,6 +335,23 @@ function jumpToJournal(date) {
   if (!target) return;
   if (target.tagName === 'DETAILS') target.open = true;
   target.scrollIntoView({behavior: 'smooth', block: 'start'});
+}
+
+function goToGlossary(termId) {
+  // Switcha pra aba GLOSSÁRIO + scrolla pra entrada do termo
+  const radio = document.getElementById('r-glossario');
+  if (radio) radio.checked = true;
+  setTimeout(() => {
+    const target = document.getElementById('glossario-' + termId);
+    if (target) target.scrollIntoView({behavior: 'smooth', block: 'start'});
+  }, 50);
+}
+
+function goToHistorico() {
+  // Switcha pra aba HISTÓRICO (clique no veredito)
+  const radio = document.getElementById('r-historico');
+  if (radio) radio.checked = true;
+  window.scrollTo({top: 0, behavior: 'smooth'});
 }
 
 // Period toggle (placeholder — re-render via Python; client-side só destaca o botão)
