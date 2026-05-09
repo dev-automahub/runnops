@@ -1,0 +1,716 @@
+/* === Reset minimo === */
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  font-family: -apple-system, "SF Pro Display", "Helvetica Neue", system-ui, sans-serif;
+  background: #f2f2f7;
+  color: #1c1c1e;
+  -webkit-font-smoothing: antialiased;
+  padding: 32px 24px 64px;
+}
+
+/* === Container === */
+.dash {
+  max-width: 760px;
+  margin: 0 auto;
+}
+
+/* === Header com data e tabs === */
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 18px;
+}
+.title {
+  font-size: 22px;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+.date {
+  font-size: 13px;
+  opacity: 0.55;
+}
+.tabs {
+  display: flex;
+  gap: 6px;
+  margin-bottom: 22px;
+}
+.tab {
+  display: inline-block;
+  padding: 7px 14px;
+  font-size: 12px;
+  letter-spacing: 0.05em;
+  border-radius: 999px;
+  background: white;
+  cursor: pointer;
+  font-weight: 600;
+  border: none;
+  color: #1c1c1e;
+  opacity: 0.55;
+  text-decoration: none;
+  transition: opacity .15s, background .15s;
+}
+.tab:hover { opacity: 0.85; }
+.tab.active {
+  background: #1c1c1e;
+  color: white;
+  opacity: 1;
+}
+
+/* === Verdict block (HOJE) === */
+.verdict {
+  background: white;
+  border-radius: 20px;
+  padding: 26px 28px;
+  margin-bottom: 22px;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.06);
+}
+.verdict-label {
+  font-size: 11px;
+  letter-spacing: 0.14em;
+  color: #8e8e93;
+  font-weight: 700;
+}
+.verdict-headline {
+  display: inline-block;
+  font-size: 32px;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  line-height: 1;
+  margin-top: 10px;
+  padding: 12px 22px;
+  border-radius: 14px;
+  color: white;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.10);
+}
+.verdict.green  .verdict-headline { background: linear-gradient(135deg, #34c759, #28a745); }
+.verdict.amber  .verdict-headline { background: linear-gradient(135deg, #ffcc00, #ff9500); }
+.verdict.orange .verdict-headline { background: linear-gradient(135deg, #ff9500, #ff5e3a); }
+.verdict.red    .verdict-headline { background: linear-gradient(135deg, #ff453a, #c0142b); }
+.verdict.gray   .verdict-headline { background: linear-gradient(135deg, #aeaeb2, #8e8e93); }
+.verdict-sub {
+  font-size: 14px;
+  color: #1c1c1e;
+  opacity: 0.65;
+  margin-top: 10px;
+  line-height: 1.4;
+  max-width: 480px;
+}
+
+/* === Stale banner === */
+.stale-banner {
+  background: #fff8e1;
+  border-left: 4px solid #ffcc00;
+  padding: 10px 14px;
+  border-radius: 8px;
+  font-size: 13px;
+  margin-bottom: 18px;
+}
+
+/* === Hero card (HRV + sparkline) === */
+.hero-card {
+  background: white;
+  border-radius: 18px;
+  padding: 22px 24px;
+  margin-bottom: 16px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 24px;
+}
+.label-tiny {
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  opacity: 0.55;
+  font-weight: 700;
+}
+.hero-num-block { display: flex; align-items: baseline; gap: 4px; margin-top: 6px; }
+.hero-num { font-size: 64px; font-weight: 700; letter-spacing: -0.035em; line-height: 0.9; color: #ff3b30; }
+.hero-unit { font-size: 22px; font-weight: 500; opacity: 0.55; }
+.hero-meta { font-size: 13px; opacity: 0.6; margin-top: 6px; }
+
+/* === Sparkline SVGs (Opcao B: linha limpa + labels) === */
+.spark-line { fill: none; stroke-width: 2.5; stroke-linecap: round; stroke-linejoin: round; }
+.spark-target { stroke: #8e8e93; stroke-width: 1; stroke-dasharray: 3 3; }
+.spark-target-label {
+  font-size: 10px;
+  fill: #ff9500;
+  font-weight: 600;
+  text-anchor: end;
+}
+.spark-dot { r: 3.5; }
+.spark-dot-current { r: 6; }
+.spark-value {
+  font-size: 15px;
+  fill: #1c1c1e;
+  font-weight: 600;
+  text-anchor: middle;
+  font-family: -apple-system, "SF Pro Display", "Helvetica Neue", system-ui, sans-serif;
+}
+.spark-value-current {
+  font-size: 16px;
+  font-weight: 700;
+  text-anchor: middle;
+  font-family: -apple-system, "SF Pro Display", "Helvetica Neue", system-ui, sans-serif;
+}
+.spark-date {
+  font-size: 12px;
+  fill: #8e8e93;
+  text-anchor: middle;
+  font-family: -apple-system, "SF Pro Display", "Helvetica Neue", system-ui, sans-serif;
+}
+.spark-date-current {
+  font-size: 13px;
+  fill: #1c1c1e;
+  font-weight: 700;
+  text-anchor: middle;
+  font-family: -apple-system, "SF Pro Display", "Helvetica Neue", system-ui, sans-serif;
+}
+
+/* Dots com borda branca para destacar da linha */
+.trend-card .spark-dot { stroke: white; stroke-width: 2; }
+.trend-card .spark-dot-current { stroke: white; stroke-width: 2.5; }
+
+.spark-hrv   .spark-line { stroke: #ff3b30; fill: none; }
+.spark-hrv   .spark-dot  { fill: #ff3b30; }
+.spark-hrv   .spark-value-current { fill: #ff3b30; }
+.spark-sleep .spark-line { stroke: #0a84ff; fill: none; }
+.spark-sleep .spark-dot  { fill: #0a84ff; }
+.spark-sleep .spark-value-current { fill: #0a84ff; }
+.spark-bb    .spark-line { stroke: #bf5af2; fill: none; }
+.spark-bb    .spark-dot  { fill: #bf5af2; }
+.spark-bb    .spark-value-current { fill: #bf5af2; }
+.spark-fcrep .spark-line { stroke: #30d158; fill: none; }
+.spark-fcrep .spark-dot  { fill: #30d158; }
+.spark-fcrep .spark-value-current { fill: #30d158; }
+.spark-ready .spark-line { stroke: #ff9500; fill: none; }
+.spark-ready .spark-dot  { fill: #ff9500; }
+.spark-ready .spark-value-current { fill: #ff9500; }
+
+/* === Pills row === */
+.pills {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+  margin-bottom: 16px;
+}
+.pill {
+  background: white;
+  border-radius: 14px;
+  padding: 14px;
+}
+.pill-label {
+  font-size: 14px;
+  letter-spacing: 0.06em;
+  opacity: 0.6;
+  font-weight: 700;
+}
+.pill-value {
+  font-size: 32px;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  margin-top: 6px;
+}
+.pill-delta { font-size: 15px; font-weight: 600; margin-top: 6px; }
+.delta-up      { color: #30d158; }
+.delta-down    { color: #ff453a; }
+.delta-warn    { color: #ff9500; }
+.delta-neutral { color: #8e8e93; }
+
+/* === Sleep breakdown === */
+.sleep-card {
+  background: white;
+  border-radius: 14px;
+  padding: 16px;
+  margin-bottom: 12px;
+}
+.sleep-bar {
+  display: flex;
+  height: 14px;
+  border-radius: 4px;
+  overflow: hidden;
+  margin-top: 8px;
+}
+.sleep-rem   { background: #5e5ce6; }
+.sleep-deep  { background: #bf5af2; }
+.sleep-light { background: #0a84ff; }
+.sleep-awake { background: #ff9f0a; }
+.sleep-legend {
+  font-size: 13px;
+  opacity: 0.65;
+  margin-top: 8px;
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+.sleep-legend span::before {
+  content: "";
+  display: inline-block;
+  width: 8px; height: 8px;
+  border-radius: 2px;
+  margin-right: 4px;
+  vertical-align: middle;
+}
+.sleep-legend .lg-rem::before   { background: #5e5ce6; }
+.sleep-legend .lg-deep::before  { background: #bf5af2; }
+.sleep-legend .lg-light::before { background: #0a84ff; }
+.sleep-legend .lg-awake::before { background: #ff9f0a; }
+
+/* === BB curve do dia === */
+.bb-curve-card {
+  background: white;
+  border-radius: 14px;
+  padding: 16px;
+  margin-bottom: 12px;
+}
+
+/* === Trends === */
+.trends-period {
+  display: flex;
+  gap: 6px;
+  margin-bottom: 14px;
+}
+.trends-period button {
+  padding: 6px 12px;
+  font-size: 11px;
+  border-radius: 999px;
+  background: white;
+  border: none;
+  cursor: pointer;
+  opacity: 0.55;
+  font-weight: 600;
+}
+.trends-period button.active { background: #1c1c1e; color: white; opacity: 1; }
+
+.trend-card {
+  background: white;
+  border-radius: 14px;
+  padding: 18px 22px;
+  margin-bottom: 12px;
+}
+.trend-card-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+.trend-card-head .label-tiny {
+  font-size: 24px;
+  letter-spacing: 0.08em;
+}
+.trend-meta {
+  font-size: 22px;
+  opacity: 0.65;
+}
+
+/* Fontes dos labels SVG dentro de cards TRENDS (escopado, nao afeta HRV hero) */
+.trend-card .spark-value         { font-size: 27px; font-weight: 600; }
+.trend-card .spark-value-current { font-size: 29px; font-weight: 700; }
+.trend-card .spark-date          { font-size: 24px; }
+.trend-card .spark-date-current  { font-size: 24px; font-weight: 700; }
+
+/* Body Battery 24h (na aba HOJE) — mesmo tamanho dos cards TRENDS + dots com borda */
+.bb-curve-card .spark-value         { font-size: 27px; font-weight: 600; }
+.bb-curve-card .spark-value-current { font-size: 29px; font-weight: 700; }
+.bb-curve-card .spark-dot           { stroke: white; stroke-width: 2; }
+.bb-curve-card .spark-dot-current   { stroke: white; stroke-width: 2.5; }
+
+/* HRV hero (na aba HOJE) — dots com borda branca pra destacar */
+.hero-card .spark-dot         { stroke: white; stroke-width: 2; }
+.hero-card .spark-dot-current { stroke: white; stroke-width: 2.5; }
+
+/* === Histórico === */
+.history-card {
+  background: white;
+  border-radius: 14px;
+  padding: 16px;
+  overflow-x: auto;
+}
+.history-table {
+  width: 100%;
+  min-width: 520px;
+  border-collapse: collapse;
+  font-size: 14px;
+  white-space: nowrap;
+}
+.history-table th {
+  text-align: left;
+  padding: 10px 6px;
+  font-weight: 700;
+  font-size: 12px;
+  letter-spacing: 0.08em;
+  opacity: 0.55;
+  border-bottom: 2px solid #c7c7cc;
+  cursor: pointer;
+  user-select: none;
+}
+.history-table th:hover { opacity: 0.85; }
+.history-table td {
+  padding: 10px 6px;
+  border-bottom: 1px solid #f2f2f7;
+}
+.history-table tr:hover td { background: #fafafa; cursor: pointer; }
+.cell-green  { color: #30d158; font-weight: 600; }
+.cell-amber  { color: #ff9500; font-weight: 600; }
+.cell-orange { color: #ff5e3a; font-weight: 600; }
+.cell-red    { color: #ff3b30; font-weight: 700; }
+.cell-gray   { color: #8e8e93; }
+.export-btn {
+  background: #1c1c1e;
+  color: white;
+  border: none;
+  padding: 8px 14px;
+  border-radius: 8px;
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  margin-top: 12px;
+}
+
+/* === Modal raw_json === */
+.modal-bg {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.4);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 100;
+}
+.modal-bg.show { display: flex; }
+.modal {
+  background: white;
+  border-radius: 14px;
+  padding: 22px;
+  max-width: 800px;
+  max-height: 80vh;
+  overflow: auto;
+  width: 90%;
+}
+.modal pre {
+  font-family: "SF Mono", Menlo, monospace;
+  font-size: 11px;
+  white-space: pre-wrap;
+  word-break: break-all;
+}
+.modal-close {
+  float: right;
+  background: none;
+  border: none;
+  font-size: 22px;
+  cursor: pointer;
+  opacity: 0.5;
+}
+
+/* === Empty state === */
+.empty-state {
+  text-align: center;
+  padding: 80px 20px;
+  background: white;
+  border-radius: 14px;
+}
+.empty-state h2 { margin-bottom: 8px; }
+.empty-state p { opacity: 0.6; }
+.empty-state code {
+  background: #f2f2f7;
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-family: "SF Mono", Menlo, monospace;
+  font-size: 13px;
+}
+
+/* === Footer === */
+.footer {
+  text-align: center;
+  font-size: 11px;
+  opacity: 0.4;
+  margin-top: 32px;
+}
+
+/* === Verdict clickable (label envolve o card, vira tab switcher) === */
+.verdict-clickable {
+  cursor: pointer;
+  display: block;
+  user-select: none;
+  transition: transform .15s, box-shadow .15s;
+}
+.verdict-clickable:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.10);
+}
+.verdict-hint {
+  display: inline-block;
+  margin-left: 8px;
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  opacity: 0.7;
+  font-weight: 600;
+}
+
+/* === Análises diárias (diário MD renderizado em HISTORICO) === */
+.journals-section {
+  margin-top: 28px;
+}
+.journals-title {
+  font-size: 22px;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  margin-bottom: 14px;
+  color: #1c1c1e;
+}
+.journal-card {
+  background: white;
+  border-radius: 14px;
+  padding: 18px 22px;
+  margin-bottom: 12px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.04);
+}
+.journal-today {
+  border-left: 4px solid #ff5e3a;
+}
+.journal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-bottom: 12px;
+}
+.journal-date {
+  font-size: 18px;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+}
+.journal-day {
+  font-size: 13px;
+  opacity: 0.55;
+  text-transform: lowercase;
+}
+.journal-past summary {
+  list-style: none;
+  cursor: pointer;
+  margin-bottom: 0;
+  padding: 4px 0;
+}
+.journal-past summary::-webkit-details-marker { display: none; }
+.journal-past summary::after {
+  content: "▸";
+  margin-left: auto;
+  font-size: 14px;
+  opacity: 0.5;
+  transition: transform .2s;
+}
+.journal-past[open] summary::after {
+  transform: rotate(90deg);
+}
+.journal-past[open] summary {
+  border-bottom: 1px solid #f2f2f7;
+  margin-bottom: 12px;
+  padding-bottom: 10px;
+}
+.journal-empty {
+  font-size: 13px;
+  opacity: 0.55;
+  font-style: italic;
+}
+
+/* Banner "gira o celular" — só aparece em portrait mobile */
+.landscape-hint {
+  display: none;
+  background: #fff8e1;
+  border-left: 3px solid #ffcc00;
+  border-radius: 8px;
+  padding: 10px 14px;
+  font-size: 13px;
+  margin-bottom: 14px;
+  color: #6a4500;
+}
+@media (max-width: 700px) and (orientation: portrait) {
+  .landscape-hint { display: block; }
+}
+
+/* === Renderizacao do markdown dentro do journal === */
+.journal-content { font-size: 14px; line-height: 1.55; color: #1c1c1e; }
+.journal-content h1 { font-size: 22px; font-weight: 700; margin: 16px 0 8px; }
+.journal-content h2 { font-size: 18px; font-weight: 700; margin: 18px 0 8px; }
+.journal-content h3 { font-size: 15px; font-weight: 700; margin: 14px 0 6px; opacity: 0.85; }
+.journal-content p { margin: 8px 0; }
+.journal-content strong { font-weight: 700; }
+.journal-content em { font-style: italic; opacity: 0.85; }
+.journal-content ul, .journal-content ol { margin: 8px 0; padding-left: 24px; }
+.journal-content li { margin-bottom: 4px; }
+/* Wrapper das tabelas do MD — permite scroll horizontal em mobile */
+.journal-content .md-table-wrap {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  margin: 12px 0;
+  scrollbar-width: thin;
+  scrollbar-color: #8e8e93 #f2f2f7;
+}
+.journal-content .md-table-wrap::-webkit-scrollbar { height: 6px; }
+.journal-content .md-table-wrap::-webkit-scrollbar-track { background: #f2f2f7; border-radius: 3px; }
+.journal-content .md-table-wrap::-webkit-scrollbar-thumb { background: #8e8e93; border-radius: 3px; }
+.journal-content .md-table-wrap table {
+  margin: 0;
+  min-width: 100%;
+}
+.journal-content table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+}
+.journal-content th, .journal-content td {
+  text-align: left;
+  padding: 8px 10px;
+  border-bottom: 1px solid #f2f2f7;
+}
+.journal-content th {
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  font-size: 11px;
+  text-transform: uppercase;
+  opacity: 0.6;
+  border-bottom: 2px solid #c7c7cc;
+}
+.journal-content code {
+  font-family: "SF Mono", Menlo, Consolas, monospace;
+  background: #f2f2f7;
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-size: 12px;
+}
+.journal-content pre {
+  background: #f2f2f7;
+  padding: 12px;
+  border-radius: 8px;
+  overflow-x: auto;
+  font-size: 12px;
+  margin: 10px 0;
+}
+.journal-content pre code { background: none; padding: 0; }
+.journal-content blockquote {
+  border-left: 3px solid #c7c7cc;
+  padding-left: 12px;
+  margin: 12px 0;
+  opacity: 0.8;
+  font-style: italic;
+}
+.journal-content hr {
+  border: none;
+  border-top: 1px solid #e5e5ea;
+  margin: 16px 0;
+}
+
+/* === Tab navegacao via radio buttons (CSS puro, sem JS) === */
+.dashtab-radio { position: absolute; left: -9999px; opacity: 0; }
+.tab-content { display: none; }
+#r-hoje:checked ~ #tab-hoje,
+#r-trends:checked ~ #tab-trends,
+#r-historico:checked ~ #tab-historico { display: block; }
+
+/* Active label (tab visualmente selecionada) */
+#r-hoje:checked ~ .tabs .tab-hoje,
+#r-trends:checked ~ .tabs .tab-trends,
+#r-historico:checked ~ .tabs .tab-historico {
+  background: #1c1c1e;
+  color: white;
+  opacity: 1;
+}
+
+/* === Responsive — mobile portrait (≤600px) === */
+@media (max-width: 600px) {
+  body { padding: 20px 12px 48px; }
+
+  /* Header */
+  .header { flex-direction: column; align-items: flex-start; gap: 4px; margin-bottom: 14px; }
+  .title { font-size: 20px; }
+  .date { font-size: 12px; }
+
+  /* Tabs */
+  .tabs { flex-wrap: wrap; gap: 4px; margin-bottom: 16px; }
+  .tab { font-size: 11px; padding: 6px 11px; }
+
+  /* Verdict block */
+  .verdict { padding: 18px 20px; }
+  .verdict-label { font-size: 10px; letter-spacing: 0.12em; }
+  .verdict-headline { font-size: 24px; padding: 10px 16px; }
+  .verdict-sub { font-size: 13px; }
+
+  /* HRV hero — empilha em vez de linha */
+  .hero-card { flex-direction: column; align-items: stretch; gap: 12px; padding: 18px 20px; }
+  .hero-num { font-size: 48px; }
+  .hero-unit { font-size: 18px; }
+  .hero-meta { font-size: 12px; }
+  .hero-card svg { width: 100%; height: auto; max-height: 140px; }
+
+  /* Pills — 2 colunas */
+  .pills { grid-template-columns: repeat(2, 1fr); gap: 8px; }
+  .pill { padding: 12px; }
+  .pill-label { font-size: 11px; letter-spacing: 0.06em; }
+  .pill-value { font-size: 26px; }
+  .pill-delta { font-size: 13px; }
+
+  /* Sleep card */
+  .sleep-card { padding: 14px; }
+  .sleep-legend { font-size: 12px; gap: 10px; }
+
+  /* Body Battery 24h */
+  .bb-curve-card { padding: 14px; }
+
+  /* Trends */
+  .trend-card { padding: 14px 16px; }
+  .trend-card-head { gap: 6px; }
+  .trend-card-head .label-tiny { font-size: 12px; }
+  .trend-meta { font-size: 11px; }
+  .trends-period button { font-size: 11px; padding: 6px 10px; }
+
+  /* Histórico — mantem todas as colunas, scroll horizontal com barra visível */
+  .history-card { padding: 12px; }
+  .history-table { font-size: 13px; }
+  .history-table th { padding: 8px 4px; font-size: 11px; letter-spacing: 0.05em; }
+  .history-table td { padding: 8px 4px; }
+  .export-btn { font-size: 11px; padding: 7px 12px; }
+
+  /* Análises diárias — fontes menores no mobile */
+  .journals-section { margin-top: 20px; }
+  .journals-title { font-size: 18px; margin-bottom: 12px; }
+  .journal-card { padding: 14px 16px; }
+  .journal-date { font-size: 16px; }
+  .journal-day { font-size: 11px; }
+  .journal-content { font-size: 13px; line-height: 1.5; }
+  .journal-content h1 { font-size: 18px; }
+  .journal-content h2 { font-size: 16px; margin: 14px 0 6px; }
+  .journal-content h3 { font-size: 14px; margin: 12px 0 5px; }
+  .journal-content table { font-size: 12px; }
+  .journal-content th, .journal-content td { padding: 6px 8px; }
+  .journal-content ul, .journal-content ol { padding-left: 20px; }
+}
+
+/* === Scrollbar SEMPRE VISÍVEL na tabela de histórico === */
+/* Afeta o card que rola horizontalmente quando a tabela é mais larga que ele */
+.history-card {
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: thin;                 /* Firefox: barra fina permanente */
+  scrollbar-color: #8e8e93 #f2f2f7;       /* Firefox: cor do thumb / track */
+}
+.history-card::-webkit-scrollbar { height: 8px; -webkit-appearance: none; }
+.history-card::-webkit-scrollbar-track { background: #f2f2f7; border-radius: 4px; }
+.history-card::-webkit-scrollbar-thumb { background: #8e8e93; border-radius: 4px; }
+.history-card::-webkit-scrollbar-thumb:hover { background: #6c6c70; }
+
+/* Dica visual: gradiente fade na borda direita quando há overflow */
+.history-card-wrapper {
+  position: relative;
+}
+.history-card-wrapper::after {
+  content: "";
+  position: absolute;
+  top: 0; right: 0; bottom: 14px;        /* sobra a barra de rolagem */
+  width: 28px;
+  background: linear-gradient(to right, rgba(255,255,255,0), rgba(255,255,255,0.95));
+  pointer-events: none;
+  border-radius: 0 14px 14px 0;
+}

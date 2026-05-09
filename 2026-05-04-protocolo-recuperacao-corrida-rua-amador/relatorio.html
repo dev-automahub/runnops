@@ -1,0 +1,1557 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Protocolo Recuperacao 21K - 06/06/2026</title>
+<style>
+:root {
+  --bg: #fafaf8; --panel: #ffffff; --ink: #1c1c1c; --muted: #6b6b6b;
+  --accent: #c2410c; --accent-soft: #fed7aa; --line: #e5e5e0; --code-bg: #f4f3ef;
+}
+* { box-sizing: border-box; }
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+  background: var(--bg); color: var(--ink); margin: 0; padding: 0;
+  line-height: 1.65; font-size: 16px;
+}
+.wrapper {
+  max-width: 980px; margin: 0 auto; padding: 60px 40px 100px;
+  background: var(--panel); box-shadow: 0 0 40px rgba(0,0,0,0.04);
+}
+h1, h2, h3, h4 { font-weight: 700; line-height: 1.25; color: var(--ink); margin-top: 2em; margin-bottom: 0.5em; }
+h1 { font-size: 2.2em; border-bottom: 3px solid var(--accent); padding-bottom: 0.3em; margin-top: 0; }
+h2 { font-size: 1.65em; border-bottom: 1px solid var(--line); padding-bottom: 0.25em; margin-top: 2.5em; }
+h3 { font-size: 1.25em; color: var(--accent); }
+h4 { font-size: 1.05em; }
+p { margin: 0.7em 0; }
+a { color: var(--accent); text-decoration: none; border-bottom: 1px solid var(--accent-soft); }
+a:hover { background: var(--accent-soft); }
+strong { color: var(--ink); font-weight: 700; }
+em { color: var(--muted); }
+hr { border: 0; border-top: 1px dashed var(--line); margin: 2.5em 0; }
+ul, ol { padding-left: 1.5em; }
+li { margin: 0.3em 0; }
+table { border-collapse: collapse; width: 100%; margin: 1.2em 0; font-size: 0.92em; background: var(--panel); border: 1px solid var(--line); }
+thead { background: #f5f4ef; }
+th, td { padding: 9px 12px; text-align: left; border-bottom: 1px solid var(--line); vertical-align: top; }
+th { font-weight: 700; color: var(--ink); }
+tr:nth-child(even) td { background: #fbfaf6; }
+tr:hover td { background: #fff7ed; }
+code { background: var(--code-bg); padding: 2px 6px; border-radius: 3px; font-family: "SF Mono", Consolas, monospace; font-size: 0.9em; color: var(--accent); }
+pre { background: #1f1f1d; color: #e8e6df; padding: 18px 22px; border-radius: 6px; overflow-x: auto; font-size: 0.86em; line-height: 1.5; margin: 1.2em 0; }
+pre code { background: none; color: inherit; padding: 0; }
+blockquote { border-left: 3px solid var(--accent); background: #fff7ed; margin: 1em 0; padding: 0.6em 1.1em; color: var(--ink); font-style: italic; }
+blockquote p { margin: 0.4em 0; }
+.toc { display: none; }
+@media (max-width: 768px) {
+  .wrapper { padding: 30px 18px 60px; }
+  h1 { font-size: 1.7em; } h2 { font-size: 1.3em; }
+  table { font-size: 0.82em; } th, td { padding: 6px 8px; }
+}
+@media print {
+  body { background: white; }
+  .wrapper { box-shadow: none; padding: 20px; max-width: 100%; }
+  h2 { page-break-after: avoid; }
+  table, pre, blockquote { page-break-inside: avoid; }
+}
+</style>
+</head>
+<body>
+<div class="wrapper">
+<h1 id="protocolo-de-recuperacao-e-performance-21k-em-06062026">Protocolo de Recuperação e Performance — 21K em 06/06/2026</h1>
+<p><strong>Data:</strong> 2026-05-04 | <strong>Janela até a prova:</strong> 33 dias | <strong>Atleta:</strong> masculino, 54 anos, 1,90m, 98 kg (IMC 27,1)<br />
+<strong>Volume atual:</strong> 30-45 km/semana corrida + <strong>3× força/sem (seg/qua/sex, 1h cada)</strong> | <strong>FCrep 51 bpm</strong> | <strong>Sem histórico de lesão</strong><br />
+<strong>Plataformas:</strong> Garmin Connect + TrainingPeaks Premium</p>
+<blockquote>
+<p>⚠️ <strong>Atenção — este relatório cobre o 21K #1 (06/06) dentro de uma temporada maior.</strong><br />
+Provas no horizonte: 21K #1 em 06/06 → 21K #2 em 26/07 → <strong>Maratona em 30/08 (meta 4h30)</strong>.<br />
+Para a visão completa da temporada de 17 semanas, ver <code>macrociclo.md</code> na mesma pasta.<br />
+Este relatório foi ajustado para o 21K #1 ser rodado <strong>a 90% do esforço</strong> (não PR), preservando reserva para o bloco maratoniano que vem na sequência.</p>
+</blockquote>
+<hr />
+<h2 id="resumo-executivo">Resumo Executivo</h2>
+<p>Você está com <strong>TSB +39, CTL 31, ATL 14</strong>. Isso significa que está <strong>fresco demais</strong> (TSB &gt; +25 = perda de fitness por destreino) e com base aeróbia menor do que o ideal para 21K (CTL ideal 45-60). Em 33 dias dá para construir até <strong>CTL 42-46</strong> com ramp +5/semana, taperizar nos últimos 12-14 dias e chegar com <strong>TSB +8 a +10</strong> na largada.</p>
+<p><strong>Tempo-alvo realista para 06/06 — estratégia "long run forte controlado a 90%":</strong><br />
+- Pace alvo: <strong>6:30-6:35/km</strong><br />
+- Tempo esperado: <strong>2h18-2h22</strong> (terminar confortável, sem esgotar)<br />
+- <strong>NÃO atacar PR aqui.</strong> Toda reserva preservada vale ouro no bloco maratoniano que vem em seguida (07/06 → 26/07).</p>
+<p><strong>Por que a 90% e não a 100%:</strong><br />
+- 21K #2 em 26/07 (50 dias depois) é a prova que valida sua meta de 4h30 na maratona — ali atacar tempo<br />
+- Esgotar no #1 custa 7-10 dias de bloco 2 (caro demais)<br />
+- Maratona 30/08 é a meta principal da temporada</p>
+<p><strong>Os 5 pilares deste protocolo:</strong><br />
+1. Periodização: Build 18 dias + Taper 15 dias<br />
+2. Recuperação multimodal (sono &gt; nutrição &gt; modalidades)<br />
+3. Nutrição calibrada para 98 kg (proteína 156-196 g/d, carbo 5-10 g/kg/d conforme fase)<br />
+4. Força/core 2x/semana mantidos durante taper (ajustando carga)<br />
+5. Sistema técnico Python para decisão diária baseada em HRV + Body Battery + TSB</p>
+<p><strong>Confiança das recomendações:</strong> Alta para periodização, nutrição e modalidades de recuperação (consenso entre Daniels/Friel/Magness, ISSN, ACSM). Média para o stack técnico (APIs oficiais Garmin/TrainingPeaks são restritas; soluções via libs não oficiais funcionam mas são frágeis).</p>
+<hr />
+<h2 id="1-diagnostico-de-performance">1. Diagnóstico de Performance</h2>
+<h3 id="11-leitura-dos-seus-numeros">1.1. Leitura dos seus números</h3>
+<table>
+<thead>
+<tr>
+<th>Métrica</th>
+<th>Valor</th>
+<th>Faixa de referência</th>
+<th>Interpretação</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>TSB</td>
+<td><strong>+39</strong></td>
+<td>-10 a +20 (treino) / +5 a +15 (prova)</td>
+<td><strong>"Fresco demais"</strong> — sinal de destreino</td>
+</tr>
+<tr>
+<td>CTL</td>
+<td><strong>31</strong></td>
+<td>45-60 para 21K amador</td>
+<td><strong>Baixo</strong> — base aeróbia ainda em construção</td>
+</tr>
+<tr>
+<td>ATL</td>
+<td><strong>14</strong></td>
+<td>~CTL em fase de carga</td>
+<td>Confirma desaceleração recente</td>
+</tr>
+<tr>
+<td>FCmáx Tanaka (54a)</td>
+<td><strong>170 bpm</strong></td>
+<td>—</td>
+<td>Base para zonas</td>
+</tr>
+<tr>
+<td>FCrep</td>
+<td><strong>51 bpm</strong></td>
+<td>&lt;60 ótimo p/ 54a</td>
+<td>Excelente base cardiovascular</td>
+</tr>
+<tr>
+<td>FC longão 17K</td>
+<td><strong>140 bpm</strong></td>
+<td>—</td>
+<td><strong>75% FCR (Karvonen) = Z3 médio</strong>, não Z2</td>
+</tr>
+<tr>
+<td>Pace longão</td>
+<td><strong>6:33/km</strong></td>
+<td>—</td>
+<td>Coerente com VO2máx ~38-42 ml/kg/min</td>
+</tr>
+<tr>
+<td>IMC</td>
+<td><strong>27,1</strong></td>
+<td>&lt;25 normal</td>
+<td>Sobrepeso classe 1 — fator de impacto</td>
+</tr>
+</tbody>
+</table>
+<h3 id="12-zonas-de-fc-karvonen-com-fcrep-51-confirmada">1.2. Zonas de FC (Karvonen com FCrep 51 confirmada)</h3>
+<p>FCR = FCmáx (170) − FCrep (51) = <strong>119 bpm</strong></p>
+<table>
+<thead>
+<tr>
+<th>Zona</th>
+<th>%FCR</th>
+<th>bpm = 51 + (% × 119)</th>
+<th>Pace estimado</th>
+<th>Quando usar</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Z1 — Recuperação</td>
+<td>50-60%</td>
+<td><strong>111-122</strong></td>
+<td>7:30-8:00</td>
+<td>Regenerativo, walk-jog</td>
+</tr>
+<tr>
+<td><strong>Z2 — Aeróbio base</strong></td>
+<td>60-70%</td>
+<td><strong>122-134</strong></td>
+<td><strong>6:55-7:15</strong></td>
+<td><strong>Longão verdadeiro</strong></td>
+</tr>
+<tr>
+<td>Z3 — Limiar aeróbio</td>
+<td>70-80%</td>
+<td><strong>134-146</strong></td>
+<td>6:25-6:50</td>
+<td>Tempo run, ritmo médio</td>
+</tr>
+<tr>
+<td>Z4 — Limiar anaeróbio</td>
+<td>80-90%</td>
+<td><strong>146-158</strong></td>
+<td>5:50-6:10</td>
+<td>Threshold, prova 10K</td>
+</tr>
+<tr>
+<td>Z5 — VO2máx</td>
+<td>90-100%</td>
+<td><strong>158-170</strong></td>
+<td>5:15-5:30</td>
+<td>Intervalos curtos</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Achado crítico:</strong> seu longão de 17K a 140 bpm está em <strong>Z3 médio</strong>, não em Z2. Isso explica o TSB +39 paradoxal — você corre intensidade alta em volume insuficiente, gerando ATL sem CTL. <strong>Alvo de longão Z2 verdadeiro: 125-132 bpm</strong>, mesmo que o pace caia para 7:00-7:15/km. FCrep 51 é excelente — sua base cardiovascular é melhor do que o CTL sugere.</p>
+<h3 id="13-projecao-21k-0606">1.3. Projeção 21K (06/06)</h3>
+<p>Riegel: T₂ = T₁ × (D₂/D₁)^n<br />
+- T₁ = 1h51m38s; D₁ = 17 km; D₂ = 21,1 km; n = 0,83<br />
+- Fator = (21,1/17)^0,83 ≈ 1,237<br />
+- <strong>T₂ = ~2h18m57s</strong></p>
+<p><strong>Faixas realistas:</strong><br />
+- <strong>Best case</strong> (taper executado, dia bom, sub-jejum carb-loading): <strong>2h12-2h15</strong><br />
+- <strong>Esperado</strong> (plano cumprido normalmente): <strong>2h17-2h21</strong><br />
+- <strong>Worst case</strong> (sem taper bom ou problema GI): <strong>2h25+</strong></p>
+<hr />
+<h2 id="2-periodizacao-33-dias-ate-0606">2. Periodização — 33 Dias até 06/06</h2>
+<p><strong>Estratégia:</strong> Build curto (18 dias) + Taper (15 dias). Como TSB está +39, <strong>NÃO há deload nesse plano</strong> — você precisa de carga.</p>
+<h3 id="21-visao-geral-semana-a-semana">2.1. Visão geral semana a semana</h3>
+<table>
+<thead>
+<tr>
+<th>Semana</th>
+<th>Datas</th>
+<th>Foco</th>
+<th>TSS-alvo</th>
+<th>Longão</th>
+<th>Pico CTL</th>
+<th>TSB esperado</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>1</strong></td>
+<td>04-10/mai</td>
+<td>Build 1 — qualidade Z2 verdadeira + dose Z3</td>
+<td>~280</td>
+<td>18 km Z2</td>
+<td>35</td>
+<td>+20</td>
+</tr>
+<tr>
+<td><strong>2</strong></td>
+<td>11-17/mai</td>
+<td>Build 2 — adicionar limiar</td>
+<td>~320</td>
+<td>19 km Z2 c/ progressão</td>
+<td>40</td>
+<td>+5</td>
+</tr>
+<tr>
+<td><strong>3</strong></td>
+<td>18-24/mai</td>
+<td>Build 3 — pico de carga</td>
+<td>~340</td>
+<td>20-21 km c/ 5 km ritmo prova</td>
+<td>44</td>
+<td>-5 a 0</td>
+</tr>
+<tr>
+<td><strong>4</strong></td>
+<td>25-31/mai</td>
+<td>Taper início — volume cai 25-30%</td>
+<td>~240</td>
+<td>16 km Z2</td>
+<td>43</td>
+<td>+5</td>
+</tr>
+<tr>
+<td><strong>5</strong></td>
+<td>01-06/jun</td>
+<td>Polish — volume cai 50-60%</td>
+<td>~150</td>
+<td>10 km easy + toques</td>
+<td>41</td>
+<td><strong>+12 a +15</strong> ✅</td>
+</tr>
+</tbody>
+</table>
+<h3 id="22-distribuicao-de-zonas-no-microciclo">2.2. Distribuição de zonas no microciclo</h3>
+<ul>
+<li><strong>Z1-Z2 (fácil):</strong> 70% do volume (era 55-65%, mas você precisa REconstruir base aeróbia)</li>
+<li><strong>Z3 (limiar):</strong> 15-20%</li>
+<li><strong>Z4-Z5 (qualidade):</strong> 10-15%</li>
+</ul>
+<h3 id="23-estrutura-semanal-tipica-com-forca-3-ja-existente">2.3. Estrutura semanal típica (com força 3× já existente)</h3>
+<table>
+<thead>
+<tr>
+<th>Dia</th>
+<th>Sessão Corrida (Build)</th>
+<th>Força (1h)</th>
+<th>Sessão Corrida (Taper)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Seg</td>
+<td>Descanso de corrida</td>
+<td><strong>Sessão A — MMII pesado</strong></td>
+<td>Descanso de corrida + Força A reduzida</td>
+</tr>
+<tr>
+<td>Ter</td>
+<td>Intervalado Z4 (manhã)</td>
+<td>—</td>
+<td>Intervalado curto</td>
+</tr>
+<tr>
+<td>Qua</td>
+<td>Easy Z1-Z2 5-6 km (manhã)</td>
+<td><strong>Sessão B — Upper + core</strong></td>
+<td>Easy Z1 + Força B reduzida</td>
+</tr>
+<tr>
+<td>Qui</td>
+<td>Tempo run Z3 (5-7 km)</td>
+<td>—</td>
+<td>Tempo curto Z3 (3-4 km)</td>
+</tr>
+<tr>
+<td>Sex</td>
+<td>Descanso de corrida</td>
+<td><strong>Sessão C — Funcional/unilateral</strong></td>
+<td>Descanso + Força C reduzida</td>
+</tr>
+<tr>
+<td>Sáb</td>
+<td>Easy Z2 6-8 km</td>
+<td>—</td>
+<td>Easy Z2 5 km</td>
+</tr>
+<tr>
+<td>Dom</td>
+<td><strong>LONGÃO Z2</strong> (122-132 bpm)</td>
+<td>—</td>
+<td>Longão reduzido</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Regra do taper:</strong> volume corrida cai rápido, intensidade cai devagar. Força mantém frequência mas corta 1 série e reduz carga em 30%. Sem pliometria nas semanas 4-5.</p>
+<p><strong>Total semanal médio em Build:</strong> ~38-45 km corrida + 3h força + core diário = carga total alta. <strong>Vigie sinais de overreaching</strong> (HRV baixo + sono ruim por 3 dias) — se acontecer, corte 1 sessão de força (não a corrida).</p>
+<hr />
+<h2 id="3-modalidades-de-recuperacao">3. Modalidades de Recuperação</h2>
+<h3 id="31-piramide-de-halson-nsca-essentials-of-sport-science-2021">3.1. Pirâmide de Halson (NSCA Essentials of Sport Science 2021)</h3>
+<pre><code>              ┌──────────────────────┐
+              │ Terapias avançadas   │  ← último recurso
+              ├──────────────────────┤
+              │ Modalidades manuais  │  ← massagem, SMR, contraste
+              ├──────────────────────┤
+              │ Nutrição + Hidratação│  ← bloco diário
+              ├──────────────────────┤
+              │       SONO           │  ← BASE INEGOCIÁVEL
+              └──────────────────────┘
+</code></pre>
+<h3 id="32-sono-prioridade-1">3.2. Sono (prioridade #1)</h3>
+<ul>
+<li><strong>Meta:</strong> 7,5-9 horas/noite. Para 50+, regularidade &gt; duração isolada.</li>
+<li><strong>Higiene:</strong> quarto fresco, sem tela 1h antes, mesmo horário todos os dias inclusive sáb/dom.</li>
+<li><strong>Soneca:</strong> 20-30 min, antes das 16h. Acima de 30 min ou após 16h prejudica sono noturno.</li>
+<li><strong>Atenção:</strong> álcool fragmenta sono — corte 0 nas 4 noites pré-prova.</li>
+<li><strong>Métrica:</strong> Garmin Sleep Score ≥ 80 = bom; &lt; 70 = ajuste agendado de treino no dia seguinte.</li>
+</ul>
+<h3 id="33-massagem-modalidade-com-mais-evidencia-ufmg-scielo">3.3. Massagem (modalidade com mais evidência — UFMG, SciELO)</h3>
+<ul>
+<li><strong>Frequência (build):</strong> 1×/semana, 45-60 min, terapêutica/esportiva.</li>
+<li><strong>Frequência (taper):</strong> 1× a cada 7-10 dias; massagem <strong>leve</strong> nos últimos 3 dias (não profunda).</li>
+<li><strong>Timing:</strong> 12-24h após treino mais pesado (geralmente segunda-feira após longão de domingo).</li>
+<li><strong>Auto-massagem (todos os dias):</strong> 5-10 min com bola/foam em panturrilhas, glúteos, planta do pé.</li>
+</ul>
+<h3 id="34-foam-roller-smr-self-myofascial-release">3.4. Foam Roller / SMR (Self-Myofascial Release)</h3>
+<p>Protocolo de 10-15 min, <strong>3-5×/semana</strong>:</p>
+<table>
+<thead>
+<tr>
+<th>Região</th>
+<th>Tempo</th>
+<th>Notas</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Panturrilha (gastroc + sóleo)</td>
+<td>60-90s/lado</td>
+<td>Crítico para 50+ — risco de Aquiles</td>
+</tr>
+<tr>
+<td>Quadríceps</td>
+<td>60-90s/lado</td>
+<td></td>
+</tr>
+<tr>
+<td>Glúteo (max + médio + piriforme)</td>
+<td>60-90s/lado</td>
+<td>Ataca dor lombar e síndrome IT band</td>
+</tr>
+<tr>
+<td>Posterior de coxa</td>
+<td>60-90s/lado</td>
+<td></td>
+</tr>
+<tr>
+<td>TFL/banda IT</td>
+<td>45-75s/lado</td>
+<td>Cuidado: sensível, não forçar</td>
+</tr>
+<tr>
+<td>Adicional: flexor de quadril (psoas)</td>
+<td>45-60s/lado</td>
+<td>Importante para corredor sentado o dia</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Intensidade:</strong> desconforto tolerável (6-7/10), nunca dor aguda. Respiração solta.</p>
+<h3 id="35-crioimersao-cwi-e-banho-de-contraste-atencao">3.5. Crioimersão (CWI) e Banho de Contraste — ⚠️ ATENÇÃO</h3>
+<p><strong>Evidência crítica:</strong> Roberts et al. 2015 e Allan et al. 2022 mostram que <strong>CWI rotineira pós-treino atenua adaptações</strong> (síntese proteica, sinalização para hipertrofia/mitocôndria).</p>
+<p><strong>Protocolo de uso:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Cenário</th>
+<th>CWI?</th>
+<th>Banho de contraste?</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Build (semanas 1-3)</td>
+<td><strong>NÃO</strong> rotina. Só após treino excepcional ou se DOMS &gt; 7/10</td>
+<td>OK 1-2×/sem (6 min: 1' frio @ 12°C : 2' quente @ 38°C × 2 ciclos)</td>
+</tr>
+<tr>
+<td>Taper (semanas 4-5)</td>
+<td>OK pontual após longão</td>
+<td>OK 2×/sem</td>
+</tr>
+<tr>
+<td>Pós-prova (06/06)</td>
+<td><strong>SIM</strong> — 10-15°C × 10-15 min logo após</td>
+<td>OK</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Resumo:</strong> durante a fase de build, deixe seu corpo "doer um pouco" — é onde mora a adaptação. Reserve crioterapia para depois da prova.</p>
+<h3 id="36-alongamento-e-mobilidade">3.6. Alongamento e mobilidade</h3>
+<ul>
+<li><strong>Pós-treino:</strong> 5-10 min de mobilidade ativa + alongamento leve (20-30s/posição).</li>
+<li><strong>Dia separado (1-2×/sem):</strong> sessão de 20-30 min com PNF leve, foco em quadril, tornozelo, torácica.</li>
+<li><strong>Pré-treino:</strong> mobilidade ativa (skipping, circundução, lunge dinâmico) — NUNCA alongamento estático longo (reduz potência por até 1h).</li>
+</ul>
+<h3 id="37-compressao-e-recuperacao-ativa">3.7. Compressão e recuperação ativa</h3>
+<ul>
+<li><strong>Meias de compressão:</strong> após longão, 2-4h. Evidência mista mas baixo custo + sensação de "perna leve".</li>
+<li><strong>Botas pneumáticas:</strong> se acessível, 20-30 min após sessões pesadas.</li>
+<li><strong>Recuperação ativa:</strong> caminhada 20-40 min ou bike Z1 no dia seguinte ao treino forte. Nunca substitui descanso total se for o caso.</li>
+</ul>
+<h3 id="38-protocolo-semanal-exemplo-semana-de-build">3.8. Protocolo semanal exemplo (semana de Build)</h3>
+<table>
+<thead>
+<tr>
+<th>Dia</th>
+<th>Manhã</th>
+<th>Tarde/Noite</th>
+<th>Modalidade</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Seg</td>
+<td>Sleep ≥ 8h</td>
+<td>Massagem 45 min</td>
+<td>DESCANSO TOTAL</td>
+</tr>
+<tr>
+<td>Ter</td>
+<td>Intervalado Z4</td>
+<td>Foam 10 min + sleep</td>
+<td>—</td>
+</tr>
+<tr>
+<td>Qua</td>
+<td>Easy Z1 35 min</td>
+<td>Mobilidade 20 min</td>
+<td>Recuperação ativa</td>
+</tr>
+<tr>
+<td>Qui</td>
+<td>Tempo run Z3</td>
+<td>Foam 10 min</td>
+<td>—</td>
+</tr>
+<tr>
+<td>Sex</td>
+<td>Força + core</td>
+<td>Auto-massagem panturrilha</td>
+<td>DESCANSO de corrida</td>
+</tr>
+<tr>
+<td>Sáb</td>
+<td>Easy Z2 + força</td>
+<td>—</td>
+<td>—</td>
+</tr>
+<tr>
+<td>Dom</td>
+<td>LONGÃO Z2</td>
+<td>Compressão 2h + foam</td>
+<td>Mobilidade leve</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="4-nutricao-e-suplementacao-para-98-kg">4. Nutrição e Suplementação para 98 kg</h2>
+<h3 id="41-necessidades-diarias">4.1. Necessidades diárias</h3>
+<p><strong>Calorias (Mifflin-St Jeor):</strong><br />
+- BMR = 10×98 + 6,25×190 - 5×54 + 5 = 980 + 1187,5 - 270 + 5 = <strong>~1903 kcal/d</strong><br />
+- Manutenção (ativo, treino 4-5×/sem): BMR × 1,55 = <strong>~2950 kcal/d</strong><br />
+- Em build: <strong>2950 kcal/d</strong> (manutenção). Não tente perder peso forte em 33 dias.</p>
+<p><strong>Macros:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Macro</th>
+<th>g/kg/d</th>
+<th>g/d para 98 kg</th>
+<th>kcal</th>
+<th>% VCT</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Proteína</strong></td>
+<td>1,8</td>
+<td><strong>176</strong></td>
+<td>705</td>
+<td>24%</td>
+</tr>
+<tr>
+<td><strong>Carbo (build)</strong></td>
+<td>6</td>
+<td><strong>588</strong></td>
+<td>2350</td>
+<td>80% (sobrepõe ajuste)</td>
+</tr>
+<tr>
+<td><strong>Carbo (carb-load)</strong></td>
+<td>8-10</td>
+<td>784-980</td>
+<td>3140-3920</td>
+<td>—</td>
+</tr>
+<tr>
+<td><strong>Gordura</strong></td>
+<td>0,8-1,0</td>
+<td>80-100</td>
+<td>720-900</td>
+<td>24%</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Distribuição:</strong> 4 refeições + lanche pós-treino. Cada refeição com 0,4 g/kg de proteína (~40 g).</p>
+<h3 id="42-janela-pos-treino-30-60-min">4.2. Janela pós-treino (30-60 min)</h3>
+<ul>
+<li><strong>Proteína:</strong> 0,3-0,4 g/kg = <strong>30-40 g</strong> (1 dose de whey 30g + iogurte/ovos)</li>
+<li><strong>Carbo:</strong> 1,0-1,2 g/kg = <strong>98-118 g</strong> (banana grande + 80g aveia + mel ou pão + geleia + suco)</li>
+<li><strong>Proporção carbo:proteína:</strong> 3:1 (suficiente). 4:1 só se houver outra sessão em &lt; 8h.</li>
+</ul>
+<p><strong>Exemplos práticos pós-treino:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Opção</th>
+<th>Proteína</th>
+<th>Carbo</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Whey 40g + banana grande + 2 fatias pão + mel</td>
+<td>38 g</td>
+<td>~95 g</td>
+</tr>
+<tr>
+<td>Iogurte grego 350g + 70g aveia + banana + mel</td>
+<td>35 g</td>
+<td>~110 g</td>
+</tr>
+<tr>
+<td>Tapioca 80g + ovo 2 + queijo + suco laranja 300ml + banana</td>
+<td>28 g</td>
+<td>~115 g</td>
+</tr>
+</tbody>
+</table>
+<h3 id="43-hidratacao-98-kg">4.3. Hidratação (98 kg)</h3>
+<ul>
+<li><strong>Base diária:</strong> 35-40 ml/kg = <strong>3,4-3,9 L/d</strong></li>
+<li><strong>Teste de sudorese:</strong> pese-se nu antes/depois de 1h de treino, some bebida ingerida. Diferença = perda. (Provavelmente entre 0,8-1,5 L/h em SP).</li>
+<li><strong>Sódio em treino &gt; 60 min:</strong> 300-700 mg/h (você é homem com 98 kg, suor provavelmente alto — comece com 500 mg/h).</li>
+<li><strong>Hiponatremia:</strong> evite beber muita água sem sódio em treinos &gt; 90 min ou na prova.</li>
+</ul>
+<h3 id="44-suplementacao-com-evidencia-issn-position-stands">4.4. Suplementação com evidência (ISSN position stands)</h3>
+<table>
+<thead>
+<tr>
+<th>Suplemento</th>
+<th>Dose</th>
+<th>Quando</th>
+<th>Evidência</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Creatina monohidratada</strong></td>
+<td>5 g/d (sem fase de saturação)</td>
+<td>Diariamente, qualquer hora</td>
+<td>Forte para 50+: combate sarcopenia, melhora função neuromuscular. Endurance: ganho marginal mas significativo na fase final</td>
+</tr>
+<tr>
+<td><strong>Whey protein</strong></td>
+<td>30-40 g/dose</td>
+<td>Pós-treino + 1 dose extra se difícil bater 176 g/d</td>
+<td>Forte</td>
+</tr>
+<tr>
+<td><strong>Cafeína</strong></td>
+<td>3-6 mg/kg = 300-590 mg</td>
+<td>60 min antes de prova/treino-chave</td>
+<td>Forte (Burke 2019). <strong>Para 98 kg comece com 300-400 mg.</strong> Teste em treino</td>
+</tr>
+<tr>
+<td><strong>Ômega-3 (EPA+DHA)</strong></td>
+<td>1-2 g/d combinados</td>
+<td>Diariamente, com refeição</td>
+<td>Moderada — anti-inflamatório, recuperação</td>
+</tr>
+<tr>
+<td><strong>Vitamina D3</strong></td>
+<td>1000-2000 UI/d</td>
+<td>Diariamente</td>
+<td>Para 50+ Brasil — peça exame 25(OH)D antes de dose alta</td>
+</tr>
+<tr>
+<td><strong>Beta-alanina</strong></td>
+<td>NÃO recomendado</td>
+<td>—</td>
+<td>Benefício marginal em 21K + saturação leva 4 semanas</td>
+</tr>
+<tr>
+<td><strong>Bicarbonato</strong></td>
+<td>NÃO</td>
+<td>—</td>
+<td>Não vale risco GI em 21K</td>
+</tr>
+</tbody>
+</table>
+<h3 id="45-carb-loading-48-72h-pre-prova-04-0506">4.5. Carb-loading 48-72h pré-prova (04-05/06)</h3>
+<ul>
+<li><strong>04/06 (sex):</strong> 8 g/kg × 98 = <strong>784 g de carbo</strong> (distribuído em 5-6 refeições)</li>
+<li><strong>05/06 (sáb, dia anterior):</strong> 8-10 g/kg = <strong>784-980 g</strong>, <strong>reduzir fibras</strong> (corte feijão, integrais, cruciferas, oleaginosas)</li>
+<li><strong>Evitar:</strong> alimentos novos, gordura excessiva, álcool</li>
+</ul>
+<p><strong>Café da manhã 06/06 (3h antes da prova):</strong><br />
+- 3 g/kg de carbo = <strong>~290 g</strong><br />
+- Exemplo: 100g aveia + banana 2× + mel 30g + iogurte natural 200g + pão 4 fatias com geleia + suco laranja 300ml<br />
+- <strong>Líquido importante:</strong> café (cafeína 300 mg total), 500 ml de água com pouco sal</p>
+<h3 id="46-estrategia-intra-prova-21k-2h18">4.6. Estratégia intra-prova 21K (~2h18)</h3>
+<ul>
+<li><strong>Consumo:</strong> 60 g de carbo/h via gel ou bebida</li>
+<li><strong>Plano:</strong> gel a cada 35-40 min começando km 5</li>
+<li>km 5: gel 1 (~25 g carbo)</li>
+<li>km 10: gel 2 + água com isotônico</li>
+<li>km 14-15: gel 3</li>
+<li>km 18-19: opcional gel 4 ou só hidratação</li>
+<li><strong>Hidratação:</strong> 150-250 ml a cada estação (5 km)</li>
+<li><strong>Sódio:</strong> isotônico nos pontos pares + sal opcional na palma</li>
+<li><strong>REGRA DE OURO:</strong> <strong>NADA NOVO NO DIA</strong>. Teste todos os géis nos longões pré-prova.</li>
+</ul>
+<h3 id="47-cardapio-diario-tipo-2950-kcal-176g-p-588g-c">4.7. Cardápio diário tipo (2950 kcal, 176g P, 588g C)</h3>
+<table>
+<thead>
+<tr>
+<th>Refeição</th>
+<th>Alimentos</th>
+<th>P</th>
+<th>C</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Café (7h)</td>
+<td>Aveia 80g + leite 300ml + banana + ovos 3 + 2 fatias pão integral + queijo branco 40g</td>
+<td>40</td>
+<td>100</td>
+</tr>
+<tr>
+<td>Lanche (10h)</td>
+<td>Iogurte natural 200g + granola 40g + mel</td>
+<td>12</td>
+<td>50</td>
+</tr>
+<tr>
+<td>Almoço (12h30)</td>
+<td>Arroz 250g cozido + feijão 150g + frango 200g + salada + azeite 1 cs</td>
+<td>50</td>
+<td>130</td>
+</tr>
+<tr>
+<td>Pós-treino (16h)*</td>
+<td>Whey 30g + banana + pão 2 fatias + mel</td>
+<td>33</td>
+<td>95</td>
+</tr>
+<tr>
+<td>Jantar (19h30)</td>
+<td>Batata-doce 350g + peixe 200g + legumes + azeite</td>
+<td>45</td>
+<td>75</td>
+</tr>
+<tr>
+<td>Ceia (21h30)</td>
+<td>Iogurte + chia 1 cs</td>
+<td>8</td>
+<td>15</td>
+</tr>
+<tr>
+<td><strong>Total</strong></td>
+<td></td>
+<td><strong>~188</strong></td>
+<td><strong>~465</strong></td>
+</tr>
+</tbody>
+</table>
+<p>*Em dias sem treino, pular o pós-treino e ajustar almoço/jantar.</p>
+<hr />
+<h2 id="5-treinamento-complementar">5. Treinamento Complementar</h2>
+<h3 id="51-forca-3semana-voce-ja-faz-segquasex-1h-cada-mantem">5.1. Força (3×/semana — você já faz seg/qua/sex 1h cada; mantém)</h3>
+<p><strong>Princípio:</strong> organizar as 3 sessões para que MMII pesado não preceda treino-chave de corrida (intervalado terça, tempo quinta, longão domingo). Sem histórico de lesão = sinal verde para progressão de carga mais ousada.</p>
+<p><strong>Em taper (sem 4-5):</strong> mantém frequência 3×, mas corta 1 série de cada exercício e reduz cargas em 30%. Sem pliometria nas 2 últimas semanas.</p>
+<h4 id="sessao-a-segunda-full-body-mmii-pesado">Sessão A — Segunda (Full body / MMII pesado)</h4>
+<table>
+<thead>
+<tr>
+<th>Exercício</th>
+<th>Séries × Reps</th>
+<th>Notas</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Agachamento (livre ou goblet)</td>
+<td>4 × 6-8</td>
+<td>Carga próxima da falha técnica</td>
+</tr>
+<tr>
+<td>Levantamento terra romeno (RDL)</td>
+<td>3 × 8-10</td>
+<td>Posterior coxa + glúteo</td>
+</tr>
+<tr>
+<td>Hip thrust (elevação pélvica)</td>
+<td>3 × 10</td>
+<td>Glúteo máx — propulsão</td>
+</tr>
+<tr>
+<td>Panturrilha unilateral</td>
+<td>3 × 12-15/lado</td>
+<td><strong>CRÍTICO</strong> — prevenção Aquiles</td>
+</tr>
+<tr>
+<td>Core: prancha + dead bug</td>
+<td>3 × 45s + 10/lado</td>
+<td>Estabilização</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p><strong>Por que segunda:</strong> você teve domingo de longão. Segunda já está parcialmente recuperado, e há 5 dias até o próximo longão. Distância máxima.</p>
+</blockquote>
+<h4 id="sessao-b-quarta-upper-core-estabilidade">Sessão B — Quarta (Upper + core estabilidade)</h4>
+<table>
+<thead>
+<tr>
+<th>Exercício</th>
+<th>Séries × Reps</th>
+<th>Notas</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Remada (curvada ou pulley)</td>
+<td>4 × 8-10</td>
+<td>Postura</td>
+</tr>
+<tr>
+<td>Supino (livre ou máquina)</td>
+<td>3 × 8-10</td>
+<td>Equilíbrio postural</td>
+</tr>
+<tr>
+<td>Tração (assistida se preciso) ou pull-down</td>
+<td>3 × 8-10</td>
+<td>Latíssimo, postura</td>
+</tr>
+<tr>
+<td>Desenvolvimento de ombro</td>
+<td>3 × 10</td>
+<td>Estabilidade braço/cabeça</td>
+</tr>
+<tr>
+<td>Core: prancha lateral + paloff press</td>
+<td>3 × 30s/lado + 10/lado</td>
+<td>Anti-rotação</td>
+</tr>
+<tr>
+<td>Mobilidade torácica + quadril</td>
+<td>10 min</td>
+<td>Bloco final</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p><strong>Por que upper na quarta:</strong> terça você fez intervalado, quinta vai fazer tempo run. Pernas precisam estar frescas. Esta sessão preserva estímulo de força sem interferir.</p>
+</blockquote>
+<h4 id="sessao-c-sexta-funcional-unilateral">Sessão C — Sexta (Funcional / unilateral)</h4>
+<table>
+<thead>
+<tr>
+<th>Exercício</th>
+<th>Séries × Reps</th>
+<th>Notas</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Split squat (afundo unilateral)</td>
+<td>3 × 8/perna</td>
+<td>Estabilidade unilateral — chave 50+</td>
+</tr>
+<tr>
+<td>Single-leg deadlift</td>
+<td>3 × 8/perna</td>
+<td>Equilíbrio + cadeia posterior</td>
+</tr>
+<tr>
+<td>Ponte unilateral de glúteo</td>
+<td>3 × 10/lado</td>
+<td>Glúteo médio (anti-IT band)</td>
+</tr>
+<tr>
+<td>Panturrilha unilateral (variação 2)</td>
+<td>3 × 12-15/lado</td>
+<td>Sentado para sóleo</td>
+</tr>
+<tr>
+<td>Core: bird dog + paloff</td>
+<td>3 × 10/lado</td>
+<td>Coordenação</td>
+</tr>
+<tr>
+<td><strong>Pliometria leve</strong> (sem 1-3 apenas)</td>
+<td>Pular corda 3×1min ou skipping</td>
+<td>Cortar nas sem 4-5</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p><strong>Por que funcional na sexta:</strong> 36h até o longão de domingo. Carga moderada, foco em padrões unilaterais que melhoram economia de corrida sem deixar perna pesada.</p>
+</blockquote>
+<h3 id="52-core-2-3semana-15-20-min">5.2. Core (2-3×/semana, 15-20 min)</h3>
+<table>
+<thead>
+<tr>
+<th>Exercício</th>
+<th>Tempo/Reps</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Prancha frontal</td>
+<td>3 × 45-60s</td>
+</tr>
+<tr>
+<td>Prancha lateral</td>
+<td>3 × 30-45s/lado</td>
+</tr>
+<tr>
+<td>Dead bug</td>
+<td>3 × 10/lado</td>
+</tr>
+<tr>
+<td>Bird dog</td>
+<td>3 × 10/lado</td>
+</tr>
+<tr>
+<td>Single-leg deadlift (sem peso ou leve)</td>
+<td>3 × 8/perna</td>
+</tr>
+<tr>
+<td>Paloff press com elástico</td>
+<td>3 × 10/lado</td>
+</tr>
+</tbody>
+</table>
+<h3 id="53-pliometria-versao-segura-para-98-kg">5.3. Pliometria (versão segura para 98 kg)</h3>
+<ul>
+<li><strong>Apenas semanas 1-3</strong> (corte na semana 4 e 5)</li>
+<li><strong>1× por semana</strong>, 10 min, BAIXO impacto:</li>
+<li>Pular corda 3 × 1 min (intervalo 1 min)</li>
+<li>Skipping leve 3 × 30s</li>
+<li>Saltos baixos com amortecimento controlado 2 × 6</li>
+<li><strong>Critério para fazer:</strong> sem dor em panturrilha/Aquiles na semana</li>
+</ul>
+<h3 id="54-mobilidade-todos-os-dias-5-10-min">5.4. Mobilidade (todos os dias, 5-10 min)</h3>
+<ul>
+<li>Tornozelo: dorsiflexão na parede 2 × 10/lado</li>
+<li>Quadril: 90/90 hip flow 2 × 5/lado</li>
+<li>Torácica: thread the needle, cat-cow 1 × 8</li>
+</ul>
+<h3 id="55-prevencao-de-lesao-para-98-kg-54-anos">5.5. Prevenção de lesão para 98 kg / 54 anos</h3>
+<p><strong>Lesões com prevalência alta nessa faixa:</strong><br />
+- Tendinite de Aquiles → panturrilha unilateral é PROFILAXIA<br />
+- Fascite plantar → mobilidade pé, rolar bola, tolerância progressiva<br />
+- IT band syndrome → fortalecer glúteo médio (afundo, ponte unilateral)<br />
+- Estresse tibial medial (canelite) → não aumentar volume &gt; 10%/semana</p>
+<p><strong>Sinais de alerta:</strong><br />
+- Dor que persiste &gt; 48h após treino<br />
+- Dor que muda padrão de passada (compensação)<br />
+- Inchaço local<br />
+→ <strong>Pare e procure fisio. NÃO empurre — você não tem 33 dias para tratar uma lesão.</strong></p>
+<hr />
+<h2 id="6-monitoramento-hrv-e-pmc">6. Monitoramento — HRV e PMC</h2>
+<h3 id="61-garmin-hrv-status-4-niveis">6.1. Garmin HRV Status (4 níveis)</h3>
+<p>A Garmin (parceria com Firstbeat) compara sua HRV noturna com <strong>sua baseline pessoal</strong> construída em <strong>mínimo 19 dias</strong> de uso 24/7.</p>
+<table>
+<thead>
+<tr>
+<th>Status</th>
+<th>Interpretação</th>
+<th>Ação no protocolo</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Balanced</strong> (verde)</td>
+<td>Dentro da faixa pessoal</td>
+<td>Treino conforme planejado</td>
+</tr>
+<tr>
+<td><strong>Unbalanced</strong> (laranja)</td>
+<td>Fora da faixa (alta OU baixa)</td>
+<td>Reduzir intensidade do dia em 1 nível</td>
+</tr>
+<tr>
+<td><strong>Low</strong> (vermelho)</td>
+<td>Abaixo da faixa por dias</td>
+<td>Treino fácil ou descanso</td>
+</tr>
+<tr>
+<td><strong>Poor</strong></td>
+<td>Muito abaixo + tendência</td>
+<td>DESCANSO. Revisar sono/estresse</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Métrica que Garmin usa:</strong> RMSSD durante o sono (a janela de 4-8h da noite).<br />
+<strong>Tempo para baseline confiável:</strong> ~3 semanas de uso 24/7.</p>
+<h3 id="62-score-composto-diario-sua-regra-de-decisao">6.2. Score composto diário (sua regra de decisão)</h3>
+<pre><code>Score = HRV(0,25) + BodyBattery(0,25) + Sleep(0,20) + 
+        Readiness(0,15) + TSB_trend(0,05) + CTL_trend(0,10)
+</code></pre>
+<table>
+<thead>
+<tr>
+<th>Score</th>
+<th>Decisão</th>
+<th>Detalhamento</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>≥ 0,90</td>
+<td>TREINAR FORTE</td>
+<td>Executa tudo conforme planilha</td>
+</tr>
+<tr>
+<td>0,60-0,89</td>
+<td>MODERADO</td>
+<td>Reduz intensidade em 1 zona; mantém volume</td>
+</tr>
+<tr>
+<td>0,30-0,59</td>
+<td>FÁCIL</td>
+<td>Só Z1-Z2, volume -30%</td>
+</tr>
+<tr>
+<td>&lt; 0,30</td>
+<td>DESCANSO TOTAL</td>
+<td>Mobilidade + sono</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Outliers a vigiar:</strong><br />
+- HRV cai &gt; 1 desvio-padrão em 1 noite → atenção (estresse pontual)<br />
+- HRV cai por 3 noites seguidas → PARE e investigue (pré-overreaching)<br />
+- FC repouso sobe &gt; 5 bpm vs baseline → mesmo sinal</p>
+<h3 id="63-sinais-de-overreaching-nao-funcional">6.3. Sinais de overreaching (não funcional)</h3>
+<p>Se você notar <strong>3 ou mais simultaneamente</strong>:<br />
+- HRV abaixo da baseline por &gt; 4 dias<br />
+- FC repouso elevada<br />
+- Sono pior (mesmo deitando bem)<br />
+- Performance cai (mesmo pace, FC mais alta)<br />
+- Irritabilidade, perda de motivação<br />
+- Soreness persistente</p>
+<p><strong>Ação:</strong> corte 1 semana para 50% do volume, sem qualidade. Avalie de novo na semana seguinte.</p>
+<hr />
+<h2 id="7-sistema-tecnico-python-pipeline-garmintrainingpeaks">7. Sistema Técnico Python — Pipeline Garmin/TrainingPeaks</h2>
+<h3 id="71-arquitetura-recomendada">7.1. Arquitetura recomendada</h3>
+<pre><code>┌─────────────────────┐         ┌──────────────────────┐
+│  Garmin Connect     │         │  TrainingPeaks Prem  │
+│  (web/app)          │         │                      │
+└──────┬──────────────┘         └────────────┬─────────┘
+       │ garth (lib Python)                  │ Export CSV
+       │ (HRV, sleep, body battery, status)  │ (TSS, IF, dist, dur)
+       ▼                                     ▼
+┌──────────────────────────────────────────────────────┐
+│             collector.py (cron 06:00)                 │
+│  - autentica garth (e-mail + senha + OAuth token)    │
+│  - busca métricas dos últimos 7 dias                 │
+│  - lê CSV TP (mais recente em ./inbox)               │
+│  - salva em SQLite                                    │
+└──────────┬───────────────────────────────────────────┘
+           ▼
+┌──────────────────────────────────────────────────────┐
+│             scoring.py                                │
+│  - calcula score composto + classifica dia           │
+│  - reconstrói PMC (CTL/ATL/TSB) se TP não exportar   │
+│  - detecta outliers (HRV drop, RHR sobe)             │
+└──────────┬───────────────────────────────────────────┘
+           ▼
+┌──────────────────────────────────────────────────────┐
+│        notify.py (e-mail + Telegram)                  │
+│        dashboard.py (Streamlit local)                 │
+└──────────────────────────────────────────────────────┘
+</code></pre>
+<h3 id="72-stack">7.2. Stack</h3>
+<pre><code class="language-bash">pip install garth pandas numpy plotly streamlit python-dotenv \
+            apscheduler python-telegram-bot duckdb
+</code></pre>
+<p><strong>Bibliotecas-chave:</strong><br />
+- <strong>garth</strong> (<a href="https://github.com/matin/garth">github.com/matin/garth</a>) — extrai HRV diário, sleep, body battery, training readiness do Garmin Connect via login pessoal (não precisa Health API empresarial)<br />
+- <strong>python-garminconnect</strong> (<a href="https://github.com/cyberjunky/python-garminconnect">github.com/cyberjunky/python-garminconnect</a>) — alternativa mais ampla<br />
+- <strong>pandas</strong> — manipulação CSV TP<br />
+- <strong>DuckDB</strong> ou <strong>SQLite</strong> — storage local privado<br />
+- <strong>Streamlit</strong> — dashboard 1 página</p>
+<h3 id="73-schema-banco-sqlite">7.3. Schema banco (SQLite)</h3>
+<pre><code class="language-sql">CREATE TABLE daily_metrics (
+  date DATE PRIMARY KEY,
+  hrv_overnight INTEGER,        -- RMSSD ms
+  hrv_status TEXT,              -- 'BALANCED', 'UNBALANCED', 'LOW', 'POOR'
+  body_battery_morning INTEGER, -- 0-100
+  body_battery_min INTEGER,
+  sleep_score INTEGER,
+  sleep_duration_hours REAL,
+  resting_hr INTEGER,
+  training_readiness INTEGER,   -- 0-100
+  training_status TEXT,
+  weight_kg REAL
+);
+
+CREATE TABLE activities (
+  activity_id TEXT PRIMARY KEY,
+  date DATE,
+  type TEXT,
+  distance_km REAL,
+  duration_min REAL,
+  hr_avg INTEGER,
+  pace_min_per_km REAL,
+  tss REAL,
+  if_value REAL
+);
+
+CREATE TABLE pmc (
+  date DATE PRIMARY KEY,
+  ctl REAL,
+  atl REAL,
+  tsb REAL
+);
+
+CREATE TABLE decisions (
+  date DATE PRIMARY KEY,
+  score REAL,
+  classification TEXT,           -- 'STRONG', 'MODERATE', 'EASY', 'REST'
+  notes TEXT,
+  planned_session TEXT,
+  actual_session TEXT
+);
+</code></pre>
+<h3 id="74-reconstrucao-do-pmc-se-tp-nao-exportar-ctlatltsb">7.4. Reconstrução do PMC se TP não exportar CTL/ATL/TSB</h3>
+<p>Fórmulas exponenciais (Coggan):</p>
+<pre><code class="language-python">import pandas as pd
+import numpy as np
+
+def calculate_pmc(df_tss, ctl_decay=42, atl_decay=7, ctl_init=31, atl_init=14):
+    &quot;&quot;&quot;df_tss: DataFrame com colunas ['date', 'tss']&quot;&quot;&quot;
+    df_tss = df_tss.sort_values('date').reset_index(drop=True)
+    ctl, atl = [ctl_init], [atl_init]
+    for i in range(len(df_tss)):
+        tss = df_tss.loc[i, 'tss'] or 0
+        new_ctl = ctl[-1] + (tss - ctl[-1]) * (1 - np.exp(-1/ctl_decay))
+        new_atl = atl[-1] + (tss - atl[-1]) * (1 - np.exp(-1/atl_decay))
+        ctl.append(new_ctl)
+        atl.append(new_atl)
+    df_tss['ctl'] = ctl[1:]
+    df_tss['atl'] = atl[1:]
+    df_tss['tsb'] = df_tss['ctl'] - df_tss['atl']
+    return df_tss
+</code></pre>
+<h3 id="75-logica-de-decisao-scoringpy">7.5. Lógica de decisão (scoring.py)</h3>
+<pre><code class="language-python">def normalize(value, low, high):
+    if value is None: return 0.5
+    return max(0, min(1, (value - low) / (high - low)))
+
+def hrv_status_score(status):
+    return {'HIGH': 1.0, 'BALANCED': 0.85, 'UNBALANCED': 0.4, 'LOW': 0.2, 'POOR': 0.0}.get(status, 0.5)
+
+def calculate_daily_score(metrics):
+    score = (
+        0.25 * hrv_status_score(metrics['hrv_status']) +
+        0.25 * normalize(metrics['body_battery_morning'], 30, 90) +
+        0.20 * normalize(metrics['sleep_score'], 60, 90) +
+        0.15 * normalize(metrics['training_readiness'], 30, 90) +
+        0.05 * (1 if metrics['tsb'] &gt; -15 else max(0, (metrics['tsb']+30)/15)) +
+        0.10 * normalize(metrics['ctl_trend_7d'], -2, 2)
+    )
+    return score
+
+def classify_day(score, tsb):
+    if score &gt;= 0.90 and tsb &gt; -10:
+        return 'STRONG'
+    elif score &gt;= 0.60:
+        return 'MODERATE'
+    elif score &gt;= 0.30:
+        return 'EASY'
+    else:
+        return 'REST'
+</code></pre>
+<h3 id="76-esqueleto-coletor-collectorpy">7.6. Esqueleto coletor (collector.py)</h3>
+<pre><code class="language-python">import garth
+from datetime import datetime, timedelta
+import os
+from dotenv import load_dotenv
+
+load_dotenv()
+
+def get_garmin_data(days=7):
+    garth.login(os.getenv('GARMIN_EMAIL'), os.getenv('GARMIN_PASSWORD'))
+    garth.save('~/.garth')  # cacheia OAuth token
+    end = datetime.now().date()
+    start = end - timedelta(days=days)
+
+    hrv_data = garth.DailyHRV.list(start, days)
+    sleep_data = garth.DailySleep.list(start, days)
+    body_battery = garth.DailyBodyBattery.list(start, days)
+
+    return {'hrv': hrv_data, 'sleep': sleep_data, 'bb': body_battery}
+
+def parse_tp_export(csv_path):
+    import pandas as pd
+    df = pd.read_csv(csv_path)
+    df['Date'] = pd.to_datetime(df['Date'])
+    return df[['Date', 'TSS', 'IFactor', 'Distance', 'Duration', 'HRAverage']]
+</code></pre>
+<h3 id="77-schedule-e-notificacoes">7.7. Schedule e notificações</h3>
+<p><strong>Cron diário (Linux/Mac):</strong></p>
+<pre><code class="language-bash">0 6 * * * /usr/bin/python3 /home/user/runtech/main.py &gt;&gt; /var/log/runtech.log 2&gt;&amp;1
+</code></pre>
+<p><strong>Windows Task Scheduler:</strong> rodar <code>python.exe main.py</code> às 06:00.</p>
+<p><strong>Telegram bot</strong> (notificação curta):</p>
+<pre><code class="language-python">import telegram
+bot = telegram.Bot(token=os.getenv('TG_TOKEN'))
+bot.send_message(chat_id=os.getenv('TG_CHAT_ID'), 
+                 text=f&quot;⚡ {today}: {classification}\nTSB: {tsb:.0f} | HRV: {hrv_status}\nSugestão: {planned}&quot;)
+</code></pre>
+<h3 id="78-privacidade">7.8. Privacidade</h3>
+<ul>
+<li>Credenciais em <code>.env</code> (NUNCA no código)</li>
+<li>Storage <strong>local apenas</strong> (SQLite)</li>
+<li>Não suba para GitHub público</li>
+<li>Use <code>keyring</code> (Python lib) em vez de .env se quiser camada extra</li>
+<li>Backup mensal cifrado (ex: <code>gpg -c</code>)</li>
+</ul>
+<h3 id="79-repositorios-de-referencia">7.9. Repositórios de referência</h3>
+<ul>
+<li><a href="https://github.com/matin/garth">github.com/matin/garth</a></li>
+<li><a href="https://github.com/cyberjunky/python-garminconnect">github.com/cyberjunky/python-garminconnect</a></li>
+<li><a href="https://github.com/topics/garmin-connect">github.com/topics/garmin-connect</a> — projetos similares</li>
+<li>Tutorial PMC: <a href="https://www.reddit.com/r/NorwegianSinglesRun/comments/1odp9ig/">reddit r/NorwegianSinglesRun TSS/CTL/ATL/TSB</a></li>
+</ul>
+<hr />
+<h2 id="8-cronograma-concreto-semana-a-semana">8. Cronograma Concreto Semana a Semana</h2>
+<h3 id="semana-1-04-a-10-de-maio-build-1-corrigir-base-aerobia">Semana 1 — 04 a 10 de maio (Build 1 — corrigir base aeróbia)</h3>
+<table>
+<thead>
+<tr>
+<th>Dia</th>
+<th>Corrida</th>
+<th>Força</th>
+<th>Modalidades</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Dom 04/05</td>
+<td>DIAGNÓSTICO</td>
+<td>—</td>
+<td>Inicia tracking garth; medir FC repouso 3 manhãs</td>
+</tr>
+<tr>
+<td>Seg 05/05</td>
+<td>Descanso de corrida</td>
+<td><strong>Sessão A — MMII pesado</strong> (1h)</td>
+<td>Massagem opcional 45 min à noite</td>
+</tr>
+<tr>
+<td>Ter 06/05</td>
+<td>Intervalado: 6×800m @ 5:30-5:45 c/ 90s descanso (após aquec 2km)</td>
+<td>—</td>
+<td>Foam 10 min</td>
+</tr>
+<tr>
+<td>Qua 07/05</td>
+<td>Easy 5 km Z1-Z2 (115-128 bpm)</td>
+<td><strong>Sessão B — Upper + core</strong> (1h)</td>
+<td>Mobilidade 10 min</td>
+</tr>
+<tr>
+<td>Qui 08/05</td>
+<td>Tempo run: 2km aq + 5km @ Z3 (134-146) + 1km solto</td>
+<td>—</td>
+<td>Foam 10 min</td>
+</tr>
+<tr>
+<td>Sex 09/05</td>
+<td>Descanso de corrida</td>
+<td><strong>Sessão C — Funcional + pliometria leve</strong> (1h)</td>
+<td>—</td>
+</tr>
+<tr>
+<td>Sáb 10/05</td>
+<td>Easy 8 km Z2 (122-132 bpm)</td>
+<td>—</td>
+<td>—</td>
+</tr>
+<tr>
+<td><strong>Dom 11/05</strong></td>
+<td><strong>LONGÃO 18 km @ Z2 verdadeiro (125-132 bpm)</strong> — pace cair se preciso para 7:00-7:15</td>
+<td>—</td>
+<td>Compressão pós, foam</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Volume:</strong> ~38 km corrida + 3h força. <strong>TSS estimado:</strong> ~280. <strong>Meta CTL fim de sem:</strong> 35-36.</p>
+<h3 id="semana-2-11-a-17-de-maio-build-2-adicionar-limiar">Semana 2 — 11 a 17 de maio (Build 2 — adicionar limiar)</h3>
+<table>
+<thead>
+<tr>
+<th>Dia</th>
+<th>Corrida</th>
+<th>Força</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Seg 12</td>
+<td>Descanso de corrida</td>
+<td><strong>Sessão A</strong> (1h) — manter cargas</td>
+</tr>
+<tr>
+<td>Ter 13</td>
+<td>Intervalado: 5×1km @ 5:25-5:35 c/ 2min</td>
+<td>—</td>
+</tr>
+<tr>
+<td>Qua 14</td>
+<td>Easy 6 km Z1-Z2</td>
+<td><strong>Sessão B</strong> (1h)</td>
+</tr>
+<tr>
+<td>Qui 15</td>
+<td>Tempo run: 2km aq + 7km @ Z3 + 1km solto</td>
+<td>—</td>
+</tr>
+<tr>
+<td>Sex 16</td>
+<td>Descanso de corrida</td>
+<td><strong>Sessão C</strong> (1h) com pliometria leve</td>
+</tr>
+<tr>
+<td>Sáb 17</td>
+<td>Easy 8 km Z2</td>
+<td>—</td>
+</tr>
+<tr>
+<td>Dom 18</td>
+<td><strong>LONGÃO 19 km Z2 com últimos 3 km em ritmo de prova (~6:30)</strong></td>
+<td>—</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Volume:</strong> ~42 km corrida + 3h força. <strong>TSS:</strong> ~320. <strong>Meta CTL:</strong> 39-40.</p>
+<h3 id="semana-3-18-a-24-de-maio-build-3-pico-de-carga">Semana 3 — 18 a 24 de maio (Build 3 — pico de carga)</h3>
+<table>
+<thead>
+<tr>
+<th>Dia</th>
+<th>Corrida</th>
+<th>Força</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Seg 19</td>
+<td>Descanso de corrida</td>
+<td><strong>Sessão A</strong> (1h) — pico de carga</td>
+</tr>
+<tr>
+<td>Ter 20</td>
+<td>Intervalado VO2: 6×3min @ Z4-Z5 c/ 2min trote</td>
+<td>—</td>
+</tr>
+<tr>
+<td>Qua 21</td>
+<td>Easy 6-7 km Z1-Z2</td>
+<td><strong>Sessão B</strong> (1h)</td>
+</tr>
+<tr>
+<td>Qui 22</td>
+<td>Tempo + ritmo: 2km aq + 4km Z3 + 4km ritmo prova + 1km solto</td>
+<td>—</td>
+</tr>
+<tr>
+<td>Sex 23</td>
+<td>Descanso de corrida</td>
+<td><strong>Sessão C — reduz carga em 15%</strong> (1h)</td>
+</tr>
+<tr>
+<td>Sáb 24</td>
+<td>Easy 6 km Z2</td>
+<td>—</td>
+</tr>
+<tr>
+<td>Dom 25</td>
+<td><strong>LONGÃO ESPECÍFICO 20-21 km com 5 km finais em ritmo de prova (~6:25-6:30)</strong></td>
+<td>—</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Volume:</strong> ~45 km corrida + 3h força. <strong>TSS:</strong> ~340. <strong>Meta CTL:</strong> 43-44 (pico!). <strong>TSB pode ir a -5 a 0</strong> — normal.</p>
+<h3 id="semana-4-25-a-31-de-maio-taper-inicio">Semana 4 — 25 a 31 de maio (Taper Início)</h3>
+<table>
+<thead>
+<tr>
+<th>Dia</th>
+<th>Corrida</th>
+<th>Força</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Seg 26</td>
+<td>Descanso de corrida</td>
+<td><strong>Sessão A — TAPER</strong> (carga -30%, 1 série a menos)</td>
+</tr>
+<tr>
+<td>Ter 27</td>
+<td>Intervalado curto: 5×800m @ 5:25 (mantém intensidade)</td>
+<td>—</td>
+</tr>
+<tr>
+<td>Qua 28</td>
+<td>Easy 5 km Z1-Z2</td>
+<td><strong>Sessão B — TAPER</strong> (cargas -30%)</td>
+</tr>
+<tr>
+<td>Qui 29</td>
+<td>Tempo curto: 2km aq + 4km Z3</td>
+<td>—</td>
+</tr>
+<tr>
+<td>Sex 30</td>
+<td>Descanso de corrida</td>
+<td><strong>Sessão C — TAPER</strong> (sem pliometria, cargas -30%)</td>
+</tr>
+<tr>
+<td>Sáb 31</td>
+<td>Easy 5 km Z2</td>
+<td>—</td>
+</tr>
+<tr>
+<td>Dom 01/06</td>
+<td><strong>LONGÃO REDUZIDO 15-16 km Z2</strong></td>
+<td>—</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Volume:</strong> ~33 km corrida (-25%) + 3h força reduzida. <strong>TSS:</strong> ~240. <strong>TSB sobe para +5.</strong></p>
+<h3 id="semana-5-01-a-06-de-junho-polish-prova">Semana 5 — 01 a 06 de junho (Polish + PROVA)</h3>
+<table>
+<thead>
+<tr>
+<th>Dia</th>
+<th>Corrida</th>
+<th>Força</th>
+<th>Hidratação/Nutrição</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Seg 02/06</td>
+<td>Easy 4 km Z1-Z2</td>
+<td><strong>Sessão A — POLISH</strong> (50% carga, 2 séries)</td>
+<td>Início subindo carbo</td>
+</tr>
+<tr>
+<td>Ter 03/06</td>
+<td>Toque qualidade: 2km aq + 3×400m @ ritmo prova + 1km solto</td>
+<td>—</td>
+<td>—</td>
+</tr>
+<tr>
+<td>Qua 04/06</td>
+<td>Easy 4-5 km Z1 + drills</td>
+<td><strong>Sessão B — POLISH</strong> (apenas core leve, sem cargas pesadas)</td>
+<td><strong>Carb-loading ativo (8 g/kg)</strong></td>
+</tr>
+<tr>
+<td>Qui 05/06</td>
+<td>"Shake-out" 3-4 km muito leves + 4×100m strides</td>
+<td>—</td>
+<td><strong>Carb-load + corte fibras</strong></td>
+</tr>
+<tr>
+<td><strong>Sex 06/06</strong></td>
+<td><strong>PROVA 21K!</strong></td>
+<td>—</td>
+<td>Café 3h antes (3 g/kg carbo + cafeína 300mg)</td>
+</tr>
+</tbody>
+</table>
+<p><strong>TSB no dia da prova: +12 a +15</strong> ✅<br />
+<strong>Nota:</strong> sexta de prova substitui sessão de força. Volta com força 3× normalmente após ~7 dias de recuperação.</p>
+<h3 id="plano-da-prova-0606-estrategia-90-nao-pr">Plano da prova (06/06) — estratégia "90%, não PR"</h3>
+<ul>
+<li><strong>3h antes:</strong> café-da-manhã prescrito (290g carbo)</li>
+<li><strong>1h antes:</strong> 200ml água + 200mg cafeína (parte da dose)</li>
+<li><strong>20 min antes:</strong> aquecimento 10 min Z1 + 4×60m stride</li>
+<li><strong>Largada km 0-3:</strong> <strong>EM RITMO TÁTICO CONTROLADO</strong> — pace 6:35-6:40 (NUNCA mais rápido que 6:30)</li>
+<li><strong>Km 3-18:</strong> <strong>pace alvo 6:30-6:35 estável</strong> (não 6:25 como seria em modo PR)</li>
+<li><strong>Km 5, 10, 15:</strong> géis (25g cada)</li>
+<li><strong>Km 18-21:</strong> se houver gás sobrando, mantém 6:30 (NÃO acelere). Se estiver pesado, aceita 6:40-6:45 e termina inteiro</li>
+<li><strong>Hidratação:</strong> 150-200 ml a cada estação, isotônico nas pares</li>
+<li><strong>Mentalidade:</strong> "este é meu primeiro race-rehearsal — terminar com gasolina sobrando vale mais que cravar PR aqui". O PR de 21K vem em 26/07.</li>
+</ul>
+<hr />
+<h2 id="9-recomendacao-final-e-riscos">9. Recomendação Final e Riscos</h2>
+<h3 id="pontos-de-atencao-em-ordem-de-criticidade">Pontos de atenção (em ordem de criticidade)</h3>
+<ol>
+<li><strong>🔴 LONGÃO EM Z2 VERDADEIRO (125-132 bpm)</strong> — sua maior alavanca. Você está fazendo Z3 médio achando que é Z2. Cair para 125-130 bpm vai parecer "lento" — é.</li>
+<li><strong>🔴 NÃO TENTE PERDER PESO AGRESSIVO</strong> — 33 dias é curto. Manutenção + carbo na quantidade certa. Perda de peso vem depois da prova.</li>
+<li><strong>🔴 CARGA TOTAL ALTA (corrida + 3h força)</strong> — vigie HRV e sono. Se 3 dias seguidos com HRV baixo, corte 1 sessão de força (não a corrida-chave). Sem histórico de lesão é vantagem mas não dá imunidade.</li>
+<li><strong>🟡 Se HRV cair 3 dias seguidos:</strong> corte intensidade. Chegar saudável vale mais que pico de fitness.</li>
+<li><strong>🟡 CWI/banho gelado:</strong> evite na fase de build. Use só após a prova.</li>
+<li><strong>🟡 Pliometria:</strong> corte na sem 4 e 5. Risco/benefício ruim para 98 kg em taper.</li>
+<li><strong>🟢 Massagem:</strong> maior modalidade com evidência. 1×/semana, sempre.</li>
+<li><strong>🟢 Sono:</strong> se algum dia tiver &lt; 7h, automático: treino seguinte é fácil ou descanso.</li>
+<li><strong>🟢 FCrep 51 + sem histórico de lesão:</strong> sinais ótimos. Sua base permite progressão um pouco mais ousada do que o padrão para amador 50+.</li>
+</ol>
+<h3 id="o-que-fazer-ja-esta-semana">O que fazer JÁ esta semana</h3>
+<ol>
+<li><strong>Hoje (04/05):</strong> sincronizar Garmin com TrainingPeaks; verificar TSB exato; medir FC repouso 3 manhãs seguidas</li>
+<li><strong>Esta semana:</strong> comprar gel/isotônico que vai usar na prova; testar TODOS no longão de 11/05</li>
+<li><strong>Esta semana:</strong> começar suplementação (creatina 5g/d + ômega-3 1-2g/d + vit D 2000 UI); manter por 30 dias contínuos</li>
+<li><strong>Próxima semana:</strong> começar coleta com <code>garth</code>; depois de 14 dias você terá baseline para o sistema técnico</li>
+<li><strong>Sexta 09/05:</strong> primeira sessão de força com cargas leves (testar tolerância)</li>
+</ol>
+<h3 id="metricas-para-validar-progresso-a-cada-7-dias">Métricas para validar progresso a cada 7 dias</h3>
+<table>
+<thead>
+<tr>
+<th>Métrica</th>
+<th>Sem 1</th>
+<th>Sem 2</th>
+<th>Sem 3</th>
+<th>Sem 4</th>
+<th>Sem 5</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>CTL alvo</td>
+<td>35</td>
+<td>40</td>
+<td>44</td>
+<td>43</td>
+<td>41</td>
+</tr>
+<tr>
+<td>TSB alvo</td>
+<td>+20</td>
+<td>+5</td>
+<td>-3</td>
+<td>+5</td>
+<td>+12</td>
+</tr>
+<tr>
+<td>Longão (km)</td>
+<td>18</td>
+<td>19</td>
+<td>20-21</td>
+<td>15-16</td>
+<td>—</td>
+</tr>
+<tr>
+<td>HRV Status médio</td>
+<td>balanced</td>
+<td>balanced</td>
+<td>unbalanced OK 1-2 dias</td>
+<td>balanced</td>
+<td>balanced/high</td>
+</tr>
+<tr>
+<td>Peso</td>
+<td>98</td>
+<td>97-98</td>
+<td>97-98</td>
+<td>96-97</td>
+<td>96-97</td>
+</tr>
+</tbody>
+</table>
+<h3 id="confianca-e-ressalvas">Confiança e ressalvas</h3>
+<ul>
+<li><strong>Periodização:</strong> alta confiança (consenso entre Friel/Daniels/Magness para meia-maratona em janela curta)</li>
+<li><strong>Projeção 21K:</strong> Riegel é modelo simples; o real depende de execução do taper, dia da prova, clima</li>
+<li><strong>Doses de suplementos:</strong> baseadas em ISSN position stands, mas verifique com seu médico/nutri se houver comorbidade</li>
+<li><strong>Sistema técnico:</strong> funciona, mas garth/python-garminconnect podem quebrar se Garmin mudar algo no Connect — tenha plano B (export manual)</li>
+<li><strong>Limite biológico:</strong> aos 54 anos com IMC 27,1, espere ganhos de fitness mais lentos. Foque em chegar inteiro mais que em "voar"</li>
+</ul>
+<h3 id="proximo-passo-recomendado">Próximo passo recomendado</h3>
+<p>Compartilhe seu <strong>maior longão simulado em Z2 verdadeiro (125-132 bpm)</strong> após executar a primeira semana — esse será o melhor preditor da projeção 21K final. Anote pace médio, FC média e percepção de esforço.</p>
+<hr />
+<h2 id="fontes-e-catalogo">Fontes e Catálogo</h2>
+<p>Detalhes em <code>fontes.md</code> (catálogo legível) e <code>fontes.json</code> (estruturado, máquina).<br />
+<strong>~50 fontes catalogadas</strong> — distribuição: 17 Tier A | 22 Tier B | 8 Tier C | 3 Tier D.</p>
+<hr />
+<p><em>Relatório gerado por /pesquisa_v2 em 2026-05-04. Atualize quando houver mudança em peso, FCrep, ou ocorrer lesão.</em></p>
+</div>
+</body>
+</html>

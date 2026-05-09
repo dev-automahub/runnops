@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>{{ title|default("Health Dashboard") }} — {{ today_pretty }}</title>
+<style>{{ css|safe }}</style>
+</head>
+<body>
+<div class="dash">
+
+  <div class="header">
+    <div class="title">Health Dashboard</div>
+  </div>
+
+  <!-- Radios pra navegacao CSS-only (sem JS, funciona em qualquer viewer) -->
+  <input type="radio" name="dashtab" id="r-hoje" class="dashtab-radio" checked>
+  <input type="radio" name="dashtab" id="r-trends" class="dashtab-radio">
+  <input type="radio" name="dashtab" id="r-historico" class="dashtab-radio">
+
+  <div class="tabs" role="tablist">
+    <label for="r-hoje" class="tab tab-hoje">HOJE</label>
+    <label for="r-trends" class="tab tab-trends">TRENDS</label>
+    <label for="r-historico" class="tab tab-historico">HISTÓRICO</label>
+  </div>
+
+  {% if empty_state %}
+  <div class="empty-state">
+    <h2>Sem dados ainda</h2>
+    <p>Rode <code>python health_daily.py --backfill 7</code> pra coletar a primeira semana.</p>
+  </div>
+  {% else %}
+
+  {% if is_stale %}
+  <div class="stale-banner">
+    Dados de <strong>{{ today.date }}</strong> (não de hoje). Rode <code>python health_daily.py</code> pra atualizar.
+  </div>
+  {% endif %}
+
+  <!-- ============ ABA HOJE (default visivel) ============ -->
+  <div class="tab-content" id="tab-hoje">
+
+    <label for="r-historico" class="verdict {{ verdict.color }} verdict-clickable">
+      <div class="verdict-label">VEREDITO · {{ today_pretty_upper }} <span class="verdict-hint">→ ver análise</span></div>
+      <div class="verdict-headline">{{ verdict.headline }}</div>
+      {% if verdict.subtitle %}
+      <div class="verdict-sub">{{ verdict.subtitle }}</div>
+      {% endif %}
+    </label>
+
+    <!-- 4 pills com delta -->
+    <div class="pills">
+      <div class="pill">
+        <div class="pill-label">SONO</div>
+        <div class="pill-value">{{ today.sleep_pretty|default("—") }}</div>
+        {% if sleep_delta_pretty %}<div class="pill-delta {{ sleep_delta_class }}">{{ sleep_delta_pretty }}</div>{% endif %}
+      </div>
+      <div class="pill">
+        <div class="pill-label">BODY BATTERY MAX</div>
+        <div class="pill-value">{{ today.body_battery_max|default("—") }}</div>
+        {% if bb_delta_pretty %}<div class="pill-delta {{ bb_delta_class }}">{{ bb_delta_pretty }}</div>{% endif %}
+      </div>
+      <div class="pill">
+        <div class="pill-label">FC REPOUSO</div>
+        <div class="pill-value">{{ today.resting_heart_rate|default("—") }}</div>
+        {% if fcrep_delta_pretty %}<div class="pill-delta {{ fcrep_delta_class }}">{{ fcrep_delta_pretty }}</div>{% endif %}
+      </div>
+      <div class="pill">
+        <div class="pill-label">DISPOSIÇÃO</div>
+        <div class="pill-value">{{ today.training_readiness|default("—") }}</div>
+        {% if ready_delta_pretty %}<div class="pill-delta {{ ready_delta_class }}">{{ ready_delta_pretty }}</div>{% endif %}
+      </div>
+    </div>
+
+    <!-- Sono por fase -->
+    {% if today.sleep_duration_min %}
+    <div class="sleep-card">
+      <div class="label-tiny">SONO POR FASE</div>
+      <div class="sleep-bar">
+        <div class="sleep-rem" style="width:{{ sleep_pct.rem }}%"></div>
+        <div class="sleep-deep" style="width:{{ sleep_pct.deep }}%"></div>
+        <div class="sleep-light" style="width:{{ sleep_pct.light }}%"></div>
+        <div class="sleep-awake" style="width:{{ sleep_pct.awake }}%"></div>
+      </div>
+      <div class="sleep-legend">
+        <span class="lg-rem">REM {{ today.sleep_rem_pretty|default("—") }}</span>
+        <span class="lg-deep">Deep {{ today.sleep_deep_pretty|default("—") }}</span>
+        <span class="lg-light">Light {{ today.sleep_light_pretty|default("—") }}</span>
+        <span class="lg-awake">Awake {{ today.sleep_awake_pretty|default("—") }}</span>
+      </div>
+    </div>
+    {% endif %}
+
+    <!-- HRV hero com sparkline (movido pra apos Sono por fase) -->
+    <div class="hero-card">
+      <div>
+        <div class="label-tiny">HRV — ÚLTIMA NOITE</div>
+        <div class="hero-num-block">
+          <span class="hero-num">{{ today.hrv_avg_overnight|default("—") }}</span>
+          <span class="hero-unit">ms</span>
+        </div>
+        <div class="hero-meta">
+          {% if hrv_delta is not none %}
+            <div>{% if hrv_delta < 0 %}↓ {{ (hrv_delta|abs)|int }} ms vs ontem{% else %}↑ {{ hrv_delta|int }} ms vs ontem{% endif %}</div>
+          {% endif %}
+          <div>alvo ≥32</div>
+        </div>
+      </div>
+      {% if hrv_plot_points %}
+      <svg viewBox="0 0 280 140" style="width:280px;height:140px" class="spark-hrv">
+        {% if hrv_target_y %}
+        <line class="spark-target" x1="0" y1="{{ hrv_target_y }}" x2="280" y2="{{ hrv_target_y }}"/>
+        {% endif %}
+        <path class="spark-line" d="{{ hrv_line_path }}"/>
+        {% for p in hrv_plot_points %}
+          {% if p.is_last %}
+            <circle class="spark-dot spark-dot-current" cx="{{ p.x }}" cy="{{ p.y }}" r="7"/>
+            <text class="spark-value-current" x="{{ p.x }}" y="{{ p.y|float - 12 }}">{{ p.value_label }}</text>
+            <text class="spark-date-current" x="{{ p.x }}" y="135">hoje</text>
+          {% else %}
+            <circle class="spark-dot" cx="{{ p.x }}" cy="{{ p.y }}" r="5"/>
+            <text class="spark-value" x="{{ p.x }}" y="{{ p.y|float - 12 }}">{{ p.value_label }}</text>
+            <text class="spark-date" x="{{ p.x }}" y="135">{{ p.date_label }}</text>
+          {% endif %}
+        {% endfor %}
+      </svg>
+      {% endif %}
+    </div>
+
+  </div>
+
+  <!-- ============ ABA TRENDS ============ -->
+  <div class="tab-content" id="tab-trends">
+
+    <div class="trends-period">
+      <button class="active" data-period="7">7D</button>
+      <button data-period="30">30D</button>
+      <button data-period="90">90D</button>
+    </div>
+
+    {% for trend in trends %}
+    <div class="trend-card">
+      <div class="trend-card-head">
+        <div class="label-tiny" style="color:{{ trend.color }}">{{ trend.label }}</div>
+        <div class="trend-meta">média {{ trend.avg }} · alvo {{ trend.target_label }} · atual {{ trend.current }}</div>
+      </div>
+      {% if trend.plot_points %}
+      <svg viewBox="0 0 600 220" style="width:100%;height:220px" class="spark-{{ trend.css_class }}">
+        {% if trend.target_y %}
+        <line class="spark-target" x1="0" y1="{{ trend.target_y }}" x2="600" y2="{{ trend.target_y }}"/>
+        {% endif %}
+        <path class="spark-line" d="{{ trend.line_path }}"/>
+        {% for p in trend.plot_points %}
+          {% if p.is_last %}
+            <circle class="spark-dot spark-dot-current" cx="{{ p.x }}" cy="{{ p.y }}" r="9"/>
+            <text class="spark-value-current" x="{{ p.x }}" y="{{ p.y|float - 22 }}">{{ p.value_label }}</text>
+            <text class="spark-date-current" x="{{ p.x }}" y="208">hoje</text>
+          {% else %}
+            <circle class="spark-dot" cx="{{ p.x }}" cy="{{ p.y }}" r="6"/>
+            <text class="spark-value" x="{{ p.x }}" y="{{ p.y|float - 22 }}">{{ p.value_label }}</text>
+            <text class="spark-date" x="{{ p.x }}" y="208">{{ p.date_label }}</text>
+          {% endif %}
+        {% endfor %}
+      </svg>
+      {% else %}
+      <p style="opacity:0.4;font-size:12px;text-align:center;padding:20px">Sem dados</p>
+      {% endif %}
+    </div>
+    {% endfor %}
+
+    <div class="trend-card">
+      <div class="label-tiny">CORRELAÇÕES</div>
+      {% if correlations_available %}
+      <ul style="font-size:13px;margin-top:8px;line-height:1.6;padding-left:18px">
+        {% for c in correlations %}<li>{{ c }}</li>{% endfor %}
+      </ul>
+      {% else %}
+      <p style="opacity:0.55;font-size:13px;margin-top:6px">Coletando dados ({{ days_collected }}/14)</p>
+      {% endif %}
+    </div>
+
+  </div>
+
+  <!-- ============ ABA HISTÓRICO ============ -->
+  <div class="tab-content" id="tab-historico">
+    <div class="history-card-wrapper">
+    <div class="history-card">
+      <table class="history-table" id="history-table">
+        <thead>
+          <tr>
+            <th data-key="date" data-type="text">DATA</th>
+            <th data-key="hrv_avg_overnight" data-type="num">HRV</th>
+            <th data-key="sleep_pretty" data-type="text">SONO</th>
+            <th data-key="body_battery_max" data-type="num">BB</th>
+            <th data-key="resting_heart_rate" data-type="num">FCREP</th>
+            <th data-key="training_readiness" data-type="num">READY</th>
+            <th data-key="verdict_color" data-type="text">VEREDITO</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for r in history %}
+          <tr data-raw="{{ r.raw_json_escaped|default('{}') }}" onclick="showRaw(this)">
+            <td>{{ r.date_pretty }}</td>
+            <td class="cell-{{ r.hrv_class|default('gray') }}">{{ r.hrv_pretty }}</td>
+            <td>{{ r.sleep_pretty }}</td>
+            <td class="cell-{{ r.bb_class|default('gray') }}">{{ r.bb_pretty }}</td>
+            <td class="cell-{{ r.fcrep_class|default('gray') }}">{{ r.fcrep_pretty }}</td>
+            <td>{{ r.ready_pretty }}</td>
+            <td class="cell-{{ r.verdict.color }}">{{ r.verdict.headline }}</td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+      <button class="export-btn" onclick="exportCSV()">↓ Export CSV</button>
+    </div>
+    </div>
+
+    <!-- ============ ANALISES DIARIAS (diario MD renderizado) ============ -->
+    {% if journals %}
+    <div class="journals-section">
+      <h2 class="journals-title">Análises diárias</h2>
+      <div class="landscape-hint">💡 Em telas estreitas, gira o celular pra leitura com mais conforto.</div>
+
+      {% for j in journals %}
+        {% if loop.first %}
+        <!-- Hoje (ou ultimo dia) — expandido por padrao -->
+        <article class="journal-card journal-today" id="journal-{{ j.date }}">
+          <div class="journal-header">
+            <div class="journal-date">{{ j.date_pretty }}</div>
+            <div class="journal-day">{{ j.date_long }}</div>
+          </div>
+          {% if j.has_content %}
+          <div class="journal-content">{{ j.html|safe }}</div>
+          {% else %}
+          <div class="journal-empty">Análise ainda não escrita pra este dia.</div>
+          {% endif %}
+        </article>
+        {% else %}
+        <!-- Dias anteriores — colapsados por padrao via <details> (HTML nativo, sem JS) -->
+        <details class="journal-card journal-past" id="journal-{{ j.date }}">
+          <summary class="journal-header">
+            <div class="journal-date">{{ j.date_pretty }}</div>
+            <div class="journal-day">{{ j.date_long }}</div>
+          </summary>
+          {% if j.has_content %}
+          <div class="journal-content">{{ j.html|safe }}</div>
+          {% else %}
+          <div class="journal-empty">Sem análise registrada.</div>
+          {% endif %}
+        </details>
+        {% endif %}
+      {% endfor %}
+    </div>
+    {% endif %}
+
+    <div class="modal-bg" id="modal-bg" onclick="if(event.target===this)hideModal()">
+      <div class="modal">
+        <button class="modal-close" onclick="hideModal()">×</button>
+        <h3 style="margin-bottom:12px">raw_json do dia</h3>
+        <pre id="modal-content"></pre>
+      </div>
+    </div>
+  </div>
+
+  {% endif %}
+
+  <div class="footer">RunTechOps · {{ generated_at }}</div>
+</div>
+
+<script>
+function switchTab(btn) {
+  document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+  document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
+  btn.classList.add('active');
+  document.getElementById('tab-' + btn.dataset.tab).classList.add('active');
+}
+
+function sortTable(th) {
+  const table = th.closest('table');
+  const tbody = table.querySelector('tbody');
+  const rows = Array.from(tbody.querySelectorAll('tr'));
+  const colIdx = Array.from(th.parentNode.children).indexOf(th);
+  const type = th.dataset.type;
+  const asc = th.dataset.dir !== 'asc';
+  th.parentNode.querySelectorAll('th').forEach(t => delete t.dataset.dir);
+  th.dataset.dir = asc ? 'asc' : 'desc';
+  rows.sort((a, b) => {
+    let av = a.children[colIdx].textContent.trim();
+    let bv = b.children[colIdx].textContent.trim();
+    if (type === 'num') {
+      av = parseFloat(av) || -Infinity;
+      bv = parseFloat(bv) || -Infinity;
+    }
+    return asc ? (av > bv ? 1 : -1) : (av < bv ? 1 : -1);
+  });
+  rows.forEach(r => tbody.appendChild(r));
+}
+document.querySelectorAll('#history-table th').forEach(th => th.onclick = () => sortTable(th));
+
+function exportCSV() {
+  const table = document.getElementById('history-table');
+  const rows = Array.from(table.querySelectorAll('tr'));
+  const csv = rows.map(r => Array.from(r.querySelectorAll('th,td'))
+    .map(c => '"' + c.textContent.replace(/"/g, '""').trim() + '"').join(',')).join('\n');
+  const blob = new Blob([csv], { type: 'text/csv' });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = 'health_history_' + new Date().toISOString().slice(0, 10) + '.csv';
+  a.click();
+  URL.revokeObjectURL(url);
+}
+
+function showRaw(tr) {
+  const raw = tr.dataset.raw || '{}';
+  let pretty;
+  try { pretty = JSON.stringify(JSON.parse(raw), null, 2); }
+  catch { pretty = raw; }
+  document.getElementById('modal-content').textContent = pretty;
+  document.getElementById('modal-bg').classList.add('show');
+}
+function hideModal() {
+  document.getElementById('modal-bg').classList.remove('show');
+}
+
+// Period toggle (placeholder — re-render via Python; client-side só destaca o botão)
+document.querySelectorAll('.trends-period button').forEach(b => {
+  b.onclick = () => {
+    document.querySelectorAll('.trends-period button').forEach(x => x.classList.remove('active'));
+    b.classList.add('active');
+    // Future: requisitar re-render. Por enquanto só visual.
+  };
+});
+</script>
+</body>
+</html>

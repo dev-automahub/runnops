@@ -1,0 +1,70 @@
+# =================================================
+# CREDENCIAIS — NUNCA commitar
+# =================================================
+.env
+.env.*
+*.key
+*.pem
+
+# =================================================
+# DADOS PESSOAIS DE SAUDE / GARMIN — NUNCA commitar
+# =================================================
+runtech.db
+runtech.db-journal
+runtech.db-wal
+runtech.db-shm
+*.db-journal
+Atividades Baixadas/
+garmin_activity_data.csv
+lastrun_log.txt
+.garth/
+
+# =================================================
+# Saidas locais nao publicaveis
+# =================================================
+dash.html
+dash_archive/
+test_dash_*.html
+_archive/
+.superpowers/
+.sessions-output/
+*.output
+
+# Notas de sessao / screenshots de iteracoes (dev only)
+Status Projeto*.txt
+Screenshot_*.png
+Screenshot_*.jpg
+Screenshot_*.jpeg
+
+# Settings locais do Claude Code
+.claude/
+CLAUDE.md
+
+# =================================================
+# Python
+# =================================================
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+*.egg-info/
+.pytest_cache/
+
+# =================================================
+# Virtual environments
+# =================================================
+.venv/
+venv/
+env/
+
+# =================================================
+# IDE / OS
+# =================================================
+.vscode/
+.idea/
+*.swp
+*.swo
+.DS_Store
+Thumbs.db
+desktop.ini
