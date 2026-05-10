@@ -97,6 +97,24 @@ def main():
         open_browser=not args.no_open,
     )
     print(f"[OK] {out_path} gerado.")
+
+    # Regenera manifesto de atividades (consumido por activity.html)
+    try:
+        from dash_activities import build_manifest
+        import json
+        from datetime import datetime
+        items = build_manifest()
+        Path("activities.json").write_text(
+            json.dumps({
+                "generated_at": datetime.now().isoformat(timespec='seconds'),
+                "count": len(items),
+                "activities": items,
+            }, ensure_ascii=False, indent=2),
+            encoding='utf-8',
+        )
+        print(f"[OK] activities.json gerado ({len(items)} atividades).")
+    except Exception as e:
+        print(f"     (activities.json skipped: {e})")
     if is_stale:
         print(f"     Aviso: ultimo dado e de {today_row['date']} (nao de hoje).")
     if args.archive:

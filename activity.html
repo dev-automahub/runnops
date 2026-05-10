@@ -1,0 +1,559 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Atividade · RunTechOps</title>
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+      integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
+      crossorigin=""/>
+<style>
+:root {
+  --bg: #f5f5f7;
+  --card: #ffffff;
+  --ink: #1d1d1f;
+  --muted: #6e6e73;
+  --line: #d2d2d7;
+  --accent: #0a84ff;
+  --green: #30d158;
+  --red: #ff3b30;
+  --orange: #ff9f0a;
+  --yellow: #ffd60a;
+  --gray: #8e8e93;
+  --shadow: 0 1px 3px rgba(0,0,0,0.04), 0 4px 16px rgba(0,0,0,0.06);
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI", Roboto, sans-serif;
+  background: var(--bg);
+  color: var(--ink);
+  line-height: 1.4;
+}
+.container { max-width: 1100px; margin: 0 auto; padding: 24px; }
+.topbar {
+  display: flex; justify-content: space-between; align-items: center;
+  margin-bottom: 20px;
+}
+.topbar a { color: var(--accent); text-decoration: none; font-size: 15px; font-weight: 500; }
+.topbar a:hover { text-decoration: underline; }
+h1 { font-size: 28px; margin: 0 0 4px 0; letter-spacing: -0.02em; }
+.subtitle { color: var(--muted); font-size: 14px; margin: 0; }
+.selector-card {
+  background: var(--card);
+  border-radius: 14px;
+  padding: 18px 22px;
+  box-shadow: var(--shadow);
+  margin-bottom: 20px;
+  display: flex; flex-direction: column; gap: 10px;
+}
+.selector-card label { font-size: 13px; color: var(--muted); font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; }
+.selector-card select {
+  width: 100%;
+  padding: 12px 14px;
+  font-size: 16px;
+  font-family: inherit;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  background: white;
+  color: var(--ink);
+  cursor: pointer;
+  -webkit-appearance: none;
+  appearance: none;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'><path fill='%236e6e73' d='M6 8L0 0h12z'/></svg>");
+  background-repeat: no-repeat;
+  background-position: right 14px center;
+  padding-right: 40px;
+}
+.selector-card select:focus { outline: 2px solid var(--accent); outline-offset: 2px; }
+.activity-meta { color: var(--muted); font-size: 13px; }
+.kpis {
+  display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px;
+  margin-bottom: 20px;
+}
+.kpi {
+  background: var(--card);
+  border-radius: 14px;
+  padding: 18px;
+  box-shadow: var(--shadow);
+  text-align: center;
+}
+.kpi-label { font-size: 11px; color: var(--muted); text-transform: uppercase; letter-spacing: 0.06em; font-weight: 600; }
+.kpi-value { font-size: 28px; font-weight: 700; margin-top: 6px; letter-spacing: -0.02em; }
+.kpi-unit { font-size: 13px; color: var(--muted); font-weight: 500; }
+.card {
+  background: var(--card);
+  border-radius: 14px;
+  padding: 20px;
+  box-shadow: var(--shadow);
+  margin-bottom: 16px;
+}
+.card h3 {
+  margin: 0 0 14px 0; font-size: 16px; font-weight: 600; letter-spacing: -0.01em;
+  color: var(--ink);
+}
+.card h3 .icon { margin-right: 6px; }
+.card h3 .small { font-size: 12px; color: var(--muted); font-weight: 400; }
+#map { height: 420px; border-radius: 10px; }
+.chart { width: 100%; min-height: 260px; }
+.zones-legend { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 8px; font-size: 12px; color: var(--muted); }
+.zones-legend span { display: inline-flex; align-items: center; gap: 4px; }
+.zones-legend i { width: 10px; height: 10px; border-radius: 2px; display: inline-block; }
+.loading {
+  text-align: center; color: var(--muted); padding: 60px 20px; font-size: 15px;
+}
+.spinner {
+  display: inline-block; width: 20px; height: 20px;
+  border: 3px solid var(--line); border-top-color: var(--accent);
+  border-radius: 50%; animation: spin 1s linear infinite;
+  vertical-align: middle; margin-right: 10px;
+}
+@keyframes spin { to { transform: rotate(360deg); } }
+.error { color: var(--red); padding: 20px; background: #fff1f0; border-radius: 10px; }
+
+@media (max-width: 700px) {
+  .container { padding: 14px; }
+  h1 { font-size: 22px; }
+  .kpis { grid-template-columns: repeat(2, 1fr); }
+  .kpi-value { font-size: 22px; }
+  #map { height: 320px; }
+  .chart { min-height: 220px; }
+}
+</style>
+</head>
+<body>
+<div class="container">
+  <div class="topbar">
+    <a href="index.html">← voltar para o painel</a>
+    <span class="activity-meta" id="activities-count"></span>
+  </div>
+
+  <h1>Análise por treino</h1>
+  <p class="subtitle">Mapa, FC, cadência, pace e elevação extraídos do TCX.</p>
+
+  <div class="selector-card">
+    <label for="activity-select">Selecionar treino</label>
+    <select id="activity-select"><option>Carregando…</option></select>
+    <div class="activity-meta" id="activity-meta"></div>
+  </div>
+
+  <div id="content">
+    <div class="loading"><span class="spinner"></span>Carregando atividade…</div>
+  </div>
+</div>
+
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+        integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
+        crossorigin=""></script>
+<script src="https://cdn.plot.ly/plotly-2.35.2.min.js" charset="utf-8"></script>
+<script>
+const FC_MAX = 170;
+const FC_REP = 51;
+const FCR = FC_MAX - FC_REP;
+const ZONES = [
+  { label: 'Z1', name: 'Recuperação',      min: FC_REP + 0.50*FCR, max: FC_REP + 0.60*FCR, color: '#a9a9a9' },
+  { label: 'Z2', name: 'Aeróbico Base',    min: FC_REP + 0.60*FCR, max: FC_REP + 0.70*FCR, color: '#30d158' },
+  { label: 'Z3', name: 'Limiar Aeróbio',   min: FC_REP + 0.70*FCR, max: FC_REP + 0.80*FCR, color: '#ffd60a' },
+  { label: 'Z4', name: 'Limiar Anaer.',    min: FC_REP + 0.80*FCR, max: FC_REP + 0.90*FCR, color: '#ff9f0a' },
+  { label: 'Z5', name: 'VO2máx',           min: FC_REP + 0.90*FCR, max: FC_MAX,            color: '#ff3b30' },
+];
+
+const TCX_NS = 'http://www.garmin.com/xmlschemas/TrainingCenterDatabase/v2';
+const EXT_NS = 'http://www.garmin.com/xmlschemas/ActivityExtension/v2';
+
+let mapInstance = null;
+
+function fmtPace(secPerKm) {
+  if (!isFinite(secPerKm) || secPerKm <= 0) return '—';
+  const m = Math.floor(secPerKm / 60);
+  const s = Math.round(secPerKm % 60);
+  return `${m}'${String(s).padStart(2, '0')}"`;
+}
+
+function fmtDuration(seconds) {
+  const h = Math.floor(seconds / 3600);
+  const m = Math.floor((seconds % 3600) / 60);
+  const s = Math.floor(seconds % 60);
+  if (h > 0) return `${h}h${String(m).padStart(2, '0')}m${String(s).padStart(2, '0')}s`;
+  return `${m}m${String(s).padStart(2, '0')}s`;
+}
+
+function encodePathSegments(path) {
+  return path.split('/').map(p => encodeURIComponent(p)).join('/');
+}
+
+function parseTCX(xmlText) {
+  const dom = new DOMParser().parseFromString(xmlText, 'application/xml');
+  const trackpoints = [...dom.getElementsByTagNameNS(TCX_NS, 'Trackpoint')];
+  const points = [];
+  let firstTime = null;
+
+  for (const tp of trackpoints) {
+    const timeEl = tp.getElementsByTagNameNS(TCX_NS, 'Time')[0];
+    const t = timeEl ? new Date(timeEl.textContent) : null;
+    if (!firstTime && t) firstTime = t;
+
+    const elapsedSec = t && firstTime ? (t - firstTime) / 1000 : 0;
+
+    const hrEl = tp.getElementsByTagNameNS(TCX_NS, 'Value')[0];
+    const hr = hrEl ? parseInt(hrEl.textContent, 10) : null;
+
+    const posEl = tp.getElementsByTagNameNS(TCX_NS, 'Position')[0];
+    let lat = null, lon = null;
+    if (posEl) {
+      const latEl = posEl.getElementsByTagNameNS(TCX_NS, 'LatitudeDegrees')[0];
+      const lonEl = posEl.getElementsByTagNameNS(TCX_NS, 'LongitudeDegrees')[0];
+      if (latEl && lonEl) { lat = parseFloat(latEl.textContent); lon = parseFloat(lonEl.textContent); }
+    }
+
+    const altEl = tp.getElementsByTagNameNS(TCX_NS, 'AltitudeMeters')[0];
+    const alt = altEl ? parseFloat(altEl.textContent) : null;
+
+    const distEl = tp.getElementsByTagNameNS(TCX_NS, 'DistanceMeters')[0];
+    const dist = distEl ? parseFloat(distEl.textContent) : null;
+
+    let speed = null, cadence = null;
+    const tpx = tp.getElementsByTagNameNS(EXT_NS, 'TPX')[0];
+    if (tpx) {
+      const speedEl = tpx.getElementsByTagNameNS(EXT_NS, 'Speed')[0];
+      const cadEl = tpx.getElementsByTagNameNS(EXT_NS, 'RunCadence')[0];
+      if (speedEl) speed = parseFloat(speedEl.textContent);
+      if (cadEl) cadence = parseInt(cadEl.textContent, 10) * 2;
+    }
+
+    points.push({ t, elapsedSec, hr, lat, lon, alt, dist, speed, cadence });
+  }
+
+  const laps = [...dom.getElementsByTagNameNS(TCX_NS, 'Lap')];
+  let totalDist = 0, totalTime = 0, totalCal = 0;
+  for (const lap of laps) {
+    const d = lap.getElementsByTagNameNS(TCX_NS, 'DistanceMeters')[0];
+    const t = lap.getElementsByTagNameNS(TCX_NS, 'TotalTimeSeconds')[0];
+    const c = lap.getElementsByTagNameNS(TCX_NS, 'Calories')[0];
+    if (d) totalDist += parseFloat(d.textContent);
+    if (t) totalTime += parseFloat(t.textContent);
+    if (c) totalCal += parseInt(c.textContent, 10);
+  }
+
+  return { points, totalDist, totalTime, totalCal };
+}
+
+function summarize(parsed) {
+  const { points, totalDist, totalTime, totalCal } = parsed;
+  const hrs = points.map(p => p.hr).filter(v => v != null);
+  const cads = points.map(p => p.cadence).filter(v => v != null && v > 0);
+  const avgHR = hrs.length ? hrs.reduce((a,b)=>a+b,0)/hrs.length : null;
+  const maxHR = hrs.length ? Math.max(...hrs) : null;
+  const avgCad = cads.length ? cads.reduce((a,b)=>a+b,0)/cads.length : null;
+  const km = totalDist / 1000;
+  const paceSecPerKm = km > 0 ? totalTime / km : 0;
+  return { km, totalTime, totalCal, avgHR, maxHR, avgCad, paceSecPerKm };
+}
+
+function makeKPI(label, value, unit) {
+  const div = document.createElement('div');
+  div.className = 'kpi';
+  const lab = document.createElement('div');
+  lab.className = 'kpi-label';
+  lab.textContent = label;
+  const val = document.createElement('div');
+  val.className = 'kpi-value';
+  val.textContent = value;
+  if (unit) {
+    const u = document.createElement('span');
+    u.className = 'kpi-unit';
+    u.textContent = ' ' + unit;
+    val.appendChild(u);
+  }
+  div.appendChild(lab); div.appendChild(val);
+  return div;
+}
+
+function buildKPIsRow(s) {
+  const row = document.createElement('div');
+  row.className = 'kpis';
+  row.appendChild(makeKPI('Distância', s.km.toFixed(2), 'km'));
+  row.appendChild(makeKPI('Duração', fmtDuration(s.totalTime), null));
+  row.appendChild(makeKPI('Pace médio', fmtPace(s.paceSecPerKm), '/km'));
+  row.appendChild(makeKPI('FC média', s.avgHR ? Math.round(s.avgHR) : '—', 'bpm'));
+  row.appendChild(makeKPI('FC máx', s.maxHR ?? '—', 'bpm'));
+  row.appendChild(makeKPI('Cadência', s.avgCad ? Math.round(s.avgCad) : '—', 'spm'));
+  row.appendChild(makeKPI('Calorias', s.totalCal || '—', 'kcal'));
+  return row;
+}
+
+function hrToZoneColor(hr) {
+  for (const z of ZONES) {
+    if (hr >= z.min && hr < z.max) return z.color;
+  }
+  return hr >= FC_MAX ? '#ff3b30' : '#a9a9a9';
+}
+
+function renderMap(points) {
+  const gpsPts = points.filter(p => p.lat != null && p.lon != null && (p.lat !== 0 || p.lon !== 0));
+  const mapEl = document.getElementById('map');
+  if (gpsPts.length < 2) {
+    mapEl.textContent = 'Sem dados de GPS nesta atividade.';
+    mapEl.style.padding = '30px';
+    mapEl.style.textAlign = 'center';
+    mapEl.style.color = '#6e6e73';
+    return;
+  }
+  if (mapInstance) { mapInstance.remove(); mapInstance = null; }
+  mapInstance = L.map('map');
+  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    attribution: '© OpenStreetMap',
+    maxZoom: 19,
+  }).addTo(mapInstance);
+
+  for (let i = 1; i < gpsPts.length; i++) {
+    const a = gpsPts[i-1], b = gpsPts[i];
+    const hr = b.hr ?? a.hr ?? 0;
+    const color = hr ? hrToZoneColor(hr) : '#0a84ff';
+    L.polyline([[a.lat, a.lon], [b.lat, b.lon]], { color, weight: 5, opacity: 0.85 }).addTo(mapInstance);
+  }
+
+  L.marker([gpsPts[0].lat, gpsPts[0].lon]).addTo(mapInstance).bindPopup('Início');
+  L.marker([gpsPts[gpsPts.length-1].lat, gpsPts[gpsPts.length-1].lon]).addTo(mapInstance).bindPopup('Fim');
+
+  const lats = gpsPts.map(p => p.lat);
+  const lons = gpsPts.map(p => p.lon);
+  mapInstance.fitBounds([[Math.min(...lats), Math.min(...lons)], [Math.max(...lats), Math.max(...lons)]]);
+}
+
+function plotElevation(points) {
+  const el = document.getElementById('chart-elev');
+  const data = points.filter(p => p.alt != null && p.dist != null);
+  if (!data.length) { el.textContent = 'Sem dados de elevação.'; el.style.color = '#6e6e73'; return; }
+  Plotly.newPlot('chart-elev', [{
+    x: data.map(p => p.dist / 1000),
+    y: data.map(p => p.alt),
+    type: 'scatter', mode: 'lines',
+    fill: 'tozeroy', fillcolor: 'rgba(142,142,147,0.25)',
+    line: { color: '#8e8e93', width: 2 },
+    hovertemplate: 'km %{x:.2f}<br>%{y:.0f} m<extra></extra>',
+  }], {
+    margin: { t: 10, l: 50, r: 20, b: 40 },
+    xaxis: { title: 'Distância (km)', gridcolor: '#e5e5ea' },
+    yaxis: { title: 'Altitude (m)', gridcolor: '#e5e5ea' },
+    paper_bgcolor: 'white', plot_bgcolor: 'white',
+    height: 260,
+  }, { displayModeBar: false, responsive: true });
+}
+
+function plotHR(points) {
+  const elH = document.getElementById('chart-hr');
+  const elZ = document.getElementById('chart-zones');
+  const data = points.filter(p => p.hr != null);
+  if (!data.length) { elH.textContent = 'Sem dados de FC.'; elH.style.color = '#6e6e73'; return; }
+
+  Plotly.newPlot('chart-hr', [{
+    x: data.map(p => p.elapsedSec / 60),
+    y: data.map(p => p.hr),
+    type: 'scatter', mode: 'lines',
+    line: { color: '#ff3b30', width: 2 },
+    hovertemplate: 'min %{x:.1f}<br>%{y} bpm<extra></extra>',
+  }], {
+    margin: { t: 10, l: 50, r: 20, b: 40 },
+    xaxis: { title: 'Tempo (min)', gridcolor: '#e5e5ea' },
+    yaxis: { title: 'FC (bpm)', gridcolor: '#e5e5ea' },
+    paper_bgcolor: 'white', plot_bgcolor: 'white',
+    height: 260,
+    shapes: ZONES.map(z => ({
+      type: 'rect', xref: 'paper', x0: 0, x1: 1, yref: 'y',
+      y0: z.min, y1: z.max, fillcolor: z.color, opacity: 0.08, line: { width: 0 },
+    })),
+  }, { displayModeBar: false, responsive: true });
+
+  const zoneCounts = ZONES.map(z => ({
+    ...z,
+    count: data.filter(p => p.hr >= z.min && p.hr < z.max).length,
+  }));
+  const totalSec = data.length;
+  Plotly.newPlot('chart-zones', [{
+    x: zoneCounts.map(z => z.label),
+    y: zoneCounts.map(z => z.count / 60),
+    type: 'bar',
+    marker: { color: zoneCounts.map(z => z.color) },
+    text: zoneCounts.map(z => `${(z.count/totalSec*100).toFixed(1)}%`),
+    textposition: 'outside',
+    hovertemplate: '<b>%{x}</b><br>%{y:.1f} min (%{text})<extra></extra>',
+  }], {
+    margin: { t: 30, l: 50, r: 20, b: 40 },
+    xaxis: { title: '' },
+    yaxis: { title: 'Tempo (min)', gridcolor: '#e5e5ea' },
+    paper_bgcolor: 'white', plot_bgcolor: 'white',
+    height: 260,
+  }, { displayModeBar: false, responsive: true });
+}
+
+function plotCadence(points) {
+  const el = document.getElementById('chart-cad');
+  const data = points.filter(p => p.cadence != null && p.cadence > 0);
+  if (!data.length) { el.textContent = 'Sem dados de cadência.'; el.style.color = '#6e6e73'; return; }
+  Plotly.newPlot('chart-cad', [{
+    x: data.map(p => p.elapsedSec / 60),
+    y: data.map(p => p.cadence),
+    type: 'scatter', mode: 'lines',
+    line: { color: '#ff9f0a', width: 2 },
+    hovertemplate: 'min %{x:.1f}<br>%{y} spm<extra></extra>',
+  }], {
+    margin: { t: 10, l: 50, r: 20, b: 40 },
+    xaxis: { title: 'Tempo (min)', gridcolor: '#e5e5ea' },
+    yaxis: { title: 'Cadência (spm)', gridcolor: '#e5e5ea' },
+    paper_bgcolor: 'white', plot_bgcolor: 'white',
+    height: 260,
+    shapes: [
+      { type: 'rect', xref: 'paper', x0: 0, x1: 1, yref: 'y', y0: 160, y1: 165, fillcolor: '#30d158', opacity: 0.12, line: { width: 0 } },
+    ],
+  }, { displayModeBar: false, responsive: true });
+}
+
+function plotPace(points) {
+  const el = document.getElementById('chart-pace');
+  const data = points
+    .filter(p => p.speed != null && p.speed > 0.3)
+    .map(p => ({ x: p.elapsedSec / 60, y: Math.min(20, 1000 / p.speed / 60) }));
+  if (!data.length) { el.textContent = 'Sem dados de velocidade.'; el.style.color = '#6e6e73'; return; }
+  Plotly.newPlot('chart-pace', [{
+    x: data.map(d => d.x),
+    y: data.map(d => d.y),
+    type: 'scatter', mode: 'lines',
+    line: { color: '#30d158', width: 2 },
+    hovertemplate: 'min %{x:.1f}<br>%{y:.2f} min/km<extra></extra>',
+  }], {
+    margin: { t: 10, l: 50, r: 20, b: 40 },
+    xaxis: { title: 'Tempo (min)', gridcolor: '#e5e5ea' },
+    yaxis: { title: 'Pace (min/km)', autorange: 'reversed', gridcolor: '#e5e5ea' },
+    paper_bgcolor: 'white', plot_bgcolor: 'white',
+    height: 260,
+  }, { displayModeBar: false, responsive: true });
+}
+
+function makeChartCard(title, smallTitle, chartId) {
+  const card = document.createElement('div');
+  card.className = 'card';
+  const h3 = document.createElement('h3');
+  h3.textContent = title;
+  if (smallTitle) {
+    const s = document.createElement('span');
+    s.className = 'small';
+    s.textContent = ' ' + smallTitle;
+    h3.appendChild(s);
+  }
+  const div = document.createElement('div');
+  div.id = chartId;
+  div.className = 'chart';
+  card.appendChild(h3);
+  card.appendChild(div);
+  return card;
+}
+
+function makeMapCard() {
+  const card = document.createElement('div');
+  card.className = 'card';
+  const h3 = document.createElement('h3');
+  h3.textContent = '🗺️ Rota (cor por zona de FC)';
+  const m = document.createElement('div');
+  m.id = 'map';
+  const legend = document.createElement('div');
+  legend.className = 'zones-legend';
+  for (const z of ZONES) {
+    const span = document.createElement('span');
+    const i = document.createElement('i');
+    i.style.background = z.color;
+    span.appendChild(i);
+    span.appendChild(document.createTextNode(`${z.label} ${Math.round(z.min)}-${Math.round(z.max)}`));
+    legend.appendChild(span);
+  }
+  card.appendChild(h3);
+  card.appendChild(m);
+  card.appendChild(legend);
+  return card;
+}
+
+function renderActivityShell(actMeta) {
+  const content = document.getElementById('content');
+  content.textContent = '';
+  const stub = { km: actMeta.distance_km, totalTime: actMeta.duration_min*60, paceSecPerKm: 0, avgHR: null, maxHR: null, avgCad: null, totalCal: null };
+  content.appendChild(buildKPIsRow(stub));
+  const loading = document.createElement('div');
+  loading.className = 'loading';
+  const sp = document.createElement('span');
+  sp.className = 'spinner';
+  loading.appendChild(sp);
+  loading.appendChild(document.createTextNode(`Parseando TCX… (${actMeta.distance_km.toFixed(1)} km de dados)`));
+  content.appendChild(loading);
+}
+
+function renderActivity(parsed, actMeta) {
+  const s = summarize(parsed);
+  const content = document.getElementById('content');
+  content.textContent = '';
+  content.appendChild(buildKPIsRow(s));
+  content.appendChild(makeMapCard());
+  content.appendChild(makeChartCard('⛰️ Perfil de elevação', null, 'chart-elev'));
+  content.appendChild(makeChartCard('❤️ Frequência cardíaca', null, 'chart-hr'));
+  content.appendChild(makeChartCard('📊 Tempo nas zonas', null, 'chart-zones'));
+  content.appendChild(makeChartCard('👣 Cadência', '(faixa verde = alvo 160-165 spm)', 'chart-cad'));
+  content.appendChild(makeChartCard('⏱️ Pace', null, 'chart-pace'));
+
+  setTimeout(() => {
+    renderMap(parsed.points);
+    plotElevation(parsed.points);
+    plotHR(parsed.points);
+    plotCadence(parsed.points);
+    plotPace(parsed.points);
+  }, 50);
+}
+
+async function loadActivity(act) {
+  document.getElementById('activity-meta').textContent = `${act.date_br} · ${act.distance_km.toFixed(2)} km · ${act.duration_min.toFixed(0)} min`;
+  renderActivityShell(act);
+  try {
+    const url = encodePathSegments(act.filename);
+    const resp = await fetch(url);
+    if (!resp.ok) throw new Error(`HTTP ${resp.status}`);
+    const xml = await resp.text();
+    const parsed = parseTCX(xml);
+    renderActivity(parsed, act);
+  } catch (e) {
+    const content = document.getElementById('content');
+    content.textContent = '';
+    const err = document.createElement('div');
+    err.className = 'error';
+    err.textContent = 'Erro ao carregar TCX: ' + e.message;
+    content.appendChild(err);
+  }
+}
+
+async function init() {
+  try {
+    const resp = await fetch('activities.json');
+    if (!resp.ok) throw new Error(`activities.json: HTTP ${resp.status}`);
+    const data = await resp.json();
+    const sel = document.getElementById('activity-select');
+    sel.textContent = '';
+    data.activities.forEach((a, i) => {
+      const opt = document.createElement('option');
+      opt.value = String(i);
+      opt.textContent = `${a.date_br}  —  ${a.name}`;
+      sel.appendChild(opt);
+    });
+    document.getElementById('activities-count').textContent = `${data.count} atividades`;
+    sel.addEventListener('change', () => loadActivity(data.activities[parseInt(sel.value, 10)]));
+    if (data.activities.length) loadActivity(data.activities[0]);
+  } catch (e) {
+    const content = document.getElementById('content');
+    content.textContent = '';
+    const err = document.createElement('div');
+    err.className = 'error';
+    err.textContent = 'Erro ao carregar lista: ' + e.message;
+    content.appendChild(err);
+  }
+}
+
+init();
+</script>
+</body>
+</html>

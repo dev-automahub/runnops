@@ -59,6 +59,8 @@ def build_commit_message(changes):
     has_diary = any("/diario/" in c for c in changes)
     has_glossary = any("dash_glossary.py" in c for c in changes)
     has_template = any(c in changes for c in ["dash_template.html", "dash_styles.css"])
+    has_activity = any(("activity.html" in c) or ("activities.json" in c) for c in changes)
+    has_tcx = any("Atividades Baixadas/" in c for c in changes)
     has_code = any(c.endswith(".py") and "dash_glossary" not in c for c in changes)
 
     parts = []
@@ -70,6 +72,10 @@ def build_commit_message(changes):
         parts.append("glossario")
     if has_template:
         parts.append("template/css")
+    if has_activity:
+        parts.append("atividades")
+    if has_tcx:
+        parts.append("tcx")
     if has_code:
         parts.append("codigo")
 

@@ -14,7 +14,6 @@ runtech.db-journal
 runtech.db-wal
 runtech.db-shm
 *.db-journal
-Atividades Baixadas/
 garmin_activity_data.csv
 lastrun_log.txt
 .garth/

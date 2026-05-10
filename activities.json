@@ -1,0 +1,376 @@
+{
+  "generated_at": "2026-05-10T17:36:13",
+  "count": 37,
+  "activities": [
+    {
+      "id": "22832465418",
+      "name": "Vitória - LR7 Corrida - 17 Km Z2",
+      "filename": "Atividades Baixadas/22832465418_Vitória - LR7 Corrida - 17 Km Z2.tcx",
+      "date_iso": "2026-05-10T11:07:26.000Z",
+      "date_br": "10/05/2026 11:07",
+      "distance_km": 15.01,
+      "duration_min": 112.2,
+      "sport": "Running"
+    },
+    {
+      "id": "22795686320",
+      "name": "Vitória Corrida RHR6 Corrida - 12 X 30s Z5 (Subida)",
+      "filename": "Atividades Baixadas/22795686320_Vitória Corrida RHR6 Corrida - 12 X 30s Z5 (Subida).tcx",
+      "date_iso": "2026-05-07T10:17:13.000Z",
+      "date_br": "07/05/2026 10:17",
+      "distance_km": 6.77,
+      "duration_min": 59.0,
+      "sport": "Running"
+    },
+    {
+      "id": "22778643836",
+      "name": "Vitória - RFF5 Corrida - 25' Z2 + 12' Z3",
+      "filename": "Atividades Baixadas/22778643836_Vitória - RFF5 Corrida - 25' Z2 + 12' Z3.tcx",
+      "date_iso": "2026-05-05T21:27:45.000Z",
+      "date_br": "05/05/2026 21:27",
+      "distance_km": 6.03,
+      "duration_min": 42.7,
+      "sport": "Running"
+    },
+    {
+      "id": "22755416430",
+      "name": "Vitória - LR7 Corrida - 17 Km Z2",
+      "filename": "Atividades Baixadas/22755416430_Vitória - LR7 Corrida - 17 Km Z2.tcx",
+      "date_iso": "2026-05-03T21:48:38.000Z",
+      "date_br": "03/05/2026 21:48",
+      "distance_km": 17.01,
+      "duration_min": 111.3,
+      "sport": "Running"
+    },
+    {
+      "id": "22725816943",
+      "name": "Vitória Corrida RFF5 Corrida - 25m Z2 + 12m Z3",
+      "filename": "Atividades Baixadas/22725816943_Vitória Corrida RFF5 Corrida - 25m Z2 + 12m Z3.tcx",
+      "date_iso": "2026-05-01T12:31:55.000Z",
+      "date_br": "01/05/2026 12:31",
+      "distance_km": 5.46,
+      "duration_min": 36.6,
+      "sport": "Running"
+    },
+    {
+      "id": "21797140370",
+      "name": "Vitória - RRe4 Corrida - 35' Z1",
+      "filename": "Atividades Baixadas/21797140370_Vitória - RRe4 Corrida - 35' Z1.tcx",
+      "date_iso": "2026-02-06T21:57:14.000Z",
+      "date_br": "06/02/2026 21:57",
+      "distance_km": 4.62,
+      "duration_min": 35.0,
+      "sport": "Running"
+    },
+    {
+      "id": "__21797140370_Vitória - RRe4 Corrida - 35' Z1.tcx",
+      "name": "__21797140370_Vitória - RRe4 Corrida - 35' Z1.tcx",
+      "filename": "Atividades Baixadas/__21797140370_Vitória - RRe4 Corrida - 35' Z1.tcx",
+      "date_iso": "2026-02-06T21:57:14.000Z",
+      "date_br": "06/02/2026 21:57",
+      "distance_km": 4.62,
+      "duration_min": 35.0,
+      "sport": "Running"
+    },
+    {
+      "id": "21778067896",
+      "name": "Vitória - RF12 Corrida - 1h20' Z2",
+      "filename": "Atividades Baixadas/21778067896_Vitória - RF12 Corrida - 1h20' Z2.tcx",
+      "date_iso": "2026-02-05T22:21:36.000Z",
+      "date_br": "05/02/2026 22:21",
+      "distance_km": 13.62,
+      "duration_min": 90.0,
+      "sport": "Running"
+    },
+    {
+      "id": "__21778067896_Vitória - RF12 Corrida - 1h20' Z2.tcx",
+      "name": "__21778067896_Vitória - RF12 Corrida - 1h20' Z2.tcx",
+      "filename": "Atividades Baixadas/__21778067896_Vitória - RF12 Corrida - 1h20' Z2.tcx",
+      "date_iso": "2026-02-05T22:21:36.000Z",
+      "date_br": "05/02/2026 22:21",
+      "distance_km": 13.62,
+      "duration_min": 90.0,
+      "sport": "Running"
+    },
+    {
+      "id": "21759971080",
+      "name": "Vitória - RSP1 Corrida - 3 x 2' Z4",
+      "filename": "Atividades Baixadas/21759971080_Vitória - RSP1 Corrida - 3 x 2' Z4.tcx",
+      "date_iso": "2026-02-04T09:40:40.000Z",
+      "date_br": "04/02/2026 09:40",
+      "distance_km": 4.1,
+      "duration_min": 27.0,
+      "sport": "Running"
+    },
+    {
+      "id": "__21759971080_Vitória - RSP1 Corrida - 3 x 2' Z4.tcx",
+      "name": "__21759971080_Vitória - RSP1 Corrida - 3 x 2' Z4.tcx",
+      "filename": "Atividades Baixadas/__21759971080_Vitória - RSP1 Corrida - 3 x 2' Z4.tcx",
+      "date_iso": "2026-02-04T09:40:40.000Z",
+      "date_br": "04/02/2026 09:40",
+      "distance_km": 4.1,
+      "duration_min": 27.0,
+      "sport": "Running"
+    },
+    {
+      "id": "21729006738",
+      "name": "Vitória - RRe9 Corrida - 1h Z1",
+      "filename": "Atividades Baixadas/21729006738_Vitória - RRe9 Corrida - 1h Z1.tcx",
+      "date_iso": "2026-02-01T10:07:43.000Z",
+      "date_br": "01/02/2026 10:07",
+      "distance_km": 8.1,
+      "duration_min": 60.0,
+      "sport": "Running"
+    },
+    {
+      "id": "__21729006738_Vitória - RRe9 Corrida - 1h Z1.tcx",
+      "name": "__21729006738_Vitória - RRe9 Corrida - 1h Z1.tcx",
+      "filename": "Atividades Baixadas/__21729006738_Vitória - RRe9 Corrida - 1h Z1.tcx",
+      "date_iso": "2026-02-01T10:07:43.000Z",
+      "date_br": "01/02/2026 10:07",
+      "distance_km": 8.1,
+      "duration_min": 60.0,
+      "sport": "Running"
+    },
+    {
+      "id": "21705740518",
+      "name": "Vitória - Teste Corrida Longo UANAEI (Lim",
+      "filename": "Atividades Baixadas/21705740518_Vitória - Teste Corrida Longo UANAEI (Lim.tcx",
+      "date_iso": "2026-01-29T21:44:43.000Z",
+      "date_br": "29/01/2026 21:44",
+      "distance_km": 8.38,
+      "duration_min": 50.0,
+      "sport": "Running"
+    },
+    {
+      "id": "__21705740518_Vitória - Teste Corrida Longo UANAEI (Lim.tcx",
+      "name": "__21705740518_Vitória - Teste Corrida Longo UANAEI (Lim.tcx",
+      "filename": "Atividades Baixadas/__21705740518_Vitória - Teste Corrida Longo UANAEI (Lim.tcx",
+      "date_iso": "2026-01-29T21:44:43.000Z",
+      "date_br": "29/01/2026 21:44",
+      "distance_km": 8.38,
+      "duration_min": 50.0,
+      "sport": "Running"
+    },
+    {
+      "id": "21573902712",
+      "name": "Vila Velha - RT19 Corrida - 20' Z3",
+      "filename": "Atividades Baixadas/21573902712_Vila Velha - RT19 Corrida - 20' Z3.tcx",
+      "date_iso": "2026-01-17T08:56:35.000Z",
+      "date_br": "17/01/2026 08:56",
+      "distance_km": 14.05,
+      "duration_min": 90.0,
+      "sport": "Running"
+    },
+    {
+      "id": "__21573902712_Vila Velha - RT19 Corrida - 20' Z3.tcx",
+      "name": "__21573902712_Vila Velha - RT19 Corrida - 20' Z3.tcx",
+      "filename": "Atividades Baixadas/__21573902712_Vila Velha - RT19 Corrida - 20' Z3.tcx",
+      "date_iso": "2026-01-17T08:56:35.000Z",
+      "date_br": "17/01/2026 08:56",
+      "distance_km": 14.05,
+      "duration_min": 90.0,
+      "sport": "Running"
+    },
+    {
+      "id": "21531440053",
+      "name": "Vitória - RAn3 Corrida - 6 x 2'30 Z4",
+      "filename": "Atividades Baixadas/21531440053_Vitória - RAn3 Corrida - 6 x 2'30 Z4.tcx",
+      "date_iso": "2026-01-13T09:34:41.000Z",
+      "date_br": "13/01/2026 09:34",
+      "distance_km": 8.7,
+      "duration_min": 60.0,
+      "sport": "Running"
+    },
+    {
+      "id": "21517360665",
+      "name": "Vitória - RF11 Corrida - 1h10' Z2",
+      "filename": "Atividades Baixadas/21517360665_Vitória - RF11 Corrida - 1h10' Z2.tcx",
+      "date_iso": "2026-01-11T21:15:01.000Z",
+      "date_br": "11/01/2026 21:15",
+      "distance_km": 12.02,
+      "duration_min": 80.0,
+      "sport": "Running"
+    },
+    {
+      "id": "21506431621",
+      "name": "Vitória - RRe4 Corrida - 35' Z1",
+      "filename": "Atividades Baixadas/21506431621_Vitória - RRe4 Corrida - 35' Z1.tcx",
+      "date_iso": "2026-01-10T12:55:58.000Z",
+      "date_br": "10/01/2026 12:55",
+      "distance_km": 5.23,
+      "duration_min": 40.0,
+      "sport": "Running"
+    },
+    {
+      "id": "21486825291",
+      "name": "Vitória - RAn3 Corrida - 6 x 2'30 Z4",
+      "filename": "Atividades Baixadas/21486825291_Vitória - RAn3 Corrida - 6 x 2'30 Z4.tcx",
+      "date_iso": "2026-01-08T21:44:39.000Z",
+      "date_br": "08/01/2026 21:44",
+      "distance_km": 6.48,
+      "duration_min": 45.8,
+      "sport": "Running"
+    },
+    {
+      "id": "21466332333",
+      "name": "Vitória - RSP2 Corrida - 2 x 2' Z4",
+      "filename": "Atividades Baixadas/21466332333_Vitória - RSP2 Corrida - 2 x 2' Z4.tcx",
+      "date_iso": "2026-01-06T22:24:08.000Z",
+      "date_br": "06/01/2026 22:24",
+      "distance_km": 5.18,
+      "duration_min": 35.0,
+      "sport": "Running"
+    },
+    {
+      "id": "21442337844",
+      "name": "Vitória Corrida",
+      "filename": "Atividades Baixadas/21442337844_Vitória Corrida.tcx",
+      "date_iso": "2026-01-04T14:43:08.000Z",
+      "date_br": "04/01/2026 14:43",
+      "distance_km": 1.0,
+      "duration_min": 8.6,
+      "sport": "Running"
+    },
+    {
+      "id": "21442336867",
+      "name": "Vitória - RF11 Corrida - 1h10' Z2",
+      "filename": "Atividades Baixadas/21442336867_Vitória - RF11 Corrida - 1h10' Z2.tcx",
+      "date_iso": "2026-01-04T13:07:01.000Z",
+      "date_br": "04/01/2026 13:07",
+      "distance_km": 12.04,
+      "duration_min": 80.3,
+      "sport": "Running"
+    },
+    {
+      "id": "21423557721",
+      "name": "Vitória - RRe7 Corrida - 50' Z1",
+      "filename": "Atividades Baixadas/21423557721_Vitória - RRe7 Corrida - 50' Z1.tcx",
+      "date_iso": "2026-01-02T10:44:54.000Z",
+      "date_br": "02/01/2026 10:44",
+      "distance_km": 7.08,
+      "duration_min": 50.8,
+      "sport": "Running"
+    },
+    {
+      "id": "21406859775",
+      "name": "Vitória - RCI2 Corrida - 4 x 5' Z3",
+      "filename": "Atividades Baixadas/21406859775_Vitória - RCI2 Corrida - 4 x 5' Z3.tcx",
+      "date_iso": "2025-12-31T11:16:30.000Z",
+      "date_br": "31/12/2025 11:16",
+      "distance_km": 7.13,
+      "duration_min": 46.0,
+      "sport": "Running"
+    },
+    {
+      "id": "21400740199",
+      "name": "Volta Redonda - Corrida longa",
+      "filename": "Atividades Baixadas/21400740199_Volta Redonda - Corrida longa.tcx",
+      "date_iso": "2025-12-28T11:35:35.000Z",
+      "date_br": "28/12/2025 11:35",
+      "distance_km": 7.08,
+      "duration_min": 48.8,
+      "sport": "Running"
+    },
+    {
+      "id": "21353800331",
+      "name": "Vitória - RFF4 Corrida - 25' Z2 + 10' Z3",
+      "filename": "Atividades Baixadas/21353800331_Vitória - RFF4 Corrida - 25' Z2 + 10' Z3.tcx",
+      "date_iso": "2025-12-26T10:33:24.000Z",
+      "date_br": "26/12/2025 10:33",
+      "distance_km": 7.25,
+      "duration_min": 46.0,
+      "sport": "Running"
+    },
+    {
+      "id": "21304951898",
+      "name": "Vitória - RF10 Corrida - 1h Z2",
+      "filename": "Atividades Baixadas/21304951898_Vitória - RF10 Corrida - 1h Z2.tcx",
+      "date_iso": "2025-12-20T09:21:25.000Z",
+      "date_br": "20/12/2025 09:21",
+      "distance_km": 10.6,
+      "duration_min": 70.0,
+      "sport": "Running"
+    },
+    {
+      "id": "21287843768",
+      "name": "Vitória - RAn1 Corrida - 4 x 2'30 Z4",
+      "filename": "Atividades Baixadas/21287843768_Vitória - RAn1 Corrida - 4 x 2'30 Z4.tcx",
+      "date_iso": "2025-12-18T08:00:32.000Z",
+      "date_br": "18/12/2025 08:00",
+      "distance_km": 7.11,
+      "duration_min": 50.0,
+      "sport": "Running"
+    },
+    {
+      "id": "21276766911",
+      "name": "Vitória - RRe6 Corrida - 45' Z1",
+      "filename": "Atividades Baixadas/21276766911_Vitória - RRe6 Corrida - 45' Z1.tcx",
+      "date_iso": "2025-12-16T22:45:00.000Z",
+      "date_br": "16/12/2025 22:45",
+      "distance_km": 6.39,
+      "duration_min": 45.0,
+      "sport": "Running"
+    },
+    {
+      "id": "21254317080",
+      "name": "Vitória Corrida",
+      "filename": "Atividades Baixadas/21254317080_Vitória Corrida.tcx",
+      "date_iso": "2025-12-14T08:36:02.000Z",
+      "date_br": "14/12/2025 08:36",
+      "distance_km": 24.04,
+      "duration_min": 161.0,
+      "sport": "Running"
+    },
+    {
+      "id": "21233673416",
+      "name": "Vitória - RF9 Corrida - 50' Z2",
+      "filename": "Atividades Baixadas/21233673416_Vitória - RF9 Corrida - 50' Z2.tcx",
+      "date_iso": "2025-12-11T22:37:24.000Z",
+      "date_br": "11/12/2025 22:37",
+      "distance_km": 8.14,
+      "duration_min": 53.9,
+      "sport": "Running"
+    },
+    {
+      "id": "21192562674",
+      "name": "Belo Horizonte Corrida",
+      "filename": "Atividades Baixadas/21192562674_Belo Horizonte Corrida.tcx",
+      "date_iso": "2025-12-07T09:26:43.000Z",
+      "date_br": "07/12/2025 09:26",
+      "distance_km": 18.01,
+      "duration_min": 110.3,
+      "sport": "Running"
+    },
+    {
+      "id": "21175074351",
+      "name": "Vitória - RRe4 Corrida - 35' Z1",
+      "filename": "Atividades Baixadas/21175074351_Vitória - RRe4 Corrida - 35' Z1.tcx",
+      "date_iso": "2025-12-05T11:04:39.000Z",
+      "date_br": "05/12/2025 11:04",
+      "distance_km": 5.32,
+      "duration_min": 35.0,
+      "sport": "Running"
+    },
+    {
+      "id": "21146821342",
+      "name": "Vitória - RF5 Corrida - 30' Z2",
+      "filename": "Atividades Baixadas/21146821342_Vitória - RF5 Corrida - 30' Z2.tcx",
+      "date_iso": "2025-12-02T08:42:16.000Z",
+      "date_br": "02/12/2025 08:42",
+      "distance_km": 5.27,
+      "duration_min": 35.0,
+      "sport": "Running"
+    },
+    {
+      "id": "21130731152",
+      "name": "Vitória - RCI13 Corrida - 5 x 3' Z3",
+      "filename": "Atividades Baixadas/21130731152_Vitória - RCI13 Corrida - 5 x 3' Z3.tcx",
+      "date_iso": "2025-11-30T10:54:29.000Z",
+      "date_br": "30/11/2025 10:54",
+      "distance_km": 7.09,
+      "duration_min": 45.4,
+      "sport": "Running"
+    }
+  ]
+}
