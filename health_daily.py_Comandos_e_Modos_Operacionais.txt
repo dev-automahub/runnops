@@ -1,0 +1,36 @@
+  Fluxo final — 1 comando só                                                                                                        
+                                                                                                                                    
+  python health_daily.py                                                                                                            
+                                                                                                                                    
+  Faz tudo em sequência:                                                                                                          
+  1. ✅ Coleta Garmin → runtech.db
+  2. ✅ Imprime resumo no terminal
+  3. ✅ Atualiza diario/YYYY-MM-DD.md com reportagem matinal
+  4. ✅ Gera index.html + abre no browser
+  5. ✅ Commit + push → Cloudflare republica em ~30s
+  5. ✅ Commit + push → Cloudflare republica em ~30s
+
+  Modos opcionais
+
+  ┌─────────────────────────────────────┬──────────────────────────────────────────────────────────┐
+  │               Comando               │                        O que faz                         │
+  ├─────────────────────────────────────┼──────────────────────────────────────────────────────────┤
+  │ python health_daily.py              │ Tudo (coleta + dash + publish)                           │
+  ├─────────────────────────────────────┼──────────────────────────────────────────────────────────┤
+  │ python health_daily.py --no-publish │ Coleta + dash, mas não publica (útil pra preview antes)  │
+  ├─────────────────────────────────────┼──────────────────────────────────────────────────────────┤
+  │ python health_daily.py --quiet      │ Só coleta (sem dash, sem publish — modo silencioso)      │
+  ├─────────────────────────────────────┼──────────────────────────────────────────────────────────┤
+  │ python health_daily.py --backfill 7 │ Backfill 7 dias (sem dash, sem publish — só popula DB)   │
+  ├─────────────────────────────────────┼──────────────────────────────────────────────────────────┤
+  │ python health_daily.py 2026-05-08   │ Coleta dia específico (sem dash, sem publish)            │
+  ├─────────────────────────────────────┼──────────────────────────────────────────────────────────┤
+  │ python publish.py                   │ Publica manualmente (útil quando você edita algo na mão) │
+  ├─────────────────────────────────────┼──────────────────────────────────────────────────────────┤
+  │ python publish.py --dry-run         │ Mostra o que faria sem executar                          │
+  └─────────────────────────────────────┴──────────────────────────────────────────────────────────┘
+
+  Heurística do hook: publish só dispara quando você roda o fluxo "padrão" (sem flags) — backfills, datas específicas e --quiet
+  ficam fora pra evitar commits indesejados.
+
+  Amanhã de manhã é só rodar python health_daily.py e o site atualiza sozinho.
