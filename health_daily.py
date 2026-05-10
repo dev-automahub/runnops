@@ -258,6 +258,7 @@ def main():
     parser.add_argument("--backfill-from", help="Data inicial YYYY-MM-DD ate hoje")
     parser.add_argument("--db", default=str(DB_PATH), help="Path do SQLite (default: runtech.db)")
     parser.add_argument("--quiet", action="store_true", help="Suprime output detalhado")
+    parser.add_argument("--no-publish", action="store_true", help="Nao publicar no GitHub/Cloudflare apos gerar dash")
     args = parser.parse_args()
 
     today = date.today()
@@ -307,7 +308,7 @@ def main():
     print(f"\n[OK] Gravado em {args.db}")
     print(f"     Sucesso: {success_count}/{len(dates)}  Erros: {error_count}")
 
-    # Hook: gera dash automaticamente apos run default (hoje, sem backfill)
+    # Hook: gera dash + publica automaticamente apos run default (hoje, sem backfill)
     if (
         not args.backfill
         and not args.backfill_from
@@ -315,14 +316,28 @@ def main():
         and not args.quiet
         and success_count > 0
     ):
-        dash_script = Path(__file__).parent / "dash_today.py"
+        import subprocess
+        here = Path(__file__).parent
+
+        dash_script = here / "dash_today.py"
+        dash_ok = False
         if dash_script.exists():
             try:
-                import subprocess
                 print(f"\n[+] Gerando dashboard...")
-                subprocess.run([sys.executable, str(dash_script)], check=False)
+                r = subprocess.run([sys.executable, str(dash_script)], check=False)
+                dash_ok = (r.returncode == 0)
             except Exception as e:
                 print(f"     (dash skipped: {e})")
+
+        # Publica no GitHub/Cloudflare se dash gerou OK e usuario nao pediu --no-publish
+        if dash_ok and not args.no_publish:
+            publish_script = here / "publish.py"
+            if publish_script.exists():
+                try:
+                    print(f"\n[+] Publicando no GitHub/Cloudflare...")
+                    subprocess.run([sys.executable, str(publish_script)], check=False)
+                except Exception as e:
+                    print(f"     (publish skipped: {e})")
 
 
 if __name__ == "__main__":
