@@ -316,28 +316,31 @@ def main():
         and not args.quiet
         and success_count > 0
     ):
+        import os
         import subprocess
         here = Path(__file__).parent
+        # Env com unbuffered output pros subprocesses Python — saida fica sequencial
+        sub_env = {**os.environ, "PYTHONUNBUFFERED": "1", "PYTHONIOENCODING": "utf-8"}
 
         dash_script = here / "dash_today.py"
         dash_ok = False
         if dash_script.exists():
             try:
-                print(f"\n[+] Gerando dashboard...")
-                r = subprocess.run([sys.executable, str(dash_script)], check=False)
+                print(f"\n[+] Gerando dashboard...", flush=True)
+                r = subprocess.run([sys.executable, "-u", str(dash_script)], check=False, env=sub_env)
                 dash_ok = (r.returncode == 0)
             except Exception as e:
-                print(f"     (dash skipped: {e})")
+                print(f"     (dash skipped: {e})", flush=True)
 
         # Publica no GitHub/Cloudflare se dash gerou OK e usuario nao pediu --no-publish
         if dash_ok and not args.no_publish:
             publish_script = here / "publish.py"
             if publish_script.exists():
                 try:
-                    print(f"\n[+] Publicando no GitHub/Cloudflare...")
-                    subprocess.run([sys.executable, str(publish_script)], check=False)
+                    print(f"\n[+] Publicando no GitHub/Cloudflare...", flush=True)
+                    subprocess.run([sys.executable, "-u", str(publish_script)], check=False, env=sub_env)
                 except Exception as e:
-                    print(f"     (publish skipped: {e})")
+                    print(f"     (publish skipped: {e})", flush=True)
 
 
 if __name__ == "__main__":

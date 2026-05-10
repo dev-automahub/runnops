@@ -593,23 +593,29 @@ body {
 }
 
 /* === Pills clicaveis (vao pro glossario) === */
-.pill { cursor: pointer; transition: transform .12s, box-shadow .12s; }
+.pill {
+  position: relative;
+  cursor: pointer;
+  transition: transform .12s, box-shadow .12s;
+}
 .pill:hover { transform: translateY(-1px); box-shadow: 0 6px 16px rgba(0, 0, 0, 0.06); }
+.pill-label { white-space: nowrap; padding-right: 22px; overflow: hidden; text-overflow: ellipsis; }
 .pill-help {
-  display: inline-block;
-  width: 16px;
-  height: 16px;
-  line-height: 16px;
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  width: 18px;
+  height: 18px;
+  line-height: 18px;
   text-align: center;
   border-radius: 50%;
   background: #e5e5ea;
   color: #1c1c1e;
-  font-size: 10px;
+  font-size: 11px;
   font-weight: 700;
-  margin-left: 4px;
-  opacity: 0.65;
-  vertical-align: middle;
+  opacity: 0.6;
 }
+.pill:hover .pill-help { opacity: 1; background: #d1d1d6; }
 
 /* Verdict-help link (pequena ancora pro glossario do veredito) */
 .verdict-help-link {

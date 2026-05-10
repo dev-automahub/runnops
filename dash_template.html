@@ -54,22 +54,26 @@
     <!-- 4 pills com delta — clicaveis (vao pro glossario) -->
     <div class="pills">
       <div class="pill" onclick="goToGlossary('sono')">
-        <div class="pill-label">SONO <span class="pill-help">?</span></div>
+        <span class="pill-help">?</span>
+        <div class="pill-label">SONO</div>
         <div class="pill-value">{{ today.sleep_pretty|default("—") }}</div>
         {% if sleep_delta_pretty %}<div class="pill-delta {{ sleep_delta_class }}">{{ sleep_delta_pretty }}</div>{% endif %}
       </div>
       <div class="pill" onclick="goToGlossary('body-battery')">
-        <div class="pill-label">BODY BATTERY MAX <span class="pill-help">?</span></div>
+        <span class="pill-help">?</span>
+        <div class="pill-label">BODY BATTERY MAX</div>
         <div class="pill-value">{{ today.body_battery_max|default("—") }}</div>
         {% if bb_delta_pretty %}<div class="pill-delta {{ bb_delta_class }}">{{ bb_delta_pretty }}</div>{% endif %}
       </div>
       <div class="pill" onclick="goToGlossary('fcrep')">
-        <div class="pill-label">FC REPOUSO <span class="pill-help">?</span></div>
+        <span class="pill-help">?</span>
+        <div class="pill-label">FC REPOUSO</div>
         <div class="pill-value">{{ today.resting_heart_rate|default("—") }}</div>
         {% if fcrep_delta_pretty %}<div class="pill-delta {{ fcrep_delta_class }}">{{ fcrep_delta_pretty }}</div>{% endif %}
       </div>
       <div class="pill" onclick="goToGlossary('disposicao')">
-        <div class="pill-label">DISPOSIÇÃO <span class="pill-help">?</span></div>
+        <span class="pill-help">?</span>
+        <div class="pill-label">DISPOSIÇÃO</div>
         <div class="pill-value">{{ today.training_readiness|default("—") }}</div>
         {% if ready_delta_pretty %}<div class="pill-delta {{ ready_delta_class }}">{{ ready_delta_pretty }}</div>{% endif %}
       </div>
