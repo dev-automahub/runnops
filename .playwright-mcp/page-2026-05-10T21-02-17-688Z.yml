@@ -1,0 +1,668 @@
+- generic [active] [ref=e1]:
+  - generic [ref=e4]:
+    - generic [ref=e6]:
+      - link "Pular para o conteúdo" [ref=e8] [cursor=pointer]:
+        - /url: "#main"
+        - generic [ref=e9]:
+          - text: Pular para o conteúdo
+          - img [ref=e10]
+      - generic [ref=e12]:
+        - banner [ref=e13]:
+          - generic [ref=e14]:
+            - text: Você está quase lá. Inscreva-se para começar a criar no Notion hoje mesmo.
+            - button "Cadastre-se ou faça login" [ref=e15] [cursor=pointer]
+          - generic [ref=e18]:
+            - button "🏃‍♂️ Conecte seu Garmin no Claude (Tutorial Completo para Windows)" [disabled] [ref=e20]:
+              - generic [ref=e22]:
+                - img "🏃‍♂️" [ref=e23]
+                - text: Conecte seu Garmin no Claude (Tutorial Completo para Windows)
+            - button "Comentários" [ref=e27] [cursor=pointer]:
+              - img [ref=e28]
+            - button "Mais ações" [ref=e32] [cursor=pointer]:
+              - img [ref=e33]
+        - main [ref=e35]:
+          - group [disabled] [ref=e38]:
+            - generic [ref=e40]:
+              - heading "🏃‍♂️ Conecte seu Garmin no Claude (Tutorial Completo para Windows)" [level=1] [ref=e139]:
+                - img "🏃‍♂️" [ref=e140]
+                - text: Conecte seu Garmin no Claude (Tutorial Completo para Windows)
+              - generic [ref=e142]:
+                - blockquote [ref=e144]:
+                  - generic [ref=e146]: Em 20 minutos você transforma o Claude no seu treinador pessoal de corrida — com acesso a todos os seus treinos, métricas e dados do Garmin Connect. Sem mensalidade, sem programar nada complexo.
+                - separator [disabled] [ref=e149]
+                - 'heading "👉 Antes de tudo: me segue lá!" [level=3] [ref=e154]':
+                  - img "👉" [ref=e155]
+                  - text: "Antes de tudo: me segue lá!"
+                - generic [ref=e161]: Esse tutorial é 100% gratuito e foi feito por mim depois de muito teste e erro pra te poupar tempo.
+                - generic [ref=e167]: "Se ele te ajudar, retribui assim:"
+                - generic [ref=e173]:
+                  - img "🎯" [ref=e174]
+                  - text: "Me segue no Instagram:"
+                  - link "@jp.runningclub" [disabled] [ref=e175] [cursor=pointer]:
+                    - /url: https://instagram.com/jp.runningclub
+                - generic [ref=e181]: "Lá eu compartilho:"
+                - generic [ref=e185]:
+                  - generic [ref=e187]: •
+                  - generic [ref=e190]:
+                    - img "🏃" [ref=e191]
+                    - text: Mais conteúdo de IA pra corredor
+                - generic [ref=e195]:
+                  - generic [ref=e197]: •
+                  - generic [ref=e200]:
+                    - img "📊" [ref=e201]
+                    - text: Meus treinos e desafios (atualmente rumo a minha 1ª maratona!)
+                - generic [ref=e205]:
+                  - generic [ref=e207]: •
+                  - generic [ref=e210]:
+                    - img "💡" [ref=e211]
+                    - text: Dicas práticas para você que está no mundo do esporte
+                - generic [ref=e217]:
+                  - text: É de graça e me ajuda muito a continuar produzindo esse tipo de conteúdo.
+                  - img "🙏" [ref=e218]
+                - separator [disabled] [ref=e221]
+                - heading "👋 Antes de começar" [level=3] [ref=e226]:
+                  - img "👋" [ref=e227]
+                  - text: Antes de começar
+                - generic [ref=e233]: "Esse tutorial é pra você que:"
+                - generic [ref=e237]:
+                  - generic [ref=e239]: •
+                  - generic [ref=e242]: Usa Garmin
+                - generic [ref=e246]:
+                  - generic [ref=e248]: •
+                  - generic [ref=e251]: Tem um PC com Windows 10 ou 11
+                - generic [ref=e255]:
+                  - generic [ref=e257]: •
+                  - generic [ref=e260]: Tem (ou vai instalar) o Claude Desktop
+                - generic [ref=e264]:
+                  - generic [ref=e266]: •
+                  - generic [ref=e269]: Quer parar de copiar/colar dados pra IA toda vez
+                - generic [ref=e275]: "O que você vai conseguir no final:"
+                - generic [ref=e279]:
+                  - generic [ref=e281]: •
+                  - generic [ref=e284]: "Perguntar pro Claude: \"Como tá meu volume essa semana?\" → ele responde com seus dados reais"
+                - generic [ref=e288]:
+                  - generic [ref=e290]: •
+                  - generic [ref=e293]: "\"Tô treinando demais? Como tá meu sono vs meus treinos?\" → análise personalizada"
+                - generic [ref=e297]:
+                  - generic [ref=e299]: •
+                  - generic [ref=e302]: "\"Monta um plano pra próxima maratona usando meu pace atual\" → planos baseados em SEUS dados"
+                - generic [ref=e306]:
+                  - generic [ref=e308]: •
+                  - generic [ref=e311]: Acesso instantâneo a histórico de treinos, FC, sono, Body Battery, VO2 max, recuperação
+                - generic [ref=e317]: Tome o seguinte cuidado. NÃO RECOMENDO substituir um profissional. Eu tenho meu treinador e outros especialistas me acompanhando. O Claude fica como um assistente.
+                - generic [ref=e323]: "Tempo estimado: 20 minutos (sendo 10 min só esperando coisas instalarem)"
+                - generic [ref=e329]:
+                  - text: "Importante: Esse tutorial é pra Windows. Se você usa Mac,"
+                  - link "usa o tutorial pra Mac aqui" [disabled] [ref=e330] [cursor=pointer]:
+                    - /url: /35b4dcfcc0f58031bb21e4750ae1e3cb?pvs=25
+                  - text: .
+                - separator [disabled] [ref=e333]
+                - heading "⚠️ Aviso importante pra Windows" [level=3] [ref=e338]:
+                  - img "⚠️" [ref=e339]
+                  - text: Aviso importante pra Windows
+                - generic [ref=e345]: No Windows, alguns passos exigem Prompt de Comando como Administrador (não funciona com PowerShell em algumas versões). Esse tutorial deixa claro quando.
+                - generic [ref=e351]: Se aparecer um popup de "Controle de Conta de Usuário" pedindo permissão, clica em Sim sempre. Tudo que você vai instalar é seguro e oficial.
+                - separator [disabled] [ref=e354]
+                - heading "✅ Pré-requisitos (faz isso primeiro)" [level=3] [ref=e359]:
+                  - img "✅" [ref=e360]
+                  - text: Pré-requisitos (faz isso primeiro)
+                - heading "1. Instala o Claude Desktop" [level=4] [ref=e365]
+                - generic [ref=e371]: "Baixa em: https://claude.ai/download"
+                - generic [ref=e377]: Escolhe a versão pra Windows. Faz login com sua conta Claude (cria uma grátis se não tiver).
+                - heading "2. Cria seu projeto \"Treinador\" no Claude" [level=4] [ref=e382]
+                - generic [ref=e388]: "Dentro do Claude Desktop:"
+                - generic [ref=e392]:
+                  - generic [ref=e394]: •
+                  - generic [ref=e397]: Clica em "Projetos" no menu lateral
+                - generic [ref=e401]:
+                  - generic [ref=e403]: •
+                  - generic [ref=e406]: "\"Criar projeto\""
+                - generic [ref=e410]:
+                  - generic [ref=e412]: •
+                  - generic [ref=e415]:
+                    - text: "Nome:"
+                    - generic [ref=e416]: Treinador
+                    - text: (ou outro que preferir)
+                - generic [ref=e422]: "Dica: Escreve as instruções do projeto pra ele se comportar como treinador. Exemplo:"
+                - blockquote [ref=e424]:
+                  - generic [ref=e426]: "\"Você é meu treinador pessoal de corrida. Use meus dados do Garmin pra responder com base no que de fato fiz, não no que é genérico. Foque em volume semanal, intensidade, recuperação e progressão. Seja direto e prático.\""
+                - generic [ref=e432]: Pronto! Agora bora pro setup técnico.
+                - separator [disabled] [ref=e435]
+                - 'heading "🛠️ PARTE 1: Instalando Python e Git (8 min)" [level=3] [ref=e440]':
+                  - img "🛠️" [ref=e441]
+                  - text: "PARTE 1: Instalando Python e Git (8 min)"
+                - heading "Passo 1.1 — Instalar o Python 3.11" [level=4] [ref=e446]
+                - generic [ref=e450]:
+                  - generic [ref=e452]: "1."
+                  - generic [ref=e455]: "Vai no site oficial: https://www.python.org/downloads/windows/"
+                - generic [ref=e459]:
+                  - generic [ref=e461]: "2."
+                  - generic [ref=e464]: Procura por Python 3.11.x (qualquer versão 3.11)
+                - generic [ref=e468]:
+                  - generic [ref=e470]: "3."
+                  - generic [ref=e473]: Baixa o "Windows installer (64-bit)"
+                - generic [ref=e477]:
+                  - generic [ref=e479]: "4."
+                  - generic [ref=e482]: Abre o instalador
+                - generic [ref=e488]:
+                  - img "⚠️" [ref=e489]
+                  - text: "MUITO IMPORTANTE: Na primeira tela do instalador, MARCA a caixa \"Add Python to PATH\" (no rodapé)."
+                - generic [ref=e495]: "![Marca essa caixa no instalador]"
+                - generic [ref=e499]:
+                  - generic [ref=e501]: "1."
+                  - generic [ref=e504]: Clica em "Install Now"
+                - generic [ref=e508]:
+                  - generic [ref=e510]: "2."
+                  - generic [ref=e513]: Espera terminar e clica em "Close"
+                - heading "Passo 1.2 — Verificar a instalação do Python" [level=4] [ref=e518]
+                - generic [ref=e522]:
+                  - generic [ref=e524]: "1."
+                  - generic [ref=e527]:
+                    - text: Aperta
+                    - generic [ref=e528]: Tecla Windows
+                - generic [ref=e532]:
+                  - generic [ref=e534]: "2."
+                  - generic [ref=e537]:
+                    - text: Digita
+                    - generic [ref=e538]: cmd
+                - generic [ref=e542]:
+                  - generic [ref=e544]: "3."
+                  - generic [ref=e547]: Clica com botão direito em "Prompt de Comando" → "Executar como administrador"
+                - generic [ref=e551]:
+                  - generic [ref=e553]: "4."
+                  - generic [ref=e556]: "Vai abrir uma janela preta. Cola esse comando:"
+                - figure [ref=e559]:
+                  - generic [ref=e563]: python --version
+                - generic [ref=e569]:
+                  - text: Se aparecer
+                  - generic [ref=e570]: Python 3.11.x
+                  - text: ", deu certo!"
+                  - img "✅" [ref=e571]
+                - generic [ref=e577]: Se aparecer erro tipo "não é reconhecido como comando", você esqueceu de marcar "Add Python to PATH" — desinstala o Python e instala de novo marcando essa caixa.
+                - heading "Passo 1.3 — Instalar o Git" [level=4] [ref=e582]
+                - generic [ref=e586]:
+                  - generic [ref=e588]: "1."
+                  - generic [ref=e591]: "Vai em: https://git-scm.com/download/win"
+                - generic [ref=e595]:
+                  - generic [ref=e597]: "2."
+                  - generic [ref=e600]: O download começa automático
+                - generic [ref=e604]:
+                  - generic [ref=e606]: "3."
+                  - generic [ref=e609]: Abre o instalador
+                - generic [ref=e613]:
+                  - generic [ref=e615]: "4."
+                  - generic [ref=e618]: Aceita todas as opções padrão (só vai clicando "Next")
+                - generic [ref=e622]:
+                  - generic [ref=e624]: "5."
+                  - generic [ref=e627]: Termina a instalação
+                - generic [ref=e633]: "Verifica se funcionou (no Prompt de Comando como administrador):"
+                - figure [ref=e636]:
+                  - generic [ref=e640]: git --version
+                - generic [ref=e646]:
+                  - text: Se aparecer
+                  - generic [ref=e647]: git version 2.x.x
+                  - text: ", tá certo!"
+                  - img "✅" [ref=e648]
+                - separator [disabled] [ref=e651]
+                - 'heading "🐍 PARTE 2: Instalando o conector Garmin (5 min)" [level=3] [ref=e656]':
+                  - img "🐍" [ref=e657]
+                  - text: "PARTE 2: Instalando o conector Garmin (5 min)"
+                - heading "Passo 2.1 — Criar pasta do projeto" [level=4] [ref=e662]
+                - generic [ref=e668]: "No Prompt de Comando (como administrador), cola um comando de cada vez:"
+                - figure [ref=e671]:
+                  - generic [ref=e675]: cd %USERPROFILE%
+                - figure [ref=e678]:
+                  - generic [ref=e682]: mkdir garmin_mcp_server
+                - figure [ref=e685]:
+                  - generic [ref=e689]: cd garmin_mcp_server
+                - heading "Passo 2.2 — Baixar o programa" [level=4] [ref=e694]
+                - figure [ref=e697]:
+                  - generic [ref=e701]: git clone https://github.com/Taxuspt/garmin_mcp.git .
+                - generic [ref=e707]:
+                  - text: (Não esquece o ponto
+                  - generic [ref=e708]: .
+                  - text: no final — ele faz baixar na pasta atual)
+                - heading "Passo 2.3 — Criar ambiente Python isolado" [level=4] [ref=e713]
+                - figure [ref=e716]:
+                  - generic [ref=e720]: python -m venv venv
+                - figure [ref=e723]:
+                  - generic [ref=e727]: venv\Scripts\activate
+                - generic [ref=e733]:
+                  - text: Você vai notar que o terminal agora começa com
+                  - generic [ref=e734]: (venv)
+                  - text: — isso é normal e indica que tá tudo certo.
+                - heading "Passo 2.4 — Instalar dependências" [level=4] [ref=e739]
+                - figure [ref=e742]:
+                  - generic [ref=e746]: python -m pip install --upgrade pip
+                - figure [ref=e749]:
+                  - generic [ref=e753]: pip install -e .
+                - generic [ref=e759]:
+                  - text: Espera terminar (3-5 min). Quando aparecer
+                  - generic [ref=e760]: Successfully installed garmin-mcp...
+                  - text: ", tá pronto!"
+                  - img "✅" [ref=e761]
+                - separator [disabled] [ref=e764]
+                - 'heading "🔐 PARTE 3: Conectando com sua conta Garmin (2 min)" [level=3] [ref=e769]':
+                  - img "🔐" [ref=e770]
+                  - text: "PARTE 3: Conectando com sua conta Garmin (2 min)"
+                - heading "Passo 3.1 — Autenticar" [level=4] [ref=e775]
+                - generic [ref=e781]:
+                  - text: No mesmo Prompt de Comando (com
+                  - generic [ref=e782]: (venv)
+                  - text: "no início), cola:"
+                - figure [ref=e785]:
+                  - generic [ref=e789]: garmin-mcp-auth
+                - generic [ref=e795]: "O que vai acontecer:"
+                - generic [ref=e799]:
+                  - generic [ref=e801]: "1."
+                  - generic [ref=e804]: Vai pedir seu email do Garmin Connect
+                - generic [ref=e808]:
+                  - generic [ref=e810]: "2."
+                  - generic [ref=e813]: Vai pedir sua senha do Garmin (não aparece nada quando digita, é normal!)
+                - generic [ref=e817]:
+                  - generic [ref=e819]: "3."
+                  - generic [ref=e822]: Se você tem autenticação de 2 fatores (MFA) ativada no Garmin, vai pedir o código
+                - generic [ref=e828]: "Quando terminar com sucesso, você vai ver:"
+                - figure [ref=e831]:
+                  - generic [ref=e835]: "✓ Authentication successful! Logged in as: SEU NOME SUCCESS: You can now use the Garmin MCP server!"
+                - generic [ref=e841]:
+                  - img "🎉" [ref=e842]
+                  - text: Os tokens de acesso foram salvos no seu PC e duram 6 meses.
+                - separator [disabled] [ref=e845]
+                - 'heading "⚙️ PARTE 4: Configurando o Claude Desktop (5 min)" [level=3] [ref=e850]':
+                  - img "⚙️" [ref=e851]
+                  - text: "PARTE 4: Configurando o Claude Desktop (5 min)"
+                - heading "Passo 4.1 — Descobrir seu nome de usuário do Windows" [level=4] [ref=e856]
+                - generic [ref=e862]: "No Prompt de Comando, cola:"
+                - figure [ref=e865]:
+                  - generic [ref=e869]: echo %USERNAME%
+                - generic [ref=e875]:
+                  - text: "Vai aparecer seu nome de usuário (exemplo:"
+                  - generic [ref=e876]: joaopaulo
+                  - text: ). Anota porque você vai usar agora.
+                - heading "Passo 4.2 — Descobrir o caminho exato do garmin-mcp" [level=4] [ref=e881]
+                - generic [ref=e887]:
+                  - text: No mesmo Prompt de Comando (com
+                  - generic [ref=e888]: (venv)
+                  - text: "ativo), cola:"
+                - figure [ref=e891]:
+                  - generic [ref=e895]: where garmin-mcp
+                - generic [ref=e901]: "Vai aparecer um caminho tipo:"
+                - figure [ref=e904]:
+                  - generic [ref=e908]: C:\Users\joaopaulo\garmin_mcp_server\venv\Scripts\garmin-mcp.exe
+                - generic [ref=e914]: Anota esse caminho inteiro — você vai usar no próximo passo.
+                - heading "Passo 4.3 — Abrir o arquivo de configuração do Claude" [level=4] [ref=e919]
+                - generic [ref=e923]:
+                  - generic [ref=e925]: "1."
+                  - generic [ref=e928]:
+                    - text: Aperta
+                    - generic [ref=e929]: Tecla Windows + R
+                - generic [ref=e933]:
+                  - generic [ref=e935]: "2."
+                  - generic [ref=e938]: "Cola isso e aperta Enter:"
+                - figure [ref=e941]:
+                  - generic [ref=e945]: "%APPDATA%\\Claude"
+                - generic [ref=e949]:
+                  - generic [ref=e951]: "1."
+                  - generic [ref=e954]:
+                    - text: Vai abrir uma pasta. Procura o arquivo
+                    - generic [ref=e955]: claude_desktop_config.json
+                - generic [ref=e959]:
+                  - generic [ref=e961]: "2."
+                  - generic [ref=e964]: Clica com botão direito → Abrir com → Bloco de Notas (ou Notepad)
+                - blockquote [ref=e966]:
+                  - generic [ref=e968]:
+                    - text: Se o arquivo não existir, cria um novo arquivo chamado exatamente
+                    - generic [ref=e969]: claude_desktop_config.json
+                    - text: (cuidado pra não salvar como
+                    - generic [ref=e970]: .json.txt
+                    - text: )
+                - heading "Passo 4.4 — Substituir o conteúdo" [level=4] [ref=e975]
+                - generic [ref=e981]: "APAGA TUDO que tá no arquivo e cola exatamente isso:"
+                - figure [ref=e984]:
+                  - generic [ref=e988]: "{ \"mcpServers\": { \"garmin-local\": { \"command\": \"C:\\\\Users\\\\SEUNOME\\\\garmin_mcp_server\\\\venv\\\\Scripts\\\\garmin-mcp.exe\", \"env\": { \"GARMIN_COOKIES_FILE\": \"C:\\\\Users\\\\SEUNOME\\\\.garminconnect\\\\cookies.json\" } } } }"
+                - generic [ref=e994]:
+                  - img "⚠️" [ref=e995]
+                  - text: "MUITO IMPORTANTE — Atenção redobrada aqui:"
+                - generic [ref=e999]:
+                  - generic [ref=e1001]: "1."
+                  - generic [ref=e1004]:
+                    - text: Substitua
+                    - generic [ref=e1005]: SEUNOME
+                    - text: pelo nome de usuário que apareceu no Passo 4.1 (em 2 lugares)
+                - generic [ref=e1009]:
+                  - generic [ref=e1011]: "2."
+                  - generic [ref=e1014]:
+                    - text: Use barras duplas
+                    - generic [ref=e1015]: \\
+                    - text: em todos os caminhos — isso é uma exigência do Windows! Se usar barra simples
+                    - generic [ref=e1016]: \
+                    - text: ", não funciona."
+                - generic [ref=e1022]:
+                  - text: "Exemplo: se seu usuário é"
+                  - generic [ref=e1023]: joaopaulo
+                  - text: ", fica:"
+                - figure [ref=e1026]:
+                  - generic [ref=e1030]: "{ \"mcpServers\": { \"garmin-local\": { \"command\": \"C:\\\\Users\\\\joaopaulo\\\\garmin_mcp_server\\\\venv\\\\Scripts\\\\garmin-mcp.exe\", \"env\": { \"GARMIN_COOKIES_FILE\": \"C:\\\\Users\\\\joaopaulo\\\\.garminconnect\\\\cookies.json\" } } } }"
+                - heading "Passo 4.5 — Salvar" [level=4] [ref=e1035]
+                - generic [ref=e1041]:
+                  - text: Aperta
+                  - generic [ref=e1042]: Ctrl + S
+                  - text: para salvar.
+                - generic [ref=e1048]: "IMPORTANTE: Se aparecer caixa de diálogo perguntando o tipo de arquivo:"
+                - generic [ref=e1052]:
+                  - generic [ref=e1054]: •
+                  - generic [ref=e1057]: "Salvar como tipo: \"Todos os Arquivos (.)\""
+                - generic [ref=e1061]:
+                  - generic [ref=e1063]: •
+                  - generic [ref=e1066]: "Codificação: UTF-8"
+                - generic [ref=e1070]:
+                  - generic [ref=e1072]: •
+                  - generic [ref=e1075]:
+                    - text: Mantém o nome
+                    - generic [ref=e1076]: claude_desktop_config.json
+                    - text: (não vira
+                    - generic [ref=e1077]: .json.txt
+                    - text: )
+                - heading "Passo 4.6 — Reiniciar Claude" [level=4] [ref=e1082]
+                - generic [ref=e1086]:
+                  - generic [ref=e1088]: "1."
+                  - generic [ref=e1089]:
+                    - generic [ref=e1091]: "Sai do Claude Desktop completamente:"
+                    - generic [ref=e1095]:
+                      - generic [ref=e1097]: •
+                      - generic [ref=e1100]: Vai na bandeja do sistema (canto direito da barra de tarefas, perto do relógio)
+                    - generic [ref=e1104]:
+                      - generic [ref=e1106]: •
+                      - generic [ref=e1109]: Acha o ícone do Claude
+                    - generic [ref=e1113]:
+                      - generic [ref=e1115]: •
+                      - generic [ref=e1118]: Clica com botão direito → "Quit" ou "Sair"
+                - generic [ref=e1122]:
+                  - generic [ref=e1124]: "2."
+                  - generic [ref=e1127]: Abre o Claude Desktop de novo pelo menu Iniciar
+                - separator [disabled] [ref=e1130]
+                - 'heading "✅ PARTE 5: Testando" [level=3] [ref=e1135]':
+                  - img "✅" [ref=e1136]
+                  - text: "PARTE 5: Testando"
+                - generic [ref=e1142]: "Abre seu projeto \"Treinador\" e pergunta:"
+                - blockquote [ref=e1144]:
+                  - generic [ref=e1146]: "\"Quais foram meus últimos 5 treinos?\""
+                - generic [ref=e1152]:
+                  - text: Se Claude responder com seus dados reais do Garmin, DEU CERTO!
+                  - img "🎉" [ref=e1153]
+                - separator [disabled] [ref=e1156]
+                - heading "💬 Perguntas matadoras pra começar" [level=3] [ref=e1161]:
+                  - img "💬" [ref=e1162]
+                  - text: Perguntas matadoras pra começar
+                - generic [ref=e1168]: "Agora que tá conectado, experimenta perguntar coisas como:"
+                - generic [ref=e1174]: "Análise de performance:"
+                - generic [ref=e1178]:
+                  - generic [ref=e1180]: •
+                  - generic [ref=e1183]: "\"Como tá meu volume semanal nos últimos 30 dias?\""
+                - generic [ref=e1187]:
+                  - generic [ref=e1189]: •
+                  - generic [ref=e1192]: "\"Compara meu pace médio desse mês com o mês passado\""
+                - generic [ref=e1196]:
+                  - generic [ref=e1198]: •
+                  - generic [ref=e1201]: "\"Quais treinos foram mais intensos essa semana?\""
+                - generic [ref=e1207]: "Recuperação e bem-estar:"
+                - generic [ref=e1211]:
+                  - generic [ref=e1213]: •
+                  - generic [ref=e1216]: "\"Como tá meu sono em relação aos meus treinos?\""
+                - generic [ref=e1220]:
+                  - generic [ref=e1222]: •
+                  - generic [ref=e1225]: "\"Tô em risco de overtraining? Analisa meu Body Battery e HRV\""
+                - generic [ref=e1229]:
+                  - generic [ref=e1231]: •
+                  - generic [ref=e1234]: "\"Meu VO2 max tá evoluindo?\""
+                - generic [ref=e1240]: "Planejamento:"
+                - generic [ref=e1244]:
+                  - generic [ref=e1246]: •
+                  - generic [ref=e1249]: "\"Monta um plano de 12 semanas pra uma maratona, considerando meu pace atual\""
+                - generic [ref=e1253]:
+                  - generic [ref=e1255]: •
+                  - generic [ref=e1258]: "\"Qual deveria ser meu treino longo essa semana baseado no meu volume?\""
+                - generic [ref=e1262]:
+                  - generic [ref=e1264]: •
+                  - generic [ref=e1267]: "\"Sugere ajustes na carga de treino pra próxima semana\""
+                - generic [ref=e1273]: "Provas:"
+                - generic [ref=e1277]:
+                  - generic [ref=e1279]: •
+                  - generic [ref=e1282]: "\"Baseado no meu histórico, qual ritmo realista pra correr 10k em 45min?\""
+                - generic [ref=e1286]:
+                  - generic [ref=e1288]: •
+                  - generic [ref=e1291]: "\"Estratégia de pace pra meia maratona\""
+                - separator [disabled] [ref=e1294]
+                - heading "🆘 Solução de problemas (Windows)" [level=3] [ref=e1299]:
+                  - img "🆘" [ref=e1300]
+                  - text: Solução de problemas (Windows)
+                - heading "\"Server disconnected\" no Claude" [level=4] [ref=e1305]
+                - generic [ref=e1311]:
+                  - text: 1. Verifica se você usou barras duplas
+                  - generic [ref=e1312]: \\
+                  - text: em TODOS os caminhos do JSON. Esse é o erro mais comum no Windows.
+                - generic [ref=e1318]:
+                  - text: 2. Verifica se substituiu
+                  - generic [ref=e1319]: SEUNOME
+                  - text: em AMBOS os lugares.
+                - generic [ref=e1325]:
+                  - text: 3. Confirma que rodou o
+                  - generic [ref=e1326]: garmin-mcp-auth
+                  - text: com sucesso (Parte 3).
+                - generic [ref=e1332]: 4. No Claude Desktop, vai em Configurações → Servidores MCP locais → clica em "Ver Logs" no servidor garmin-local.
+                - heading "\"Python não é reconhecido como comando\"" [level=4] [ref=e1337]
+                - generic [ref=e1343]: "Você esqueceu de marcar \"Add Python to PATH\" na instalação. Solução:"
+                - generic [ref=e1347]:
+                  - generic [ref=e1349]: "1."
+                  - generic [ref=e1352]: Desinstala o Python pelo Painel de Controle
+                - generic [ref=e1356]:
+                  - generic [ref=e1358]: "2."
+                  - generic [ref=e1361]: Reinstala marcando a caixa "Add Python to PATH" na primeira tela
+                - heading "\"Git não é reconhecido\"" [level=4] [ref=e1366]
+                - generic [ref=e1372]: Reinstala o Git mantendo as opções padrão. Depois fecha e abre o Prompt de Comando novamente.
+                - heading "\"garmin-mcp não encontrado\"" [level=4] [ref=e1377]
+                - generic [ref=e1383]: "Provavelmente você não ativou o ambiente virtual. No Prompt de Comando:"
+                - figure [ref=e1386]:
+                  - generic [ref=e1390]: cd %USERPROFILE%\garmin_mcp_server venv\Scripts\activate
+                - generic [ref=e1396]:
+                  - text: Você deve ver
+                  - generic [ref=e1397]: (venv)
+                  - text: no início da linha.
+                - heading "Erro de permissão / \"Acesso negado\"" [level=4] [ref=e1402]
+                - generic [ref=e1408]: "Sempre rode o Prompt de Comando como administrador:"
+                - generic [ref=e1412]:
+                  - generic [ref=e1414]: "1."
+                  - generic [ref=e1417]: Aperta tecla Windows
+                - generic [ref=e1421]:
+                  - generic [ref=e1423]: "2."
+                  - generic [ref=e1426]:
+                    - text: Digita
+                    - generic [ref=e1427]: cmd
+                - generic [ref=e1431]:
+                  - generic [ref=e1433]: "3."
+                  - generic [ref=e1436]: Clica com botão direito → "Executar como administrador"
+                - heading "O arquivo de config foi salvo como .json.txt" [level=4] [ref=e1441]:
+                  - text: O arquivo de config foi salvo como
+                  - generic [ref=e1442]: .json.txt
+                - generic [ref=e1448]:
+                  - text: No Windows, o Bloco de Notas adiciona
+                  - generic [ref=e1449]: .txt
+                  - text: "automaticamente às vezes. Solução:"
+                - generic [ref=e1453]:
+                  - generic [ref=e1455]: "1."
+                  - generic [ref=e1458]: Abre o Explorador de Arquivos
+                - generic [ref=e1462]:
+                  - generic [ref=e1464]: "2."
+                  - generic [ref=e1467]:
+                    - text: Vai em
+                    - generic [ref=e1468]: "%APPDATA%\\Claude"
+                - generic [ref=e1472]:
+                  - generic [ref=e1474]: "3."
+                  - generic [ref=e1477]:
+                    - text: Acha o arquivo errado (vai aparecer como
+                    - generic [ref=e1478]: claude_desktop_config.json.txt
+                    - text: )
+                - generic [ref=e1482]:
+                  - generic [ref=e1484]: "4."
+                  - generic [ref=e1487]:
+                    - text: Renomeia removendo o
+                    - generic [ref=e1488]: .txt
+                    - text: do final
+                - generic [ref=e1494]:
+                  - text: Se não aparecer a extensão
+                  - generic [ref=e1495]: .txt
+                  - text: ", ativa a visualização de extensões:"
+                - generic [ref=e1499]:
+                  - generic [ref=e1501]: •
+                  - generic [ref=e1504]: No Explorador de Arquivos → menu Exibir → marca "Extensões de nome de arquivo"
+                - heading "Tokens expiraram (depois de ~6 meses)" [level=4] [ref=e1509]
+                - generic [ref=e1515]: "Roda de novo (no Prompt de Comando como administrador):"
+                - figure [ref=e1518]:
+                  - generic [ref=e1522]: cd %USERPROFILE%\garmin_mcp_server venv\Scripts\activate garmin-mcp-auth
+                - heading "Outro erro? Tenta isso ANTES de pedir ajuda" [level=4] [ref=e1527]
+                - generic [ref=e1533]: "Dica de ouro: o Claude pode te ajudar a resolver erros de instalação dele mesmo. Funciona muito bem!"
+                - generic [ref=e1539]: "Como fazer:"
+                - generic [ref=e1543]:
+                  - generic [ref=e1545]: "1."
+                  - generic [ref=e1548]: No Claude Desktop, abre uma nova conversa (fora do projeto Treinador, pra não confundir contexto)
+                - generic [ref=e1552]:
+                  - generic [ref=e1554]: "2."
+                  - generic [ref=e1557]: "Cola algo assim:"
+                - blockquote [ref=e1559]:
+                  - generic [ref=e1561]: "\"Tô seguindo um tutorial pra conectar meu Garmin ao Claude Desktop via MCP no Windows. Tô travado no passo X e aparece esse erro: [COLA O ERRO AQUI]. Me ajuda a resolver passo a passo, considerando que sou leigo em tecnologia.\""
+                - generic [ref=e1565]:
+                  - generic [ref=e1567]: "1."
+                  - generic [ref=e1570]: Se o erro for em algum log do Claude Desktop, vai em Configurações → Servidores MCP locais → Ver Logs, copia tudo e cola na conversa.
+                - generic [ref=e1576]: O Claude consegue diagnosticar a maioria dos problemas e te dar o comando exato pra resolver. Foi exatamente assim que esse tutorial foi montado — eu (que fiz o tutorial) usei o próprio Claude pra debugar tudo enquanto instalava.
+                - heading "Ainda não conseguiu?" [level=4] [ref=e1581]
+                - generic [ref=e1587]:
+                  - text: "Sem problema, me chama:"
+                  - link "@jp.runningclub" [disabled] [ref=e1588] [cursor=pointer]:
+                    - /url: https://instagram.com/jp.runningclub
+                  - text: no Direct do Instagram.
+                - generic [ref=e1594]: "Manda:"
+                - generic [ref=e1598]:
+                  - generic [ref=e1600]: •
+                  - generic [ref=e1603]:
+                    - img "📸" [ref=e1604]
+                    - text: Print do erro
+                - generic [ref=e1608]:
+                  - generic [ref=e1610]: •
+                  - generic [ref=e1613]:
+                    - img "📸" [ref=e1614]
+                    - text: Print dos logs (Configurações → Servidores MCP locais → Ver Logs)
+                - generic [ref=e1618]:
+                  - generic [ref=e1620]: •
+                  - generic [ref=e1623]:
+                    - img "📝" [ref=e1624]
+                    - text: Em qual passo travou
+                - generic [ref=e1628]:
+                  - generic [ref=e1630]: •
+                  - generic [ref=e1633]:
+                    - img "🖥️" [ref=e1634]
+                    - text: Versão do Windows (10 ou 11)
+                - generic [ref=e1640]:
+                  - text: Respondo assim que conseguir.
+                  - img "🙏" [ref=e1641]
+                - separator [disabled] [ref=e1644]
+                - heading "🔒 É seguro?" [level=3] [ref=e1649]:
+                  - img "🔒" [ref=e1650]
+                  - text: É seguro?
+                - generic [ref=e1656]: "Sim. Tudo roda localmente no seu PC:"
+                - generic [ref=e1660]:
+                  - generic [ref=e1662]: •
+                  - generic [ref=e1665]: Suas credenciais Garmin nunca saem da sua máquina
+                - generic [ref=e1669]:
+                  - generic [ref=e1671]: •
+                  - generic [ref=e1674]:
+                    - text: Os tokens OAuth ficam salvos em
+                    - generic [ref=e1675]: C:\Users\SEUNOME\.garminconnect
+                    - text: no seu computador
+                - generic [ref=e1679]:
+                  - generic [ref=e1681]: •
+                  - generic [ref=e1684]: Os dados do Garmin são lidos direto do servidor oficial do Garmin Connect
+                - generic [ref=e1688]:
+                  - generic [ref=e1690]: •
+                  - generic [ref=e1693]: Nenhum servidor de terceiros tem acesso aos seus dados
+                - generic [ref=e1699]: "Se algum dia quiser desconectar:"
+                - generic [ref=e1703]:
+                  - generic [ref=e1705]: •
+                  - generic [ref=e1708]:
+                    - text: Deleta a pasta
+                    - generic [ref=e1709]: C:\Users\SEUNOME\garmin_mcp_server
+                - generic [ref=e1713]:
+                  - generic [ref=e1715]: •
+                  - generic [ref=e1718]:
+                    - text: Deleta a pasta
+                    - generic [ref=e1719]: C:\Users\SEUNOME\.garminconnect
+                - generic [ref=e1723]:
+                  - generic [ref=e1725]: •
+                  - generic [ref=e1728]:
+                    - text: Tira o bloco
+                    - generic [ref=e1729]: garmin-local
+                    - text: do config do Claude
+                - separator [disabled] [ref=e1732]
+                - 'heading "🎁 Bônus: Configurando o Projeto \"Treinador\"" [level=3] [ref=e1737]':
+                  - img "🎁" [ref=e1738]
+                  - text: "Bônus: Configurando o Projeto \"Treinador\""
+                - generic [ref=e1744]: "Pra deixar o Claude ainda mais útil, configura instruções personalizadas no seu projeto. Sugestão:"
+                - figure [ref=e1747]:
+                  - generic [ref=e1751]: "Você é meu treinador pessoal de corrida. CONTEXTO SOBRE MIM: - Idade: [SUA IDADE] - Sexo: [M/F] - Peso: [SEU PESO] - Anos correndo: [QUANTOS ANOS] - Melhor tempo recente em [DISTÂNCIA]: [TEMPO] - Objetivo principal: [EX: maratona em outubro] - Frequência semanal de treinos: [EX: 4x na semana] COMO QUERO QUE VOCÊ ME AJUDE: - Use meus dados reais do Garmin (via MCP) sempre que possível - Foque em análises práticas, não teoria genérica - Aponte sinais de overtraining ou subtreino - Sugira ajustes específicos com base no que vê nos meus dados - Seja direto, sem rodeios EVITE: - Conselhos genéricos do tipo \"treine com consistência\" - Recomendações sem considerar meus dados - Linguagem motivacional vazia"
+                - generic [ref=e1757]: Cola isso em Projeto → Instruções.
+                - separator [disabled] [ref=e1760]
+                - heading "📲 Curtiu? Retribui assim 🙏" [level=3] [ref=e1765]:
+                  - img "📲" [ref=e1766]
+                  - text: Curtiu? Retribui assim
+                  - img "🙏" [ref=e1767]
+                - generic [ref=e1773]: Esse tutorial foi feito com cuidado, depois de muito teste e erro, pra te poupar horas de dor de cabeça.
+                - generic [ref=e1779]:
+                  - text: Se ele te ajudou de verdade, faz uma dessas (ou todas
+                  - img "😄" [ref=e1780]
+                  - text: "):"
+                - heading "1. 🎯 Me segue no Instagram" [level=4] [ref=e1785]:
+                  - text: "1."
+                  - img "🎯" [ref=e1786]
+                  - text: Me segue no Instagram
+                - generic [ref=e1792]:
+                  - link "@jp.runningclub" [disabled] [ref=e1793] [cursor=pointer]:
+                    - /url: https://instagram.com/jp.runningclub
+                  - text: ← clica e segue
+                - generic [ref=e1799]: Lá tem mais conteúdo de IA pra corredor, análise de dados, dicas de Garmin e outros tutoriais como esse.
+                - heading "2. 🏃 Marca @jp.runningclub num story" [level=4] [ref=e1804]:
+                  - text: "2."
+                  - img "🏃" [ref=e1805]
+                  - text: Marca @jp.runningclub num story
+                - generic [ref=e1811]: Posta um print do Claude analisando seu treino e me marca. Eu reposto no meu story e dou aquela força pra galera ver que funcionou.
+                - heading "3. 🔁 Compartilha esse link" [level=4] [ref=e1816]:
+                  - text: "3."
+                  - img "🔁" [ref=e1817]
+                  - text: Compartilha esse link
+                - generic [ref=e1823]: Manda pra aquele amigo corredor que vive falando "acho que tô treinando errado" — agora ele tem o treinador pessoal grátis dele.
+                - heading "4. 💬 Comenta no Reels" [level=4] [ref=e1828]:
+                  - text: "4."
+                  - img "💬" [ref=e1829]
+                  - text: Comenta no Reels
+                - generic [ref=e1835]: Deixa o que achou, qual pergunta você fez pro Claude que mais te impressionou, ou se quer que eu cubra algum tópico específico de IA pra corredor.
+                - separator [disabled] [ref=e1838]
+                - generic [ref=e1845]:
+                  - text: Valeu demais por confiar no tutorial. Bora correr!
+                  - img "🏃‍♂️" [ref=e1846]
+                  - img "💨" [ref=e1847]
+                - separator [disabled] [ref=e1850]
+                - heading "🔄 Histórico de atualizações" [level=3] [ref=e1855]:
+                  - img "🔄" [ref=e1856]
+                  - text: Histórico de atualizações
+                - generic [ref=e1860]:
+                  - generic [ref=e1862]: •
+                  - generic [ref=e1865]: "v1.0 — 09/05/2026: Versão inicial do tutorial pra Windows"
+                - separator [disabled] [ref=e1868]
+                - generic [ref=e1875]:
+                  - text: Feito com
+                  - img "❤️" [ref=e1876]
+                  - text: por João Paulo Azevedo | Corredor + entusiasta de tecnologia
+        - region [ref=e1878]
+    - status [ref=e1879]
+    - alert [ref=e1880]
+  - iframe [ref=e1881]:
+    

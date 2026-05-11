@@ -1,0 +1,41 @@
+[     481ms] [INFO] Resource Sentinel initialized... @ https://www.notion.so/Conecte-seu-Garmin-no-Claude-Tutorial-Completo-para-Windows-35b4dcfcc0f580c68547c3ee77453054:0
+[    1012ms] [INFO] 2026-05-10T21:02:11.359Z [info] FeatureFlagTransactionQueue: preferIndexedDB {team: no-team-specified} @ https://www.notion.so/_assets/app-9b8093d08af946a0.js:6
+[    1157ms] [INFO] 2026-05-10T21:02:11.505Z [info] PageLoader: loserAborted {data: Object} @ https://www.notion.so/_assets/app-9b8093d08af946a0.js:6
+[    1363ms] [WARNING] Ignoring inability to install OPFS sqlite3_vfs: Cannot install OPFS: Missing SharedArrayBuffer and/or Atomics. The server must emit the COOP/COEP response headers to enable those. See https://sqlite.org/wasm/doc/trunk/persistence.md#coop-coep @ https://www.notion.so/_assets/wasm-sqlite-worker-7c99cd42a0b703f8.js:0
+[    1495ms] [INFO] 2026-05-10T21:02:11.843Z [info] sqliteSchemaHelpers: attemptFastForwardMigration {data: Object} @ https://www.notion.so/_assets/app-9b8093d08af946a0.js:6
+[    1533ms] [INFO] 2026-05-10T21:02:11.881Z [info] sqliteSchemaHelpers: successfulFastForwardMigration {data: Object} @ https://www.notion.so/_assets/app-9b8093d08af946a0.js:6
+[    1699ms] [INFO] 2026-05-10T21:02:12.046Z [info] appHelpers: shouldShowError {data: Object} @ https://www.notion.so/_assets/app-9b8093d08af946a0.js:6
+[    1704ms] [INFO] 2026-05-10T21:02:12.052Z [info] appHelpers: shouldShowError {data: Object} @ https://www.notion.so/_assets/app-9b8093d08af946a0.js:6
+[    1723ms] [INFO] 2026-05-10T21:02:12.070Z [error] statsig: initialize {error: Object, data: Object} @ https://www.notion.so/_assets/app-9b8093d08af946a0.js:6
+[    1729ms] [LOG] %c
+	nnnnnnnnnnnnnnnnnnnnnnnnnnnnnn
+	nnnn                         nnnn
+	nnnnnnn                          nnnn
+	nnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnn
+	nnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnn
+	nnnnnnnn                           nnn
+	nnnnnnnn    nnnnnnnn     nnnnnnn   nnn
+	nnnnnnnn      nnnnnnn      nnn     nnn
+	nnnnnnnn      nnnnnnnn     nnn     nnn
+	nnnnnnnn      nnnnnnnnnn   nnn     nnn
+	nnnnnnnn      nnn nnnnnnn  nnn     nnn
+	nnnnnnnn      nnn  nnnnnnnnnnn     nnn
+	nnnnnnnn      nnn   nnnnnnnnnn     nnn
+	nnnnnnnn      nnn     nnnnnnnn     nnn
+	nnnnnnnn      nnn      nnnnnnn     nnn
+	nnnnnnnn    nnnnnnnn    nnnnnn     nnn
+	  nnnnnn                           nnn
+		nnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnn		We're hiring!
+		  nnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnn		notion.so/careers
+
+	“yeah, I would probably eat a lemon for one hundred dollars” -- Ivan Zhao (2023-07-14)
+				  font-family: monospace @ https://www.notion.so/_assets/mainApp-ae8fc110134069ba.js:76
+[    1994ms] [INFO] 2026-05-10T21:02:12.341Z [info] syncRecordValuesBatched: recordPointerMissingSpaceId {actor: Object, data: Object} @ https://www.notion.so/_assets/app-9b8093d08af946a0.js:6
+[    2312ms] [INFO] 2026-05-10T21:02:12.659Z [error] handleRestrictedStateForResponse: callApi {data: Object} @ https://www.notion.so/_assets/app-9b8093d08af946a0.js:6
+[    2471ms] [WARNING] Amplitude Logger [Warn]: Event not tracked, no destination plugins on the instance @ https://www.notion.so/_assets/transport-support-49d6a98cbf389fa8.js:0
+[    2473ms] [INFO] 2026-05-10T21:02:12.820Z [error] eventTrailApiHelpers: trackFailure {error: Object} @ https://www.notion.so/_assets/app-9b8093d08af946a0.js:6
+[    4121ms] [INFO] 2026-05-10T21:02:14.468Z [error] handleRestrictedStateForResponse: callApi {data: Object} @ https://www.notion.so/_assets/app-9b8093d08af946a0.js:6
+[    4123ms] [INFO] 2026-05-10T21:02:14.471Z [info] useExpPingPolling: exp_ping_success {data: Object} @ https://www.notion.so/_assets/app-9b8093d08af946a0.js:6
+[    5803ms] [ERROR] Failed to load resource: the server responded with a status of 403 () @ https://cdn.metadata.io/pixel/config/1127.json:0
+[   33681ms] [INFO] 2026-05-10T21:02:44.028Z [info] useExpPingPolling: exp_ping_success {data: Object} @ https://www.notion.so/_assets/76406-6b42df3763f56eeb.js:472
+[   63671ms] [INFO] 2026-05-10T21:03:14.018Z [info] useExpPingPolling: exp_ping_success {data: Object} @ https://www.notion.so/_assets/76406-6b42df3763f56eeb.js:472
