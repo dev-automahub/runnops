@@ -222,6 +222,164 @@ body {
 .delta-warn    { color: #ff9500; }
 .delta-neutral { color: #8e8e93; }
 
+/* === Performance Garmin (Training Status + Race Predictor) === */
+.perf-section {
+  margin-top: 18px;
+  margin-bottom: 16px;
+}
+.perf-section-title {
+  margin-bottom: 10px;
+  color: #5e5ce6;
+}
+.perf-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 10px;
+  margin-bottom: 16px;
+}
+.perf-card {
+  background: white;
+  border-radius: 14px;
+  padding: 14px;
+  border-left: 3px solid #5e5ce6;
+}
+.perf-label {
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  opacity: 0.55;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+.perf-value-big {
+  font-size: 26px;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  margin-top: 4px;
+  line-height: 1.1;
+}
+.perf-sub {
+  font-size: 12px;
+  opacity: 0.6;
+  margin-top: 6px;
+  line-height: 1.3;
+}
+.perf-acwr-green  { color: #30d158; }
+.perf-acwr-amber  { color: #ff9500; }
+.perf-acwr-red    { color: #ff453a; }
+.perf-acwr-gray   { color: #8e8e93; }
+
+/* Race Predictor cards */
+.race-section { margin-top: 8px; }
+.race-section-title {
+  margin-bottom: 10px;
+  color: #ff9500;
+}
+.race-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 10px;
+}
+.race-card {
+  background: white;
+  border-radius: 14px;
+  padding: 14px;
+  border-left: 3px solid #8e8e93;
+}
+.race-card.race-green  { border-left-color: #30d158; background: #f0fff4; }
+.race-card.race-amber  { border-left-color: #ff9500; background: #fff8ed; }
+.race-card.race-red    { border-left-color: #ff453a; background: #fff0ee; }
+.race-card.race-gray   { border-left-color: #8e8e93; }
+.race-label {
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  opacity: 0.6;
+  font-weight: 700;
+}
+.race-time {
+  font-size: 24px;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  margin-top: 4px;
+}
+.race-pace {
+  font-size: 12px;
+  opacity: 0.55;
+  margin-top: 2px;
+}
+.race-target {
+  font-size: 12px;
+  opacity: 0.7;
+  margin-top: 6px;
+  font-weight: 600;
+}
+.race-delta {
+  font-size: 12px;
+  margin-top: 4px;
+  font-weight: 600;
+}
+.race-green .race-delta { color: #1f9d3a; }
+.race-amber .race-delta { color: #c27200; }
+.race-red   .race-delta { color: #c2342a; }
+
+/* === Weekly summary === */
+.weekly-section {
+  margin-top: 18px;
+  margin-bottom: 16px;
+}
+.weekly-section-title {
+  margin-bottom: 10px;
+  color: #30d158;
+}
+.weekly-table-wrapper {
+  background: white;
+  border-radius: 14px;
+  padding: 10px;
+  overflow-x: auto;
+}
+.weekly-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+}
+.weekly-table th {
+  text-align: left;
+  font-size: 11px;
+  letter-spacing: 0.06em;
+  opacity: 0.55;
+  font-weight: 700;
+  padding: 8px 8px 6px;
+  border-bottom: 1px solid #f2f2f7;
+  white-space: nowrap;
+}
+.weekly-table td {
+  padding: 8px 8px;
+  border-bottom: 1px solid #f7f7fa;
+  white-space: nowrap;
+}
+.weekly-table tr:last-child td {
+  border-bottom: none;
+}
+.weekly-table .num {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+.weekly-table tr.weekly-current {
+  background: #f0fff4;
+}
+.weekly-table tr.weekly-current td:first-child {
+  border-left: 3px solid #30d158;
+}
+.weekly-delta {
+  font-size: 11px;
+  opacity: 0.55;
+}
+.weekly-footnote {
+  margin-top: 8px;
+  font-size: 11px;
+  opacity: 0.5;
+  line-height: 1.4;
+}
+
 /* === Sleep breakdown === */
 .sleep-card {
   background: white;

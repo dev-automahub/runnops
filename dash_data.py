@@ -17,8 +17,31 @@ HISTORY_COLS = [
     "training_readiness",
     "vo2_max", "weight_kg",
     "steps", "active_calories",
+    "training_status", "training_status_feedback",
+    "acute_load", "chronic_load_low", "chronic_load_high", "load_ratio",
+    "vo2_max_trend", "fitness_age", "recovery_time_hours",
+    "race_predicted_5k_sec", "race_predicted_10k_sec",
+    "race_predicted_half_sec", "race_predicted_marathon_sec",
     "raw_json",
 ]
+
+
+def load_weekly_summary(db_path, n=8):
+    """Le ultimas N semanas da tabela weekly_summary. Vazio se tabela nao existir."""
+    if not Path(db_path).exists():
+        return []
+    conn = sqlite3.connect(str(db_path))
+    try:
+        conn.row_factory = sqlite3.Row
+        try:
+            cur = conn.execute(
+                "SELECT * FROM weekly_summary ORDER BY week_id DESC LIMIT ?", (n,)
+            )
+            return [dict(r) for r in cur.fetchall()]
+        except sqlite3.OperationalError:
+            return []
+    finally:
+        conn.close()
 
 
 def load_history(db_path, days=30):

@@ -46,15 +46,49 @@ CREATE TABLE IF NOT EXISTS health_daily (
     weight_kg REAL,
     steps INTEGER,
     active_calories INTEGER,
+    training_status TEXT,
+    training_status_feedback TEXT,
+    acute_load REAL,
+    chronic_load_low REAL,
+    chronic_load_high REAL,
+    load_ratio REAL,
+    vo2_max_trend TEXT,
+    fitness_age REAL,
+    recovery_time_hours INTEGER,
+    race_predicted_5k_sec INTEGER,
+    race_predicted_10k_sec INTEGER,
+    race_predicted_half_sec INTEGER,
+    race_predicted_marathon_sec INTEGER,
     fetched_at TEXT,
     raw_json TEXT
 );
 """
 
+NEW_COLUMNS = [
+    ("training_status", "TEXT"),
+    ("training_status_feedback", "TEXT"),
+    ("acute_load", "REAL"),
+    ("chronic_load_low", "REAL"),
+    ("chronic_load_high", "REAL"),
+    ("load_ratio", "REAL"),
+    ("vo2_max_trend", "TEXT"),
+    ("fitness_age", "REAL"),
+    ("recovery_time_hours", "INTEGER"),
+    ("race_predicted_5k_sec", "INTEGER"),
+    ("race_predicted_10k_sec", "INTEGER"),
+    ("race_predicted_half_sec", "INTEGER"),
+    ("race_predicted_marathon_sec", "INTEGER"),
+]
+
 
 def init_db(path):
     conn = sqlite3.connect(str(path))
     conn.execute(SCHEMA)
+    # Migracao idempotente para DBs existentes (criados antes das novas colunas)
+    existing = {row[1] for row in conn.execute("PRAGMA table_info(health_daily)").fetchall()}
+    for col, coltype in NEW_COLUMNS:
+        if col not in existing:
+            conn.execute(f"ALTER TABLE health_daily ADD COLUMN {col} {coltype}")
     conn.commit()
     return conn
 
@@ -141,6 +175,9 @@ def fetch_one_day(g, target_date):
     readiness = call("get_training_readiness", iso)
     vo2 = call("get_max_metrics", iso)
     body = call("get_body_composition", iso)
+    tstatus = call("get_training_status", iso)
+    race = call("get_race_predictions")  # sem args = "ultimo disponivel"
+    fitage = call("get_fitnessage_data", iso)
 
     sleep_dto = safe_get(sleep, "dailySleepDTO") or {}
     sleep_score = safe_get(sleep_dto, "sleepScores", "overall", "value")
@@ -184,6 +221,83 @@ def fetch_one_day(g, target_date):
             except (TypeError, ValueError):
                 weight = None
 
+    # Training Status (Garmin codigos -> nomes legiveis)
+    TRAINING_STATUS_NAMES = {
+        0: "NO_STATUS",
+        1: "DETRAINING",
+        2: "DETRAINING",
+        3: "RECOVERY",
+        4: "MAINTAINING",
+        5: "PRODUCTIVE",
+        6: "PEAKING",
+        7: "OVERREACHING",
+        8: "UNPRODUCTIVE",
+    }
+
+    training_status_text = None
+    training_status_feedback = None  # acwrStatus: OPTIMAL / HIGH / VERY_HIGH / LOW
+    acute_load = None
+    chronic_load_low = None
+    chronic_load_high = None
+    load_ratio = None  # ACWR (acute:chronic ratio) — Garmin computa
+    vo2_max_trend = None  # phrase tipo MAINTAINING_2 com nuance
+
+    if tstatus and isinstance(tstatus, dict):
+        latest = safe_get(tstatus, "mostRecentTrainingStatus", "latestTrainingStatusData") or {}
+        if isinstance(latest, dict) and latest:
+            device_data = next(iter(latest.values()), None)
+            if isinstance(device_data, dict):
+                ts_code = device_data.get("trainingStatus")
+                if ts_code is not None:
+                    training_status_text = TRAINING_STATUS_NAMES.get(ts_code, f"CODE_{ts_code}")
+                vo2_max_trend = device_data.get("trainingStatusFeedbackPhrase")
+
+                acute_dto = device_data.get("acuteTrainingLoadDTO") or {}
+                if isinstance(acute_dto, dict):
+                    acute_load = acute_dto.get("dailyTrainingLoadAcute")
+                    chronic_load_low = acute_dto.get("minTrainingLoadChronic")
+                    chronic_load_high = acute_dto.get("maxTrainingLoadChronic")
+                    load_ratio = acute_dto.get("dailyAcuteChronicWorkloadRatio")
+                    training_status_feedback = acute_dto.get("acwrStatus")
+
+        # VO2max fallback (se get_max_metrics veio vazio)
+        if not vo2_max_value:
+            vo2_max_value = safe_get(tstatus, "mostRecentVO2Max", "generic", "vo2MaxValue")
+
+    # Recovery time vem do training_readiness[0].recoveryTime (em minutos)
+    recovery_time_hours = None
+    rt_entry = None
+    if isinstance(readiness, list) and readiness:
+        rt_entry = readiness[0]
+    elif isinstance(readiness, dict):
+        rt_entry = readiness
+    if isinstance(rt_entry, dict):
+        rt_min = rt_entry.get("recoveryTime")
+        if rt_min is not None:
+            try:
+                recovery_time_hours = round(int(rt_min) / 60, 1)
+            except (TypeError, ValueError):
+                pass
+
+    # Race predictions (lista ordenada por data; ultimo entry = mais recente)
+    race_5k = race_10k = race_half = race_marathon = None
+    if race:
+        entry = None
+        if isinstance(race, list) and race:
+            entry = race[-1]
+        elif isinstance(race, dict):
+            entry = race
+        if isinstance(entry, dict):
+            race_5k = entry.get("time5K") or entry.get("raceTime5K")
+            race_10k = entry.get("time10K") or entry.get("raceTime10K")
+            race_half = entry.get("timeHalfMarathon") or entry.get("raceTimeHalfMarathon")
+            race_marathon = entry.get("timeMarathon") or entry.get("raceTimeMarathon")
+
+    # Fitness age (resposta dict, nao lista)
+    fitness_age_val = None
+    if isinstance(fitage, dict):
+        fitness_age_val = fitage.get("fitnessAge")
+
     return {
         "date": iso,
         "sleep_score": sleep_score,
@@ -206,6 +320,19 @@ def fetch_one_day(g, target_date):
         "weight_kg": weight,
         "steps": steps,
         "active_calories": calories,
+        "training_status": training_status_text,
+        "training_status_feedback": training_status_feedback,
+        "acute_load": acute_load,
+        "chronic_load_low": chronic_load_low,
+        "chronic_load_high": chronic_load_high,
+        "load_ratio": load_ratio,
+        "vo2_max_trend": vo2_max_trend,
+        "fitness_age": fitness_age_val,
+        "recovery_time_hours": recovery_time_hours,
+        "race_predicted_5k_sec": race_5k,
+        "race_predicted_10k_sec": race_10k,
+        "race_predicted_half_sec": race_half,
+        "race_predicted_marathon_sec": race_marathon,
         "fetched_at": datetime.now().isoformat(timespec="seconds"),
         "raw_json": json.dumps(raw, default=str, ensure_ascii=False),
     }
@@ -227,6 +354,19 @@ def fmt(val, unit=""):
     return f"{val}{unit}"
 
 
+def fmt_sec_to_hms(sec):
+    if sec is None:
+        return "-"
+    try:
+        sec = int(sec)
+    except (TypeError, ValueError):
+        return "-"
+    h = sec // 3600
+    m = (sec % 3600) // 60
+    s = sec % 60
+    return f"{h}h{m:02d}m{s:02d}s" if h else f"{m}m{s:02d}s"
+
+
 def print_summary(row):
     d = row["date"]
     print(f"\n--- Saude de {d} ---")
@@ -245,10 +385,22 @@ def print_summary(row):
     stress_pair = f"{row['stress_avg']} / {row['stress_max']}" if row['stress_avg'] is not None else None
     print(f"Stress avg/max:    {fmt(stress_pair)}")
     print(f"Training Readiness: {fmt(row['training_readiness'], '/100')}")
-    print(f"VO2 Max:           {fmt(row['vo2_max'])}")
+    print(f"VO2 Max:           {fmt(row['vo2_max'])}  trend: {fmt(row.get('vo2_max_trend'))}")
     print(f"Peso:              {fmt(row['weight_kg'], ' kg')}")
     print(f"Passos:            {fmt(row['steps'])}")
     print(f"Calorias ativas:   {fmt(row['active_calories'], ' kcal')}")
+    print(f"--- Performance Garmin ---")
+    print(f"Training Status:   {fmt(row.get('training_status'))}  ({fmt(row.get('training_status_feedback'))})")
+    print(f"Acute Load:        {fmt(row.get('acute_load'))}")
+    print(f"Chronic Load:      {fmt(row.get('chronic_load_low'))} - {fmt(row.get('chronic_load_high'))}")
+    print(f"Load Ratio:        {fmt(row.get('load_ratio'))}")
+    print(f"Recovery Time:     {fmt(row.get('recovery_time_hours'), ' h')}")
+    print(f"Fitness Age:       {fmt(row.get('fitness_age'))}")
+    print(f"--- Race Predictor ---")
+    print(f"5K:        {fmt_sec_to_hms(row.get('race_predicted_5k_sec'))}")
+    print(f"10K:       {fmt_sec_to_hms(row.get('race_predicted_10k_sec'))}")
+    print(f"21K:       {fmt_sec_to_hms(row.get('race_predicted_half_sec'))}")
+    print(f"Maratona:  {fmt_sec_to_hms(row.get('race_predicted_marathon_sec'))}")
 
 
 def main():
@@ -321,6 +473,15 @@ def main():
         here = Path(__file__).parent
         # Env com unbuffered output pros subprocesses Python — saida fica sequencial
         sub_env = {**os.environ, "PYTHONUNBUFFERED": "1", "PYTHONIOENCODING": "utf-8"}
+
+        # Agrega TCX em weekly_summary (antes do dash, pra dash ler os dados frescos)
+        agg_script = here / "aggregate_activities.py"
+        if agg_script.exists():
+            try:
+                print(f"\n[+] Agregando atividades (TCX -> weekly_summary)...", flush=True)
+                subprocess.run([sys.executable, "-u", str(agg_script)], check=False, env=sub_env)
+            except Exception as e:
+                print(f"     (aggregate skipped: {e})", flush=True)
 
         dash_script = here / "dash_today.py"
         dash_ok = False

@@ -129,29 +129,15 @@ import os
 import json
 
 def _create_test_db(rows):
-    """Cria DB temporário com schema da health_daily e popula com rows fornecidas."""
+    """Cria DB temporário usando o init_db do health_daily (mantém parity com schema real)."""
+    from pathlib import Path
+    from health_daily import init_db
+
     tmp = tempfile.NamedTemporaryFile(suffix=".db", delete=False)
     tmp.close()
     try:
-        conn = sqlite3.connect(tmp.name)
+        conn = init_db(Path(tmp.name))
         try:
-            conn.execute("""
-                CREATE TABLE health_daily (
-                    date TEXT PRIMARY KEY,
-                    sleep_score INTEGER, sleep_duration_min INTEGER,
-                    sleep_rem_min INTEGER, sleep_deep_min INTEGER,
-                    sleep_light_min INTEGER, sleep_awake_min INTEGER,
-                    hrv_avg_overnight REAL, hrv_status TEXT,
-                    body_battery_max INTEGER, body_battery_min INTEGER,
-                    body_battery_charged INTEGER, body_battery_drained INTEGER,
-                    resting_heart_rate INTEGER,
-                    stress_avg INTEGER, stress_max INTEGER,
-                    training_readiness INTEGER,
-                    vo2_max REAL, weight_kg REAL,
-                    steps INTEGER, active_calories INTEGER,
-                    fetched_at TEXT, raw_json TEXT
-                )
-            """)
             for r in rows:
                 cols = ",".join(r.keys())
                 ph = ",".join(["?"] * len(r))

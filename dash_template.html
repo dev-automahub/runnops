@@ -135,6 +135,90 @@
       {% endif %}
     </div>
 
+    {% if has_perf %}
+    <!-- ============ Performance Garmin (Training Status + Race Predictor) ============ -->
+    <div class="perf-section">
+      <div class="label-tiny perf-section-title">PERFORMANCE GARMIN</div>
+
+      <div class="perf-grid">
+        <div class="perf-card">
+          <div class="perf-label">TRAINING STATUS</div>
+          <div class="perf-value-big">{{ perf.training_status }}</div>
+          <div class="perf-sub">{{ perf.training_status_feedback }}{% if perf.vo2_max_trend %} · {{ perf.vo2_max_trend }}{% endif %}</div>
+        </div>
+
+        <div class="perf-card">
+          <div class="perf-label">ACWR (CARGA AGUDA / CRÔNICA)</div>
+          <div class="perf-value-big perf-acwr-{{ perf.acwr_color }}">{{ perf.acwr_pretty }}</div>
+          <div class="perf-sub">{{ perf.acwr_status }} · ATL {{ perf.acute_load|default("—") }} / CTL {{ perf.chronic_load_range_pretty }}</div>
+        </div>
+
+        <div class="perf-card">
+          <div class="perf-label">VO2 MAX · IDADE FITNESS</div>
+          <div class="perf-value-big">{{ perf.vo2_max|default("—") }}</div>
+          <div class="perf-sub">Idade fitness: {{ perf.fitness_age_pretty }}</div>
+        </div>
+
+        <div class="perf-card">
+          <div class="perf-label">RECOVERY TIME</div>
+          <div class="perf-value-big">{{ perf.recovery_time_pretty }}</div>
+          <div class="perf-sub">até próximo treino-chave</div>
+        </div>
+      </div>
+
+      <div class="race-section">
+        <div class="label-tiny race-section-title">RACE PREDICTOR — METAS DO MACRO</div>
+        <div class="race-grid">
+          {% for r in perf.race_preds %}
+          <div class="race-card race-{{ r.color }}">
+            <div class="race-label">{{ r.label }}</div>
+            <div class="race-time">{{ r.time }}</div>
+            {% if r.pace %}<div class="race-pace">{{ r.pace }}</div>{% endif %}
+            {% if r.target_label %}<div class="race-target">alvo {{ r.target_label }}</div>{% endif %}
+            {% if r.delta_label %}<div class="race-delta">{{ r.delta_label }}</div>{% endif %}
+          </div>
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+    {% endif %}
+
+    {% if has_weekly %}
+    <!-- ============ Resumo semanal (aggregate_activities.py) ============ -->
+    <div class="weekly-section">
+      <div class="label-tiny weekly-section-title">RESUMO SEMANAL — ÚLTIMAS 8 SEMANAS</div>
+      <div class="weekly-table-wrapper">
+      <table class="weekly-table">
+        <thead>
+          <tr>
+            <th>SEMANA</th>
+            <th class="num">#TR</th>
+            <th class="num">KM</th>
+            <th class="num">CAD</th>
+            <th class="num">%Z2</th>
+            <th class="num">PACE</th>
+            <th class="num">+LONGO</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for w in weekly %}
+          <tr class="{% if w.is_current %}weekly-current{% endif %}">
+            <td><strong>{{ w.week_id }}</strong></td>
+            <td class="num">{{ w.sessions_count }}</td>
+            <td class="num">{{ w.total_km }}{% if w.total_km_delta %} <span class="weekly-delta">({{ w.total_km_delta }})</span>{% endif %}</td>
+            <td class="num">{{ w.avg_cad }}{% if w.avg_cad_delta %} <span class="weekly-delta">({{ w.avg_cad_delta }})</span>{% endif %}</td>
+            <td class="num">{{ w.pct_z2 }}{% if w.pct_z2_delta %} <span class="weekly-delta">({{ w.pct_z2_delta }})</span>{% endif %}</td>
+            <td class="num">{{ w.pace_pretty }}</td>
+            <td class="num">{{ w.longest_km }}km</td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+      </div>
+      <div class="weekly-footnote">Cadência média ponderada por duração · %Z2 sobre tempo total com FC válida · Karvonen FCmax 170 / FCrep 51</div>
+    </div>
+    {% endif %}
+
   </div>
 
   <!-- ============ ABA TRENDS ============ -->
