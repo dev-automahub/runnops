@@ -31,7 +31,7 @@ def main():
     p.add_argument("--color", choices=["green", "amber", "orange", "red"], help="Override cor do veredito")
     p.add_argument("--subtitle", help="Override sub-mensagem do veredito")
     p.add_argument("--diario-dir", default=DEFAULT_DIARIO_DIR, help="Path da pasta de diarios MD")
-    p.add_argument("--no-journal", action="store_true", help="Nao escrever/atualizar diario MD")
+    p.add_argument("--no-journal", action="store_true", help="Nao reescrever o AUTO section do diario MD (mas continua lendo diarios pra renderizar no dashboard)")
     args = p.parse_args()
 
     db_path = Path(args.db)
@@ -68,13 +68,13 @@ def main():
             "subtitle": args.subtitle or "",
         }
 
-    diario_dir = None if args.no_journal else args.diario_dir
-
-    # Atualiza/cria diario MD com reportagem matinal auto-gerada (antes do dashboard)
-    if diario_dir:
+    # --no-journal pula APENAS a reescrita do AUTO section. A leitura dos diarios
+    # pra renderizar no dashboard sempre acontece (caso contrario, --no-journal
+    # apagaria as analises da aba HISTORICO no proximo build).
+    if not args.no_journal:
         try:
             j_path, j_action = update_journal(
-                diario_dir,
+                args.diario_dir,
                 today_row,
                 prev_row=prev_row,
                 verdict=enriched[0]["verdict"],
@@ -86,7 +86,7 @@ def main():
         except Exception as e:
             print(f"     (diario skipped: {e})")
 
-    ctx = build_context(today_row, enriched, deltas, override=override, diario_dir=diario_dir)
+    ctx = build_context(today_row, enriched, deltas, override=override, diario_dir=args.diario_dir)
     ctx["is_stale"] = is_stale
 
     html = render_html(ctx)
