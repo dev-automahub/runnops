@@ -1,7 +1,17 @@
 {
-  "generated_at": "2026-05-12T10:14:36",
-  "count": 37,
+  "generated_at": "2026-05-12T10:20:13",
+  "count": 38,
   "activities": [
+    {
+      "id": "22853346305",
+      "name": "Vitória - FFR4 Corrida - 10' Z3",
+      "filename": "Atividades Baixadas/22853346305_Vitória - FFR4 Corrida - 10' Z3.tcx",
+      "date_iso": "2026-05-12T10:10:31.000Z",
+      "date_br": "12/05/2026 10:10",
+      "distance_km": 6.56,
+      "duration_min": 47.0,
+      "sport": "Running"
+    },
     {
       "id": "22832465418",
       "name": "Vitória - LR7 Corrida - 17 Km Z2",
