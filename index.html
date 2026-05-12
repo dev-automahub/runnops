@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Health Dashboard — seg 11 mai</title>
+<title>Health Dashboard — ter 12 mai</title>
 <style>/* === Reset minimo === */
 * { box-sizing: border-box; margin: 0; padding: 0; }
 body {
@@ -972,11 +972,11 @@ body {
   <!-- ============ ABA HOJE (default visivel) ============ -->
   <div class="tab-content" id="tab-hoje">
 
-    <div class="verdict orange verdict-clickable" onclick="goToHistorico()">
-      <div class="verdict-label">VEREDITO · SEG 11 MAI <span class="verdict-hint">→ ver análise</span></div>
-      <div class="verdict-headline">Descanso recomendado</div>
+    <div class="verdict green verdict-clickable" onclick="goToHistorico()">
+      <div class="verdict-label">VEREDITO · TER 12 MAI <span class="verdict-hint">→ ver análise</span></div>
+      <div class="verdict-headline">Pronto pra treinar</div>
       
-      <div class="verdict-sub">Sinais fracos: HRV, Sono.</div>
+      <div class="verdict-sub">Sinais coerentes. Executa o plano.</div>
       
       <div class="verdict-help-link"><span class="pill-help">?</span> <a href="javascript:goToGlossary('veredito')" onclick="event.stopPropagation()">como funciona o veredito</a></div>
     </div>
@@ -986,26 +986,26 @@ body {
       <div class="pill" onclick="goToGlossary('sono')">
         <span class="pill-help">?</span>
         <div class="pill-label">SONO</div>
-        <div class="pill-value">5h36</div>
-        <div class="pill-delta delta-down">-126 min</div>
+        <div class="pill-value">7h27</div>
+        <div class="pill-delta delta-up">+111 min</div>
       </div>
       <div class="pill" onclick="goToGlossary('body-battery')">
         <span class="pill-help">?</span>
         <div class="pill-label">BODY BATTERY MAX</div>
-        <div class="pill-value">67</div>
-        <div class="pill-delta delta-down">-19</div>
+        <div class="pill-value">96</div>
+        <div class="pill-delta delta-up">+29</div>
       </div>
       <div class="pill" onclick="goToGlossary('fcrep')">
         <span class="pill-help">?</span>
         <div class="pill-label">FC REPOUSO</div>
-        <div class="pill-value">49</div>
-        <div class="pill-delta delta-down">+1 bpm</div>
+        <div class="pill-value">46</div>
+        <div class="pill-delta delta-up">-3 bpm</div>
       </div>
       <div class="pill" onclick="goToGlossary('disposicao')">
         <span class="pill-help">?</span>
         <div class="pill-label">DISPOSIÇÃO</div>
-        <div class="pill-value">51</div>
-        <div class="pill-delta delta-down">-28</div>
+        <div class="pill-value">65</div>
+        <div class="pill-delta delta-up">+14</div>
       </div>
     </div>
 
@@ -1014,16 +1014,16 @@ body {
     <div class="sleep-card">
       <div class="label-tiny">SONO POR FASE</div>
       <div class="sleep-bar">
-        <div class="sleep-rem" style="width:11.3%"></div>
-        <div class="sleep-deep" style="width:8.0%"></div>
-        <div class="sleep-light" style="width:80.7%"></div>
-        <div class="sleep-awake" style="width:3.9%"></div>
+        <div class="sleep-rem" style="width:12.1%"></div>
+        <div class="sleep-deep" style="width:16.8%"></div>
+        <div class="sleep-light" style="width:71.1%"></div>
+        <div class="sleep-awake" style="width:0.4%"></div>
       </div>
       <div class="sleep-legend">
-        <span class="lg-rem">REM 38 min</span>
-        <span class="lg-deep">Deep 27 min</span>
-        <span class="lg-light">Light 4h31</span>
-        <span class="lg-awake">Awake 13 min</span>
+        <span class="lg-rem">REM 54 min</span>
+        <span class="lg-deep">Deep 1h15</span>
+        <span class="lg-light">Light 5h18</span>
+        <span class="lg-awake">Awake 2 min</span>
       </div>
     </div>
     
@@ -1033,12 +1033,12 @@ body {
       <div>
         <div class="label-tiny">HRV — ÚLTIMA NOITE</div>
         <div class="hero-num-block">
-          <span class="hero-num">26.0</span>
+          <span class="hero-num">37.0</span>
           <span class="hero-unit">ms</span>
         </div>
         <div class="hero-meta">
           
-            <div>↓ 5 ms vs ontem</div>
+            <div>↑ 11 ms vs ontem</div>
           
           <div>alvo ≥32</div>
         </div>
@@ -1046,43 +1046,49 @@ body {
       
       <svg viewBox="0 0 280 140" style="width:280px;height:140px" class="spark-hrv">
         
-        <line class="spark-target" x1="0" y1="50.5" x2="280" y2="50.5"/>
+        <line class="spark-target" x1="0" y1="67.3" x2="280" y2="67.3"/>
         
-        <path class="spark-line" d="M30.0,81.2 L74.0,30.0 L118.0,101.8 L162.0,60.8 L206.0,60.8 L250.0,112.0"/>
+        <path class="spark-line" d="M30.0,89.6 L66.7,52.4 L103.3,104.5 L140.0,74.7 L176.7,74.7 L213.3,112.0 L250.0,30.0"/>
         
           
-            <circle class="spark-dot" cx="30.0" cy="81.2" r="5"/>
-            <text class="spark-value" x="30.0" y="69.2">29</text>
+            <circle class="spark-dot" cx="30.0" cy="89.6" r="5"/>
+            <text class="spark-value" x="30.0" y="77.6">29</text>
             <text class="spark-date" x="30.0" y="135">06</text>
           
         
           
-            <circle class="spark-dot" cx="74.0" cy="30.0" r="5"/>
-            <text class="spark-value" x="74.0" y="18.0">34</text>
-            <text class="spark-date" x="74.0" y="135">07</text>
+            <circle class="spark-dot" cx="66.7" cy="52.4" r="5"/>
+            <text class="spark-value" x="66.7" y="40.4">34</text>
+            <text class="spark-date" x="66.7" y="135">07</text>
           
         
           
-            <circle class="spark-dot" cx="118.0" cy="101.8" r="5"/>
-            <text class="spark-value" x="118.0" y="89.8">27</text>
-            <text class="spark-date" x="118.0" y="135">08</text>
+            <circle class="spark-dot" cx="103.3" cy="104.5" r="5"/>
+            <text class="spark-value" x="103.3" y="92.5">27</text>
+            <text class="spark-date" x="103.3" y="135">08</text>
           
         
           
-            <circle class="spark-dot" cx="162.0" cy="60.8" r="5"/>
-            <text class="spark-value" x="162.0" y="48.8">31</text>
-            <text class="spark-date" x="162.0" y="135">09</text>
+            <circle class="spark-dot" cx="140.0" cy="74.7" r="5"/>
+            <text class="spark-value" x="140.0" y="62.7">31</text>
+            <text class="spark-date" x="140.0" y="135">09</text>
           
         
           
-            <circle class="spark-dot" cx="206.0" cy="60.8" r="5"/>
-            <text class="spark-value" x="206.0" y="48.8">31</text>
-            <text class="spark-date" x="206.0" y="135">10</text>
+            <circle class="spark-dot" cx="176.7" cy="74.7" r="5"/>
+            <text class="spark-value" x="176.7" y="62.7">31</text>
+            <text class="spark-date" x="176.7" y="135">10</text>
           
         
           
-            <circle class="spark-dot spark-dot-current" cx="250.0" cy="112.0" r="7"/>
-            <text class="spark-value-current" x="250.0" y="100.0">26</text>
+            <circle class="spark-dot" cx="213.3" cy="112.0" r="5"/>
+            <text class="spark-value" x="213.3" y="100.0">26</text>
+            <text class="spark-date" x="213.3" y="135">11</text>
+          
+        
+          
+            <circle class="spark-dot spark-dot-current" cx="250.0" cy="30.0" r="7"/>
+            <text class="spark-value-current" x="250.0" y="18.0">37</text>
             <text class="spark-date-current" x="250.0" y="135">hoje</text>
           
         
@@ -1104,8 +1110,8 @@ body {
 
         <div class="perf-card">
           <div class="perf-label">ACWR (CARGA AGUDA / CRÔNICA)</div>
-          <div class="perf-value-big perf-acwr-green">0.90</div>
-          <div class="perf-sub">Optimal · ATL 360.0 / CTL 299–561</div>
+          <div class="perf-value-big perf-acwr-green">1.00</div>
+          <div class="perf-sub">Optimal · ATL 397.0 / CTL 304–570</div>
         </div>
 
         <div class="perf-card">
@@ -1116,7 +1122,7 @@ body {
 
         <div class="perf-card">
           <div class="perf-label">RECOVERY TIME</div>
-          <div class="perf-value-big">16.2h</div>
+          <div class="perf-value-big">21.3h</div>
           <div class="perf-sub">até próximo treino-chave</div>
         </div>
       </div>
@@ -1127,7 +1133,7 @@ body {
           
           <div class="race-card race-gray">
             <div class="race-label">5K</div>
-            <div class="race-time">27:41</div>
+            <div class="race-time">27:40</div>
             <div class="race-pace">5:32/km</div>
             
             
@@ -1143,7 +1149,7 @@ body {
           
           <div class="race-card race-green">
             <div class="race-label">21K</div>
-            <div class="race-time">2h14:38</div>
+            <div class="race-time">2h14:43</div>
             <div class="race-pace">6:23/km</div>
             <div class="race-target">alvo 2h13:00–2h17:00</div>
             <div class="race-delta">dentro da meta</div>
@@ -1151,10 +1157,10 @@ body {
           
           <div class="race-card race-red">
             <div class="race-label">MARATONA</div>
-            <div class="race-time">5h06:27</div>
+            <div class="race-time">5h06:30</div>
             <div class="race-pace">7:16/km</div>
             <div class="race-target">alvo 4h00:00</div>
-            <div class="race-delta">+1h06:27 vs meta 4h00:00</div>
+            <div class="race-delta">+1h06:30 vs meta 4h00:00</div>
           </div>
           
         </div>
@@ -1283,48 +1289,54 @@ body {
     <div class="trend-card">
       <div class="trend-card-head">
         <div class="label-tiny" style="color:#ff3b30">HRV OVERNIGHT</div>
-        <div class="trend-meta">média 30 · alvo ≥32 · atual 26</div>
+        <div class="trend-meta">média 31 · alvo ≥32 · atual 37</div>
       </div>
       
       <svg viewBox="0 0 600 220" style="width:100%;height:220px" class="spark-hrv">
         
-        <line class="spark-target" x1="0" y1="85.5" x2="600" y2="85.5"/>
+        <line class="spark-target" x1="0" y1="108.0" x2="600" y2="108.0"/>
         
-        <path class="spark-line" d="M44.0,126.8 L146.4,58.0 L248.8,154.2 L351.2,99.2 L453.6,99.2 L556.0,168.0"/>
+        <path class="spark-line" d="M44.0,138.0 L129.3,88.0 L214.7,158.0 L300.0,118.0 L385.3,118.0 L470.7,168.0 L556.0,58.0"/>
         
           
-            <circle class="spark-dot" cx="44.0" cy="126.8" r="6"/>
-            <text class="spark-value" x="44.0" y="104.8">29</text>
+            <circle class="spark-dot" cx="44.0" cy="138.0" r="6"/>
+            <text class="spark-value" x="44.0" y="116.0">29</text>
             <text class="spark-date" x="44.0" y="208">qua 06</text>
           
         
           
-            <circle class="spark-dot" cx="146.4" cy="58.0" r="6"/>
-            <text class="spark-value" x="146.4" y="36.0">34</text>
-            <text class="spark-date" x="146.4" y="208">qui 07</text>
+            <circle class="spark-dot" cx="129.3" cy="88.0" r="6"/>
+            <text class="spark-value" x="129.3" y="66.0">34</text>
+            <text class="spark-date" x="129.3" y="208">qui 07</text>
           
         
           
-            <circle class="spark-dot" cx="248.8" cy="154.2" r="6"/>
-            <text class="spark-value" x="248.8" y="132.2">27</text>
-            <text class="spark-date" x="248.8" y="208">sex 08</text>
+            <circle class="spark-dot" cx="214.7" cy="158.0" r="6"/>
+            <text class="spark-value" x="214.7" y="136.0">27</text>
+            <text class="spark-date" x="214.7" y="208">sex 08</text>
           
         
           
-            <circle class="spark-dot" cx="351.2" cy="99.2" r="6"/>
-            <text class="spark-value" x="351.2" y="77.2">31</text>
-            <text class="spark-date" x="351.2" y="208">sáb 09</text>
+            <circle class="spark-dot" cx="300.0" cy="118.0" r="6"/>
+            <text class="spark-value" x="300.0" y="96.0">31</text>
+            <text class="spark-date" x="300.0" y="208">sáb 09</text>
           
         
           
-            <circle class="spark-dot" cx="453.6" cy="99.2" r="6"/>
-            <text class="spark-value" x="453.6" y="77.2">31</text>
-            <text class="spark-date" x="453.6" y="208">dom 10</text>
+            <circle class="spark-dot" cx="385.3" cy="118.0" r="6"/>
+            <text class="spark-value" x="385.3" y="96.0">31</text>
+            <text class="spark-date" x="385.3" y="208">dom 10</text>
           
         
           
-            <circle class="spark-dot spark-dot-current" cx="556.0" cy="168.0" r="9"/>
-            <text class="spark-value-current" x="556.0" y="146.0">26</text>
+            <circle class="spark-dot" cx="470.7" cy="168.0" r="6"/>
+            <text class="spark-value" x="470.7" y="146.0">26</text>
+            <text class="spark-date" x="470.7" y="208">seg 11</text>
+          
+        
+          
+            <circle class="spark-dot spark-dot-current" cx="556.0" cy="58.0" r="9"/>
+            <text class="spark-value-current" x="556.0" y="36.0">37</text>
             <text class="spark-date-current" x="556.0" y="208">hoje</text>
           
         
@@ -1335,14 +1347,14 @@ body {
     <div class="trend-card">
       <div class="trend-card-head">
         <div class="label-tiny" style="color:#0a84ff">SONO</div>
-        <div class="trend-meta">média 7h16 · alvo ≥8h · atual 5h36</div>
+        <div class="trend-meta">média 7h18 · alvo ≥8h · atual 7h27</div>
       </div>
       
       <svg viewBox="0 0 600 220" style="width:100%;height:220px" class="spark-sleep">
         
         <line class="spark-target" x1="0" y1="89.2" x2="600" y2="89.2"/>
         
-        <path class="spark-line" d="M44.0,121.5 L146.4,124.8 L248.8,107.3 L351.2,58.0 L453.6,99.0 L556.0,168.0"/>
+        <path class="spark-line" d="M44.0,121.5 L129.3,124.8 L214.7,107.3 L300.0,58.0 L385.3,99.0 L470.7,168.0 L556.0,107.3"/>
         
           
             <circle class="spark-dot" cx="44.0" cy="121.5" r="6"/>
@@ -1351,32 +1363,38 @@ body {
           
         
           
-            <circle class="spark-dot" cx="146.4" cy="124.8" r="6"/>
-            <text class="spark-value" x="146.4" y="102.8">6h55</text>
-            <text class="spark-date" x="146.4" y="208">qui 07</text>
+            <circle class="spark-dot" cx="129.3" cy="124.8" r="6"/>
+            <text class="spark-value" x="129.3" y="102.8">6h55</text>
+            <text class="spark-date" x="129.3" y="208">qui 07</text>
           
         
           
-            <circle class="spark-dot" cx="248.8" cy="107.3" r="6"/>
-            <text class="spark-value" x="248.8" y="85.3">7h27</text>
-            <text class="spark-date" x="248.8" y="208">sex 08</text>
+            <circle class="spark-dot" cx="214.7" cy="107.3" r="6"/>
+            <text class="spark-value" x="214.7" y="85.3">7h27</text>
+            <text class="spark-date" x="214.7" y="208">sex 08</text>
           
         
           
-            <circle class="spark-dot" cx="351.2" cy="58.0" r="6"/>
-            <text class="spark-value" x="351.2" y="36.0">8h57</text>
-            <text class="spark-date" x="351.2" y="208">sáb 09</text>
+            <circle class="spark-dot" cx="300.0" cy="58.0" r="6"/>
+            <text class="spark-value" x="300.0" y="36.0">8h57</text>
+            <text class="spark-date" x="300.0" y="208">sáb 09</text>
           
         
           
-            <circle class="spark-dot" cx="453.6" cy="99.0" r="6"/>
-            <text class="spark-value" x="453.6" y="77.0">7h42</text>
-            <text class="spark-date" x="453.6" y="208">dom 10</text>
+            <circle class="spark-dot" cx="385.3" cy="99.0" r="6"/>
+            <text class="spark-value" x="385.3" y="77.0">7h42</text>
+            <text class="spark-date" x="385.3" y="208">dom 10</text>
           
         
           
-            <circle class="spark-dot spark-dot-current" cx="556.0" cy="168.0" r="9"/>
-            <text class="spark-value-current" x="556.0" y="146.0">5h36</text>
+            <circle class="spark-dot" cx="470.7" cy="168.0" r="6"/>
+            <text class="spark-value" x="470.7" y="146.0">5h36</text>
+            <text class="spark-date" x="470.7" y="208">seg 11</text>
+          
+        
+          
+            <circle class="spark-dot spark-dot-current" cx="556.0" cy="107.3" r="9"/>
+            <text class="spark-value-current" x="556.0" y="85.3">7h27</text>
             <text class="spark-date-current" x="556.0" y="208">hoje</text>
           
         
@@ -1387,54 +1405,54 @@ body {
     <div class="trend-card">
       <div class="trend-card-head">
         <div class="label-tiny" style="color:#bf5af2">BODY BATTERY MAX</div>
-        <div class="trend-meta">média 65 · alvo ≥70 · atual 67</div>
+        <div class="trend-meta">média 75 · alvo ≥70 · atual 96</div>
       </div>
       
       <svg viewBox="0 0 600 220" style="width:100%;height:220px" class="spark-bb">
         
-        <line class="spark-target" x1="0" y1="88.9" x2="600" y2="88.9"/>
+        <line class="spark-target" x1="0" y1="129.5" x2="600" y2="129.5"/>
         
-        <path class="spark-line" d="M44.0,168.0 L129.3,90.8 L214.7,83.1 L300.0,115.9 L385.3,79.2 L470.7,58.0 L556.0,94.7"/>
-        
-          
-            <circle class="spark-dot" cx="44.0" cy="168.0" r="6"/>
-            <text class="spark-value" x="44.0" y="146.0">29</text>
-            <text class="spark-date" x="44.0" y="208">ter 05</text>
-          
+        <path class="spark-line" d="M44.0,132.2 L129.3,121.2 L214.7,168.0 L300.0,115.8 L385.3,85.5 L470.7,137.8 L556.0,58.0"/>
         
           
-            <circle class="spark-dot" cx="129.3" cy="90.8" r="6"/>
-            <text class="spark-value" x="129.3" y="68.8">69</text>
-            <text class="spark-date" x="129.3" y="208">qua 06</text>
+            <circle class="spark-dot" cx="44.0" cy="132.2" r="6"/>
+            <text class="spark-value" x="44.0" y="110.19999999999999">69</text>
+            <text class="spark-date" x="44.0" y="208">qua 06</text>
           
         
           
-            <circle class="spark-dot" cx="214.7" cy="83.1" r="6"/>
-            <text class="spark-value" x="214.7" y="61.099999999999994">73</text>
-            <text class="spark-date" x="214.7" y="208">qui 07</text>
+            <circle class="spark-dot" cx="129.3" cy="121.2" r="6"/>
+            <text class="spark-value" x="129.3" y="99.2">73</text>
+            <text class="spark-date" x="129.3" y="208">qui 07</text>
           
         
           
-            <circle class="spark-dot" cx="300.0" cy="115.9" r="6"/>
-            <text class="spark-value" x="300.0" y="93.9">56</text>
-            <text class="spark-date" x="300.0" y="208">sex 08</text>
+            <circle class="spark-dot" cx="214.7" cy="168.0" r="6"/>
+            <text class="spark-value" x="214.7" y="146.0">56</text>
+            <text class="spark-date" x="214.7" y="208">sex 08</text>
           
         
           
-            <circle class="spark-dot" cx="385.3" cy="79.2" r="6"/>
-            <text class="spark-value" x="385.3" y="57.2">75</text>
-            <text class="spark-date" x="385.3" y="208">sáb 09</text>
+            <circle class="spark-dot" cx="300.0" cy="115.8" r="6"/>
+            <text class="spark-value" x="300.0" y="93.8">75</text>
+            <text class="spark-date" x="300.0" y="208">sáb 09</text>
           
         
           
-            <circle class="spark-dot" cx="470.7" cy="58.0" r="6"/>
-            <text class="spark-value" x="470.7" y="36.0">86</text>
-            <text class="spark-date" x="470.7" y="208">dom 10</text>
+            <circle class="spark-dot" cx="385.3" cy="85.5" r="6"/>
+            <text class="spark-value" x="385.3" y="63.5">86</text>
+            <text class="spark-date" x="385.3" y="208">dom 10</text>
           
         
           
-            <circle class="spark-dot spark-dot-current" cx="556.0" cy="94.7" r="9"/>
-            <text class="spark-value-current" x="556.0" y="72.7">67</text>
+            <circle class="spark-dot" cx="470.7" cy="137.8" r="6"/>
+            <text class="spark-value" x="470.7" y="115.80000000000001">67</text>
+            <text class="spark-date" x="470.7" y="208">seg 11</text>
+          
+        
+          
+            <circle class="spark-dot spark-dot-current" cx="556.0" cy="58.0" r="9"/>
+            <text class="spark-value-current" x="556.0" y="36.0">96</text>
             <text class="spark-date-current" x="556.0" y="208">hoje</text>
           
         
@@ -1445,54 +1463,54 @@ body {
     <div class="trend-card">
       <div class="trend-card-head">
         <div class="label-tiny" style="color:#30d158">FC REPOUSO</div>
-        <div class="trend-meta">média 51 · alvo ~51 · atual 49</div>
+        <div class="trend-meta">média 50 · alvo ~51 · atual 46</div>
       </div>
       
       <svg viewBox="0 0 600 220" style="width:100%;height:220px" class="spark-fcrep">
         
-        <line class="spark-target" x1="0" y1="126.8" x2="600" y2="126.8"/>
+        <line class="spark-target" x1="0" y1="89.4" x2="600" y2="89.4"/>
         
-        <path class="spark-line" d="M44.0,58.0 L129.3,126.8 L214.7,126.8 L300.0,99.2 L385.3,126.8 L470.7,168.0 L556.0,154.2"/>
-        
-          
-            <circle class="spark-dot" cx="44.0" cy="58.0" r="6"/>
-            <text class="spark-value" x="44.0" y="36.0">56</text>
-            <text class="spark-date" x="44.0" y="208">ter 05</text>
-          
+        <path class="spark-line" d="M44.0,89.4 L129.3,89.4 L214.7,58.0 L300.0,89.4 L385.3,136.6 L470.7,120.9 L556.0,168.0"/>
         
           
-            <circle class="spark-dot" cx="129.3" cy="126.8" r="6"/>
-            <text class="spark-value" x="129.3" y="104.8">51</text>
-            <text class="spark-date" x="129.3" y="208">qua 06</text>
+            <circle class="spark-dot" cx="44.0" cy="89.4" r="6"/>
+            <text class="spark-value" x="44.0" y="67.4">51</text>
+            <text class="spark-date" x="44.0" y="208">qua 06</text>
           
         
           
-            <circle class="spark-dot" cx="214.7" cy="126.8" r="6"/>
-            <text class="spark-value" x="214.7" y="104.8">51</text>
-            <text class="spark-date" x="214.7" y="208">qui 07</text>
+            <circle class="spark-dot" cx="129.3" cy="89.4" r="6"/>
+            <text class="spark-value" x="129.3" y="67.4">51</text>
+            <text class="spark-date" x="129.3" y="208">qui 07</text>
           
         
           
-            <circle class="spark-dot" cx="300.0" cy="99.2" r="6"/>
-            <text class="spark-value" x="300.0" y="77.2">53</text>
-            <text class="spark-date" x="300.0" y="208">sex 08</text>
+            <circle class="spark-dot" cx="214.7" cy="58.0" r="6"/>
+            <text class="spark-value" x="214.7" y="36.0">53</text>
+            <text class="spark-date" x="214.7" y="208">sex 08</text>
           
         
           
-            <circle class="spark-dot" cx="385.3" cy="126.8" r="6"/>
-            <text class="spark-value" x="385.3" y="104.8">51</text>
-            <text class="spark-date" x="385.3" y="208">sáb 09</text>
+            <circle class="spark-dot" cx="300.0" cy="89.4" r="6"/>
+            <text class="spark-value" x="300.0" y="67.4">51</text>
+            <text class="spark-date" x="300.0" y="208">sáb 09</text>
           
         
           
-            <circle class="spark-dot" cx="470.7" cy="168.0" r="6"/>
-            <text class="spark-value" x="470.7" y="146.0">48</text>
-            <text class="spark-date" x="470.7" y="208">dom 10</text>
+            <circle class="spark-dot" cx="385.3" cy="136.6" r="6"/>
+            <text class="spark-value" x="385.3" y="114.6">48</text>
+            <text class="spark-date" x="385.3" y="208">dom 10</text>
           
         
           
-            <circle class="spark-dot spark-dot-current" cx="556.0" cy="154.2" r="9"/>
-            <text class="spark-value-current" x="556.0" y="132.2">49</text>
+            <circle class="spark-dot" cx="470.7" cy="120.9" r="6"/>
+            <text class="spark-value" x="470.7" y="98.9">49</text>
+            <text class="spark-date" x="470.7" y="208">seg 11</text>
+          
+        
+          
+            <circle class="spark-dot spark-dot-current" cx="556.0" cy="168.0" r="9"/>
+            <text class="spark-value-current" x="556.0" y="146.0">46</text>
             <text class="spark-date-current" x="556.0" y="208">hoje</text>
           
         
@@ -1503,54 +1521,54 @@ body {
     <div class="trend-card">
       <div class="trend-card-head">
         <div class="label-tiny" style="color:#ff9500">DISPOSIÇÃO</div>
-        <div class="trend-meta">média 58 · alvo ≥65 · atual 51</div>
+        <div class="trend-meta">média 63 · alvo ≥65 · atual 65</div>
       </div>
       
       <svg viewBox="0 0 600 220" style="width:100%;height:220px" class="spark-ready">
         
-        <line class="spark-target" x1="0" y1="92.2" x2="600" y2="92.2"/>
+        <line class="spark-target" x1="0" y1="97.5" x2="600" y2="97.5"/>
         
-        <path class="spark-line" d="M44.0,168.0 L129.3,153.3 L214.7,114.2 L300.0,75.1 L385.3,65.3 L470.7,58.0 L556.0,126.4"/>
+        <path class="spark-line" d="M44.0,168.0 L129.3,122.9 L214.7,77.7 L300.0,66.5 L385.3,58.0 L470.7,137.0 L556.0,97.5"/>
         
           
             <circle class="spark-dot" cx="44.0" cy="168.0" r="6"/>
-            <text class="spark-value" x="44.0" y="146.0">34</text>
-            <text class="spark-date" x="44.0" y="208">ter 05</text>
+            <text class="spark-value" x="44.0" y="146.0">40</text>
+            <text class="spark-date" x="44.0" y="208">qua 06</text>
           
         
           
-            <circle class="spark-dot" cx="129.3" cy="153.3" r="6"/>
-            <text class="spark-value" x="129.3" y="131.3">40</text>
-            <text class="spark-date" x="129.3" y="208">qua 06</text>
+            <circle class="spark-dot" cx="129.3" cy="122.9" r="6"/>
+            <text class="spark-value" x="129.3" y="100.9">56</text>
+            <text class="spark-date" x="129.3" y="208">qui 07</text>
           
         
           
-            <circle class="spark-dot" cx="214.7" cy="114.2" r="6"/>
-            <text class="spark-value" x="214.7" y="92.2">56</text>
-            <text class="spark-date" x="214.7" y="208">qui 07</text>
+            <circle class="spark-dot" cx="214.7" cy="77.7" r="6"/>
+            <text class="spark-value" x="214.7" y="55.7">72</text>
+            <text class="spark-date" x="214.7" y="208">sex 08</text>
           
         
           
-            <circle class="spark-dot" cx="300.0" cy="75.1" r="6"/>
-            <text class="spark-value" x="300.0" y="53.099999999999994">72</text>
-            <text class="spark-date" x="300.0" y="208">sex 08</text>
+            <circle class="spark-dot" cx="300.0" cy="66.5" r="6"/>
+            <text class="spark-value" x="300.0" y="44.5">76</text>
+            <text class="spark-date" x="300.0" y="208">sáb 09</text>
           
         
           
-            <circle class="spark-dot" cx="385.3" cy="65.3" r="6"/>
-            <text class="spark-value" x="385.3" y="43.3">76</text>
-            <text class="spark-date" x="385.3" y="208">sáb 09</text>
+            <circle class="spark-dot" cx="385.3" cy="58.0" r="6"/>
+            <text class="spark-value" x="385.3" y="36.0">79</text>
+            <text class="spark-date" x="385.3" y="208">dom 10</text>
           
         
           
-            <circle class="spark-dot" cx="470.7" cy="58.0" r="6"/>
-            <text class="spark-value" x="470.7" y="36.0">79</text>
-            <text class="spark-date" x="470.7" y="208">dom 10</text>
+            <circle class="spark-dot" cx="470.7" cy="137.0" r="6"/>
+            <text class="spark-value" x="470.7" y="115.0">51</text>
+            <text class="spark-date" x="470.7" y="208">seg 11</text>
           
         
           
-            <circle class="spark-dot spark-dot-current" cx="556.0" cy="126.4" r="9"/>
-            <text class="spark-value-current" x="556.0" y="104.4">51</text>
+            <circle class="spark-dot spark-dot-current" cx="556.0" cy="97.5" r="9"/>
+            <text class="spark-value-current" x="556.0" y="75.5">65</text>
             <text class="spark-date-current" x="556.0" y="208">hoje</text>
           
         
@@ -1562,7 +1580,7 @@ body {
     <div class="trend-card">
       <div class="label-tiny">CORRELAÇÕES</div>
       
-      <p style="opacity:0.55;font-size:13px;margin-top:6px">Coletando dados (7/14)</p>
+      <p style="opacity:0.55;font-size:13px;margin-top:6px">Coletando dados (8/14)</p>
       
     </div>
 
@@ -1585,6 +1603,16 @@ body {
           </tr>
         </thead>
         <tbody>
+          
+          <tr data-date="2026-05-12" onclick="jumpToJournal(this.dataset.date)">
+            <td>12/05/2026</td>
+            <td class="cell-green">37</td>
+            <td>7h27</td>
+            <td class="cell-green">96</td>
+            <td class="cell-green">46</td>
+            <td>65</td>
+            <td class="cell-green">Pronto pra treinar</td>
+          </tr>
           
           <tr data-date="2026-05-11" onclick="jumpToJournal(this.dataset.date)">
             <td>11/05/2026</td>
@@ -1671,15 +1699,333 @@ body {
       
         
         <!-- Hoje (ou ultimo dia) — expandido por padrao -->
-        <article class="journal-card journal-today" id="journal-2026-05-11">
+        <article class="journal-card journal-today" id="journal-2026-05-12">
           <div class="journal-header">
-            <div class="journal-date">11/05/2026</div>
-            <div class="journal-day">seg 11 mai</div>
+            <div class="journal-date">12/05/2026</div>
+            <div class="journal-day">ter 12 mai</div>
           </div>
           
-          <div class="journal-empty">Análise ainda não escrita pra este dia.</div>
+          <div class="journal-content"><h1>Diário 2026-05-12 (ter)</h1>
+<!-- DASH_AUTO_START -->
+<h2>Reportagem matinal</h2>
+<p><em>Auto-gerado por <code>dash_today.py</code> em 10:14 de ter 12 mai.</em></p>
+<div class="md-table-wrap"><table>
+<thead>
+<tr>
+<th>Métrica</th>
+<th>Valor</th>
+<th>Δ vs ontem</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>HRV overnight</td>
+<td><strong>37 ms</strong></td>
+<td>+11 ⬆</td>
+</tr>
+<tr>
+<td>BB max / min</td>
+<td><strong>96 / 57</strong></td>
+<td>+29 ⬆</td>
+</tr>
+<tr>
+<td>FCrep</td>
+<td><strong>46 bpm</strong></td>
+<td>−3 ⬇</td>
+</tr>
+<tr>
+<td>Sleep Score</td>
+<td><strong>85</strong></td>
+<td>—</td>
+</tr>
+<tr>
+<td>Sono total</td>
+<td><strong>7h27</strong></td>
+<td>+111 ⬆</td>
+</tr>
+<tr>
+<td>REM</td>
+<td><strong>54 min</strong></td>
+<td>—</td>
+</tr>
+<tr>
+<td>Deep</td>
+<td><strong>1h15</strong></td>
+<td>—</td>
+</tr>
+<tr>
+<td>Light</td>
+<td><strong>5h18</strong></td>
+<td>—</td>
+</tr>
+<tr>
+<td>Awake</td>
+<td><strong>2 min</strong></td>
+<td>—</td>
+</tr>
+<tr>
+<td>Stress avg / max</td>
+<td><strong>14 / 56</strong></td>
+<td>—</td>
+</tr>
+<tr>
+<td>Disposição (Garmin Readiness)</td>
+<td><strong>65</strong></td>
+<td>+14 ⬆</td>
+</tr>
+</tbody>
+</table></div>
+<h3>Veredito automático</h3>
+<p>🟢 <strong>Pronto pra treinar</strong> (score 0)</p>
+<p><em>Sinais coerentes. Executa o plano.</em></p>
+<!-- DASH_AUTO_END -->
+
+<h2>O que aconteceu</h2>
+<p><em>(análise pendente — adicionar contexto: como dormiu, sintomas, eventos do dia anterior, sensações ao acordar)</em></p>
+<h2>Decisão / Veredito</h2>
+<p><em>(análise pendente — alinhar com plano da semana, gates de HRV/BB, decisão de treino)</em></p>
+<h2>Pendências</h2>
+<ul>
+<li>[ ] <em>(adicionar tarefas/promessas do dia)</em></li>
+</ul></div>
           
         </article>
+        
+      
+        
+        <!-- Dias anteriores — colapsados por padrao via <details> (HTML nativo, sem JS) -->
+        <details class="journal-card journal-past" id="journal-2026-05-11">
+          <summary class="journal-header">
+            <div class="journal-date">11/05/2026</div>
+            <div class="journal-day">seg 11 mai</div>
+          </summary>
+          
+          <div class="journal-content"><h1>Diário 2026-05-11 (seg)</h1>
+<!-- DASH_AUTO_START -->
+<h2>Reportagem matinal</h2>
+<p><em>Auto-gerado por <code>dash_today.py</code> em 08:56 de seg 11 mai.</em></p>
+<div class="md-table-wrap"><table>
+<thead>
+<tr>
+<th>Métrica</th>
+<th>Valor</th>
+<th>Δ vs ontem</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>HRV overnight</td>
+<td><strong>26 ms</strong></td>
+<td>−5 ⬇</td>
+</tr>
+<tr>
+<td>BB max / min</td>
+<td><strong>67 / 33</strong></td>
+<td>−19 ⬇</td>
+</tr>
+<tr>
+<td>FCrep</td>
+<td><strong>49 bpm</strong></td>
+<td>+1 ⬆</td>
+</tr>
+<tr>
+<td>Sleep Score</td>
+<td><strong>66</strong></td>
+<td>—</td>
+</tr>
+<tr>
+<td>Sono total</td>
+<td><strong>5h36</strong></td>
+<td>−126 ⬇</td>
+</tr>
+<tr>
+<td>REM</td>
+<td><strong>38 min</strong></td>
+<td>—</td>
+</tr>
+<tr>
+<td>Deep</td>
+<td><strong>27 min</strong></td>
+<td>—</td>
+</tr>
+<tr>
+<td>Light</td>
+<td><strong>4h31</strong></td>
+<td>—</td>
+</tr>
+<tr>
+<td>Awake</td>
+<td><strong>13 min</strong></td>
+<td>—</td>
+</tr>
+<tr>
+<td>Stress avg / max</td>
+<td><strong>23 / 69</strong></td>
+<td>—</td>
+</tr>
+<tr>
+<td>Disposição (Garmin Readiness)</td>
+<td><strong>51</strong></td>
+<td>−28 ⬇</td>
+</tr>
+</tbody>
+</table></div>
+<h3>Veredito automático</h3>
+<p>🟠 <strong>Descanso recomendado</strong> (score 3)</p>
+<p><em>Sinais fracos: HRV, Sono.</em></p>
+<!-- DASH_AUTO_END -->
+
+<h2>O que aconteceu</h2>
+<ul>
+<li><strong>Sono real ≈ 7h36, não 5h36.</strong> Dormi cedo (~2h de "pré-sono"), acordei, voltei a dormir mais tarde. O Garmin não contabiliza esse primeiro ciclo curto — só pega a partir do segundo. Os 5h36 do relatório são apenas o segundo bloco.</li>
+<li>HRV 26 (−5 vs ontem) / BB 67 (−19) / Disposição 51 (−28) → quadro fisiológico fraco, mas explicado em parte pelo treino de ontem (LR7 15km) — descer assim no dia seguinte é coerente, não alarma.</li>
+<li><strong>Segunda 11/05 é OFF por design.</strong> Quadro fraco não custa nada do macro.</li>
+</ul>
+<h3>Por que o quadro caiu hoje</h3>
+<p>O LR7 de ontem (15.01 km / FC média 131.9 / 1h52) foi um esforço de boa duração, mesmo em Z2. É esperado que:<br />
+- HRV caia (sistema nervoso ainda processando recuperação)<br />
+- BB inicial fique mais baixa (carga acumulada do dia anterior)<br />
+- Disposição caia (Readiness do Garmin é compósito que pesa HRV + sono + ACWR)</p>
+<p>A queda <strong>está dentro da fisiologia normal pós-LR</strong>. Se amanhã (terça) ainda estiver assim, aí sim preocupar.</p>
+<h2>Decisão / Veredito</h2>
+<ul>
+<li><strong>Treino:</strong> OFF mantido (era a prescrição).</li>
+<li><strong>Recovery:</strong> dormir cedo hoje, telas off mais cedo, hidratação reforçada. Amanhã quero ver HRV ≥ 30 e BB max ≥ 80.</li>
+<li><strong>Tela do Garmin:</strong> ainda devo configurar cadência como 3º indicador (junto com FC e pace) — committed no diário de ontem, não confirmei execução.</li>
+</ul>
+<h3>Performance Garmin — primeiro snapshot completo</h3>
+<p>Hoje o pipeline passou a coletar 3 indicadores objetivos do estado de fitness que o Garmin computa nativamente:</p>
+<div class="md-table-wrap"><table>
+<thead>
+<tr>
+<th>Métrica</th>
+<th>Valor</th>
+<th>Leitura</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Training Status</strong></td>
+<td>MAINTAINING (OPTIMAL)</td>
+<td>Mantendo fitness — esperado nesta fase inicial; não estamos em ramp ainda</td>
+</tr>
+<tr>
+<td><strong>ACWR</strong> (acute:chronic ratio)</td>
+<td><strong>0.9</strong></td>
+<td>Faixa OPTIMAL (0.8-1.3). Carga balanceada, sem overreaching nem detraining</td>
+</tr>
+<tr>
+<td><strong>ATL / CTL range</strong></td>
+<td>360 / 299-561</td>
+<td>Carga aguda dentro da janela crônica — saudável</td>
+</tr>
+<tr>
+<td><strong>Recovery Time</strong></td>
+<td>16.2h</td>
+<td>Garmin sugere ~16h até o próximo treino-chave (compatível com a OFF de hoje)</td>
+</tr>
+<tr>
+<td><strong>VO2 max</strong></td>
+<td>42.0</td>
+<td>Mantém estável (trend: MAINTAINING_2)</td>
+</tr>
+<tr>
+<td><strong>Idade fitness</strong></td>
+<td>50.5</td>
+<td>−3.5 anos vs idade cronológica (54)</td>
+</tr>
+</tbody>
+</table></div>
+<p>ACWR 0.9 e Recovery 16.2h são consistência com a regra do dia OFF. <strong>Nada sinaliza overload</strong> — o quadro de HRV é fadiga aguda do LR de ontem, não saturação crônica.</p>
+<h3>Race Predictor — primeiro snapshot</h3>
+<p>Primeiro registro objetivo do fitness atual contra as metas do macro:</p>
+<div class="md-table-wrap"><table>
+<thead>
+<tr>
+<th>Distância</th>
+<th>Predicted Garmin</th>
+<th>Meta</th>
+<th>Status</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>5K</td>
+<td>27:41</td>
+<td>—</td>
+<td>sem meta declarada</td>
+</tr>
+<tr>
+<td>10K</td>
+<td>58:38</td>
+<td>—</td>
+<td>sem meta declarada</td>
+</tr>
+<tr>
+<td>21K (06/06)</td>
+<td><strong>2h14:38</strong></td>
+<td>2h13–2h17 (conservador)</td>
+<td>✅ dentro do alvo</td>
+</tr>
+<tr>
+<td><strong>Maratona (30/08)</strong></td>
+<td><strong>5h06:27</strong></td>
+<td><strong>4h00:00</strong> declarada</td>
+<td>⚠️ +1h06:27 vs meta</td>
+</tr>
+</tbody>
+</table></div>
+<p>A 21K está coerente — entra em cima do intervalo conservador acordado pra Meia do Rio em 06/06. Bom sinal: o protocolo Z2 das últimas semanas está construindo base sem perder velocidade.</p>
+<p>A <strong>maratona é o ponto de tensão honesta</strong>. 5h06 hoje vs 4h00 declarada = gap de 1h06 em 16 semanas. Não é "destino"; é diagnóstico do hoje. Próxima referência objetiva será 26/07 (segundo 21K como race-rehearsal). <strong>Se até lá o Race Predictor da maratona não cair pra ~4h30 ou melhor, conversa séria sobre recalibrar meta</strong> (4h15 ou 4h20). Não vou empurrar 4h00 no automático — o contrato é espelho, não cheerleader.</p>
+<h3>Quadro semanal — evidência da virada de protocolo</h3>
+<p>Primeira agregação semanal saindo do pipeline. Comparando W18 com a W19 (atual):</p>
+<div class="md-table-wrap"><table>
+<thead>
+<tr>
+<th>Semana</th>
+<th>#Treinos</th>
+<th>Volume</th>
+<th>Cadência</th>
+<th>%Z2</th>
+<th>Pace médio</th>
+<th>Mais longo</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>W18 (5–11/05 anterior — desfasado)</td>
+<td>2</td>
+<td>22.5 km</td>
+<td>157.0 spm</td>
+<td><strong>4.5%</strong></td>
+<td>6:34/km</td>
+<td>17.0 km</td>
+</tr>
+<tr>
+<td><strong>W19 (atual)</strong></td>
+<td>3</td>
+<td>27.8 km</td>
+<td>155.2 spm</td>
+<td><strong>45.3%</strong></td>
+<td>7:41/km</td>
+<td>15.0 km</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>Leitura:</strong><br />
+- Salto de <strong>%Z2 de 4.5% → 45.3%</strong>: a virada para protocolo Z2-base ficou MUITO visível. Antes corria a maioria do tempo em Z2 limite/Z3; agora Z2 puro virou regra.<br />
+- <strong>Pace caiu</strong> (6:34 → 7:41/km): isso é o efeito direto de respeitar Z2 — pace mais lento é a moeda da consistência de zona, não falha.<br />
+- <strong>Cadência caiu 1.8 spm</strong> (157.0 → 155.2): pequena flutuação, ainda dentro do "Awareness". Manter atenção no próximo LR.<br />
+- Volume +5.3 km, frequência +1 treino: ramp suave dentro de ACWR Optimal.</p>
+<h3>Pendências de saúde/treino</h3>
+<ul>
+<li>[ ] Dormir até 23h hoje (recuperar o gap de sono)</li>
+<li>[ ] Receber plano da semana 11-17/05 (vem hoje)</li>
+<li>[ ] Configurar tela do Garmin com cadência como 3º indicador (FC + pace + cadência)</li>
+<li>[ ] Amanhã: gate de HRV ≥ 30 antes de aceitar prescrição da terça</li>
+</ul></div>
+          
+        </details>
         
       
         
@@ -1690,7 +2036,237 @@ body {
             <div class="journal-day">dom 10 mai</div>
           </summary>
           
-          <div class="journal-empty">Sem análise registrada.</div>
+          <div class="journal-content"><h1>Diário 2026-05-10 (dom)</h1>
+<!-- DASH_AUTO_START -->
+<h2>Reportagem matinal</h2>
+<p><em>Auto-gerado por <code>dash_today.py</code> em 17:53 de dom 10 mai.</em></p>
+<div class="md-table-wrap"><table>
+<thead>
+<tr>
+<th>Métrica</th>
+<th>Valor</th>
+<th>Δ vs ontem</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>HRV overnight</td>
+<td><strong>31 ms</strong></td>
+<td>0 (igual)</td>
+</tr>
+<tr>
+<td>BB max / min</td>
+<td><strong>86 / 32</strong></td>
+<td>+11 ⬆</td>
+</tr>
+<tr>
+<td>FCrep</td>
+<td><strong>48 bpm</strong></td>
+<td>−3 ⬇</td>
+</tr>
+<tr>
+<td>Sleep Score</td>
+<td><strong>84</strong></td>
+<td>—</td>
+</tr>
+<tr>
+<td>Sono total</td>
+<td><strong>7h42</strong></td>
+<td>−75 ⬇</td>
+</tr>
+<tr>
+<td>REM</td>
+<td><strong>1h18</strong></td>
+<td>—</td>
+</tr>
+<tr>
+<td>Deep</td>
+<td><strong>1h06</strong></td>
+<td>—</td>
+</tr>
+<tr>
+<td>Light</td>
+<td><strong>5h19</strong></td>
+<td>—</td>
+</tr>
+<tr>
+<td>Awake</td>
+<td><strong>19 min</strong></td>
+<td>—</td>
+</tr>
+<tr>
+<td>Stress avg / max</td>
+<td><strong>17 / 46</strong></td>
+<td>—</td>
+</tr>
+<tr>
+<td>Disposição (Garmin Readiness)</td>
+<td><strong>79</strong></td>
+<td>+3 ⬆</td>
+</tr>
+</tbody>
+</table></div>
+<h3>Veredito automático</h3>
+<p>🟡 <strong>Atenção: Prioriza Z2</strong> (score 1)</p>
+<p><em>HRV fora do ideal.</em></p>
+<!-- DASH_AUTO_END -->
+
+<h2>O que aconteceu</h2>
+<ul>
+<li><strong>Sábado 09/05 (LR7 prescrito): não realizei.</strong> Escolhi descansar, escutar o corpo (HRV 31, score 1, veredito 🟡 Atenção: Prioriza Z2). Decisão conservadora — defensável dado o gate sub-alvo, mas remove o LR7 do calendário planejado.</li>
+<li><strong>Domingo 10/05 (era OFF): fiz o LR7 (15 km Z2) ao invés.</strong> Quadro fisiológico estava melhor que ontem — BB 86 (+11), FCrep 48 (−3, abaixo da baseline 51), Disposição 79 (+3). Gate Z2 atendido.</li>
+<li>Como segunda-feira (11/05) é OFF por design, mover LR7 pro domingo não criou stress consecutivo.</li>
+</ul>
+<h2>Decisão / Veredito</h2>
+<h3>Quadro do treino (parseado do TCX)</h3>
+<div class="md-table-wrap"><table>
+<thead>
+<tr>
+<th>Métrica</th>
+<th>Alvo</th>
+<th>Real</th>
+<th>Status</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Distância</td>
+<td>14 km</td>
+<td><strong>15.01 km</strong></td>
+<td>✅ +1 km, ok</td>
+</tr>
+<tr>
+<td>Tempo total</td>
+<td>—</td>
+<td>1h52m10s</td>
+<td>—</td>
+</tr>
+<tr>
+<td>Pace médio</td>
+<td>livre Z2</td>
+<td>7'28"/km</td>
+<td>✅ consistente</td>
+</tr>
+<tr>
+<td><strong>FC média</strong></td>
+<td><strong>&lt;134</strong></td>
+<td><strong>131.9</strong></td>
+<td>✅ dentro, raspando</td>
+</tr>
+<tr>
+<td>FC máx</td>
+<td>—</td>
+<td>141</td>
+<td>✅ sem furo</td>
+</tr>
+<tr>
+<td><strong>Cadência média</strong></td>
+<td><strong>160-165</strong></td>
+<td><strong>157.8</strong></td>
+<td>❌ 2-3 spm abaixo</td>
+</tr>
+<tr>
+<td>Calorias</td>
+<td>—</td>
+<td>1378 kcal</td>
+<td>—</td>
+</tr>
+</tbody>
+</table></div>
+<h3>Distribuição FC — onde o motor passou o tempo</h3>
+<div class="md-table-wrap"><table>
+<thead>
+<tr>
+<th>Faixa</th>
+<th>% do tempo</th>
+<th>Leitura</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>&lt;134 (Z2 puro)</td>
+<td><strong>42.7%</strong></td>
+<td>Era pra ser ≥80%</td>
+</tr>
+<tr>
+<td>134-139 (limite Z2-Z3)</td>
+<td><strong>56.9%</strong></td>
+<td>Mais da metade no teto</td>
+</tr>
+<tr>
+<td>≥140 (Z3+)</td>
+<td>0.5%</td>
+<td>Sem furo crítico</td>
+</tr>
+</tbody>
+</table></div>
+<p>Z2 "borderline", não Z2 conservador puro. A média ficou ok porque oscilou em volta do teto, não porque ficou no meio da zona.</p>
+<h3>Espelho honesto</h3>
+<p><strong>Acertos:</strong><br />
+- Concluiu 15 km inteiros sem caminhar<br />
+- FC média DENTRO do alvo (&lt;134) — saiu por 2 bpm<br />
+- Sem furo de zona (apenas 0.5% acima de 140)<br />
+- Sem ego — não acelerou</p>
+<p><strong>Furos honestos (importam pra meta 4h00):</strong><br />
+1. <strong>Cadência 157.8 vs alvo 160-165.</strong> Um dos 2 não-negociáveis lock-in desde 07/05.<br />
+2. <strong>FC distribuição borderline.</strong> Apenas 42.7% do tempo no Z2 puro.</p>
+<h3>Diagnóstico cadência — declarada como o MAIOR desafio (10/05)</h3>
+<p><strong>Verbalização do atleta:</strong></p>
+<blockquote>
+<p>"esse é o maior desafio de todos pra mim. meu jeito de correr nunca foi com cadência alta. nao estou me desculpando, é que realmente isso não dá pra mudar em 2 treinos. mas estou comprometido."</p>
+</blockquote>
+<p><strong>Decisão técnica concreta tomada hoje:</strong><br />
+Colocar <strong>cadência na tela do Garmin</strong> como 1 dos 3 indicadores principais (junto com <strong>FC</strong> e <strong>pace</strong>). Cadência sai de "métrica analisada pós-treino" e passa a ser <strong>métrica visível em tempo real durante a corrida</strong>.</p>
+<h3>Recalibração de expectativa (cadência alta NÃO se constrói em 2-3 sessões)</h3>
+<div class="md-table-wrap"><table>
+<thead>
+<tr>
+<th>Fase</th>
+<th>Janela</th>
+<th>Alvo</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Awareness</td>
+<td>semanas 1-3</td>
+<td>158-160</td>
+</tr>
+<tr>
+<td>Adaptação neuromuscular</td>
+<td>semanas 4-8</td>
+<td>160-163</td>
+</tr>
+<tr>
+<td>Consolidação</td>
+<td>semanas 8-12</td>
+<td>162-165</td>
+</tr>
+<tr>
+<td>Refinamento</td>
+<td>12+</td>
+<td>165+</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>Você está hoje na semana 0 da Awareness.</strong> Cobrar 160-165 sustentado em 2 semanas seria irrealista. Cobrar <strong>delta de 1-2 spm por semana até estabilizar em 162</strong> = realista.</p>
+<p><strong>Próximo Z2 — alvo realista:</strong> 158-160 sustentado (microincremento), não 160-165 absoluto.</p>
+<h3>Drills que aceleram a adaptação</h3>
+<ol>
+<li><strong>Strides cadência (warmup):</strong> 4-6 × 20" cadência 175+, 60" caminhada entre. Treina sistema neuromuscular a girar rápido.</li>
+<li><strong>Metrônomo Garmin:</strong> Tons de cadência → 162 spm em 5-10 min do Z2 (não a corrida inteira).</li>
+<li><strong>Visualização "passos curtos e leves":</strong> quando ver 158 na tela, não acelere. Pense "passos menores, mesma velocidade".</li>
+</ol>
+<h3>Veredito</h3>
+<p><strong>Treino bom, não excelente.</strong> Concluído sem furo Z3+, FC média dentro do alvo (raspando), mas cadência 2-3 spm abaixo (esperado nesta fase de awareness) e Z2 borderline.</p>
+<p><strong>Mudança de cobrança daqui pra frente:</strong> progressão semanal de cadência (+1-2 spm), não alvo absoluto. No próximo LR, espero ver 159+. Se vier 158, ainda é progressão. Se vier 156, cobro.</p>
+<h2>Pendências</h2>
+<ul>
+<li>[ ] <strong>Configurar tela do Garmin</strong> com cadência como 3º indicador principal (junto com FC e pace)</li>
+<li>[ ] Receber <strong>plano da semana 11-17/05</strong> (vem hoje)</li>
+<li>[ ] Próximo Z2: <strong>cadência alvo 158-160 sustentado</strong> (microincremento, não 160-165 absoluto)</li>
+<li>[ ] Considerar 1 sessão de <strong>strides cadência</strong> (4-6 × 20" a 175+ spm) em algum warmup desta semana</li>
+</ul></div>
           
         </details>
         
@@ -1703,7 +2279,193 @@ body {
             <div class="journal-day">sáb 9 mai</div>
           </summary>
           
-          <div class="journal-empty">Sem análise registrada.</div>
+          <div class="journal-content"><h1>Diário 2026-05-09 (sáb) — LR7 day, recuperação consolidada</h1>
+<!-- DASH_AUTO_START -->
+<h2>Reportagem matinal</h2>
+<p><em>Auto-gerado por <code>dash_today.py</code> em 22:04 de sáb 9 mai.</em></p>
+<div class="md-table-wrap"><table>
+<thead>
+<tr>
+<th>Métrica</th>
+<th>Valor</th>
+<th>Δ vs ontem</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>HRV overnight</td>
+<td><strong>31 ms</strong></td>
+<td>+4 ⬆</td>
+</tr>
+<tr>
+<td>BB max / min</td>
+<td><strong>75 / 29</strong></td>
+<td>+19 ⬆</td>
+</tr>
+<tr>
+<td>FCrep</td>
+<td><strong>51 bpm</strong></td>
+<td>−2 ⬇</td>
+</tr>
+<tr>
+<td>Sleep Score</td>
+<td><strong>80</strong></td>
+<td>—</td>
+</tr>
+<tr>
+<td>Sono total</td>
+<td><strong>8h57</strong></td>
+<td>+90 ⬆</td>
+</tr>
+<tr>
+<td>REM</td>
+<td><strong>1h52</strong></td>
+<td>—</td>
+</tr>
+<tr>
+<td>Deep</td>
+<td><strong>1h10</strong></td>
+<td>—</td>
+</tr>
+<tr>
+<td>Light</td>
+<td><strong>5h56</strong></td>
+<td>—</td>
+</tr>
+<tr>
+<td>Awake</td>
+<td><strong>6 min</strong></td>
+<td>—</td>
+</tr>
+<tr>
+<td>Stress avg / max</td>
+<td><strong>25 / 65</strong></td>
+<td>—</td>
+</tr>
+<tr>
+<td>Disposição (Garmin Readiness)</td>
+<td><strong>76</strong></td>
+<td>+4 ⬆</td>
+</tr>
+</tbody>
+</table></div>
+<h3>Veredito automático</h3>
+<p>🟡 <strong>Atenção: Prioriza Z2</strong> (score 1)</p>
+<p><em>HRV fora do ideal.</em></p>
+<!-- DASH_AUTO_END -->
+
+<h2>Reportagem matinal (via <code>health_daily.py</code>)</h2>
+<div class="md-table-wrap"><table>
+<thead>
+<tr>
+<th>Métrica</th>
+<th>Valor</th>
+<th>Δ vs ontem</th>
+<th>Status</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>HRV overnight</td>
+<td><strong>31 ms</strong></td>
+<td>+4 (27→31) ⬆️</td>
+<td>amarelo (faltou 1 pro alvo ≥32)</td>
+</tr>
+<tr>
+<td>BB max/min</td>
+<td><strong>75 / 29</strong></td>
+<td>+19 ⬆️</td>
+<td>acima do alvo ≥70</td>
+</tr>
+<tr>
+<td>FCrep</td>
+<td><strong>51 bpm</strong></td>
+<td>−2 (53→51) ⬇️</td>
+<td>volta ao baseline</td>
+</tr>
+<tr>
+<td>Sleep Score</td>
+<td><strong>80</strong></td>
+<td>+2</td>
+<td>OK</td>
+</tr>
+<tr>
+<td>Sono total</td>
+<td><strong>8h57</strong></td>
+<td>+90 min</td>
+<td>promessa cumprida</td>
+</tr>
+<tr>
+<td>REM</td>
+<td><strong>112 min</strong></td>
+<td>+50</td>
+<td>recuperação parassimpática profunda</td>
+</tr>
+<tr>
+<td>Deep</td>
+<td><strong>70 min</strong></td>
+<td>+21</td>
+<td>reparação muscular</td>
+</tr>
+<tr>
+<td>Disposição (Readiness Garmin)</td>
+<td><strong>76</strong></td>
+<td>+4</td>
+<td>alto</td>
+</tr>
+</tbody>
+</table></div>
+<h2>O que aconteceu</h2>
+<ul>
+<li>HRV subiu 4 ms (27→31) — voltou pra zona amarela superior, faltou 1 ms pro alvo verde ≥32</li>
+<li>BB max 75 — bem acima do alvo ≥70 (estava 56 ontem, +19)</li>
+<li>FCrep voltou ao baseline 51 (estava 53)</li>
+<li>Sono 8h57 com REM 112 min — promessa cumprida e recuperação parassimpática profunda</li>
+<li>Disposição 76 — alto, coerente com o resto</li>
+</ul>
+<p><strong>Pelo modelo:</strong> HRV 31 (1 pt) + resto verde + sem modifiers = total 1 → 🟡 Atenção: Prioriza Z2</p>
+<p><strong>Pela leitura humana:</strong> corpo absorveu o RHR6 e está pronto. O 1 ms abaixo do verde é provavelmente ruído de medição.</p>
+<h2>LR7 hoje — gate aplicado</h2>
+<div class="md-table-wrap"><table>
+<thead>
+<tr>
+<th>HRV</th>
+<th>BB max</th>
+<th>Decisão LR7</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>≥32</td>
+<td>≥65</td>
+<td>17 km Z2 normal</td>
+</tr>
+<tr>
+<td><strong>30-31</strong></td>
+<td><strong>≥65</strong></td>
+<td><strong>14 km Z2 conservador</strong> ⬅️ você está aqui</td>
+</tr>
+<tr>
+<td>&lt;30</td>
+<td>&lt;55</td>
+<td>12 km leve</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>Veredito:</strong> 14 km Z2 conservador, FC &lt;134, cadência alvo 160-165 spm sustentada.</p>
+<p>A regra é OR — basta uma métrica borderline pra cortar. HRV 31 manda pro 14. Mas as condições de execução são excelentes:<br />
+- Sono profundo confirmado (REM 112 = referência)<br />
+- BB 75 sobra<br />
+- FCrep no baseline = sem stress acumulado<br />
+- Disposição alto</p>
+<p><strong>Por que 14 e não 17:</strong> se HRV ≥32 amanhã (e for um treino seu), pulamos o conservador no próximo gate. Hoje é o primeiro longão pós-RHR6 forte; segura a margem de segurança.</p>
+<h2>Pendências de hoje</h2>
+<ul>
+<li>[ ] LR7 14 km Z2 (FC &lt;134, cadência alvo 160-165)</li>
+<li>[ ] Hidratação 3-3,5 L</li>
+<li>[ ] Proteína 150-160 g</li>
+<li>[ ] Reportar sensações pós-treino</li>
+</ul></div>
           
         </details>
         
@@ -1716,7 +2478,225 @@ body {
             <div class="journal-day">sex 8 mai</div>
           </summary>
           
-          <div class="journal-empty">Sem análise registrada.</div>
+          <div class="journal-content"><h1>Diário 2026-05-08 (sexta) — Descanso puro</h1>
+<!-- DASH_AUTO_START -->
+<h2>Reportagem matinal</h2>
+<p><em>Auto-gerado por <code>dash_today.py</code> em 17:04 de sex 8 mai.</em></p>
+<div class="md-table-wrap"><table>
+<thead>
+<tr>
+<th>Métrica</th>
+<th>Valor</th>
+<th>Δ vs ontem</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>HRV overnight</td>
+<td><strong>27 ms</strong></td>
+<td>−7 ⬇</td>
+</tr>
+<tr>
+<td>BB max / min</td>
+<td><strong>54 / —</strong></td>
+<td>−19 ⬇</td>
+</tr>
+<tr>
+<td>FCrep</td>
+<td><strong>53 bpm</strong></td>
+<td>+2 ⬆</td>
+</tr>
+<tr>
+<td>Sleep Score</td>
+<td><strong>78</strong></td>
+<td>—</td>
+</tr>
+<tr>
+<td>Sono total</td>
+<td><strong>—</strong></td>
+<td>—</td>
+</tr>
+<tr>
+<td>REM</td>
+<td><strong>—</strong></td>
+<td>—</td>
+</tr>
+<tr>
+<td>Deep</td>
+<td><strong>—</strong></td>
+<td>—</td>
+</tr>
+<tr>
+<td>Light</td>
+<td><strong>—</strong></td>
+<td>—</td>
+</tr>
+<tr>
+<td>Awake</td>
+<td><strong>—</strong></td>
+<td>—</td>
+</tr>
+<tr>
+<td>Stress avg / max</td>
+<td><strong>— / —</strong></td>
+<td>—</td>
+</tr>
+<tr>
+<td>Disposição (Garmin Readiness)</td>
+<td><strong>—</strong></td>
+<td>—</td>
+</tr>
+</tbody>
+</table></div>
+<h3>Veredito automático</h3>
+<p>🟠 <strong>Descanso recomendado</strong> (score 4)</p>
+<p><em>Sinais fracos: HRV, BB.</em></p>
+<!-- DASH_AUTO_END -->
+
+<h2>Reportagem matinal (via <code>health_daily.py</code>)</h2>
+<div class="md-table-wrap"><table>
+<thead>
+<tr>
+<th>Métrica</th>
+<th>Valor</th>
+<th>Alvo</th>
+<th>Status</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Sleep Score</td>
+<td>78</td>
+<td>≥75</td>
+<td>OK</td>
+</tr>
+<tr>
+<td>Sono total</td>
+<td>7h27 (REM 62 / Deep 49 / Light 337 / Awake 4)</td>
+<td>≥8h, REM ≥70</td>
+<td>parcial</td>
+</tr>
+<tr>
+<td>HRV overnight</td>
+<td><strong>27 ms</strong> (status NONE)</td>
+<td>≥32</td>
+<td><strong>abaixo</strong></td>
+</tr>
+<tr>
+<td>BB max/min</td>
+<td><strong>54 / 15</strong> (carga +39 / desgaste 0)</td>
+<td>≥70 / ≥30</td>
+<td><strong>abaixo</strong></td>
+</tr>
+<tr>
+<td>FCrep</td>
+<td>53 bpm</td>
+<td>≤53</td>
+<td>limite</td>
+</tr>
+<tr>
+<td>Stress avg/max</td>
+<td>23 / 41</td>
+<td>&lt;20</td>
+<td>levemente elevado</td>
+</tr>
+<tr>
+<td>Training Readiness</td>
+<td>72/100</td>
+<td>≥65</td>
+<td>OK (mas conflita com HRV)</td>
+</tr>
+</tbody>
+</table></div>
+<h2>Trend HRV / BB / RHR desde 05/05</h2>
+<div class="md-table-wrap"><table>
+<thead>
+<tr>
+<th>Data</th>
+<th>HRV</th>
+<th>BB max/min</th>
+<th>FCrep</th>
+<th>Readiness</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>05/05</td>
+<td>29</td>
+<td>29/15</td>
+<td>–</td>
+<td>34</td>
+</tr>
+<tr>
+<td>06/05</td>
+<td>29</td>
+<td>69/17</td>
+<td>51</td>
+<td>40</td>
+</tr>
+<tr>
+<td>07/05</td>
+<td><strong>34</strong></td>
+<td>73/30</td>
+<td>51</td>
+<td>56</td>
+</tr>
+<tr>
+<td><strong>08/05</strong></td>
+<td><strong>27 ⬇️ -7</strong></td>
+<td>54/15</td>
+<td><strong>53 ⬆️ +2</strong></td>
+<td>72</td>
+</tr>
+</tbody>
+</table></div>
+<h2>Diagnóstico</h2>
+<p>Resposta autonômica esperada 24-48h pós-RHR6 (07/05 — 8 tiros que viraram 60s = carga ~2× a planejada).<br />
+HRV caiu 7 ms + FCrep subiu 2 + BB máximo só 54 = parasimpático ainda processando carga.<br />
+Readiness 72 mascara: sono bom + tempo de recovery elapsed → Garmin marca "ok", mas indicadores autonômicos diretos (HRV + FCrep) discordam.<br />
+<strong>Não é overtraining. É o preço do RHR6 dobrado de ontem. Descanso hoje vira mandatório.</strong></p>
+<h2>Plano executado</h2>
+<ul>
+<li>[ ] Corrida / força — <strong>zero</strong></li>
+<li>[ ] Caminhada leve 15-20 min (opcional)</li>
+<li>[ ] Hidratação 3,5 L + sódio</li>
+<li>[ ] Proteína 150-160 g</li>
+<li>[ ] Tela cortada 21h15</li>
+<li>[ ] <strong>Dormir 22h00</strong> (promessa renovada)</li>
+</ul>
+<h2>Gate pra LR7 amanhã (sábado 09/05)</h2>
+<p>Reportagem matinal de 09/05 com <code>python health_daily.py</code> define a sessão:</p>
+<div class="md-table-wrap"><table>
+<thead>
+<tr>
+<th>HRV</th>
+<th>BB max</th>
+<th>Decisão LR7</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>≥32</td>
+<td>≥65</td>
+<td>17 km Z2 normal (FC &lt;134, cadência 160-165)</td>
+</tr>
+<tr>
+<td>30-31</td>
+<td>55-65</td>
+<td><strong>14 km Z2</strong> conservador</td>
+</tr>
+<tr>
+<td>&lt;30</td>
+<td>&lt;55</td>
+<td><strong>12 km Z2 leve</strong> + reavaliar semana</td>
+</tr>
+</tbody>
+</table></div>
+<p>HRV é métrica-líder. Se amanhã ainda em 27-28 = janela de absorção precisa +24h, LR7 vira 12 km tranquilo.</p>
+<h2>Lock-in técnico mantido</h2>
+<p>Independente de distância amanhã, as 2 prioridades técnicas valem:<br />
+1. <strong>Cadência alvo 160-165 spm</strong> (não-negociável #3)<br />
+2. <strong>FC controlada na zona Z2</strong> 122-134 bpm (não-negociável #4)</p></div>
           
         </details>
         
@@ -1729,7 +2709,415 @@ body {
             <div class="journal-day">qui 7 mai</div>
           </summary>
           
-          <div class="journal-empty">Sem análise registrada.</div>
+          <div class="journal-content"><h1>2026-05-07 (Quinta) — Diário</h1>
+<h2>🌅 Reportagem matinal</h2>
+<div class="md-table-wrap"><table>
+<thead>
+<tr>
+<th>Métrica</th>
+<th>Valor</th>
+<th>Leitura</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Sleep Score</td>
+<td>78/100</td>
+<td>🟢 bom (não excelente)</td>
+</tr>
+<tr>
+<td>HRV (VFC)</td>
+<td><strong>30 ms</strong></td>
+<td>🟡 <strong>gate</strong> — ontem 29, hoje 30 = pattern de 2 dias</td>
+</tr>
+<tr>
+<td>Sono duração</td>
+<td>6h55min</td>
+<td>🟡 abaixo do ideal 8h+</td>
+</tr>
+<tr>
+<td>BB min/max noite</td>
+<td>30 / 73</td>
+<td>min 30 sugere noite trabalhada</td>
+</tr>
+<tr>
+<td>BB atual manhã</td>
+<td>74</td>
+<td>🟢 recuperou bem</td>
+</tr>
+<tr>
+<td>FC repouso</td>
+<td>51 bpm</td>
+<td>🟢 baseline</td>
+</tr>
+<tr>
+<td>Stress médio</td>
+<td>20</td>
+<td>🟢 baixo</td>
+</tr>
+<tr>
+<td>Passos</td>
+<td>81</td>
+<td>(início do dia)</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>Diagnóstico:</strong> 4 verdes, 2 amarelos (HRV + sono). Sistema autonômico OK (FCrep 51, stress 20), mas HRV 2 dias seguidos &lt;31 indica recuperação parcial. Sono curto (6h55) ajuda a explicar.</p>
+<h2>🎯 Decisão do treino RHR6</h2>
+<p><strong>Treino prescrito:</strong> 12 × 30'' Z5 (Subida)<br />
+<strong>Decisão:</strong> <strong>10 tiros</strong> (corte 17%)</p>
+<p><strong>Régua aplicada (gate fechado em 06/05):</strong><br />
+- BB ≥60 + HRV ≥32 → 12 tiros (verde total)<br />
+- BB 55-59 <strong>ou</strong> HRV 30-31 → <strong>10 tiros</strong> ← caso de hoje (HRV 30)<br />
+- BB &lt;55 ou HRV &lt;30 → 8 tiros<br />
+- BB &lt;40 ou HRV &lt;25 → skip + easy run Z2</p>
+<p><strong>Por que cortar (lógica espelho):</strong><br />
+1. HRV dois dias seguidos abaixo de 31 = sinal autonômico real, não ruído<br />
+2. ATL 51 já alto; Z5 hoje vai dar spike<br />
+3. <strong>LR7 sábado 09/05 (17 km Z2) é o GATE CRÍTICO da meta 4h00</strong> — preservar pernas<br />
+4. Forçar 12 hoje não aproxima de 4h00; adia ou degrada o LR7</p>
+<h2>🏃 Execução planejada</h2>
+<div class="md-table-wrap"><table>
+<thead>
+<tr>
+<th>Bloco</th>
+<th>O quê</th>
+<th>Como</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Aquecimento (15-20 min)</td>
+<td>Z1→Z2 progressivo</td>
+<td>FC até ~135. Últimos 3-4 min: educativos curtos (skipping baixo)</td>
+</tr>
+<tr>
+<td><strong>Série principal</strong></td>
+<td><strong>10 × 30'' Z5 subida</strong></td>
+<td>FC alvo pico 158-170. <strong>Não é sprint all-out</strong> — Z5 controlado. Cadência alta (~180+)</td>
+</tr>
+<tr>
+<td>Recuperação</td>
+<td>1:30 Z1 entre tiros</td>
+<td>Caminhada/trote leve <strong>descendo</strong> o aclive. FC &lt;130 antes do próximo</td>
+</tr>
+<tr>
+<td>Desaquece (10-15 min)</td>
+<td>Z1 + 5 min caminhada</td>
+<td>Sem cortar seco</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>Banderas pra abortar e virar Z2:</strong><br />
+- FC pico &gt;175 nos primeiros 2-3 tiros<br />
+- Pace na subida 30s+ acima do esperado<br />
+- Tontura, peito apertado, qualquer coisa anormal</p>
+<h2>📋 9 não-negociáveis — checklist do dia</h2>
+<ul>
+<li>[ ] Treino conforme decisão (10 tiros respeitando bandeiras)</li>
+<li>[ ] Hidratação: ≥35 ml/kg = ~3,4 L hoje</li>
+<li>[ ] Proteína: ≥1,6 g/kg = ~157 g</li>
+<li>[ ] Sono: dormir cedo hoje (compensar 6h55) — alvo 22h00</li>
+<li>[ ] Força não está prevista (3×/sem, hoje é dia de Q)</li>
+<li>[ ] Reportar amanhã 08/05 (HRV principalmente — quero ver se a baseline volta pra 32+)</li>
+</ul>
+<h2>✅ Execução real (TCX 22795686320)</h2>
+<p><strong>Decisão dele em campo:</strong> <strong>8 tiros</strong> (cortou mais 2 da régua de 10 — "não quis forçar muito"). Alinhado com contrato: ele segura quando precisa segurar.</p>
+<p><strong>Estrutura no relógio (manual, com 2 voltas perdidas por toque acidental):</strong></p>
+<div class="md-table-wrap"><table>
+<thead>
+<tr>
+<th>Bloco</th>
+<th>Métrica</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Aquecimento</td>
+<td>2,0 km em 14:29 (pace ~7:15/km) — Z1-Z2 ✅</td>
+</tr>
+<tr>
+<td>Pausa de água</td>
+<td>Volta 6 — 355 m em 3:02</td>
+</tr>
+<tr>
+<td>Tiros visíveis</td>
+<td>6 pares (TCX) — 8 reais (cabeça do atleta)</td>
+</tr>
+<tr>
+<td>FC pico tiros</td>
+<td><strong>157-159 bpm</strong> (piso da Z5: 158)</td>
+</tr>
+<tr>
+<td>Recup HR média</td>
+<td>132-141 bpm</td>
+</tr>
+<tr>
+<td>Desaquece</td>
+<td>2,17 km em 21:50 (caminhada/trote leve) ✅</td>
+</tr>
+<tr>
+<td><strong>TOTAL</strong></td>
+<td><strong>6,77 km em 59 min, ~669 kcal</strong></td>
+</tr>
+<tr>
+<td><strong>HR média ponderada</strong></td>
+<td>~131 bpm (Z3 médio)</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>Tabela tiros (6 visíveis):</strong></p>
+<div class="md-table-wrap"><table>
+<thead>
+<tr>
+<th>#</th>
+<th>Duração lap (s)</th>
+<th>HR pico</th>
+<th>HR avg recup</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1 (l4-5)</td>
+<td>52,5</td>
+<td>157</td>
+<td>141</td>
+</tr>
+<tr>
+<td>2 (l7-8)</td>
+<td>76,0</td>
+<td>159</td>
+<td>138</td>
+</tr>
+<tr>
+<td>3 (l9-10)</td>
+<td>76,8</td>
+<td>159</td>
+<td>132</td>
+</tr>
+<tr>
+<td>4 (l11-12)</td>
+<td>77,2</td>
+<td>158</td>
+<td>133</td>
+</tr>
+<tr>
+<td>5 (l13-14)</td>
+<td>74,8</td>
+<td>158</td>
+<td>132</td>
+</tr>
+<tr>
+<td>6 (l15-16)</td>
+<td>72,0</td>
+<td>158</td>
+<td>135</td>
+</tr>
+</tbody>
+</table></div>
+<blockquote>
+<p>⚠️ <strong>Correção crítica (relatada pelo atleta):</strong> os tiros foram executados em <strong>~60s, não 30s</strong>. Voltas-tiro de 72-77s no TCX = ~60s de esforço + ~15s transição/lap. Lap manual em subida ofegante sem cronômetro visível = receita pra alongar tiro inconscientemente. <strong>Lição operacional:</strong> próxima sessão Z5 curta exige auto-lap por tempo OU treino estruturado pré-programado no Garmin.</p>
+</blockquote>
+<p><strong>Sensação reportada:</strong> <strong>7/10</strong> + <strong>"Z4 forte"</strong> (não Z5 verdadeira)</p>
+<h2>🔍 Veredito do dia (espelho — recalibrado)</h2>
+<p><strong>O treino feito ≠ o treino prescrito. Mas o feito foi legítimo, só de outra natureza.</strong></p>
+<div class="md-table-wrap"><table>
+<thead>
+<tr>
+<th>Dimensão</th>
+<th>Prescrito</th>
+<th>Executado</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Estrutura</td>
+<td>8 × 30s Z5</td>
+<td><strong>8 × ~60s Z4 forte</strong></td>
+</tr>
+<tr>
+<td>Stimulus fisiológico</td>
+<td>Anaeróbio aláctico / potência neural</td>
+<td><strong>Anaerobic capacity / threshold-VO2max</strong></td>
+</tr>
+<tr>
+<td>Tempo Z4+ total</td>
+<td>~4 min</td>
+<td><strong>~8 min</strong> (dobro)</td>
+</tr>
+<tr>
+<td>TSS estimado</td>
+<td>~35-40</td>
+<td><strong>~65-75</strong></td>
+</tr>
+<tr>
+<td>Custo recuperação</td>
+<td>Baixo-moderado</td>
+<td><strong>Médio-alto</strong></td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>Por que a FC pico ficou em 157-159:</strong><br />
+1. ✅ Faz sentido pra esforços de <strong>60s</strong> (HR tem tempo de subir até esse nível, mas não vai ao topo Z5 sem all-out)<br />
+2. ✅ Confirmado pela sensação subjetiva: "Z4 forte"<br />
+3. Em 30s <strong>reais</strong>, a FC nem teria chegado nesse pico — lag cardíaco impede</p>
+<p><strong>Conclusão:</strong> você fez um treino válido pra meta 4h00 (threshold work é EXATAMENTE o estímulo que serve maratona), mas com volume Z4+ dobrado vs o planejado.</p>
+<p>✅ <strong>O que funcionou:</strong><br />
+- Decisão em camadas: 12→10 (régua HRV) → 8 (leitura no campo) — <strong>uso correto da escala</strong><br />
+- Aquecimento + desaquece bem feitos<br />
+- Intensidade controlada (não foi all-out)<br />
+- Pernas reportadas em 7/10 = absorção razoável</p>
+<p>⚠️ <strong>O que ajustar:</strong><br />
+- <strong>PRÓXIMA SESSÃO DE TIROS CURTOS:</strong> Pré-programar treino estruturado no Garmin (workout do TrainingPeaks ou criar no Connect IQ) → relógio bipa início/fim de cada tiro, sem espaço pra interpretação<br />
+- <strong>Auto-lap por tempo (30s)</strong> é o mínimo aceitável, mas estruturado é melhor<br />
+- Se "Z4 forte ≠ Z5 prescrita" repetir em sessões com timing correto → re-testar FCmax (170 pode estar subestimado)</p>
+<p><strong>Implicação meta 4h00:</strong> <strong>Positiva no estímulo entregue (threshold útil), mas custo de recuperação real exige sexta MAIS leve do que planejado.</strong></p>
+<p><strong>TSS estimado revisado:</strong> ~65-75 (não os ~50-55 originais)</p>
+<h2>📋 9 não-negociáveis — checklist do dia</h2>
+<ul>
+<li>[x] Treino executado conforme leitura honesta (8 tiros)</li>
+<li>[ ] Hidratação: ≥35 ml/kg = ~3,4 L hoje (∗pausa de água no treino marca atenção)</li>
+<li>[ ] Proteína: ≥1,6 g/kg = ~157 g</li>
+<li>[ ] <strong>Sono: dormir cedo hoje (alvo 22h)</strong> — fundamental pra HRV voltar pra ≥32</li>
+<li>[x] Força não estava prevista (dia de Q)</li>
+<li>[ ] Reportar amanhã 08/05 — HRV é o número-chave</li>
+</ul>
+<h2>🔄 Recalibração pós-coleta via <code>health_daily.py</code> (tarde 07/05)</h2>
+<p>Hoje rodamos o pipeline novo e veio dado oficial Garmin que <strong>muda partes da leitura do dia</strong>. Honestidade total:</p>
+<h3>1. HRV: era 34, não 30</h3>
+<div class="md-table-wrap"><table>
+<thead>
+<tr>
+<th>Fonte</th>
+<th>Valor</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Reportado pelo atleta de manhã</td>
+<td>30 ms</td>
+</tr>
+<tr>
+<td><strong>Garmin oficial (<code>lastNightAvg</code>)</strong></td>
+<td><strong>34 ms</strong></td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>Trend real (não 2 dias seguidos baixos):</strong></p>
+<div class="md-table-wrap"><table>
+<thead>
+<tr>
+<th>Data</th>
+<th>HRV overnight</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>06/05</td>
+<td>29 ms</td>
+</tr>
+<tr>
+<td>07/05</td>
+<td><strong>34 ms (Δ +5)</strong></td>
+</tr>
+</tbody>
+</table></div>
+<p>Sistema autonômico ABSORVENDO bem, não estagnado. A régua de "10 tiros" aplicada de manhã (HRV 30-31) <strong>não era o caso real</strong> — com 34 + BB max 73 + Readiness 56, o caso era régua de <strong>12 tiros</strong>. A decisão final dele de cortar pra 8 foi conservadora demais com base no número errado.</p>
+<p><strong>Lição:</strong> <strong>número oficial pra acompanhar = <code>lastNightAvg</code> da API.</strong> Não confiar em qualquer leitura pontual da tela do Garmin que não seja esse campo. A partir de amanhã, <code>health_daily.py</code> traz isso pronto.</p>
+<h3>2. Cadência: 161 spm no Z2 — DELIBERADA</h3>
+<div class="md-table-wrap"><table>
+<thead>
+<tr>
+<th>Bloco</th>
+<th>Cadência média</th>
+<th>Notas</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Z2 warmup (laps 1-2)</td>
+<td><strong>161 spm</strong> (162 mediana)</td>
+<td>Picos de 170 spm</td>
+</tr>
+<tr>
+<td>Tiros (subida)</td>
+<td>180-198 spm</td>
+<td>Foco na ladeira</td>
+</tr>
+<tr>
+<td>Sessão inteira</td>
+<td>152 spm</td>
+<td>Diluído pelo cooldown lento</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>Comparativo histórico:</strong></p>
+<div class="md-table-wrap"><table>
+<thead>
+<tr>
+<th>Run</th>
+<th>Cadência (média total)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>RFF5 (05/05)</td>
+<td>155 spm</td>
+</tr>
+<tr>
+<td><strong>RHR6 hoje — Z2 warmup</strong></td>
+<td><strong>161 spm</strong> ⬆</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>🎯 Cruzamento com o plano de cadência (não-negociável #3):</strong></p>
+<div class="md-table-wrap"><table>
+<thead>
+<tr>
+<th>Semana</th>
+<th>Alvo do plano</th>
+<th>Hoje</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1 (atual)</td>
+<td>153 → 158</td>
+<td><strong>161 — adiantado</strong></td>
+</tr>
+<tr>
+<td>2</td>
+<td>158 → 162</td>
+<td>já alcançou</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>🧠 O que ATLETA verbalizou (importante registrar):</strong></p>
+<blockquote>
+<p>"Agora isso entrou na minha mente. Junto com a questão do Z2 com frequência controlada. <strong>São as duas coisas que priorizo agora nos treinos.</strong> Tanto pro Z2, quanto pra ladeira, eu priorizei aumentar a cadência, tendo isso em mente."</p>
+</blockquote>
+<p>Lock-in cognitivo das 2 prioridades técnicas:<br />
+1. <strong>Z2 verdadeira</strong> (FC 122-134 — não copiar erro do LR 03/05)<br />
+2. <strong>Cadência alta</strong> (153 → 170+ ao longo da temporada)</p>
+<p><strong>Não foi sorte de aquecimento</strong> — foi escolha consciente. Isso re-explica a sessão inteira:<br />
+- FC pico 158-159 nos tiros não foi "Z4 forte por acaso" — foi consequência de cadência ALTA na ladeira (mecânica eficiente reduz custo cardíaco no mesmo esforço muscular)<br />
+- Sessão <strong>mais inteligente</strong> do que a leitura inicial sugeria</p>
+<h3>3. Veredito recalibrado (FINAL do dia)</h3>
+<p>✅ <strong>Trinity verde:</strong> HRV ↑, BB ↑, Readiness ↑ + cadência trabalhada conscientemente em Z2 e Z5 = <strong>dia tecnicamente bem executado</strong>.</p>
+<p>⚠️ <strong>Mantém-se:</strong> o problema de 60s vs 30s nos tiros (lição operacional do timer) e o custo de recuperação real (~65-75 TSS) → <strong>sexta DESCANSO PURO mantido</strong>.</p>
+<p>📈 <strong>Implicação meta 4h00:</strong> trend autonômico positivo + 2 prioridades técnicas internalizadas = você está construindo a base correta. Não está atrasado no cronograma.</p>
+<h2>📅 Próximos marcos (ajustados após correção do volume)</h2>
+<ul>
+<li><strong>08/05 (sex):</strong> <strong>DESCANSO PURO</strong> — não força, não corrida, mobilidade leve + caminhada curta. TSS hoje foi 65-75 (não 50-55) → recuperação não pode ser comprometida.</li>
+<li><strong>09/05 (sáb):</strong> <strong>LR7 — 17 km Z2 verdadeira</strong> = primeiro gate grande da meta 4h00</li>
+<li>Pernas devem chegar OK se sexta for descanso real</li>
+<li><strong>Reportagem matinal sábado é checkpoint crítico:</strong> se HRV &lt;30 ou BB &lt;55, LR7 vira 12-14 km Z2</li>
+<li>Próxima oportunidade pra testar <strong>cadência sustentada em Z2 longo</strong> — alvo 160-165 spm sem sentir esforço</li>
+<li><strong>~13/05:</strong> cleanup das pastas legadas</li>
+<li><strong>Próxima sessão de tiros curtos:</strong> treino estruturado pré-programado + auto-lap por tempo</li>
+</ul>
+<hr />
+<p><em>Atualizado em 07/05/2026 (manhã + pós-treino + recalibração via health_daily.py + lock-in das 2 prioridades técnicas).</em></p></div>
           
         </details>
         
@@ -1742,7 +3130,287 @@ body {
             <div class="journal-day">qua 6 mai</div>
           </summary>
           
-          <div class="journal-empty">Sem análise registrada.</div>
+          <div class="journal-content"><h1>Diário 06/05/2026 (Quarta-feira)</h1>
+<h2>🌅 Reporte da manhã</h2>
+<h3>Dados Garmin / TrainingPeaks</h3>
+<div class="md-table-wrap"><table>
+<thead>
+<tr>
+<th>Métrica</th>
+<th>Valor</th>
+<th>Leitura</th>
+<th>Status</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Sleep Score</td>
+<td>80/100</td>
+<td>Bom</td>
+<td>✅</td>
+</tr>
+<tr>
+<td>Duração sono</td>
+<td>7h10m (22:50 → 05:59)</td>
+<td>Abaixo do alvo (8h+)</td>
+<td>🟡</td>
+</tr>
+<tr>
+<td>Estresse médio (durante sono)</td>
+<td>19</td>
+<td>Razoável</td>
+<td>🟡</td>
+</tr>
+<tr>
+<td>Profundo</td>
+<td>1h15m (17%)</td>
+<td>Bom (faixa 13-23%)</td>
+<td>✅</td>
+</tr>
+<tr>
+<td>Leve</td>
+<td>4h57m</td>
+<td>Normal</td>
+<td>—</td>
+</tr>
+<tr>
+<td>REM</td>
+<td>49m (11%)</td>
+<td>Curto (alvo 20-25%)</td>
+<td>🟡</td>
+</tr>
+<tr>
+<td>Acordado/Inquietação</td>
+<td>8m</td>
+<td>Excelente</td>
+<td>✅</td>
+</tr>
+<tr>
+<td>FC repouso</td>
+<td>51 bpm</td>
+<td>Match baseline</td>
+<td>✅</td>
+</tr>
+<tr>
+<td><strong>HRV (RMSSD)</strong></td>
+<td><strong>29 ms</strong></td>
+<td>Lower-end p/ 50+ (sem baseline ainda)</td>
+<td>🟠</td>
+</tr>
+<tr>
+<td><strong>Body Battery (Disposição) ao acordar</strong></td>
+<td><strong>41 — Baixo</strong></td>
+<td><strong>Não recuperou bem</strong></td>
+<td>🔴</td>
+</tr>
+</tbody>
+</table></div>
+<blockquote>
+<p>Nota: HRV ainda sem baseline calibrada (precisa ~19 dias de uso 24/7, ETA ~24/05). Valor absoluto 29 ms = baixo para faixa etária, mas só será conclusivo após calibração.</p>
+</blockquote>
+<h3>Diagnóstico</h3>
+<ul>
+<li><strong>Sleep Score 80 vs BB 41 não é contradição.</strong> Sleep Score mede qualidade <em>dentro</em> do sono; BB mede energia disponível total (atividade anterior + recuperação).</li>
+<li><strong>Tradução:</strong> sono razoável, mas não foi suficiente para descontar o RFF5 de ontem + carga acumulada (ATL 51). Corpo ainda processando.</li>
+<li><strong>REM 49 min + estresse 19</strong> reforçam: regulação autônoma em débito leve.</li>
+<li><strong>Bate com o quadro PMC:</strong> build produtivo (TSB -13), ATL alto, corpo pedindo prudência.</li>
+</ul>
+<hr />
+<h2>🎯 Ajuste do plano (originalmente: easy 5 km Z1-Z2 + Sessão B força)</h2>
+<h3>Recomendação adotada</h3>
+<p><strong>Opção A — Adaptação suave:</strong><br />
+- Manhã: pular corrida; caminhar 20-25 min ao ar livre (luz solar para circadiano + BB recarregar)<br />
+- Tarde/noite: Sessão B força com <strong>70-75% das cargas habituais</strong> (mantém estímulo, reduz punição) — foco em técnica<br />
+- Hidratar bem (~3 L com sódio nas refeições)<br />
+- <strong>Dormir 8h+ hoje à noite — meta inegociável</strong></p>
+<h3>Não fazer</h3>
+<ul>
+<li>❌ Z2 ou Z3 hoje</li>
+<li>❌ Carga máxima na força (risco de lesão sobe com HRV baixo)</li>
+<li>❌ Café depois das 14h</li>
+</ul>
+<h3>Plano para próximos dias</h3>
+<ul>
+<li>Quinta 07/05 (RHR6): se BB &lt;55 e HRV &lt;30 → reduzir para 8 tiros em vez de 12</li>
+<li>Quinta 07/05 (RHR6): se BB ≥60 e HRV ≥32 → executa normal</li>
+<li><strong>Prioridade da semana: chegar descansado no LR7 sábado</strong> (mais importante que matar RHR6)</li>
+</ul>
+<hr />
+<h2>📌 Regra geral acordada para a temporada</h2>
+<div class="md-table-wrap"><table>
+<thead>
+<tr>
+<th>Body Battery (acordando)</th>
+<th>Conduta</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>&lt;50</td>
+<td>Dia de prudência: reduzir volume/intensidade</td>
+</tr>
+<tr>
+<td>50-69</td>
+<td>Treino normal, sem extra</td>
+</tr>
+<tr>
+<td>70+</td>
+<td>Verde para sessão de qualidade (intervalado, longão)</td>
+</tr>
+</tbody>
+</table></div>
+<hr />
+<h2>✅ Decisões e pendências</h2>
+<ul>
+<li>[x] <strong>Decisão:</strong> seguir <strong>Opção A</strong> (pular corrida, caminhada + força reduzida) — confirmado pelo usuário</li>
+<li>[ ] Caminhada 20-25 min ao ar livre (manhã ou início da tarde, com luz solar)</li>
+<li>[ ] Sessão B força à tarde/noite — cargas a 70-75% do habitual, foco em técnica</li>
+<li>[ ] Hidratação ~3 L com sódio nas refeições</li>
+<li>[ ] Dormir 8h+ hoje à noite (meta inegociável)</li>
+<li>[ ] Reportar à noite: como foi o dia, sensação subjetiva, BB ao deitar</li>
+<li>[ ] Amanhã cedo: novo reporte (Sleep + BB + HRV) antes do RHR6 — define se RHR6 vai a 12 tiros (verde) ou 8 (amarelo)</li>
+</ul>
+<hr />
+<hr />
+<h2>🔧 Update da tarde (16:05) — Pipeline Garmin operacional</h2>
+<p>Setup técnico do pipeline Python concluído <strong>com sucesso</strong> em sessão guiada passo-a-passo. Marcos:</p>
+<h3>O que foi feito</h3>
+<ol>
+<li>✅ Senha Garmin rotacionada (era exclusiva do Garmin)</li>
+<li>✅ Python 3.13.9 confirmado</li>
+<li>✅ <code>.venv</code> criado e ativado em <code>pipeline/</code></li>
+<li>✅ Dependências instaladas (~60 pacotes via <code>python -m pip install -r requirements.txt</code>)</li>
+<li>✅ <code>.env</code> criado com credenciais novas</li>
+<li>✅ <code>python conn.py</code> retornou dados em tempo real (passos, FCrep, BB, atividades)</li>
+<li>✅ <code>streamlit run dashboard.py</code> abriu dashboard com mapa, FC, zonas Karvonen, cadência, pace, watts</li>
+</ol>
+<h3>Bug encontrado e resolvido</h3>
+<p>Pegadinha do Windows + Python 3.13: o <code>python -m venv .venv</code> não criou o <code>pip.exe</code> dentro do venv automaticamente. <code>pip install</code> ia parar no Python global. <strong>Correção:</strong> usar sempre <code>python -m pip install ...</code> em vez de <code>pip install ...</code>. Documentado na memory <code>project_pipeline_garmin.md</code> para sessões futuras.</p>
+<h3>Dados novos surgiram em conn.py (que não tinham na manhã)</h3>
+<ul>
+<li><strong>Body Battery min/max do dia: 17 / 69</strong></li>
+<li>Min 17 = quase zero na madrugada (esgotamento total após RFF5 + carga acumulada)</li>
+<li>Max 69 = pico durante sono (recuperou 52 pontos)</li>
+<li>Acordou em 41 = perdeu 28 pontos do peak antes de checar</li>
+<li><strong>Reforça que a Opção A foi a escolha certa</strong> — começar o dia em 17 e tentar Z2/Z3 seria desastre</li>
+</ul>
+<h3>Warnings 429 em conn.py</h3>
+<p>Garmin rate-limita logins via mobile API. A <code>garminconnect</code> tenta primeiro mobile, falha com 429, e cai num fallback que funciona. <strong>Não é blocker.</strong> Se virar problema persistente, alternativa é migrar pra <code>garth</code>.</p>
+<h3>Próximos passos do pipeline</h3>
+<ul>
+<li>Após <strong>12/05</strong> (HRV diário aparecendo) → criar <code>health_daily.py</code> (coleta automática + SQLite)</li>
+<li>Após <strong>19/05</strong> → <code>pmc.py</code> + <code>tp_import.py</code></li>
+<li>Após <strong>24/05</strong> (baseline HRV pronta) → <code>scoring.py</code> + agendamento Windows + Telegram</li>
+<li><code>C:\Python\Garmin\</code> original NÃO foi deletada ainda — esperar 1 semana de uso do pipeline novo antes de remover</li>
+</ul>
+<hr />
+<p><em>Diário atualizado em 06/05/2026 16:05 após setup do pipeline.</em></p>
+<hr />
+<h2>🚀 Update da tarde (17:00-18:00) — Migração estrutural + meta 4h00</h2>
+<h3>1. Migração de pasta: <code>pipeline/</code> → <code>Pesq_Jr/RunTechOps/</code></h3>
+<p>A pipeline Python foi migrada da subpasta <code>2026-05-04-.../pipeline/</code> para o <strong>top-level</strong> de <code>Pesq_Jr/</code>, virando <code>RunTechOps/</code> (nome escolhido: fusão de "RunTech" + "DevOps Ops"). Razão: pipeline é genérico — serve futuras temporadas, não só 2026.</p>
+<p><strong>Executado:</strong><br />
+- Cópia de todos os arquivos (exceto <code>.venv</code>)<br />
+- Update de paths em <code>README.md</code> e <code>SETUP.md</code><br />
+- <code>.venv</code> recriado em <code>RunTechOps/</code> (Python 3.13.9)<br />
+- Deps instaladas via <code>python -m pip install -r requirements.txt</code><br />
+- <code>conn.py</code>, <code>dashboard.py</code>, <code>lastrun.py 5</code> testados — todos funcionando</p>
+<h3>2. Refatoração do <code>lastrun.py</code></h3>
+<p>Reescrito do zero com 5 melhorias:<br />
+- Lê credenciais do <code>.env</code> (sem prompt interativo)<br />
+- Aceita quantidade via argv: <code>python lastrun.py 5</code><br />
+- Salva em <code>Atividades Baixadas/</code> (não na raiz)<br />
+- Skip idempotente de TCXs já existentes<br />
+- Resumo final (baixados / já existiam / não-corridas)</p>
+<p>Teste com <code>python lastrun.py 5</code>: 3 corridas baixadas (incluindo o RFF5 de ontem), 2 não-corridas ignoradas (sessões de força), 0 duplicadas.</p>
+<h3>3. Conn.py revelou dado crítico — BB do dia</h3>
+<pre><code>Body Battery min/max: 17 / 69
+</code></pre>
+<ul>
+<li>Min 17 = madrugada (RFF5 da véspera + ATL acumulado)</li>
+<li>Max 69 = pico durante sono (recuperou 52 pontos)</li>
+<li>Você acordou em 41 (perdeu 28 do peak)</li>
+</ul>
+<p><strong>Reforço da Opção A como decisão correta</strong> — começar o dia em 17 + Z3 = receita pra desastre.</p>
+<h3>4. Apagada <code>pipeline/</code> antiga (conteúdo) — casca vazia restante</h3>
+<p>Conteúdo da pasta antiga apagado. Casca vazia mantida porque <code>OneDrive.Sync.Service</code> (PID 11088) segura handle no diretório mesmo com sync pausado. Deletar manualmente em próximo reboot.</p>
+<h3>5. 🎯 META MARATONA UPGRADE: 4h30 → <strong>4h00</strong></h3>
+<p>Você declarou: <em>"meu objetivo é fazer a maratona em 4hs. quero fazer o possível e até o impossível pra isso acontecer. me ajude. vamos juntos."</em></p>
+<p>Análise feita com Riegel n=0,86 (50+):<br />
+- 21K #2 em 2h05 → maratona ~3h46 (4h00 com folga) ✅<br />
+- 21K #2 em 2h10 → maratona ~3h55 (4h00 com sobra de 5 min) ✅<br />
+- 21K #2 em 2h15 → maratona ~4h05 (estoura 4h00) ⚠️</p>
+<p><strong>21K #2 (26/07) virou o teste decisivo.</strong> Se atingir 2h05-2h10 → 4h00 viva.</p>
+<h3>6. Contrato de coaching firmado (3 cláusulas)</h3>
+<ol>
+<li><strong>Espelho, não cheerleader</strong> — números crus, sem suavizar</li>
+<li><strong>Quando coach diz "segura aí", segura</strong> — já validado hoje (BB 41 → Opção A)</li>
+<li><strong>Se 4h00 ficar inviável</strong> (5+ das 9 não-negociáveis no vermelho), conversa honesta sobre reorientação</li>
+</ol>
+<p>Você fechou: <em>"topo o contrato, fechado!"</em></p>
+<h3>7. As 9 não-negociáveis pra meta 4h00</h3>
+<p>(salvas em <code>project_temporada_corrida_2026.md</code> — auditadas a cada reporte diário)</p>
+<ol>
+<li>Peso 92-94 kg até 30/08 (-4 a -6 kg)</li>
+<li>CTL 62-68 na semana de prova</li>
+<li>Cadência 170+ spm (hoje 153)</li>
+<li>Z2 verdadeira em TODOS os longões</li>
+<li>Longão de 32-34 km na semana 14</li>
+<li>4 sessões de marathon pace (5:41) nas semanas 12-14</li>
+<li>Sono médio ≥7h30 (móvel 7d)</li>
+<li>HRV "Balanced" em 80%+ dos dias após 24/05</li>
+<li>Sem lesão</li>
+</ol>
+<h3>8. Sessão exportada via <code>/session-output</code></h3>
+<p>Arquivo gerado em <code>.sessions-output/Jr/sessao-2026-05-06-17-30-dfa9290a.md</code> (271 KB, modo A). Sumário + tags preenchidos. Índice atualizado.</p>
+<h3>9. Claude Code project migrado de <code>Pesq_Jr</code> → <code>RunTechOps</code></h3>
+<p>Você fechou a sessão em <code>Pesq_Jr/</code> e abriu nova em <code>RunTechOps/</code>. O projeto Claude Code (memórias + transcript + settings) foi migrado:<br />
+- Memórias: <code>~/.claude/projects/...-JR-Pesq-Jr-RunTechOps/memory/</code> (9 arquivos <code>.md</code> + <code>MEMORY.md</code>)<br />
+- Settings novo (<code>RunTechOps/.claude/settings.local.json</code>) inclui <code>additionalDirectories: Pesq_Jr/</code> — acessa o protocolo daqui sem fricção<br />
+- Pasta antiga em <code>~/.claude/projects/...-Jr-Pesq-Jr/</code> mantida como backup até ~13/05</p>
+<hr />
+<h2>📊 Recapitulação do dia (numérica)</h2>
+<div class="md-table-wrap"><table>
+<thead>
+<tr>
+<th>Frente</th>
+<th>Quantificação</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Treino físico</td>
+<td>1 caminhada planejada (a executar) + Sessão B força a 70-75% (a executar)</td>
+</tr>
+<tr>
+<td>Pipeline</td>
+<td>60+ pacotes Python instalados, 3 scripts testados, 1 refatorado, 1 nova pasta criada</td>
+</tr>
+<tr>
+<td>Documentação</td>
+<td>Diário, SETUP.md, README atualizado, sessão exportada (271 KB)</td>
+</tr>
+<tr>
+<td>Memórias</td>
+<td>9 arquivos consolidados, 1 nova (<code>feedback_contrato_coach_4h00.md</code>), 1 renomeada (<code>project_runtechops.md</code>), 1 (<code>project_pipeline_garmin.md</code>) deletada</td>
+</tr>
+<tr>
+<td>Decisões</td>
+<td>Opção A pra hoje, meta 4h00 (de 4h30), contrato de coaching firmado</td>
+</tr>
+</tbody>
+</table></div>
+<hr />
+<h2>⏰ Pendências físicas ainda do dia</h2>
+<ul>
+<li>[ ] Caminhada 20-25 min com luz solar (urgente — sol já caindo)</li>
+<li>[ ] Sessão B força à noite (70-75% das cargas)</li>
+<li>[ ] ~3 L hidratação com sódio</li>
+<li>[ ] Dormir 8h+ (deitar antes de 23:00)</li>
+<li>[ ] Reporte à noite: sensação subjetiva + BB ao deitar</li>
+</ul>
+<hr />
+<p><em>Diário fechado em 06/05/2026 ~18:00. Dia técnico massivo num "dia leve" pelo BB. Próximo reporte amanhã 07/05 cedo via <code>python conn.py</code>.</em></p></div>
           
         </details>
         
@@ -1755,7 +3423,646 @@ body {
             <div class="journal-day">ter 5 mai</div>
           </summary>
           
-          <div class="journal-empty">Sem análise registrada.</div>
+          <div class="journal-content"><h1>Diário — Terça 05/05/2026</h1>
+<p><strong>Semana 1 da temporada</strong> | <strong>Dia 2 da semana de treino</strong> | <strong>32 dias até o 21K #1 (Meia Maratona do Rio, 06/06)</strong></p>
+<hr />
+<h2>📊 Estado de chegada (manhã)</h2>
+<h3>TrainingPeaks (PMC) — fonte oficial confirmada via screenshot</h3>
+<div class="md-table-wrap"><table>
+<thead>
+<tr>
+<th>Métrica</th>
+<th>Valor</th>
+<th>Leitura</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Condicionamento (CTL)</td>
+<td><strong>37</strong></td>
+<td>Base razoável</td>
+</tr>
+<tr>
+<td>Forma (TSB)</td>
+<td><strong>-13</strong> ↑</td>
+<td>Fadiga produtiva (-10 a -30 = ganhando fitness)</td>
+</tr>
+<tr>
+<td>Fadiga (ATL)</td>
+<td><strong>51</strong></td>
+<td>Alta — carga recente significativa</td>
+</tr>
+<tr>
+<td>Status TP</td>
+<td>"Mantendo a Forma"</td>
+<td>Zona ótima — não sobrecarregado, não perdendo fitness</td>
+</tr>
+</tbody>
+</table></div>
+<h3>Sono</h3>
+<ul>
+<li>7h30 (queria 8h-8h30, mas tolerável)</li>
+</ul>
+<h3>Outros</h3>
+<ul>
+<li>Garmin <strong>NÃO</strong> estava no pulso (será mudado a partir de hoje — ver decisões abaixo)</li>
+</ul>
+<hr />
+<h2>🔄 Recalibração crítica</h2>
+<p><strong>Os números que apareceram ontem (04/05) — TSB +39 / CTL 31 / ATL 14 — estavam desatualizados ou de outra tela.</strong> Os reais e atuais são os de hoje (TSB -13 / CTL 37 / ATL 51).</p>
+<h3>Implicações da recalibração</h3>
+<div class="md-table-wrap"><table>
+<thead>
+<tr>
+<th>Item</th>
+<th>Leitura ontem (errada)</th>
+<th>Leitura hoje (correta)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Estado</td>
+<td>"Destreinado, fresco demais"</td>
+<td><strong>Já em build, fadiga produtiva</strong></td>
+</tr>
+<tr>
+<td>Ramp rate seguro</td>
+<td>+5-7 CTL/sem</td>
+<td><strong>+2-4 CTL/sem</strong> (mais conservador)</td>
+</tr>
+<tr>
+<td>CTL alvo pré-21K #1</td>
+<td>44-46 (pico)</td>
+<td><strong>42-45</strong> (mais realista)</td>
+</tr>
+<tr>
+<td>Risco de overreaching</td>
+<td>Baixo</td>
+<td><strong>Médio</strong> — ATL 51 é alto, vigiar</td>
+</tr>
+</tbody>
+</table></div>
+<h3>O que NÃO mudou</h3>
+<ul>
+<li>✅ Longão tem que ser em Z2 verdadeiro (122-134 bpm)</li>
+<li>✅ 21K #1 a 90% (não PR) — agora com ainda mais razão</li>
+<li>✅ Macrociclo da temporada (3 provas) — segue válido</li>
+<li>✅ Suplementação, força 3×, modalidades — tudo igual</li>
+</ul>
+<hr />
+<h2>📝 Reporte do dia anterior (segunda 04/05)</h2>
+<ul>
+<li><strong>Força MMII pesado (Sessão A)</strong> executado mesmo após longão de domingo (17 km)</li>
+<li>Sensação: "muito melhor do que eu imaginava"</li>
+<li><strong>Sinal positivo:</strong> corpo aceita carga em fadiga moderada (adaptação fisiológica boa)</li>
+</ul>
+<hr />
+<h2>🏃 Treinos da semana (planejados pelo TrainingPeaks)</h2>
+<h3>Terça 05/05 — RFF5 (hoje)</h3>
+<ul>
+<li><strong>Estrutura:</strong> 5' Z1 + 25' Z2 + 12' Z3 + (5' desaquec)</li>
+<li><strong>Duração:</strong> 42 min | <strong>Distância:</strong> ~6 km | <strong>TSS:</strong> 54</li>
+<li><strong>Tipo:</strong> progressive run</li>
+<li><strong>Avaliação:</strong> apropriado para terça pós-força MMII pesada (mais inteligente que intervalado original)</li>
+</ul>
+<p><strong>Atenção:</strong><br />
+- Pace prescrito de Z2 (6:40-7:26) é mais rápido que Z2 real por FC (122-134 bpm = pace ~6:55-7:15)<br />
+- <strong>Olhar FC durante o treino</strong>: se passar de 134 no bloco "Z2", desacelerar para 7:00-7:10<br />
+- Z3 alvo: 138-145 bpm (pace 6:25-6:35 deve sair natural)</p>
+<h3>Quinta 07/05 — RHR6 (12×30" Z5 em subida)</h3>
+<ul>
+<li><strong>Estrutura:</strong> 5' Z1 + 5' Z2 + 12×(30" Z5 + 1:30 Z1) + 5' Z1</li>
+<li><strong>Total:</strong> ~39 min, 5-6 km</li>
+<li><strong>Tipo:</strong> tiros curtos em subida (potência neuromuscular)</li>
+</ul>
+<p><strong>Avaliação:</strong> ótimo para perfil de 98 kg + 54 anos. Subida = menor impacto articular vs sprint plano, mas mesmo recrutamento de fibras rápidas.</p>
+<p><strong>Como executar:</strong><br />
+- Inclinação 4-6%<br />
+- Esforço "hard controlado" (RPE 8-9), não sprint total<br />
+- Cadência alta, passos curtos<br />
+- Ombros relaxados, leve inclinação para frente<br />
+- Esteira em 5-7% se não tiver subida disponível</p>
+<h3>Sábado 09/05 — LR7 (17 km Z2) — 🔴 PRIMEIRO LONGÃO Z2 VERDADEIRO</h3>
+<ul>
+<li><strong>Estrutura:</strong> 2 km Z1 + 12 km Z2 + 1 km Z1 (matemática soma 15 km, mas título diz 17 km — verificar com plano)</li>
+<li><strong>Tipo:</strong> longão de base aeróbia</li>
+</ul>
+<p><strong>🔴 Regra de ouro:</strong> <strong>seguir FC, não pace</strong>. Se passar de 134 bpm, desacelerar mesmo que pace caia para 7:10-7:20.</p>
+<p><strong>Por que isso é não-negociável:</strong> o motivo do TSB +39 errado foi exatamente correr tudo em Z3 achando que era Z2 (longão a 6:33/140 bpm). Mais um longão em Z3 = paga em ATL e não constrói CTL.</p>
+<h3>⚠️ Cluster sex força + sáb longão</h3>
+<div class="md-table-wrap"><table>
+<thead>
+<tr>
+<th>Dia</th>
+<th>Treino</th>
+<th>Risco</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Sex 08/05</td>
+<td>Sessão C força (funcional, 1h)</td>
+<td>Moderado em MMII</td>
+</tr>
+<tr>
+<td>Sáb 09/05</td>
+<td>Longão 17 km Z2</td>
+<td>—</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>Mitigações:</strong><br />
+1. Força sexta de manhã/tarde (não à noite) — máximo gap<br />
+2. Sexta noite: sono ≥ 8h, hidratação 4L, jantar com 100g+ carbo<br />
+3. Sábado manhã: 2h antes — café-da-manhã com 80-100g carbo<br />
+4. Se pernas pesadas no sábado: pace 7:15-7:25, FC &lt; 130. Não força.</p>
+<hr />
+<h2>✅ Decisão tomada hoje: usar Garmin 24/7</h2>
+<p><strong>Modelo:</strong> Forerunner 965 (top de linha — tem TODAS as métricas necessárias)</p>
+<p><strong>Razão:</strong> sem Garmin 24/7, perdia 3 das 4 fontes do score composto diário (HRV Status, Body Battery, Sleep Score). Restava só TSB do TrainingPeaks — leitura cega para sinais precoces de overreaching.</p>
+<p><strong>Hábito antigo:</strong> esquecimento/preguiça de colocar.<br />
+<strong>Compromisso novo:</strong> vai usar direto a partir de 05/05.</p>
+<h3>Cronograma de dados que vão aparecer</h3>
+<div class="md-table-wrap"><table>
+<thead>
+<tr>
+<th>Janela</th>
+<th>Período</th>
+<th>O que fica disponível</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Imediato (05/05)</td>
+<td>Hoje</td>
+<td>Body Battery, Sleep Score, FC repouso, FC média 24h</td>
+</tr>
+<tr>
+<td>Após 3-7 noites</td>
+<td>08-12/05</td>
+<td>HRV diária (RMSSD bruto), Training Readiness</td>
+</tr>
+<tr>
+<td>Após 14 noites</td>
+<td>~19/05</td>
+<td>Tendências de HRV se formam</td>
+</tr>
+<tr>
+<td><strong>Após 19 noites (BASELINE)</strong></td>
+<td><strong>~24/05</strong></td>
+<td><strong>HRV Status com classificação</strong> ✅</td>
+</tr>
+<tr>
+<td>Após 30 dias</td>
+<td>~04/06</td>
+<td>Status confiável + Training Status mais preciso</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>Timing crítico:</strong> baseline HRV pronto ~24/05 = <strong>2 dias antes do início do taper do 21K #1</strong>. Vai entrar na semana decisiva já com leitura confiável.</p>
+<h3>To-do Garmin Connect (10 min)</h3>
+<ul>
+<li>[ ] Cadastrar evento "Meia Maratona do Rio" 06/06/2026, 21,1 km</li>
+<li>[ ] Cadastrar evento "Maratona" 30/08/2026, 42,2 km</li>
+<li>[ ] Configurar zonas de FC manualmente:</li>
+<li>Z1: 111-122 | Z2: 122-134 | Z3: 134-146 | Z4: 146-158 | Z5: 158-170</li>
+<li>[ ] Ativar HRV Status (Settings → Health)</li>
+<li>[ ] Pulse Ox apenas durante sono (Settings → Sensors → "Sleep Only")</li>
+<li>[ ] Considerar pulseira de silicone macio para dormir (se desconforto)</li>
+</ul>
+<h3>Dicas práticas de uso 24/7 com o 965</h3>
+<div class="md-table-wrap"><table>
+<thead>
+<tr>
+<th>Item</th>
+<th>Recomendação</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Bateria</td>
+<td>14-18 dias real. Carga rápida: 15 min = 1 dia</td>
+</tr>
+<tr>
+<td>Quando carregar</td>
+<td>No banho ou trabalhando. <strong>NUNCA à noite</strong> (perde HRV)</td>
+</tr>
+<tr>
+<td>Pulseira</td>
+<td>Firme mas confortável — sensor ótico precisa contato</td>
+</tr>
+<tr>
+<td>Dormir com ele</td>
+<td>Trocar para silicone macio se a pulseira incomodar</td>
+</tr>
+</tbody>
+</table></div>
+<hr />
+<h2>🐍 Pipeline Python (garth) — adiado</h2>
+<p><strong>Não vale montar antes de 24/05</strong> (baseline HRV pronta). Cronograma:</p>
+<ul>
+<li>05-23/05: Garmin coletando dados, usar app + Connect mobile</li>
+<li>24-31/05: primeira coleta de teste com <code>garth</code></li>
+<li>01-13/06: dashboard básico antes do 21K #1</li>
+<li>Jun-jul: ferramenta madura para o bloco maratoniano</li>
+</ul>
+<hr />
+<h2>📤 Formato de reportagem a partir de agora</h2>
+<p>Sempre que reportar treino/dia, mandar os 6 dados:</p>
+<ol>
+<li><strong>TSB / CTL / ATL</strong> (TrainingPeaks)</li>
+<li><strong>Sleep Score + horas de sono</strong> (Garmin)</li>
+<li><strong>Body Battery ao acordar</strong> (Garmin)</li>
+<li><strong>HRV</strong> (a partir de ~24/05, com Status; antes só o número RMSSD)</li>
+<li><strong>FC média do treino</strong> (não só pace)</li>
+<li><strong>Sensação subjetiva 1-10</strong></li>
+</ol>
+<hr />
+<h2>🎯 Pra reportar depois do treino de hoje (terça à noite)</h2>
+<ul>
+<li>FC média de cada bloco (Z1 / Z2 / Z3)</li>
+<li>Pace efetivo de cada bloco</li>
+<li>Sensação geral 1-10</li>
+<li>Se conseguiu manter Z2 no limite ou se a FC subiu</li>
+</ul>
+<hr />
+<h2>🎯 Pra reportar depois do treino de quinta (RHR6)</h2>
+<ul>
+<li>Quantos tiros completou (de 12)</li>
+<li>Sensação no 8º vs 12º</li>
+<li>Inclinação da subida usada</li>
+<li>Pace médio nos tiros</li>
+</ul>
+<hr />
+<h2>🎯 Pra reportar depois do longão de sábado (o mais crítico)</h2>
+<ul>
+<li>FC média do bloco Z2 (alvo 122-134)</li>
+<li>Pace médio do bloco Z2</li>
+<li>Sensação 1-10</li>
+<li>Como acordou sábado pós-força sexta</li>
+<li>TSB no TrainingPeaks antes de sair</li>
+</ul>
+<p><strong>Esse longão é o teste mais importante da semana 1.</strong> Se sair em Z2 verdadeiro, semana foi sucesso.</p>
+<hr />
+<h2>💡 Curiosidade discutida hoje (longão e meia de compressão)</h2>
+<blockquote>
+<p><strong>Diferença entre meia DURANTE vs DEPOIS do treino</strong></p>
+</blockquote>
+<div class="md-table-wrap"><table>
+<thead>
+<tr>
+<th>Quando</th>
+<th>Mecanismo</th>
+<th>Função</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Durante</td>
+<td>Redução de oscilação muscular + suporte mecânico</td>
+<td>Atenua dano que apareceria 24h depois</td>
+</tr>
+<tr>
+<td>Depois</td>
+<td>Bombeamento venoso passivo</td>
+<td>Acelera clearance de CK, lactato, mioglobina</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>Não é "ou", é "e"</strong>: usar nas duas pontas é a versão completa.<br />
+- Bota no longão de domingo<br />
+- Mantém pernas até hora do almoço<br />
+- Troca por roupa normal à tarde</p>
+<p><strong>Bota pneumática (NormaTec/Hyperice):</strong> veredicto = NÃO vale para o perfil dele agora. Pra prova de 33 dias é overkill. Avaliar pós-prova se mantiver volume 50+ km/sem. Marca chinesa (Aerlang/Joymax R$ 1,5-3k) faz 80% do que NormaTec faz por 1/6 do preço.</p>
+<hr />
+<h2>🌙 Update de noite — Execução do treino RFF5</h2>
+<h3>📋 Atividade</h3>
+<ul>
+<li><strong>Nome:</strong> Vitória — RFF5 Corrida — 25' Z2 + 12' Z3</li>
+<li><strong>Hora:</strong> 18:27</li>
+<li><strong>Distância:</strong> 6,03 km</li>
+<li><strong>Tempo total:</strong> 42:43 (em movimento: 42:41 — sem paradas)</li>
+<li><strong>Pace médio:</strong> 7:05 /km</li>
+<li><strong>Pace ajust. inclinação:</strong> 7:04 /km (terreno plano)</li>
+<li><strong>Calorias:</strong> 555</li>
+</ul>
+<h3>🎯 Plano vs Execução por bloco</h3>
+<div class="md-table-wrap"><table>
+<thead>
+<tr>
+<th>Bloco</th>
+<th>Tempo</th>
+<th>Distância</th>
+<th>Pace alvo (Karvonen)</th>
+<th>Pace efetivo</th>
+<th>Status</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Aquec Z1</td>
+<td>5:00</td>
+<td>0,67 km</td>
+<td>7:30-8:00</td>
+<td><strong>7:29</strong></td>
+<td>✅</td>
+</tr>
+<tr>
+<td><strong>Z2 (25')</strong></td>
+<td>25:00</td>
+<td>3,48 km</td>
+<td><strong>6:55-7:15</strong></td>
+<td><strong>7:11</strong></td>
+<td>✅ Bullseye</td>
+</tr>
+<tr>
+<td><strong>Z3 (12')</strong></td>
+<td>12:00</td>
+<td>1,80 km</td>
+<td><strong>6:25-6:50</strong></td>
+<td><strong>6:40</strong></td>
+<td>✅ Bullseye</td>
+</tr>
+<tr>
+<td>Desaq (gravado)</td>
+<td>0:43</td>
+<td>0,09 km</td>
+<td>—</td>
+<td>8:22</td>
+<td>— pausa social</td>
+</tr>
+<tr>
+<td>Desaq (real, caminhada home)</td>
+<td>~3 min</td>
+<td>—</td>
+<td>Z1</td>
+<td>caminhada</td>
+<td>✅ não gravado</td>
+</tr>
+</tbody>
+</table></div>
+<h3>📊 Splits (variação interna)</h3>
+<p><strong>Bloco Z2 — variação 14s entre splits (controle bom):</strong><br />
+- km 1: 7:18<br />
+- km 2: 7:04<br />
+- km 3: 7:08<br />
+- últ. 480 m: 7:17</p>
+<p><strong>Bloco Z3 — consistente:</strong><br />
+- km 1: 6:43<br />
+- últ. 800 m: 6:37</p>
+<h3>❤️ Cardíaco</h3>
+<div class="md-table-wrap"><table>
+<thead>
+<tr>
+<th>Métrica</th>
+<th>Valor</th>
+<th>Status</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>FC média total</td>
+<td>134 bpm</td>
+<td>Limite Z2/Z3 — perfeito p/ treino misto</td>
+</tr>
+<tr>
+<td>FC máxima</td>
+<td>148 bpm</td>
+<td>Z4 baixa pontual — não estourou</td>
+</tr>
+<tr>
+<td>FC recuperação 1'</td>
+<td><strong>31 bpm</strong></td>
+<td><strong>Excelente</strong> (&gt;30 = topo)</td>
+</tr>
+</tbody>
+</table></div>
+<h3>🔥 Efeito de treino e carga</h3>
+<div class="md-table-wrap"><table>
+<thead>
+<tr>
+<th>Métrica</th>
+<th>Valor</th>
+<th>Análise</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Principal benefício</td>
+<td><strong>Base (Aeróbico baixo)</strong></td>
+<td>✅ Constrói CTL aeróbio</td>
+</tr>
+<tr>
+<td>Efeito aeróbico</td>
+<td>3,1 / 5</td>
+<td>Melhoria efetiva</td>
+</tr>
+<tr>
+<td>Efeito anaeróbico</td>
+<td>0,0</td>
+<td>Não estourou</td>
+</tr>
+<tr>
+<td>Carga de exercício</td>
+<td>84</td>
+<td>Faixa "ótima" (50-150)</td>
+</tr>
+<tr>
+<td>Stamina</td>
+<td>99% → 82% (-17 pts)</td>
+<td>Sobrava tanque</td>
+</tr>
+<tr>
+<td>Potência média</td>
+<td>324 W</td>
+<td>Linha base p/ comparação futura</td>
+</tr>
+<tr>
+<td>Potência máxima</td>
+<td>517 W</td>
+<td>Pico Z3</td>
+</tr>
+</tbody>
+</table></div>
+<h3>🦵 Dinâmica de corrida (forma)</h3>
+<div class="md-table-wrap"><table>
+<thead>
+<tr>
+<th>Métrica</th>
+<th>Seu valor</th>
+<th>Faixa ideal</th>
+<th>Status</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Cadência média</strong></td>
+<td><strong>153 spm</strong></td>
+<td>170-180</td>
+<td>🔴 Baixa demais</td>
+</tr>
+<tr>
+<td>Cadência máxima</td>
+<td>171 spm</td>
+<td>—</td>
+<td>Você consegue quando acelera</td>
+</tr>
+<tr>
+<td><strong>Tempo contato solo</strong></td>
+<td><strong>313 ms</strong></td>
+<td>&lt;250</td>
+<td>🔴 Pobre (&gt;305 = pobre)</td>
+</tr>
+<tr>
+<td>Oscilação vertical</td>
+<td>8,5 cm</td>
+<td>&lt;7,5</td>
+<td>🟡 Médio</td>
+</tr>
+<tr>
+<td>Proporção vertical</td>
+<td>9,2%</td>
+<td>&lt;8,6%</td>
+<td>🟡 Razoável</td>
+</tr>
+<tr>
+<td>Comprimento médio passo</td>
+<td>0,92 m</td>
+<td>—</td>
+<td>Compensando cadência baixa</td>
+</tr>
+</tbody>
+</table></div>
+<h3>🧠 Sensação subjetiva</h3>
+<p><strong>10/10</strong> — corpo respondendo bem à carga acumulada da semana. Sinal de adaptação saudável, não de overreaching.</p>
+<h3>📈 PMC (TrainingPeaks)</h3>
+<div class="md-table-wrap"><table>
+<thead>
+<tr>
+<th>Métrica</th>
+<th>Manhã</th>
+<th>Pós-treino</th>
+<th>Variação</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Condicionamento (CTL)</td>
+<td>37</td>
+<td>37</td>
+<td>—</td>
+</tr>
+<tr>
+<td>Forma (TSB)</td>
+<td>-13</td>
+<td>-13</td>
+<td>—</td>
+</tr>
+<tr>
+<td>Fadiga (ATL)</td>
+<td>51</td>
+<td>51</td>
+<td>—</td>
+</tr>
+</tbody>
+</table></div>
+<p>PMC estável: TSS estimado ~54 absorvido pela média de 7d sem mover a agulha. Coerente.</p>
+<h3>🏆 Veredicto: execução cirúrgica</h3>
+<p>Você rodou pelas suas <strong>zonas reais</strong> (Karvonen FCmáx 170 / FCrep 51), <strong>não pelas zonas genéricas que o TrainingPeaks prescreveu</strong> (que assumiam pace mais rápido).</p>
+<ul>
+<li>Z2 prescrito pelo TP: 6:40-7:26 → você ficou em <strong>7:11</strong> (correto p/ não entrar em Z3)</li>
+<li>Z3 prescrito pelo TP: 6:10-6:35 → você ficou em <strong>6:40</strong> (5s mais lento que limite TP, mas dentro da SUA Z3 real)</li>
+</ul>
+<p><strong>Comparativo com o longão de domingo:</strong></p>
+<div class="md-table-wrap"><table>
+<thead>
+<tr>
+<th>Treino</th>
+<th>Distância</th>
+<th>Pace</th>
+<th>FC média</th>
+<th>Zona real</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Longão dom 03/05</td>
+<td>17 km</td>
+<td>6:33</td>
+<td>140</td>
+<td><strong>Z3 médio</strong> ❌</td>
+</tr>
+<tr>
+<td>RFF5 hoje 05/05</td>
+<td>6 km</td>
+<td>7:05</td>
+<td>134</td>
+<td><strong>Z2/Z3 controlado</strong> ✅</td>
+</tr>
+</tbody>
+</table></div>
+<h3>📝 Notas por aspecto</h3>
+<div class="md-table-wrap"><table>
+<thead>
+<tr>
+<th>Aspecto</th>
+<th>Nota</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Estratégia (FC vs pace)</td>
+<td>10/10</td>
+</tr>
+<tr>
+<td>Z1 (aquecimento)</td>
+<td>9/10</td>
+</tr>
+<tr>
+<td>Z2 (controle de pace e FC)</td>
+<td><strong>10/10</strong></td>
+</tr>
+<tr>
+<td>Z3 (controle dentro da zona)</td>
+<td>10/10</td>
+</tr>
+<tr>
+<td>Variação interna dos blocos</td>
+<td>9/10</td>
+</tr>
+<tr>
+<td>Desaquecimento</td>
+<td>9/10 (corrigido — caminhada de 3 min pra casa cumpriu a função)</td>
+</tr>
+<tr>
+<td><strong>Geral</strong></td>
+<td><strong>9,5/10</strong></td>
+</tr>
+</tbody>
+</table></div>
+<h3>🔧 Pontos a trabalhar</h3>
+<ol>
+<li><strong>🔴 Cadência (PRIORITÁRIO)</strong> — subir gradualmente de <strong>153 → 170+ spm</strong>. Para 98 kg + 54 anos, é a alavanca mais importante de:</li>
+<li>Prevenção de lesão (menos impacto articular)</li>
+<li>Economia de corrida (3-5% melhor com +10-15 spm)</li>
+<li>Em maratona de 4h30, equivale a <strong>~10-15 min de ganho</strong></li>
+</ol>
+<p><strong>Como:</strong> métronomo (apps Run Tempo, Polar Beat) ou playlist Spotify "Running 170 BPM" em <strong>1 corrida easy por semana</strong>, alvo:<br />
+   - Sem 1: 153 → 158<br />
+   - Sem 2: 158 → 162<br />
+   - Sem 3: 162 → 165<br />
+   - Sem 6+ (pós-21K #1): 165 → 170</p>
+<ol>
+<li><strong>🟢 Desaquecimento</strong> — você fez certo (3 min caminhada pra casa após o Z3). Só <strong>não dê pausa no relógio</strong> entre o esforço e a caminhada de retorno — deixa gravando até chegar em casa. Os dados do desaquec são úteis para análise (queda gradual de FC, tempo total de exercício real). Vai melhorar suas métricas no Garmin sem mudar o que você já faz na prática.</li>
+</ol>
+<h3>📤 Dados pendentes (chegam manhã 06/05)</h3>
+<p>Quando acordar, o Garmin terá calculado:<br />
+- [ ] Sleep Score + horas dormidas<br />
+- [ ] Body Battery ao acordar<br />
+- [ ] HRV (RMSSD da noite)</p>
+<p>Esses 3 fecham a leitura completa do dia. Sensação 10 + dados objetivos = diagnóstico final de "build saudável" ou "fadiga oculta".</p>
+<hr />
+<p><em>Diário gerado em 05/05/2026. Update de noite anexado após execução do RFF5 (~22h). Próxima sessão: 06/05 manhã com os 3 dados de saúde da noite.</em></p></div>
           
         </details>
         
@@ -2131,7 +4438,7 @@ Alavancas médias: hidratação contínua · respiração 4-7-8 antes de dormir 
 
   
 
-  <div class="footer">RunTechOps · 09:43:25</div>
+  <div class="footer">RunTechOps · 10:14:33</div>
 </div>
 
 <script>
