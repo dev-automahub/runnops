@@ -5,6 +5,15 @@
 
 ---
 
+## 🔁 Rotina semanal (toda terça-feira de manhã)
+
+- [ ] Rodar `python scheduled_workouts.py` pra baixar o plano da semana atual + próxima do calendário Garmin
+- [ ] Conferir o MD gerado em `planos-semana/plano-semana-YYYY-Www.md`
+- [ ] Validar com o coach se há ajuste a fazer no plano antes de começar a executar
+- [ ] Se o calendário estiver vazio (coach ainda não publicou) → cobrar antes do primeiro treino da semana
+
+---
+
 ## 🔴 Hoje / nas próximas 24h
 
 - [ ] Ajustar zonas de FC no Garmin Connect com Karvonen (FCmáx 170, FCrep 51): **Z2 = 122-134 bpm**
