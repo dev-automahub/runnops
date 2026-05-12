@@ -403,6 +403,65 @@ def build_context(today_row, history_with_verdicts, deltas, override=None, diari
     days_collected = len(history_with_verdicts)
     correlations_available = days_collected >= 14
 
+    # ============ Plano da semana + Próximo treino (scheduled_workout) ============
+    from dash_data import load_scheduled_workouts, load_sessions_for_week
+    from datetime import date as date_cls
+    today_iso_str = date_cls.today().isoformat()
+    iso = date_cls.today().isocalendar()
+    current_week_id = f"{iso[0]}-W{iso[1]:02d}"
+
+    week_scheduled = load_scheduled_workouts("runtech.db", week_id=current_week_id)
+    week_sessions = load_sessions_for_week("runtech.db", current_week_id)
+    sessions_by_date = {s["date_iso"][:10]: s for s in week_sessions if s.get("date_iso")}
+
+    week_plan = []
+    next_workout = None
+    for w in week_scheduled:
+        d_iso = w["date_iso"]
+        d_obj = date_cls.fromisoformat(d_iso)
+        day_short = PT_BR_DAY[d_obj.weekday()]
+        if d_iso < today_iso_str:
+            status = "done"
+            status_icon = "✅"
+            status_label = "feito"
+        elif d_iso == today_iso_str:
+            # Hoje — se ja tem sessao do dia, marca como feito; senao "agora"
+            if d_iso in sessions_by_date:
+                status = "done"
+                status_icon = "✅"
+                status_label = "feito hoje"
+            else:
+                status = "today"
+                status_icon = "🔵"
+                status_label = "HOJE"
+        else:
+            status = "pending"
+            status_icon = "⏳"
+            status_label = "pendente"
+            if next_workout is None:
+                next_workout = {
+                    "date_iso": d_iso,
+                    "date_pretty": f"{day_short} {d_obj.strftime('%d/%m')}",
+                    "title": w["title"],
+                    "days_until": (d_obj - date_cls.today()).days,
+                }
+        week_plan.append({
+            "date_iso": d_iso,
+            "date_pretty": f"{day_short} {d_obj.strftime('%d/%m')}",
+            "title": w["title"],
+            "status": status,
+            "status_icon": status_icon,
+            "status_label": status_label,
+        })
+
+    # Stats do plano da semana
+    plan_total = len(week_plan)
+    plan_done = sum(1 for p in week_plan if p["status"] == "done")
+    plan_today = sum(1 for p in week_plan if p["status"] == "today")
+    plan_pending = sum(1 for p in week_plan if p["status"] == "pending")
+
+    has_week_plan = bool(week_plan)
+
     # ============ Weekly Summary (aggregate_activities.py) ============
     from dash_data import load_weekly_summary
     weekly_rows_raw = load_weekly_summary("runtech.db", n=8)
@@ -566,6 +625,15 @@ def build_context(today_row, history_with_verdicts, deltas, override=None, diari
         # Weekly summary (aggregate_activities.py)
         "weekly": weekly_render,
         "has_weekly": bool(weekly_render),
+        # Plano da semana + proximo treino (scheduled_workout)
+        "week_plan": week_plan,
+        "current_week_id": current_week_id,
+        "has_week_plan": has_week_plan,
+        "plan_total": plan_total,
+        "plan_done": plan_done,
+        "plan_today": plan_today,
+        "plan_pending": plan_pending,
+        "next_workout": next_workout,
     }
 
 

@@ -222,6 +222,130 @@ body {
 .delta-warn    { color: #ff9500; }
 .delta-neutral { color: #8e8e93; }
 
+/* === Próximo treino (banner) === */
+.next-workout {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  background: white;
+  border-left: 4px solid #5e5ce6;
+  border-radius: 12px;
+  padding: 12px 16px;
+  margin-top: 12px;
+  margin-bottom: 16px;
+}
+.next-workout-icon {
+  font-size: 28px;
+  line-height: 1;
+}
+.next-workout-body { flex: 1; min-width: 0; }
+.next-workout-label {
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  opacity: 0.55;
+  font-weight: 700;
+}
+.next-workout-line {
+  font-size: 15px;
+  margin-top: 2px;
+  line-height: 1.35;
+}
+.next-workout-when {
+  opacity: 0.65;
+  font-size: 13px;
+  font-weight: 500;
+}
+
+/* === Plano da semana === */
+.weekplan-section {
+  background: white;
+  border-radius: 14px;
+  padding: 14px 16px;
+  margin-bottom: 16px;
+}
+.weekplan-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-bottom: 10px;
+}
+.weekplan-title {
+  color: #5e5ce6;
+}
+.weekplan-stats {
+  display: flex;
+  gap: 10px;
+  font-size: 12px;
+}
+.weekplan-stat {
+  font-weight: 600;
+}
+.weekplan-stat-done    { color: #1f9d3a; }
+.weekplan-stat-today   { color: #0a84ff; }
+.weekplan-stat-pending { color: #8e8e93; }
+.weekplan-list {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.weekplan-row {
+  display: grid;
+  grid-template-columns: 28px 80px 1fr;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 10px;
+  border-radius: 8px;
+  font-size: 14px;
+  background: #f9f9fb;
+}
+.weekplan-status {
+  font-size: 16px;
+  line-height: 1;
+  text-align: center;
+}
+.weekplan-date {
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  font-size: 13px;
+  opacity: 0.85;
+}
+.weekplan-title-row {
+  font-weight: 500;
+  line-height: 1.3;
+}
+.weekplan-row.weekplan-done {
+  background: #eefff3;
+  opacity: 0.85;
+}
+.weekplan-row.weekplan-done .weekplan-title-row {
+  text-decoration: line-through;
+  text-decoration-color: rgba(31, 157, 58, 0.4);
+}
+.weekplan-row.weekplan-today {
+  background: #e8f3ff;
+  border-left: 3px solid #0a84ff;
+  padding-left: 7px;
+  font-weight: 600;
+}
+.weekplan-row.weekplan-pending {
+  background: #f9f9fb;
+}
+
+/* Mobile */
+@media (max-width: 480px) {
+  .weekplan-row {
+    grid-template-columns: 24px 70px 1fr;
+    font-size: 13px;
+    padding: 7px 8px;
+  }
+  .weekplan-date { font-size: 12px; }
+  .next-workout { padding: 10px 12px; }
+  .next-workout-icon { font-size: 24px; }
+  .next-workout-line { font-size: 14px; }
+}
+
 /* === Performance Garmin (Training Status + Race Predictor) === */
 .perf-section {
   margin-top: 18px;

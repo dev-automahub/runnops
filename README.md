@@ -1,23 +1,69 @@
-# RunTechOps — Pipeline Garmin/TrainingPeaks
+# RunTechOps — Pipeline Garmin / Dashboard publicado
 
-Conjunto de scripts Python para coletar, processar e visualizar dados do Garmin Connect e do TrainingPeaks Premium. Pipeline genérico — serve a temporada 2026 (21K + 21K + Maratona) e temporadas futuras.
+Coleta + análise + publicação automática de dados fisiológicos e de treino. Serve a temporada 2026 (21K + 21K + Maratona). Live em **https://runnops.pages.dev**.
+
+> 📘 **Documentação técnica completa:** [`docs/ARCHITECTURE.md`](docs/ARCHITECTURE.md) — arquitetura, modelo de dados (4 tabelas SQLite), pipelines, frontend, convenções, operações, limitações, roadmap, glossário.
+>
+> ⚙️ **Setup passo-a-passo:** [`SETUP.md`](SETUP.md)
 
 ## Estrutura
 
 ```
 RunTechOps/
-  ├─ conn.py                   # Teste rápido de conexão Garmin (refatorado para .env)
-  ├─ lastrun.py                # Baixador de atividades em formato TCX
-  ├─ dashboard.py              # Dashboard Streamlit — análise de TCX
-  ├─ garmin_activity_data.csv  # Histórico de atividades (já populado)
-  ├─ lastrun_log.txt           # Log de downloads do lastrun.py
-  ├─ Atividades Baixadas/      # Pasta com TCXs históricos
-  ├─ .env                      # Credenciais (NÃO commitar — ver .env.example)
-  ├─ .env.example              # Modelo de credenciais
-  ├─ .gitignore                # Proteção de credenciais e artefatos
-  ├─ requirements.txt          # Dependências Python
-  ├─ SETUP.md                  # Guia passo a passo de setup
-  └─ README.md                 # Este arquivo
+  │
+  ├─ Coleta e ingestão
+  │   ├─ health_daily.py          # Coleta diária Garmin → SQLite + hooks
+  │   ├─ lastrun.py               # Baixa TCX da última atividade
+  │   ├─ scheduled_workouts.py    # Baixa calendário Garmin (plano da semana)
+  │   ├─ aggregate_activities.py  # Agrega TCX → session_summary + weekly_summary
+  │   └─ conn.py                  # Teste de conexão
+  │
+  ├─ Renderização (dashboard)
+  │   ├─ dash_today.py            # Orquestrador: gera index.html + activities.json
+  │   ├─ dash_data.py             # Camada de queries SQLite + parsing MDs
+  │   ├─ dash_verdict.py          # Lógica do veredito diário
+  │   ├─ dash_render.py           # Jinja2 + sparklines SVG + curvas
+  │   ├─ dash_journal.py          # Auto-update do AUTO section dos diários
+  │   ├─ dash_glossary.py         # Termos do glossário
+  │   ├─ dash_activities.py       # Manifest de TCX
+  │   ├─ dash_template.html       # Template das 5 abas
+  │   └─ dash_styles.css          # CSS (embutido no HTML final)
+  │
+  ├─ Publicação
+  │   └─ publish.py               # git add/commit/push (Cloudflare republica)
+  │
+  ├─ Saídas
+  │   ├─ index.html               # Dashboard 5 abas (serve em runnops.pages.dev)
+  │   ├─ activity.html            # Página por treino (mapa Leaflet + Plotly)
+  │   ├─ activities.json          # Manifest dos TCX
+  │   └─ runtech.db               # SQLite (gitignored)
+  │
+  ├─ Conteúdo da temporada
+  │   └─ 2026-05-04-protocolo-recuperacao-corrida-rua-amador/
+  │       ├─ relatorio.md / .html
+  │       ├─ macrociclo.md / .html
+  │       ├─ checklist.md         # Lista executável + rotina semanal
+  │       ├─ fontes.json / .md
+  │       ├─ diario/YYYY-MM-DD.md          # Análises diárias publicadas
+  │       └─ planos-semana/plano-semana-YYYY-Www.md  # Plano da semana
+  │
+  ├─ Dados
+  │   ├─ Atividades Baixadas/*.tcx  # TCXs históricos
+  │
+  ├─ Documentação
+  │   ├─ docs/ARCHITECTURE.md     # 📘 Referência técnica completa
+  │   ├─ docs/superpowers/        # Specs antigas (artefato de design)
+  │   ├─ SETUP.md                 # Guia de setup
+  │   └─ README.md                # Este arquivo
+  │
+  ├─ Testes
+  │   └─ test_dash.py             # 24 smoke tests
+  │
+  └─ Configuração
+      ├─ .env                     # Credenciais (gitignored)
+      ├─ .env.example             # Modelo
+      ├─ .gitignore
+      └─ requirements.txt
 ```
 
 ## Setup inicial (uma vez)
@@ -89,21 +135,31 @@ Detalhes completos em `docs/superpowers/specs/2026-05-08-health-dashboard-design
 
 - **Toggle 7D/30D/90D na aba Trends é visual apenas** — sempre mostra os últimos 7 dias. Implementação completa fica pra v2 quando o histórico passar de 14 dias e fizer sentido. Até lá, foque em interpretar os 7 mais recentes.
 
-## Roadmap (a implementar)
+## Status do roadmap
 
-| Componente | Status | Prazo |
-|---|---|---|
-| Migração credenciais para .env | ✅ feito | — |
-| Zonas Karvonen do atleta no dashboard | ✅ feito | — |
-| `health_daily.py` (HRV, Sleep, Body Battery) | 🟡 a fazer | após 12/05/2026 |
-| `pmc.py` (CTL/ATL/TSB) | 🟡 a fazer | após 19/05/2026 |
-| `tp_import.py` (CSV TrainingPeaks) | 🟡 a fazer | após 19/05/2026 |
-| `scoring.py` (decisão diária composta) | 🟡 a fazer | após 24/05/2026 |
-| Storage SQLite | 🟡 a fazer | após 24/05/2026 |
-| Schedule Windows (Task Scheduler) | 🟡 a fazer | após 24/05/2026 |
-| Notificação Telegram | 🟡 a fazer | após 24/05/2026 |
+| Componente | Status |
+|---|---|
+| Migração credenciais para .env | ✅ feito |
+| Zonas Karvonen do atleta no dashboard | ✅ feito |
+| `health_daily.py` (HRV, Sleep, Body Battery, RHR, stress, readiness, VO2) | ✅ feito |
+| Storage SQLite (`runtech.db`) | ✅ feito |
+| Dashboard publicado (Cloudflare Pages) | ✅ feito (09/05) |
+| `activity.html` por treino (mapa + gráficos) | ✅ feito (10/05) |
+| Coleta Training Status + ATL/CTL/ACWR + Race Predictor | ✅ feito (11/05) |
+| `aggregate_activities.py` (session + weekly summary) | ✅ feito (11/05) |
+| `scheduled_workouts.py` (plano da semana via calendário Garmin) | ✅ feito (12/05) |
+| Próximo Treino + Plano da Semana no dashboard | ✅ feito (12/05) |
+| `pmc.py` customizado | ❌ substituído — Garmin entrega ATL/CTL/ACWR via API |
+| Match planejado vs executado | 🟡 pendente |
+| Tag por tipo de treino (LR/FFR/HRR…) | 🟡 pendente |
+| Race Predictor temporal | 🟡 após 22/05 |
+| Trends 30d/90d toggle | 🟡 após 30+ dias coletados |
+| `tp_import.py` (CSV TrainingPeaks) | 🟡 após 19/05 |
+| Notificação Telegram | 🟡 após 24/05 |
+| Windows Task Scheduler (auto-run 06:00) | 🟡 após 24/05 |
+| Repo virar privado + Cloudflare Access | 🟡 quando dashboard estabilizar |
 
-Razão dos prazos: o **HRV Status do Garmin precisa de ~19 dias 24/7 para baseline confiável** (uso 24/7 começou em 05/05/2026). Antes disso, não vale automatizar a decisão composta.
+Razão de alguns prazos: o **HRV Status do Garmin precisa de ~19 dias 24/7 para baseline confiável** (uso 24/7 começou em 05/05/2026). Correlações Pearson reais só fazem sentido com 14+ dias.
 
 ## Atleta de referência (zonas hard-coded em `dashboard.py`)
 

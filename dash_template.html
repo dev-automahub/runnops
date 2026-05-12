@@ -52,6 +52,23 @@
       <div class="verdict-help-link"><span class="pill-help">?</span> <a href="javascript:goToGlossary('veredito')" onclick="event.stopPropagation()">como funciona o veredito</a></div>
     </div>
 
+    {% if next_workout %}
+    <!-- Próximo treino — banner pequeno -->
+    <div class="next-workout">
+      <div class="next-workout-icon">🏃</div>
+      <div class="next-workout-body">
+        <div class="next-workout-label">PRÓXIMO TREINO</div>
+        <div class="next-workout-line">
+          <strong>{{ next_workout.date_pretty }}</strong>
+          {% if next_workout.days_until == 1 %}<span class="next-workout-when">(amanhã)</span>
+          {% elif next_workout.days_until > 1 %}<span class="next-workout-when">(em {{ next_workout.days_until }} dias)</span>
+          {% endif %}
+          — {{ next_workout.title }}
+        </div>
+      </div>
+    </div>
+    {% endif %}
+
     <!-- 4 pills com delta — clicaveis (vao pro glossario) -->
     <div class="pills">
       <div class="pill" onclick="goToGlossary('sono')">
@@ -79,6 +96,29 @@
         {% if ready_delta_pretty %}<div class="pill-delta {{ ready_delta_class }}">{{ ready_delta_pretty }}</div>{% endif %}
       </div>
     </div>
+
+    {% if has_week_plan %}
+    <!-- Plano da semana -->
+    <div class="weekplan-section">
+      <div class="weekplan-head">
+        <div class="label-tiny weekplan-title">PLANO DA SEMANA · {{ current_week_id }}</div>
+        <div class="weekplan-stats">
+          {% if plan_done %}<span class="weekplan-stat weekplan-stat-done">✅ {{ plan_done }} feito{% if plan_done > 1 %}s{% endif %}</span>{% endif %}
+          {% if plan_today %}<span class="weekplan-stat weekplan-stat-today">🔵 {{ plan_today }} hoje</span>{% endif %}
+          {% if plan_pending %}<span class="weekplan-stat weekplan-stat-pending">⏳ {{ plan_pending }} pendente{% if plan_pending > 1 %}s{% endif %}</span>{% endif %}
+        </div>
+      </div>
+      <div class="weekplan-list">
+        {% for p in week_plan %}
+        <div class="weekplan-row weekplan-{{ p.status }}">
+          <div class="weekplan-status" title="{{ p.status_label }}">{{ p.status_icon }}</div>
+          <div class="weekplan-date">{{ p.date_pretty }}</div>
+          <div class="weekplan-title-row">{{ p.title }}</div>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+    {% endif %}
 
     <!-- Sono por fase -->
     {% if today.sleep_duration_min %}

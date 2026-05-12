@@ -26,6 +26,61 @@ HISTORY_COLS = [
 ]
 
 
+def load_scheduled_workouts(db_path, week_id=None, after_date=None, limit=None):
+    """Le treinos agendados. Vazio se tabela nao existir.
+
+    Args:
+        week_id: filtra por semana ISO (ex: '2026-W20')
+        after_date: filtra date_iso >= valor (ex: hoje pra "proximos treinos")
+        limit: limita resultado
+    """
+    if not Path(db_path).exists():
+        return []
+    conn = sqlite3.connect(str(db_path))
+    try:
+        conn.row_factory = sqlite3.Row
+        try:
+            where = []
+            params = []
+            if week_id:
+                where.append("week_id = ?")
+                params.append(week_id)
+            if after_date:
+                where.append("date_iso >= ?")
+                params.append(after_date)
+            sql = "SELECT * FROM scheduled_workout"
+            if where:
+                sql += " WHERE " + " AND ".join(where)
+            sql += " ORDER BY date_iso ASC"
+            if limit:
+                sql += f" LIMIT {int(limit)}"
+            cur = conn.execute(sql, params)
+            return [dict(r) for r in cur.fetchall()]
+        except sqlite3.OperationalError:
+            return []
+    finally:
+        conn.close()
+
+
+def load_sessions_for_week(db_path, week_id):
+    """Le sessoes executadas da semana. Usado pra cruzar com scheduled_workout."""
+    if not Path(db_path).exists():
+        return []
+    conn = sqlite3.connect(str(db_path))
+    try:
+        conn.row_factory = sqlite3.Row
+        try:
+            cur = conn.execute(
+                "SELECT * FROM session_summary WHERE week_id = ? ORDER BY date_iso ASC",
+                (week_id,),
+            )
+            return [dict(r) for r in cur.fetchall()]
+        except sqlite3.OperationalError:
+            return []
+    finally:
+        conn.close()
+
+
 def load_weekly_summary(db_path, n=8):
     """Le ultimas N semanas da tabela weekly_summary. Vazio se tabela nao existir."""
     if not Path(db_path).exists():
