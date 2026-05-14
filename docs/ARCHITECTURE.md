@@ -4,7 +4,7 @@
 
 | Campo | Valor |
 |---|---|
-| Versão | 1.1 |
+| Versão | 1.2 |
 | Data | 2026-05-13 |
 | Status | Em produção (público temporário) |
 | Repositório | `dev-automahub/runnops` (GitHub) |
@@ -517,7 +517,70 @@ Inferidos do título do `scheduled_workout`:
 
 ## 9. Operações
 
-### 9.1 Setup inicial
+### 9.1 SOP — Fluxo diário do atleta
+
+Este é o **procedimento operacional padrão** acordado em 13/05/2026. Define o ciclo de coleta + reportagem que o atleta executa todo dia, com variações conforme o tipo de dia.
+
+#### 9.1.1 Dia sem treino
+
+```powershell
+# 1. Acordou → sincronizou relógio com Garmin Connect (auto no app)
+# 2. Roda 1 comando:
+python health_daily.py
+# 3. Avisa no chat: "rodei o daily"
+```
+
+Internamente, o `health_daily.py` (em 1 comando) faz:
+- coleta endpoints do Garmin → upsert em `health_daily`
+- `aggregate_activities.py` (re-agrega TCX existentes, idempotente)
+- `dash_today.py` (gera `index.html`, atualiza auto-section do diário)
+- `publish.py` (commit + push → Cloudflare republica em ~30s)
+
+#### 9.1.2 Dia com treino
+
+```powershell
+# 1. Sincronizou relógio + treino com Garmin Connect
+# 2. Baixa o TCX:
+python lastrun.py 1
+# 3. DEPOIS roda o pipeline completo:
+python health_daily.py
+# 4. Avisa no chat: "rodei o daily e o lastrun, treino X feito"
+```
+
+⚠️ **A ordem `lastrun` → `health_daily` é crítica.** O aggregator dentro do `health_daily.py` só vê arquivos TCX que estão presentes na pasta `Atividades Baixadas/` no momento que ele roda. Se a ordem for invertida:
+- O dado de health do dia entra normalmente
+- Mas o TCX novo fica órfão até a próxima rodada de `health_daily.py`
+- O Plano da Semana não marca o treino como ✅ feito até lá
+
+**Workaround se inverter:** rodar `python aggregate_activities.py; python dash_today.py --no-open; python publish.py` separadamente.
+
+#### 9.1.3 Terça-feira (rotina semanal — adicional)
+
+```powershell
+# Depois que o coach publicou o plano da semana no Garmin Connect
+python scheduled_workouts.py
+# Avisa no chat: "rodei o scheduled também"
+```
+
+Output: `runtech.db.scheduled_workout` atualizado + MD em `2026-05-04-protocolo.../planos-semana/plano-semana-YYYY-Www.md`.
+
+Se o coach não publicou ainda → calendário vazio, cobrar antes do primeiro treino da semana.
+
+#### 9.1.4 O que o assistente (Claude) faz quando recebe o aviso
+
+1. **Lê** `diario/YYYY-MM-DD.md` (auto-section já tem reportagem matinal + veredito automático)
+2. **Se dia com treino:** parseia o TCX direto via `xml.etree.ElementTree` da pasta `Atividades Baixadas/` (não pede números pro atleta) e produz análise pós-treino: tabela alvo×real + distribuição de zonas Karvonen + cadência vs semana + espelho honesto + veredito
+3. **Escreve as 3 seções narrativas** do diário fora dos markers AUTO: `O que aconteceu`, `Decisão / Veredito`, `Pendências`
+4. **Roda o pipeline** de finalização: `aggregate_activities.py` → `dash_today.py --no-open` → `publish.py`
+5. **Responde no chat** com resumo (acertos, furos honestos, número-chave da semana, próximo treino)
+
+#### 9.1.5 Princípios de fronteira
+
+- **Diário publicado é só saúde/treino.** Dev fica em memória local e chat (regra firmada em 11/05/2026 — ver `feedback_separacao_dev_vs_conteudo.md`).
+- **Espelho, não cheerleader.** Contrato de coaching firmado em 06/05/2026: análises honestas, sem suavizar furos. Se for hora de cobrar cadência, cobra. Se a meta 4h00 começar a parecer inviável, falar abertamente.
+- **Não pedir o que já está no diário.** Reportagem matinal completa vem no auto-section; análise narrativa parte daí.
+
+### 9.2 Setup inicial
 
 Detalhes em `SETUP.md`. Resumo:
 
@@ -529,27 +592,27 @@ pip install -r requirements.txt
 # editar .env com GARMIN_EMAIL e GARMIN_PASSWORD
 ```
 
-### 9.2 Operação diária
+### 9.3 Operação diária
 
 ```powershell
 .\.venv\Scripts\Activate.ps1
 python health_daily.py
 ```
 
-### 9.3 Operação semanal (terça)
+### 9.4 Operação semanal (terça)
 
 ```powershell
 python scheduled_workouts.py
 ```
 
-### 9.4 Pós-treino
+### 9.5 Pós-treino
 
 ```powershell
 python lastrun.py            # baixa último TCX
 python health_daily.py       # re-coleta + agrega + publica (ou só publish.py se daily já rodou)
 ```
 
-### 9.5 Comandos úteis
+### 9.6 Comandos úteis
 
 | Comando | Função |
 |---|---|
@@ -561,7 +624,7 @@ python health_daily.py       # re-coleta + agrega + publica (ou só publish.py s
 | `python aggregate_activities.py` | Reagrega TCX manualmente |
 | `python test_dash.py` | Roda 24 smoke tests |
 
-### 9.6 Troubleshooting
+### 9.7 Troubleshooting
 
 | Sintoma | Causa provável | Resolução |
 |---|---|---|
@@ -571,7 +634,7 @@ python health_daily.py       # re-coleta + agrega + publica (ou só publish.py s
 | Cadência semanal vindo metade do esperado | Bug de conversão strides→spm | Verificar que extraction multiplica por 2 |
 | Race Predictor sem valor | API retornou erro | Olhar `raw_json.get_race_predictions_error` no health_daily |
 
-### 9.7 Limitações de rate
+### 9.8 Limitações de rate
 
 A `garminconnect` lib tem retry interno mas Garmin Connect aplica rate limit a IPs. Em sessões de dev intensivas, esperar ~30s entre runs.
 
@@ -701,6 +764,14 @@ Quando dashboard estabilizar (~1 semana sem mudanças visuais):
 ---
 
 ## 14. Changelog
+
+### 1.2 (2026-05-13 — final do dia)
+
+**Marco:** SOP diário formalizado.
+
+- Nova seção `9.1 SOP — Fluxo diário do atleta` com sub-seções 9.1.1 a 9.1.5 cobrindo: dia sem treino, dia com treino (ordem `lastrun` → `health_daily` crítica), rotina de terça, contraparte do assistente, princípios de fronteira
+- Memory `feedback_sop_diario_atleta.md` codificando o acordo entre atleta e assistente
+- Renumeração: antiga `9.2-9.7` virou `9.3-9.8`
 
 ### 1.1 (2026-05-13)
 
