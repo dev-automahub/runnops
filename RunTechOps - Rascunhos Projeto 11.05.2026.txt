@@ -1,4 +1,14 @@
 
+agora, me explica aqui uma coisa, sobre a estrutura dos treinos, após essa inclusão dos treinos que não foram executados ainda. está
+  tudo guardando no banco de dados? como que voce planejou/estruturou a guarda destas informações e como elas serão usadas dentro do app
+  'RunTechOps' e na página runnops.pages.dev?
+
+  vamos trocar uma ideia sobre como isso está inserido agora dentro do projeto que estamos desenvolvendo.
+
+
+salva nas memórias o que fizemos hoje
+
+
 depois de todos os números e indices vou passar aqui então a parte que também é importante: minha sensação e sentimento durante e pós
   treino. acho que isso também é importante inserir lá no histórico..
 

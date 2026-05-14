@@ -4,7 +4,7 @@
 
 | Campo | Valor |
 |---|---|
-| Versão | 1.4 |
+| Versão | 1.5 |
 | Data | 2026-05-14 |
 | Status | Em produção (público temporário) |
 | Repositório | `dev-automahub/runnops` (GitHub) |
@@ -579,6 +579,7 @@ Resumo:
 3. **Escreve 3 seções narrativas** do diário fora dos markers AUTO: `O que aconteceu`, `Decisão / Veredito`, `Pendências`
 4. **Pipeline final:** `aggregate_activities.py` → `dash_today.py --no-open` → `publish.py`
 5. **Responde no chat** com resumo (insight principal, próximo treino, alerta se merece atenção)
+6. **Registra Q&A subsequente** na seção `## Análise Interativa` do mesmo diário a cada nova interação relevante (decisão de plano, dúvida operacional, análise pós-fato). Detalhes na memória `feedback_analise_narrativa_sop.md` §6.5. Pipeline pós-edit: `dash_today.py --no-open --no-journal` → `publish.py`.
 
 #### 9.1.5 Fator FORÇA (cruzamento obrigatório)
 
@@ -803,6 +804,17 @@ Quando dashboard estabilizar (~1 semana sem mudanças visuais):
 ---
 
 ## 14. Changelog
+
+### 1.5 (2026-05-14 — tarde)
+
+**Marco:** Convenção "Análise Interativa" formalizada.
+
+- Nova regra (firmada 14/05/2026): toda Q&A relevante após o daily/lastrun vira entrada na seção `## Análise Interativa` no diário do dia
+- Cada entrada: `### HH:MM — Título` + contexto + pergunta + análise minha + decisão registrada
+- Pipeline pós-edit dessa seção: `dash_today.py --no-open --no-journal` → `publish.py` (sem precisar do aggregator)
+- Memória `feedback_analise_narrativa_sop.md` ganhou §6.5 codificando a regra
+- Seção 9.1.4 da doc estendida com item 6 (Análise Interativa)
+- Primeira entrada registrada em 14/05: decisão de antecipar LR3 pra sáb manhã (pedido da equipe)
 
 ### 1.4 (2026-05-14)
 
