@@ -1,6 +1,6 @@
 {
-  "generated_at": "2026-05-13T21:36:21",
-  "count": 39,
+  "generated_at": "2026-05-14T09:13:39",
+  "count": 53,
   "activities": [
     {
       "id": "22865500286",
@@ -11,6 +11,16 @@
       "distance_km": 5.01,
       "duration_min": 41.0,
       "sport": "Running"
+    },
+    {
+      "id": "22860903088",
+      "name": "Cardiovascular",
+      "filename": "Atividades Baixadas/22860903088_Cardiovascular.tcx",
+      "date_iso": "2026-05-12T22:00:32.000Z",
+      "date_br": "12/05/2026 22:00",
+      "distance_km": 0.0,
+      "duration_min": 68.4,
+      "sport": "Other"
     },
     {
       "id": "22853346305",
@@ -43,6 +53,26 @@
       "sport": "Running"
     },
     {
+      "id": "22795686320",
+      "name": "Vitória Corrida",
+      "filename": "Atividades Baixadas/22795686320_Vitória Corrida.tcx",
+      "date_iso": "2026-05-07T10:17:13.000Z",
+      "date_br": "07/05/2026 10:17",
+      "distance_km": 6.77,
+      "duration_min": 59.0,
+      "sport": "Running"
+    },
+    {
+      "id": "22790925987",
+      "name": "Cardiovascular",
+      "filename": "Atividades Baixadas/22790925987_Cardiovascular.tcx",
+      "date_iso": "2026-05-06T21:59:06.000Z",
+      "date_br": "06/05/2026 21:59",
+      "distance_km": 0.0,
+      "duration_min": 62.9,
+      "sport": "Other"
+    },
+    {
       "id": "22778643836",
       "name": "Vitória - RFF5 Corrida - 25' Z2 + 12' Z3",
       "filename": "Atividades Baixadas/22778643836_Vitória - RFF5 Corrida - 25' Z2 + 12' Z3.tcx",
@@ -51,6 +81,16 @@
       "distance_km": 6.03,
       "duration_min": 42.7,
       "sport": "Running"
+    },
+    {
+      "id": "22766605306",
+      "name": "Cardio",
+      "filename": "Atividades Baixadas/22766605306_Cardio.tcx",
+      "date_iso": "2026-05-04T22:03:41.000Z",
+      "date_br": "04/05/2026 22:03",
+      "distance_km": 0.0,
+      "duration_min": 56.1,
+      "sport": "Other"
     },
     {
       "id": "22755416430",
@@ -70,6 +110,106 @@
       "date_br": "01/05/2026 12:31",
       "distance_km": 5.46,
       "duration_min": 36.6,
+      "sport": "Running"
+    },
+    {
+      "id": "22725816943",
+      "name": "Vitória Corrida",
+      "filename": "Atividades Baixadas/22725816943_Vitória Corrida.tcx",
+      "date_iso": "2026-05-01T12:31:55.000Z",
+      "date_br": "01/05/2026 12:31",
+      "distance_km": 5.46,
+      "duration_min": 36.6,
+      "sport": "Running"
+    },
+    {
+      "id": "22766188126",
+      "name": "Cardio",
+      "filename": "Atividades Baixadas/22766188126_Cardio.tcx",
+      "date_iso": "2026-04-30T21:14:16.000Z",
+      "date_br": "30/04/2026 21:14",
+      "distance_km": 0.0,
+      "duration_min": 63.2,
+      "sport": "Other"
+    },
+    {
+      "id": "22708053733",
+      "name": "Cardiovascular",
+      "filename": "Atividades Baixadas/22708053733_Cardiovascular.tcx",
+      "date_iso": "2026-04-29T22:14:13.000Z",
+      "date_br": "29/04/2026 22:14",
+      "distance_km": 0.0,
+      "duration_min": 49.8,
+      "sport": "Other"
+    },
+    {
+      "id": "22700463493",
+      "name": "Vitória Corrida",
+      "filename": "Atividades Baixadas/22700463493_Vitória Corrida.tcx",
+      "date_iso": "2026-04-29T10:09:53.000Z",
+      "date_br": "29/04/2026 10:09",
+      "distance_km": 7.59,
+      "duration_min": 50.8,
+      "sport": "Running"
+    },
+    {
+      "id": "22766185039",
+      "name": "Cardio",
+      "filename": "Atividades Baixadas/22766185039_Cardio.tcx",
+      "date_iso": "2026-04-27T22:08:50.000Z",
+      "date_br": "27/04/2026 22:08",
+      "distance_km": 0.0,
+      "duration_min": 60.7,
+      "sport": "Other"
+    },
+    {
+      "id": "22683701828",
+      "name": "Vitória Corrida",
+      "filename": "Atividades Baixadas/22683701828_Vitória Corrida.tcx",
+      "date_iso": "2026-04-26T20:53:51.000Z",
+      "date_br": "26/04/2026 20:53",
+      "distance_km": 9.06,
+      "duration_min": 60.0,
+      "sport": "Running"
+    },
+    {
+      "id": "22581040817",
+      "name": "Vitória Corrida",
+      "filename": "Atividades Baixadas/22581040817_Vitória Corrida.tcx",
+      "date_iso": "2026-04-19T09:37:12.000Z",
+      "date_br": "19/04/2026 09:37",
+      "distance_km": 4.98,
+      "duration_min": 30.2,
+      "sport": "Running"
+    },
+    {
+      "id": "22766181838",
+      "name": "Vitória Corrida",
+      "filename": "Atividades Baixadas/22766181838_Vitória Corrida.tcx",
+      "date_iso": "2026-04-19T09:37:11.000Z",
+      "date_br": "19/04/2026 09:37",
+      "distance_km": 4.93,
+      "duration_min": 28.1,
+      "sport": "Running"
+    },
+    {
+      "id": "22581040568",
+      "name": "Vitória Corrida",
+      "filename": "Atividades Baixadas/22581040568_Vitória Corrida.tcx",
+      "date_iso": "2026-04-19T08:38:32.000Z",
+      "date_br": "19/04/2026 08:38",
+      "distance_km": 1.83,
+      "duration_min": 16.1,
+      "sport": "Running"
+    },
+    {
+      "id": "22766180288",
+      "name": "Vitória Corrida",
+      "filename": "Atividades Baixadas/22766180288_Vitória Corrida.tcx",
+      "date_iso": "2026-04-19T08:38:21.000Z",
+      "date_br": "19/04/2026 08:38",
+      "distance_km": 1.88,
+      "duration_min": 15.0,
       "sport": "Running"
     },
     {

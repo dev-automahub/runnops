@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Health Dashboard  — qua 13 mai</title>
+<title>Health Dashboard — qua 13 mai</title>
 <style>/* === Reset minimo === */
 * { box-sizing: border-box; margin: 0; padding: 0; }
 body {
@@ -1110,6 +1110,10 @@ body {
   
 
   
+  <div class="stale-banner">
+    Dados de <strong>2026-05-13</strong> (não de hoje). Rode <code>python health_daily.py</code> pra atualizar.
+  </div>
+  
 
   <!-- ============ ABA HOJE (default visivel) ============ -->
   <div class="tab-content" id="tab-hoje">
@@ -1131,7 +1135,7 @@ body {
         <div class="next-workout-label">PRÓXIMO TREINO</div>
         <div class="next-workout-line">
           <strong>sex 15/05</strong>
-          <span class="next-workout-when">(em 2 dias)</span>
+          <span class="next-workout-when">(amanhã)</span>
           
           — HRR4 Corrida - 10 x 30&#34; Z5
         </div>
@@ -1394,31 +1398,51 @@ body {
           <tr class="weekly-current">
             <td><strong>2026-W20</strong></td>
             <td class="num">2</td>
-            <td class="num">11.6 <span class="weekly-delta">(-16.2)</span></td>
-            <td class="num">159.2 <span class="weekly-delta">(+4.0)</span></td>
-            <td class="num">69.2% <span class="weekly-delta">(+23.9)</span></td>
+            <td class="num">11.6 <span class="weekly-delta">(-23.0)</span></td>
+            <td class="num">159.2 <span class="weekly-delta">(+4.7)</span></td>
+            <td class="num">69.2% <span class="weekly-delta">(+22.7)</span></td>
             <td class="num">7:36/km</td>
             <td class="num">6.6km</td>
           </tr>
           
           <tr class="">
             <td><strong>2026-W19</strong></td>
-            <td class="num">3</td>
-            <td class="num">27.8 <span class="weekly-delta">(+5.3)</span></td>
-            <td class="num">155.2 <span class="weekly-delta">(-1.8)</span></td>
-            <td class="num">45.3% <span class="weekly-delta">(+40.8)</span></td>
-            <td class="num">7:41/km</td>
+            <td class="num">4</td>
+            <td class="num">34.6 <span class="weekly-delta">(-0.9)</span></td>
+            <td class="num">154.5 <span class="weekly-delta">(-2.1)</span></td>
+            <td class="num">46.5% <span class="weekly-delta">(+41.8)</span></td>
+            <td class="num">7:53/km</td>
             <td class="num">15.0km</td>
           </tr>
           
           <tr class="">
             <td><strong>2026-W18</strong></td>
-            <td class="num">2</td>
-            <td class="num">22.5 <span class="weekly-delta">(-22.2)</span></td>
-            <td class="num">157.0 <span class="weekly-delta">(+4.3)</span></td>
-            <td class="num">4.5% <span class="weekly-delta">(-24.1)</span></td>
-            <td class="num">6:34/km</td>
+            <td class="num">4</td>
+            <td class="num">35.5 <span class="weekly-delta">(+26.5)</span></td>
+            <td class="num">156.6 <span class="weekly-delta">(+0.2)</span></td>
+            <td class="num">4.7% <span class="weekly-delta">(-1.8)</span></td>
+            <td class="num">6:37/km</td>
             <td class="num">17.0km</td>
+          </tr>
+          
+          <tr class="">
+            <td><strong>2026-W17</strong></td>
+            <td class="num">1</td>
+            <td class="num">9.1 <span class="weekly-delta">(-4.6)</span></td>
+            <td class="num">156.4 <span class="weekly-delta">(-3.7)</span></td>
+            <td class="num">6.5% <span class="weekly-delta">(-3.2)</span></td>
+            <td class="num">6:37/km</td>
+            <td class="num">9.1km</td>
+          </tr>
+          
+          <tr class="">
+            <td><strong>2026-W16</strong></td>
+            <td class="num">4</td>
+            <td class="num">13.6 <span class="weekly-delta">(-31.1)</span></td>
+            <td class="num">160.1 <span class="weekly-delta">(+7.4)</span></td>
+            <td class="num">9.7% <span class="weekly-delta">(-18.9)</span></td>
+            <td class="num">6:33/km</td>
+            <td class="num">5.0km</td>
           </tr>
           
           <tr class="">
@@ -1444,31 +1468,11 @@ body {
           <tr class="">
             <td><strong>2026-W03</strong></td>
             <td class="num">3</td>
-            <td class="num">36.8 <span class="weekly-delta">(+7.9)</span></td>
-            <td class="num">155.6 <span class="weekly-delta">(+2.8)</span></td>
-            <td class="num">23.7% <span class="weekly-delta">(+1.4)</span></td>
+            <td class="num">36.8</td>
+            <td class="num">155.6</td>
+            <td class="num">23.7%</td>
             <td class="num">6:31/km</td>
             <td class="num">14.1km</td>
-          </tr>
-          
-          <tr class="">
-            <td><strong>2026-W02</strong></td>
-            <td class="num">4</td>
-            <td class="num">28.9 <span class="weekly-delta">(+1.7)</span></td>
-            <td class="num">152.8 <span class="weekly-delta">(-0.6)</span></td>
-            <td class="num">22.3% <span class="weekly-delta">(-1.8)</span></td>
-            <td class="num">6:56/km</td>
-            <td class="num">12.0km</td>
-          </tr>
-          
-          <tr class="">
-            <td><strong>2026-W01</strong></td>
-            <td class="num">4</td>
-            <td class="num">27.2</td>
-            <td class="num">153.4</td>
-            <td class="num">24.1%</td>
-            <td class="num">6:48/km</td>
-            <td class="num">12.0km</td>
           </tr>
           
         </tbody>
@@ -1922,7 +1926,7 @@ body {
           <div class="journal-content"><h1>Diário 2026-05-13 (qua)</h1>
 <!-- DASH_AUTO_START -->
 <h2>Reportagem matinal</h2>
-<p><em>Auto-gerado por <code>dash_today.py</code> em 21:30 de qua 13 mai.</em></p>
+<p><em>Auto-gerado por <code>dash_today.py</code> em 09:13 de qua 13 mai.</em></p>
 <div class="md-table-wrap"><table>
 <thead>
 <tr>
@@ -4952,7 +4956,7 @@ Alavancas médias: hidratação contínua · respiração 4-7-8 antes de dormir 
 
   
 
-  <div class="footer">RunTechOps · 21:36:20</div>
+  <div class="footer">RunTechOps · 09:13:36</div>
 </div>
 
 <script>

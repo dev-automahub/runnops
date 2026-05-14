@@ -22,6 +22,20 @@ DEFAULT_QTD = 10
 PASTA_DESTINO = Path("Atividades Baixadas")
 LOG_FILE = Path("lastrun_log.txt")
 
+# Tipos de atividade que vale baixar TCX. Atualizar conforme o usuario registre novos perfis.
+# - running: corrida (default historico)
+# - indoor_cardio: forca (atleta usa esse perfil pra treino de forca)
+# - cardio: as vezes aparece como variante de indoor_cardio
+# - strength_training: explicito (se vier a usar perfil dedicado no relogio)
+# - fitness_equipment: esteira/elliptical/bike estatica
+TIPOS_PERMITIDOS = {
+    'running',
+    'indoor_cardio',
+    'cardio',
+    'strength_training',
+    'fitness_equipment',
+}
+
 load_dotenv()
 email = os.getenv("GARMIN_EMAIL")
 senha = os.getenv("GARMIN_PASSWORD")
@@ -59,15 +73,16 @@ try:
 
     count_baixados = 0
     count_pulados_existentes = 0
-    count_pulados_nao_corrida = 0
+    count_pulados_tipo = 0
 
     for atv in atividades:
         tipo = atv['activityType']['typeKey']
         nome = atv['activityName']
         id_atividade = atv['activityId']
 
-        if tipo != 'running':
-            count_pulados_nao_corrida += 1
+        if tipo not in TIPOS_PERMITIDOS:
+            count_pulados_tipo += 1
+            print(f"[skip] {nome} (tipo '{tipo}' nao permitido)")
             continue
 
         nome_limpo = re.sub(r'[<>:"/\\|?*]', '', nome)
@@ -92,9 +107,9 @@ try:
 
     print()
     print("Resumo:")
-    print(f"  Baixados      : {count_baixados}")
-    print(f"  Ja existiam   : {count_pulados_existentes}")
-    print(f"  Nao-corridas  : {count_pulados_nao_corrida}")
+    print(f"  Baixados        : {count_baixados}")
+    print(f"  Ja existiam     : {count_pulados_existentes}")
+    print(f"  Tipos pulados   : {count_pulados_tipo}")
 
 except Exception as e:
     print(f"Erro: {e}")

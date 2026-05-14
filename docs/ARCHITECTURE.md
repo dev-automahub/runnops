@@ -4,8 +4,8 @@
 
 | Campo | Valor |
 |---|---|
-| Versão | 1.3 |
-| Data | 2026-05-13 |
+| Versão | 1.4 |
+| Data | 2026-05-14 |
 | Status | Em produção (público temporário) |
 | Repositório | `dev-automahub/runnops` (GitHub) |
 | URL produção | https://runnops.pages.dev |
@@ -209,7 +209,7 @@ Persistência local em **`runtech.db`** (SQLite). Gitignored.
 ### 4.2 Tabela `session_summary`
 
 **Granularidade:** 1 row por treino (arquivo TCX). **PK:** `session_id` (texto, extraído do filename).
-**Origem:** `aggregate_activities.py`, parseando todos os TCX em `Atividades Baixadas/`.
+**Origem:** `aggregate_activities.py`, parseando todos os TCX em `Atividades Baixadas/`. Inclui **running** (`sport='Running'`) e **força** (`sport='Other'`, indoor sem distância).
 
 | Coluna | Tipo | Descrição |
 |---|---|---|
@@ -217,7 +217,7 @@ Persistência local em **`runtech.db`** (SQLite). Gitignored.
 | `filename` | TEXT | Path relativo do TCX |
 | `date_iso` | TEXT | Início (ISO) |
 | `week_id` | TEXT | Semana ISO YYYY-Www |
-| `sport` | TEXT | Running / Cycling / etc |
+| `sport` | TEXT | **Running** = corrida; **Other** = força/indoor_cardio |
 | `distance_km` | REAL | Distância total |
 | `duration_min` | REAL | Duração total em minutos |
 | `avg_hr` | INTEGER | FC média |
@@ -243,7 +243,7 @@ Persistência local em **`runtech.db`** (SQLite). Gitignored.
 ### 4.3 Tabela `weekly_summary`
 
 **Granularidade:** 1 row por semana ISO. **PK:** `week_id` (ex: `2026-W20`).
-**Origem:** derivada de `session_summary` pelo `aggregate_activities.py`.
+**Origem:** derivada de `session_summary` pelo `aggregate_activities.py`. **Filtra só `sport='Running'`** — força (`sport='Other'`) não entra pra evitar distorção de cadência/pace/zonas.
 
 | Coluna | Tipo | Descrição |
 |---|---|---|
@@ -582,7 +582,7 @@ Resumo:
 
 #### 9.1.5 Fator FORÇA (cruzamento obrigatório)
 
-Atleta treina **força 3×/semana**:
+Atleta treina **força 3×/semana** seguindo padrão "seg/qua/sex em teoria, com desvios por agenda":
 
 | Dia | Sessão | Tipo |
 |---|---|---|
@@ -590,9 +590,28 @@ Atleta treina **força 3×/semana**:
 | Qua | B | Upper + core (NÃO MMII pesado) |
 | Sex | C | Funcional unilateral |
 
-A análise narrativa **sempre cruza com o fator força** quando o dia é seg/qua/sex. Atleta registra força no Garmin Connect (declarado 13/05/2026); se ele rodar `python lastrun.py 1` no dia, **só pega a corrida** (último TCX). Para baixar run + força: `python lastrun.py 2` (ou mais).
+**Como aparece nos dados (resolvido 14/05/2026):**
 
-Até 13/05/2026, **38 TCXs no DB são todos `sport='Running'`** — força ainda não foi capturada. Quando surgir TCX `sport='StrengthTraining'` ou similar, aggregator não inclui em `weekly_summary` (filtra por `distance > 0`), mas o assistente pode ler o arquivo direto pra análise.
+| Campo | Valor |
+|---|---|
+| typeKey na API `get_activities` | **`indoor_cardio`** (não `strength_training`) |
+| Nome no Garmin Connect | "Cardio" ou "Cardiovascular" |
+| Sport attr no TCX baixado | **`Other`** |
+| Distance | 0 (sem GPS, indoor) |
+| Horário típico | ~21h-22h |
+| Duração típica | 50-70 min |
+| FC média / máx típica | 90-110 / 135-150 |
+
+**Pipeline de captura:**
+- `lastrun.py` aceita os tipos: `running`, `indoor_cardio`, `cardio`, `strength_training`, `fitness_equipment` (lista `TIPOS_PERMITIDOS`)
+- Em dia com run + força: `lastrun.py 2` ou mais (lastrun pega últimas N atividades)
+- `aggregate_activities.py` grava em `session_summary` mas **filtra fora de `weekly_summary`** (`sport != 'Running'` exclui) pra não distorcer cadência/pace/zonas
+
+**Cruzamento na análise narrativa:**
+- Se hoje é seg/qua/sex E há `session_summary` com `sport='Other'` no `date_iso[:10]` → carga dupla (run + força)
+- HRV do dia seguinte deve refletir os dois esforços
+- Força MMII antes de intervalado/Z3 → atenção a fadiga de pernas
+- Em análise PATH B (sem treino), checar se há força do dia ou agendada — não recomendar trabalho de pernas se houve MMII pesado nas últimas 24h
 
 #### 9.1.6 Princípios de fronteira
 
@@ -784,6 +803,17 @@ Quando dashboard estabilizar (~1 semana sem mudanças visuais):
 ---
 
 ## 14. Changelog
+
+### 1.4 (2026-05-14)
+
+**Marco:** Captura automática de força.
+
+- Bug fix em `lastrun.py`: filtro hardcoded `tipo != 'running'` substituído por whitelist `TIPOS_PERMITIDOS = {running, indoor_cardio, cardio, strength_training, fitness_equipment}`
+- `aggregate_activities.py`: aceita TCX sem distância (força = `sport='Other'` com `distance=0`); `_aggregate_weeks` filtra só Running pra não distorcer weekly_summary
+- Backfill `lastrun.py 20`: 6 sessões de força resgatadas (27/04 a 12/05/2026)
+- DB total: 40 Running + 6 Other = 46 sessions, 53 TCXs parseados
+- SOP da análise narrativa atualizado com seção 9 documentando o padrão de captura
+- ARCHITECTURE seções 4.2, 4.3, 9.1.5 atualizadas
 
 ### 1.3 (2026-05-13 — noite)
 

@@ -248,7 +248,8 @@ def _parse_tcx(path):
                         zone_time_sec[z] += dt
             last_time = cur_time
 
-    if total_dist_m == 0 or total_time_s == 0:
+    if total_time_s == 0:
+        # Sem nem tempo registrado — TCX inutil
         return None
 
     distance_km = total_dist_m / 1000
@@ -303,10 +304,15 @@ def _week_monday_iso(week_id):
 
 
 def _aggregate_weeks(sessions):
-    """Agrega lista de sessions em weekly_summary rows."""
+    """Agrega lista de sessions em weekly_summary rows.
+
+    IMPORTANTE: agrega APENAS sessions com sport='Running' (corrida).
+    Forca/Other tem distance=0 e nao tem cadencia/zonas/pace validos pra agregar.
+    Sessions de forca permanecem em session_summary mas nao poluem weekly_summary.
+    """
     by_week = defaultdict(list)
     for s in sessions:
-        if s["week_id"]:
+        if s["week_id"] and s.get("sport") == "Running":
             by_week[s["week_id"]].append(s)
 
     rows = []
