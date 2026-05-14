@@ -4,7 +4,7 @@
 
 | Campo | Valor |
 |---|---|
-| Versão | 1.2 |
+| Versão | 1.3 |
 | Data | 2026-05-13 |
 | Status | Em produção (público temporário) |
 | Repositório | `dev-automahub/runnops` (GitHub) |
@@ -568,13 +568,33 @@ Se o coach não publicou ainda → calendário vazio, cobrar antes do primeiro t
 
 #### 9.1.4 O que o assistente (Claude) faz quando recebe o aviso
 
-1. **Lê** `diario/YYYY-MM-DD.md` (auto-section já tem reportagem matinal + veredito automático)
-2. **Se dia com treino:** parseia o TCX direto via `xml.etree.ElementTree` da pasta `Atividades Baixadas/` (não pede números pro atleta) e produz análise pós-treino: tabela alvo×real + distribuição de zonas Karvonen + cadência vs semana + espelho honesto + veredito
-3. **Escreve as 3 seções narrativas** do diário fora dos markers AUTO: `O que aconteceu`, `Decisão / Veredito`, `Pendências`
-4. **Roda o pipeline** de finalização: `aggregate_activities.py` → `dash_today.py --no-open` → `publish.py`
-5. **Responde no chat** com resumo (acertos, furos honestos, número-chave da semana, próximo treino)
+**Procedimento detalhado:** ver `memory/feedback_analise_narrativa_sop.md` (10 pre-flight checks → decision tree PATH A treino / PATH B sem treino → templates das 3 seções narrativas → pipeline final).
 
-#### 9.1.5 Princípios de fronteira
+Resumo:
+
+1. **Pre-flight (10 checks):** dia da semana (força seg/qua/sex?), diário hoje, diário ontem, plano da semana, TCX novo(s), fator força do dia, tendência cadência, estado Garmin avançado (ACWR/Race Predictor), próximo treino, veredito auto
+2. **Branch:**
+   - **PATH A (tem TCX novo):** análise pós-treino — tabela alvo×real, distribuição Karvonen, estrutura por laps, espelho honesto (acertos + furos), veredito do dia
+   - **PATH B (sem TCX):** análise de recuperação + leitura do calendário + **recomendação concreta** pro próximo treino baseada no quadro fisiológico atual
+3. **Escreve 3 seções narrativas** do diário fora dos markers AUTO: `O que aconteceu`, `Decisão / Veredito`, `Pendências`
+4. **Pipeline final:** `aggregate_activities.py` → `dash_today.py --no-open` → `publish.py`
+5. **Responde no chat** com resumo (insight principal, próximo treino, alerta se merece atenção)
+
+#### 9.1.5 Fator FORÇA (cruzamento obrigatório)
+
+Atleta treina **força 3×/semana**:
+
+| Dia | Sessão | Tipo |
+|---|---|---|
+| Seg | A | MMII pesado (agachamento, RDL, hip thrust, panturrilha, core) |
+| Qua | B | Upper + core (NÃO MMII pesado) |
+| Sex | C | Funcional unilateral |
+
+A análise narrativa **sempre cruza com o fator força** quando o dia é seg/qua/sex. Atleta registra força no Garmin Connect (declarado 13/05/2026); se ele rodar `python lastrun.py 1` no dia, **só pega a corrida** (último TCX). Para baixar run + força: `python lastrun.py 2` (ou mais).
+
+Até 13/05/2026, **38 TCXs no DB são todos `sport='Running'`** — força ainda não foi capturada. Quando surgir TCX `sport='StrengthTraining'` ou similar, aggregator não inclui em `weekly_summary` (filtra por `distance > 0`), mas o assistente pode ler o arquivo direto pra análise.
+
+#### 9.1.6 Princípios de fronteira
 
 - **Diário publicado é só saúde/treino.** Dev fica em memória local e chat (regra firmada em 11/05/2026 — ver `feedback_separacao_dev_vs_conteudo.md`).
 - **Espelho, não cheerleader.** Contrato de coaching firmado em 06/05/2026: análises honestas, sem suavizar furos. Se for hora de cobrar cadência, cobra. Se a meta 4h00 começar a parecer inviável, falar abertamente.
@@ -764,6 +784,16 @@ Quando dashboard estabilizar (~1 semana sem mudanças visuais):
 ---
 
 ## 14. Changelog
+
+### 1.3 (2026-05-13 — noite)
+
+**Marco:** SOP da análise narrativa codificado (caminho pra virar skill).
+
+- Memory `feedback_analise_narrativa_sop.md` v1: 10 pre-flight checks + decision tree PATH A/B + fator FORÇA + templates de output das 3 seções + princípios + roadmap pra skill formal
+- Seção 9.1.4 da doc expandida com resumo do procedimento
+- Nova seção 9.1.5 — Fator FORÇA (cruzamento obrigatório seg/qua/sex)
+- Confirmado em 13/05 que **atleta registra força no Garmin** mas `lastrun.py 1` só pega o último TCX; recomendação: `lastrun.py 2` em dias com run + força
+- Princípios de fronteira renumerados pra 9.1.6
 
 ### 1.2 (2026-05-13 — final do dia)
 
