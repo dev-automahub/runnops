@@ -4,8 +4,8 @@
 
 | Campo | Valor |
 |---|---|
-| Versão | 1.0 |
-| Data | 2026-05-12 |
+| Versão | 1.1 |
+| Data | 2026-05-13 |
 | Status | Em produção (público temporário) |
 | Repositório | `dev-automahub/runnops` (GitHub) |
 | URL produção | https://runnops.pages.dev |
@@ -225,6 +225,10 @@ Persistência local em **`runtech.db`** (SQLite). Gitignored.
 | `avg_cadence_spm` | REAL | Cadência média em **spm** (steps per minute) — RunCadence do TCX × 2 |
 | `avg_pace_sec_per_km` | REAL | Pace médio em segundos por km |
 | `time_z1_sec` … `time_z5_sec` | INTEGER | Tempo em cada zona Karvonen, em segundos |
+| **`scheduled_id`** ⭐ | INTEGER | FK lógica pra `scheduled_workout.scheduled_id`. NULL quando não há match (treino sem agendamento ou date drift) |
+| **`workout_code`** ⭐ | TEXT | Código extraído do título (LR7/FFR4/RRe5/HRR4/RHR6/RFF5/AEM/VO2/etc) |
+
+⭐ = colunas adicionadas em 2026-05-13 (Gap #2: matching planejado vs executado).
 
 **Karvonen zones** computadas com `FC_MAX=170`, `FC_REP=51`, `HRR=119`:
 
@@ -274,14 +278,30 @@ Persistência local em **`runtech.db`** (SQLite). Gitignored.
 ### 4.5 Relações conceituais (não FKs)
 
 ```
-health_daily   1 ─── 1   diario/YYYY-MM-DD.md       (via date == ISO do nome)
-weekly_summary 1 ─── 1   planos-semana/W<week>.md   (via week_id)
-session_summary  N ──┬── 1   weekly_summary          (via week_id)
-                     └── 1   TCX file                (via session_id)
-scheduled_workout 0..1 ── 1   session_summary       (via date_iso + match de título — gap aberto)
+health_daily      1 ─── 1   diario/YYYY-MM-DD.md       (via date == ISO do nome)
+weekly_summary    1 ─── 1   planos-semana/W<week>.md   (via week_id)
+session_summary   N ──┬── 1   weekly_summary           (via week_id)
+                      ├── 1   TCX file                 (via session_id)
+                      └── 0..1 scheduled_workout       (via session_summary.scheduled_id)
 ```
 
 > **Nota:** SQLite não tem FKs explícitas no schema atual. Relações são lógicas, mantidas em código.
+
+### 4.6 Matching planejado vs executado (Gap #2 resolvido em 13/05/2026)
+
+`aggregate_activities.py` faz um pass de matching após upsertar `session_summary`:
+
+1. Para cada session, extrai `workout_code` do filename via regex (`LR7`, `FFR4`, `RRe5`, `HRR4`, `RHR6`, `RFF5`, `AEM`, `VO2`, etc.)
+2. Busca `scheduled_workout` com `date_iso` == data da session (parte YYYY-MM-DD)
+3. Se 1 candidato → match direto. Se N candidatos → match por `workout_code` igual. Fallback: primeiro candidato.
+4. Persiste em `session_summary.scheduled_id`
+
+**Limitação conhecida — date drift histórico:** treinos executados fora da data agendada (ex: coach replaneja, atleta desloca para o dia seguinte) ficam unmatched. Forward, quando o treino é executado na data agendada, o match é automático.
+
+**Uso no dashboard:** o card "PLANO DA SEMANA" usa o match pra:
+- Marcar treino como ✅ feito + mostrar métricas reais (km, FC, cadência, pace)
+- Calcular **% Aderência** ((feito) / (feito + não executado))
+- Diferenciar status: ✅ feito · 🔵 HOJE · ⚪ não executado (passado sem match) · ⏳ pendente (futuro)
 
 ---
 
@@ -411,7 +431,7 @@ URL principal: `https://runnops.pages.dev` → `index.html`
 1. **Veredito** — hero pill colorido (verde/amber/laranja/vermelho) com headline + subtitle
 2. **Próximo treino** — banner pequeno com data + título (lê `scheduled_workout` onde `date_iso >= hoje`)
 3. **Pills 2×2** — Sono / Body Battery / FCrep / Disposição (com delta vs ontem)
-4. **Plano da semana** — lista compacta com status ✅/🔵/⏳ por treino + stats
+4. **Plano da semana** — lista com status ✅ feito / 🔵 HOJE / ⚪ não executado / ⏳ pendente; quando matched, mostra métricas reais (km · FC · cadência · pace); contador no topo + **% Aderência** quando há treinos avaliados
 5. **Sono por fase** — barra estratificada REM/Deep/Light/Awake
 6. **HRV hero** — número grande + sparkline 7d
 7. **Performance Garmin** — 4 cards (Training Status, ACWR/ATL/CTL, VO2/Fitness Age, Recovery) + grid Race Predictor color-coded
@@ -624,10 +644,10 @@ Quando dashboard estabilizar (~1 semana sem mudanças visuais):
 
 ### 12.1 Curto prazo (esta + próxima semana)
 
-| Item | Prioridade |
+| Item | Status |
 |---|---|
-| Gap #2: matching planejado vs executado (`session_summary.scheduled_id`) | Média-alta |
-| Gap #5: tag de tipo de treino no aggregator (LR/FFR/HRR…) | Média (depende #2) |
+| Gap #2: matching planejado vs executado (`session_summary.scheduled_id`) | ✅ feito 13/05 (forward sempre, histórico parcial por date drift) |
+| Gap #5: tag de tipo de treino — `workout_code` já extraído | 🟡 parcial — falta agregação por tipo em `weekly_summary` |
 | Trends 30d/90d toggle funcional | Baixa-média |
 
 ### 12.2 Médio prazo (após 22/05 — 14+ dias coletados)
@@ -681,6 +701,16 @@ Quando dashboard estabilizar (~1 semana sem mudanças visuais):
 ---
 
 ## 14. Changelog
+
+### 1.1 (2026-05-13)
+
+**Marco:** Gap #2 resolvido — matching planejado vs executado.
+
+- `session_summary` ganhou colunas `scheduled_id` (FK lógica) e `workout_code` (LR7/FFR4/etc extraído via regex)
+- `aggregate_activities.py` faz pass de matching pós-upsert (mesma data, prefere match por código quando há ambiguidade)
+- `scheduled_workouts.py` ganhou `--backfill-months N` pra puxar histórico
+- Plano da Semana no dashboard agora mostra: status enriquecido (✅/🔵/⚪/⏳), métricas reais quando match (km · FC · cadência · pace), e **% Aderência**
+- Limitação documentada: matching histórico parcial por date drift; forward funciona limpo
 
 ### 1.0 (2026-05-12)
 

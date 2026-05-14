@@ -1,7 +1,7 @@
 # Plano da semana 2026-W21
 
 **Janela:** 18/05 a 24/05/2026 (seg a dom)
-_Gerado por `scheduled_workouts.py` em 12/05/2026 10:41._
+_Gerado por `scheduled_workouts.py` em 13/05/2026 17:51._
 
 ## Treinos agendados
 

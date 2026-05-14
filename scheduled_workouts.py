@@ -138,12 +138,28 @@ def main():
     p = argparse.ArgumentParser(description="Baixa scheduled workouts do calendario Garmin")
     p.add_argument("--weeks", type=int, default=2,
                    help="Quantas semanas a partir de hoje (default: 2 = atual + proxima)")
+    p.add_argument("--backfill-months", type=int, default=0,
+                   help="Quantos meses passados puxar tambem (default: 0). Util pra cruzar com TCX historicos.")
     p.add_argument("--db", default=str(DB_PATH))
     args = p.parse_args()
 
     today = date.today()
     monday_atual = today - timedelta(days=today.weekday())
     target_dates = []
+
+    # Backfill historico (meses passados completos)
+    for m_back in range(args.backfill_months, 0, -1):
+        # Pega mes "m_back" meses atras, do dia 1 ao ultimo dia
+        ref = today.replace(day=1)
+        for _ in range(m_back):
+            ref = (ref - timedelta(days=1)).replace(day=1)
+        # Ate o ultimo dia do mes
+        next_month = (ref.replace(day=28) + timedelta(days=4)).replace(day=1)
+        last_day = (next_month - timedelta(days=1)).day
+        for d in range(1, last_day + 1):
+            target_dates.append(ref.replace(day=d))
+
+    # Janela atual + futura
     for w in range(args.weeks):
         wstart = monday_atual + timedelta(weeks=w)
         for i in range(7):

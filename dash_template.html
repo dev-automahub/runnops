@@ -105,7 +105,9 @@
         <div class="weekplan-stats">
           {% if plan_done %}<span class="weekplan-stat weekplan-stat-done">✅ {{ plan_done }} feito{% if plan_done > 1 %}s{% endif %}</span>{% endif %}
           {% if plan_today %}<span class="weekplan-stat weekplan-stat-today">🔵 {{ plan_today }} hoje</span>{% endif %}
+          {% if plan_missed %}<span class="weekplan-stat weekplan-stat-missed">⚪ {{ plan_missed }} não executado{% if plan_missed > 1 %}s{% endif %}</span>{% endif %}
           {% if plan_pending %}<span class="weekplan-stat weekplan-stat-pending">⏳ {{ plan_pending }} pendente{% if plan_pending > 1 %}s{% endif %}</span>{% endif %}
+          {% if plan_adherence_pct is not none %}<span class="weekplan-stat weekplan-stat-adherence">📊 Aderência: {{ plan_adherence_pct|int }}%</span>{% endif %}
         </div>
       </div>
       <div class="weekplan-list">
@@ -113,7 +115,10 @@
         <div class="weekplan-row weekplan-{{ p.status }}">
           <div class="weekplan-status" title="{{ p.status_label }}">{{ p.status_icon }}</div>
           <div class="weekplan-date">{{ p.date_pretty }}</div>
-          <div class="weekplan-title-row">{{ p.title }}</div>
+          <div class="weekplan-body">
+            <div class="weekplan-title-row">{{ p.title }}</div>
+            {% if p.session_real %}<div class="weekplan-real">{{ p.session_real }}</div>{% endif %}
+          </div>
         </div>
         {% endfor %}
       </div>

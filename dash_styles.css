@@ -282,9 +282,11 @@ body {
 .weekplan-stat {
   font-weight: 600;
 }
-.weekplan-stat-done    { color: #1f9d3a; }
-.weekplan-stat-today   { color: #0a84ff; }
-.weekplan-stat-pending { color: #8e8e93; }
+.weekplan-stat-done       { color: #1f9d3a; }
+.weekplan-stat-today      { color: #0a84ff; }
+.weekplan-stat-pending    { color: #8e8e93; }
+.weekplan-stat-missed     { color: #ff9500; }
+.weekplan-stat-adherence  { color: #5e5ce6; font-weight: 700; }
 .weekplan-list {
   display: flex;
   flex-direction: column;
@@ -293,7 +295,7 @@ body {
 .weekplan-row {
   display: grid;
   grid-template-columns: 28px 80px 1fr;
-  align-items: center;
+  align-items: start;
   gap: 10px;
   padding: 8px 10px;
   border-radius: 8px;
@@ -302,22 +304,30 @@ body {
 }
 .weekplan-status {
   font-size: 16px;
-  line-height: 1;
+  line-height: 1.3;
   text-align: center;
+  padding-top: 1px;
 }
 .weekplan-date {
   font-weight: 600;
   letter-spacing: 0.01em;
   font-size: 13px;
   opacity: 0.85;
+  padding-top: 1px;
 }
+.weekplan-body { min-width: 0; }
 .weekplan-title-row {
   font-weight: 500;
   line-height: 1.3;
 }
+.weekplan-real {
+  font-size: 12px;
+  opacity: 0.7;
+  margin-top: 3px;
+  letter-spacing: 0.01em;
+}
 .weekplan-row.weekplan-done {
   background: #eefff3;
-  opacity: 0.85;
 }
 .weekplan-row.weekplan-done .weekplan-title-row {
   text-decoration: line-through;
@@ -331,6 +341,14 @@ body {
 }
 .weekplan-row.weekplan-pending {
   background: #f9f9fb;
+}
+.weekplan-row.weekplan-missed {
+  background: #fff7ed;
+  border-left: 3px solid #ff9500;
+  padding-left: 7px;
+}
+.weekplan-row.weekplan-missed .weekplan-title-row {
+  opacity: 0.65;
 }
 
 /* Mobile */

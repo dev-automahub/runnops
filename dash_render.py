@@ -412,7 +412,32 @@ def build_context(today_row, history_with_verdicts, deltas, override=None, diari
 
     week_scheduled = load_scheduled_workouts("runtech.db", week_id=current_week_id)
     week_sessions = load_sessions_for_week("runtech.db", current_week_id)
-    sessions_by_date = {s["date_iso"][:10]: s for s in week_sessions if s.get("date_iso")}
+    # Index sessions por scheduled_id (match preferido) e por data (fallback)
+    sessions_by_scheduled = {s["scheduled_id"]: s for s in week_sessions if s.get("scheduled_id")}
+    sessions_by_date = {(s["date_iso"] or "")[:10]: s for s in week_sessions}
+
+    def _pace_pretty(sec_per_km):
+        if sec_per_km is None:
+            return None
+        m = int(sec_per_km // 60)
+        s = int(sec_per_km % 60)
+        return f"{m}:{s:02d}/km"
+
+    def _build_session_real(sess):
+        """Monta string de métricas reais ('15.0km · FC 132 · cad 158 spm · pace 7:28/km')."""
+        if not sess:
+            return None
+        parts = []
+        if sess.get("distance_km"):
+            parts.append(f"{sess['distance_km']:.1f}km")
+        if sess.get("avg_hr"):
+            parts.append(f"FC {sess['avg_hr']}")
+        if sess.get("avg_cadence_spm"):
+            parts.append(f"cad {sess['avg_cadence_spm']:.0f}")
+        pace = _pace_pretty(sess.get("avg_pace_sec_per_km"))
+        if pace:
+            parts.append(pace)
+        return " · ".join(parts) if parts else None
 
     week_plan = []
     next_workout = None
@@ -420,20 +445,25 @@ def build_context(today_row, history_with_verdicts, deltas, override=None, diari
         d_iso = w["date_iso"]
         d_obj = date_cls.fromisoformat(d_iso)
         day_short = PT_BR_DAY[d_obj.weekday()]
-        if d_iso < today_iso_str:
+
+        # Match preferencial: scheduled_id; fallback: data
+        matched_session = (
+            sessions_by_scheduled.get(w["scheduled_id"])
+            or sessions_by_date.get(d_iso)
+        )
+
+        if matched_session:
             status = "done"
             status_icon = "✅"
             status_label = "feito"
+        elif d_iso < today_iso_str:
+            status = "missed"
+            status_icon = "⚪"
+            status_label = "não executado"
         elif d_iso == today_iso_str:
-            # Hoje — se ja tem sessao do dia, marca como feito; senao "agora"
-            if d_iso in sessions_by_date:
-                status = "done"
-                status_icon = "✅"
-                status_label = "feito hoje"
-            else:
-                status = "today"
-                status_icon = "🔵"
-                status_label = "HOJE"
+            status = "today"
+            status_icon = "🔵"
+            status_label = "HOJE"
         else:
             status = "pending"
             status_icon = "⏳"
@@ -452,6 +482,7 @@ def build_context(today_row, history_with_verdicts, deltas, override=None, diari
             "status": status,
             "status_icon": status_icon,
             "status_label": status_label,
+            "session_real": _build_session_real(matched_session),
         })
 
     # Stats do plano da semana
@@ -459,6 +490,10 @@ def build_context(today_row, history_with_verdicts, deltas, override=None, diari
     plan_done = sum(1 for p in week_plan if p["status"] == "done")
     plan_today = sum(1 for p in week_plan if p["status"] == "today")
     plan_pending = sum(1 for p in week_plan if p["status"] == "pending")
+    plan_missed = sum(1 for p in week_plan if p["status"] == "missed")
+    # Aderencia (so faz sentido quando ja ha treinos passados ou de hoje)
+    plan_evaluated = plan_done + plan_missed
+    plan_adherence_pct = round(plan_done / plan_evaluated * 100, 0) if plan_evaluated else None
 
     has_week_plan = bool(week_plan)
 
@@ -633,6 +668,8 @@ def build_context(today_row, history_with_verdicts, deltas, override=None, diari
         "plan_done": plan_done,
         "plan_today": plan_today,
         "plan_pending": plan_pending,
+        "plan_missed": plan_missed,
+        "plan_adherence_pct": plan_adherence_pct,
         "next_workout": next_workout,
     }
 

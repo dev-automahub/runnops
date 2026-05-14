@@ -1,6 +1,6 @@
 """
 aggregate_activities.py - Le todos TCX em 'Atividades Baixadas/' e gera:
-  - session_summary (1 linha por treino)
+  - session_summary (1 linha por treino, com matching opcional para scheduled_workout)
   - weekly_summary  (1 linha por semana ISO)
 em runtech.db. Idempotente: reprocessa tudo sempre.
 
@@ -9,6 +9,7 @@ Uso:
     python aggregate_activities.py --db custom.db
 """
 import argparse
+import re
 import sqlite3
 import sys
 import xml.etree.ElementTree as ET
@@ -54,9 +55,17 @@ CREATE TABLE IF NOT EXISTS session_summary (
     time_z2_sec INTEGER,
     time_z3_sec INTEGER,
     time_z4_sec INTEGER,
-    time_z5_sec INTEGER
+    time_z5_sec INTEGER,
+    scheduled_id INTEGER,
+    workout_code TEXT
 );
 """
+
+# Colunas adicionadas em 12/05/2026 — migração idempotente pra DBs existentes
+NEW_SESSION_COLUMNS = [
+    ("scheduled_id", "INTEGER"),
+    ("workout_code", "TEXT"),
+]
 
 SCHEMA_WEEK = """
 CREATE TABLE IF NOT EXISTS weekly_summary (
@@ -78,6 +87,82 @@ CREATE TABLE IF NOT EXISTS weekly_summary (
     longest_session_id TEXT
 );
 """
+
+
+def extract_workout_code(title):
+    """Extrai prefixo tipo LR7, FFR4, RRe5, HRR4, RHR6, RF5, AEM do titulo.
+
+    Lida com:
+      - prefixos numericos de filename ("12345_...")
+      - "Vitória - LR7 ..." / "Vitória LR7 ..." / "Vitória Corrida RHR6 ..."
+      - prefixos como "VO2 Máx." (treinos sem code tradicional, retorna None)
+    """
+    if not title:
+        return None
+    cleaned = title.strip()
+    # Remove prefixo numerico de filename: "22853346305_..."
+    cleaned = re.sub(r'^\d+_', '', cleaned)
+    # Remove "Vitória" (com e sem hífen)
+    cleaned = re.sub(r'^\s*Vit[óôo]ria\s*[-]?\s*', '', cleaned, flags=re.IGNORECASE)
+    # Alguns TCX tem "Corrida XXX Corrida" — strip o "Corrida " inicial se houver
+    cleaned = re.sub(r'^Corrida\s+', '', cleaned)
+    # Match prefixo de letras + opcional letra minuscula + opcional digitos
+    m = re.match(r'([A-Z]{1,5}[a-z]?\d{0,3})\b', cleaned)
+    if m:
+        code = m.group(1)
+        if len(code) >= 2 or any(c.isdigit() for c in code):
+            return code
+    return None
+
+
+def match_session_to_scheduled(conn, session_rows):
+    """Para cada session, encontra o scheduled_workout mais provavel (mesma data + workout code).
+    Atualiza session_summary.scheduled_id e workout_code in-place.
+    Retorna (matched_count, total).
+    """
+    # Carrega todos scheduled (idempotente: nao filtra por data)
+    try:
+        cur = conn.execute("SELECT scheduled_id, date_iso, title FROM scheduled_workout")
+        scheduled_by_date = defaultdict(list)
+        for sid, d_iso, title in cur.fetchall():
+            scheduled_by_date[d_iso].append({
+                "scheduled_id": sid,
+                "title": title,
+                "code": extract_workout_code(title),
+            })
+    except sqlite3.OperationalError:
+        # Tabela nao existe ainda — nada pra matchar
+        return 0, len(session_rows)
+
+    matched = 0
+    for s in session_rows:
+        date_short = (s["date_iso"] or "")[:10]
+        s_code = extract_workout_code(Path(s["filename"]).stem)
+        candidates = scheduled_by_date.get(date_short, [])
+
+        chosen = None
+        if len(candidates) == 1:
+            chosen = candidates[0]
+        elif len(candidates) > 1:
+            # multiplos treinos no mesmo dia — match por code
+            for c in candidates:
+                if c["code"] and s_code and c["code"] == s_code:
+                    chosen = c
+                    break
+            # fallback: primeiro candidato (raro)
+            if not chosen:
+                chosen = candidates[0]
+
+        sched_id = chosen["scheduled_id"] if chosen else None
+        conn.execute(
+            "UPDATE session_summary SET scheduled_id=?, workout_code=? WHERE session_id=?",
+            (sched_id, s_code, s["session_id"]),
+        )
+        if sched_id:
+            matched += 1
+
+    conn.commit()
+    return matched, len(session_rows)
 
 
 def _zone_idx(hr):
@@ -292,6 +377,11 @@ def main():
     conn = sqlite3.connect(args.db)
     conn.execute(SCHEMA_SESSION)
     conn.execute(SCHEMA_WEEK)
+    # Migracao idempotente pra DBs antigos
+    existing = {row[1] for row in conn.execute("PRAGMA table_info(session_summary)").fetchall()}
+    for col, coltype in NEW_SESSION_COLUMNS:
+        if col not in existing:
+            conn.execute(f"ALTER TABLE session_summary ADD COLUMN {col} {coltype}")
     conn.commit()
 
     tcx_files = sorted(pasta.glob("*.tcx"))
@@ -309,6 +399,11 @@ def main():
         _upsert(conn, "weekly_summary", w)
 
     conn.commit()
+
+    # Matching session <-> scheduled (planejado vs executado)
+    matched, total = match_session_to_scheduled(conn, sessions)
+    print(f"[+] Matching planejado-vs-executado: {matched}/{total} sessoes vinculadas a scheduled_workout")
+
     conn.close()
 
     print(f"[OK] {len(sessions)} sessoes + {len(weeks)} semanas gravadas em {args.db}")
