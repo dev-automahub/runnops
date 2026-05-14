@@ -1,7 +1,17 @@
 {
-  "generated_at": "2026-05-13T21:29:08",
-  "count": 38,
+  "generated_at": "2026-05-13T21:30:05",
+  "count": 39,
   "activities": [
+    {
+      "id": "22865500286",
+      "name": "Vitória - RRe5 Corrida - 40' Z1",
+      "filename": "Atividades Baixadas/22865500286_Vitória - RRe5 Corrida - 40' Z1.tcx",
+      "date_iso": "2026-05-13T10:20:01.000Z",
+      "date_br": "13/05/2026 10:20",
+      "distance_km": 5.01,
+      "duration_min": 41.0,
+      "sport": "Running"
+    },
     {
       "id": "22853346305",
       "name": "Vitória - FFR4 Corrida - 10' Z3",
