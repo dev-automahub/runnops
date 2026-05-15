@@ -1,7 +1,17 @@
 {
-  "generated_at": "2026-05-15T09:59:48",
-  "count": 53,
+  "generated_at": "2026-05-15T10:04:55",
+  "count": 54,
   "activities": [
+    {
+      "id": "22888530757",
+      "name": "Vitória - HRR4 Corrida - 10 x 30 Z5",
+      "filename": "Atividades Baixadas/22888530757_Vitória - HRR4 Corrida - 10 x 30 Z5.tcx",
+      "date_iso": "2026-05-15T10:23:49.000Z",
+      "date_br": "15/05/2026 10:23",
+      "distance_km": 5.01,
+      "duration_min": 35.0,
+      "sport": "Running"
+    },
     {
       "id": "22865500286",
       "name": "Vitória - RRe5 Corrida - 40' Z1",
