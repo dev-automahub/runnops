@@ -16,7 +16,7 @@
 
 ## 🔴 Hoje / nas próximas 24h
 
-- [ ] Ajustar zonas de FC no Garmin Connect com Karvonen (FCmáx 170, FCrep 51): **Z2 = 122-134 bpm**
+- [x] ~~Ajustar zonas de FC no Garmin~~ → **resolvido 16/05/2026**: FCmáx 175, FCrep 49 (do próprio Garmin), Karvonen, **Z2 = 124-136 bpm**, LTHR 153
 - [ ] Verificar PMC no TrainingPeaks e confirmar TSB/CTL/ATL atuais (referência: 39/31/14)
 - [ ] Comprar: creatina monohidratada (pote 300g), ômega-3 EPA+DHA, vit D3 2000UI, géis para testar (3-4 marcas/sabores), isotônico em pó
 - [ ] Pesquisar 1 massagista esportivo perto de você — agendar 1×/semana nas próximas 5 semanas

@@ -1,6 +1,6 @@
 """Lógica do veredito do dashboard. Pure functions, sem I/O."""
 
-FCREP_BASELINE = 51
+FCREP_BASELINE = 49  # recalibrado 16/05/2026 (era 51, agora confirmado pelo Garmin)
 
 # Score thresholds (named to avoid magic numbers in scoring functions)
 HRV_GREEN_MIN = 32      # >= 32 → 0 pts

@@ -25,16 +25,18 @@ NS = {
     'ns3': 'http://www.garmin.com/xmlschemas/ActivityExtension/v2',
 }
 
-# Karvonen zones — usuario: FCmax=170, FCrep=51, HRR=119
-FC_MAX = 170
-FC_REP = 51
+# Karvonen zones — recalibrado 16/05/2026 com dados oficiais do Garmin Connect:
+# FCmax=175 (auto-detected pelo Garmin), FCrep=49 (medida atual). HRR=126.
+# Zonas resultantes: Z1≤123 / Z2 124-136 / Z3 137-148 / Z4 149-161 / Z5 ≥162
+FC_MAX = 175
+FC_REP = 49
 HRR = FC_MAX - FC_REP
 ZONE_BOUNDS = [
-    int(FC_REP + 0.50 * HRR),  # Z1: 110
-    int(FC_REP + 0.60 * HRR),  # Z1/Z2: 122
-    int(FC_REP + 0.70 * HRR),  # Z2/Z3: 134
-    int(FC_REP + 0.80 * HRR),  # Z3/Z4: 146
-    int(FC_REP + 0.90 * HRR),  # Z4/Z5: 158
+    int(FC_REP + 0.50 * HRR),  # Z1: 112
+    int(FC_REP + 0.60 * HRR),  # Z1/Z2: 124
+    int(FC_REP + 0.70 * HRR),  # Z2/Z3: 137
+    int(FC_REP + 0.80 * HRR),  # Z3/Z4: 149
+    int(FC_REP + 0.90 * HRR),  # Z4/Z5: 162
 ]
 
 

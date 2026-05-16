@@ -285,9 +285,10 @@ if not df.empty:
 
         # Zonas Karvonen do atleta — ajustar conforme perfil:
         # FCalvo = FCrep + (% × FCR), onde FCR = FCmáx − FCrep
-        FC_MAX = 170   # Tanaka: 208 − 0.7 × 54 = 170
-        FC_REP = 51    # FC repouso medida
-        FCR = FC_MAX - FC_REP  # 119 bpm
+        # Recalibrado 16/05/2026 com dados oficiais do Garmin Connect
+        FC_MAX = 175   # auto-detected pelo Garmin (era Tanaka 170)
+        FC_REP = 49    # medida atual (era 51)
+        FCR = FC_MAX - FC_REP  # 126 bpm
 
         zones = [
             (FC_REP + 0.50 * FCR, FC_REP + 0.60 * FCR, "Z1", "Recuperação",      "#A9A9A9"),

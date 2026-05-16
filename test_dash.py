@@ -61,9 +61,10 @@ def test_modifier_hrv_drop():
 
 def test_modifier_fcrep_rise():
     from dash_verdict import fcrep_rise_modifier
-    assert fcrep_rise_modifier(54, FCREP_BASELINE) == 1  # +3 vs baseline 51
-    assert fcrep_rise_modifier(53, FCREP_BASELINE) == 0  # +2 (< 3)
-    assert fcrep_rise_modifier(50, FCREP_BASELINE) == 0  # abaixo
+    # Baseline atual = 49 (recalibrado 16/05/2026)
+    assert fcrep_rise_modifier(52, FCREP_BASELINE) == 1  # +3 vs baseline 49
+    assert fcrep_rise_modifier(51, FCREP_BASELINE) == 0  # +2 (< 3)
+    assert fcrep_rise_modifier(48, FCREP_BASELINE) == 0  # abaixo
     assert fcrep_rise_modifier(None, FCREP_BASELINE) == 0  # null
 
 def test_compute_verdict_replay_4_days():
@@ -85,9 +86,10 @@ def test_compute_verdict_replay_4_days():
     assert v07["headline"] == "Pronto pra treinar"
 
     v08 = compute_verdict(ROW_08, prev_row=ROW_07)
-    assert v08["score"] == 4, f"08/05 esperado 4, veio {v08['score']}"
-    assert v08["color"] == "orange"
-    assert v08["headline"] == "Descanso recomendado"
+    # Baseline FCrep=49 (recalibrado 16/05): fcrep 53 = +4 → +1 mod → score sobe pra 5 (vermelho)
+    assert v08["score"] == 5, f"08/05 esperado 5, veio {v08['score']}"
+    assert v08["color"] == "red"
+    assert v08["headline"] == "Corte forçado"
 
 def test_compute_verdict_critical_red():
     """5+ pontos → vermelho corte."""
@@ -228,7 +230,8 @@ def test_compute_history_with_verdicts():
          "resting_heart_rate": 51, "sleep_score": 80},
     ]
     enriched = enrich_with_verdicts(rows)
-    assert enriched[0]["verdict"]["color"] == "orange"  # 08
+    # Baseline 49 (recalibrado 16/05/2026): 08/05 fcrep 53 dispara +1 mod → score 5 → red
+    assert enriched[0]["verdict"]["color"] == "red"     # 08
     assert enriched[1]["verdict"]["color"] == "green"   # 07
     assert enriched[2]["verdict"]["color"] == "amber"   # 06
 

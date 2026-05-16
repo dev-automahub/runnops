@@ -4,8 +4,8 @@
 
 | Campo | Valor |
 |---|---|
-| Versão | 1.5 |
-| Data | 2026-05-14 |
+| Versão | 1.6 |
+| Data | 2026-05-16 |
 | Status | Em produção (público temporário) |
 | Repositório | `dev-automahub/runnops` (GitHub) |
 | URL produção | https://runnops.pages.dev |
@@ -45,9 +45,11 @@ RunTechOps é um pipeline pessoal de coleta + análise + publicação de dados f
 |---|---|
 | Idade | 54 |
 | Peso | 98 kg |
-| FCrep baseline | 51 |
-| FCmáx | 170 |
-| HRR (FCmáx − FCrep) | 119 |
+| **FCrep baseline** | **49** (recalibrado 16/05/2026; era 51) |
+| **FCmáx** | **175** (Garmin auto-detected; era estimativa Tanaka 170) |
+| **HRR (FCmáx − FCrep)** | **126** (era 119) |
+| LTHR | 153 (Garmin auto-detected) |
+| Pico de FC registrado | 190 (teste formal 19/04/2026) |
 | Dispositivos | Garmin Forerunner 965 (uso 24/7) |
 | Plataformas | Garmin Connect, TrainingPeaks Premium |
 | Lesões | nenhuma |
@@ -230,15 +232,15 @@ Persistência local em **`runtech.db`** (SQLite). Gitignored.
 
 ⭐ = colunas adicionadas em 2026-05-13 (Gap #2: matching planejado vs executado).
 
-**Karvonen zones** computadas com `FC_MAX=170`, `FC_REP=51`, `HRR=119`:
+**Karvonen zones** computadas com `FC_MAX=175`, `FC_REP=49`, `HRR=126` (recalibrado 16/05/2026):
 
 | Zona | Faixa (bpm) | Fórmula |
 |---|---|---|
-| Z1 | 51–122 | FCrep + (0-60% × HRR) |
-| Z2 | 122–133 | FCrep + (60-70% × HRR) |
-| Z3 | 134–145 | FCrep + (70-80% × HRR) |
-| Z4 | 146–157 | FCrep + (80-90% × HRR) |
-| Z5 | 158–170 | FCrep + (90-100% × HRR) |
+| Z1 | ≤123 | FCrep + (0-60% × HRR) |
+| Z2 | 124-136 | FCrep + (60-70% × HRR) |
+| Z3 | 137-148 | FCrep + (70-80% × HRR) |
+| Z4 | 149-161 | FCrep + (80-90% × HRR) |
+| Z5 | ≥162 | FCrep + (90-100% × HRR) |
 
 ### 4.3 Tabela `weekly_summary`
 
@@ -804,6 +806,21 @@ Quando dashboard estabilizar (~1 semana sem mudanças visuais):
 ---
 
 ## 14. Changelog
+
+### 1.6 (2026-05-16)
+
+**Marco:** Recalibração das constantes Karvonen — descoberta crítica.
+
+- Atleta reclamava cronicamente que "Z2 <134 era impossível". Investigação mostrou:
+  - Pico real registrado: **190 bpm** (teste formal 19/04/2026), não 170 (Tanaka estimado)
+  - Garmin auto-detected: **FCmáx 175** (conservador, descartando 190 como possível outlier)
+  - **LTHR 153** (Lactate Threshold HR) auto-detectado pelo Garmin
+  - FCrep atual: **49** (era 51)
+- **Constantes recalibradas em todos os pontos:** `aggregate_activities.py`, `activity.html`, `dashboard.py`, `dash_verdict.py` (FCREP_BASELINE)
+- **Novas zonas Karvonen:** Z1 ≤123 / Z2 124-136 / Z3 137-148 / Z4 149-161 / Z5 ≥162
+- Re-processamento retroativo: muitos "furos Z3" do histórico viraram Z2 puro correto (ex: W19 % Z2 saltou de 45.3% → 68.0%, W20 de 31.8% → 50.2%)
+- Tests do `dash_verdict` ajustados pra novo baseline FCrep=49
+- Tabela perfil + seção 4.2 ARCHITECTURE atualizadas
 
 ### 1.5 (2026-05-14 — tarde)
 

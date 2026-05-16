@@ -147,8 +147,9 @@ h1 { font-size: 28px; margin: 0 0 4px 0; letter-spacing: -0.02em; }
         crossorigin=""></script>
 <script src="https://cdn.plot.ly/plotly-2.35.2.min.js" charset="utf-8"></script>
 <script>
-const FC_MAX = 170;
-const FC_REP = 51;
+// Recalibrado 16/05/2026 com dados oficiais do Garmin Connect (FCmax 175 auto-detect, FCrep 49 medida)
+const FC_MAX = 175;
+const FC_REP = 49;
 const FCR = FC_MAX - FC_REP;
 const ZONES = [
   { label: 'Z1', name: 'Recuperação',      min: FC_REP + 0.50*FCR, max: FC_REP + 0.60*FCR, color: '#a9a9a9' },
