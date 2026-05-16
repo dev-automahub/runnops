@@ -4,7 +4,7 @@
 
 | Campo | Valor |
 |---|---|
-| Versão | 1.6 |
+| Versão | 1.7 |
 | Data | 2026-05-16 |
 | Status | Em produção (público temporário) |
 | Repositório | `dev-automahub/runnops` (GitHub) |
@@ -232,15 +232,19 @@ Persistência local em **`runtech.db`** (SQLite). Gitignored.
 
 ⭐ = colunas adicionadas em 2026-05-13 (Gap #2: matching planejado vs executado).
 
-**Karvonen zones** computadas com `FC_MAX=175`, `FC_REP=49`, `HRR=126` (recalibrado 16/05/2026):
+**Zonas Garmin %LTHR** (LTHR=153) — alinhado com Forerunner 965 desde 16/05/2026 tarde:
 
-| Zona | Faixa (bpm) | Fórmula |
-|---|---|---|
-| Z1 | ≤123 | FCrep + (0-60% × HRR) |
-| Z2 | 124-136 | FCrep + (60-70% × HRR) |
-| Z3 | 137-148 | FCrep + (70-80% × HRR) |
-| Z4 | 149-161 | FCrep + (80-90% × HRR) |
-| Z5 | ≥162 | FCrep + (90-100% × HRR) |
+| Z | Nome Garmin | % LTHR | Faixa (bpm) | Coaching equivalente |
+|---|---|---|---|---|
+| Z1 | Aquecimento | 55-69% | ≤105 | Warmup/cooldown |
+| Z2 | Fácil | 69-78% | 106-119 | Recovery |
+| **Z3** | **Aeróbico** | **78-90%** | **120-137** | **Base aeróbica = "Z2 do coach"** |
+| Z4 | Limite | 90-103% | 138-157 | Threshold |
+| Z5 | Máximo | >103% | ≥158 | VO2max |
+
+**Mapping crítico coach → Garmin:** quando coach prescreve "Z2 base", atleta procura "**Z3 Aeróbico**" no relógio. Detalhes em `memory/feedback_zonas_fc_garmin.md`.
+
+_Histórico: até 15/05 usávamos Karvonen %HRR (FCmax 170/51). Em 16/05 manhã recalibramos pra Karvonen 175/49 (FCmax real). À tarde alinhamos 100% com Garmin %LTHR pra eliminar dois sistemas. Decisão tomada porque dashboard mostrando "Z2 furado" enquanto relógio mostrava "Z3 Aeróbico OK" era contraproducente._
 
 ### 4.3 Tabela `weekly_summary`
 
@@ -806,6 +810,20 @@ Quando dashboard estabilizar (~1 semana sem mudanças visuais):
 ---
 
 ## 14. Changelog
+
+### 1.7 (2026-05-16 — tarde)
+
+**Marco:** Alinhamento com sistema Garmin %LTHR — eliminação do paralelismo de zonas.
+
+- Atleta questionou (corretamente): "por que usar Karvonen se Garmin usa outro?"
+- Investigação no relógio Forerunner 965 mostrou: configuração default usa **%LTHR** (não %HRR) com nomes **Aquecimento/Fácil/Aeróbico/Limite/Máximo**
+- **Decisão:** abandonar Karvonen, alinhar 100% com %LTHR Garmin (LTHR=153)
+- Refactor: `aggregate_activities.py`, `activity.html`, `dashboard.py` agora usam `LTHR=153` e nomes Garmin
+- Nova coluna `weekly_summary.pct_aerobico` = % em Z3 (base aeróbica, ex-"Z2") — substitui `pct_z2` como métrica principal
+- `dash_template.html`: header passou de "%Z2" pra "%AERÓBICO"; footnote atualizada
+- Reprocessamento retroativo: W19 mostrou **78.8% Aeróbico**, W20 **69.5%** — métricas finalmente coerentes com o protocolo
+- Mapping coach→Garmin documentado: "Z2 do coach" = "Z3 Aeróbico" no relógio
+- Memory `feedback_zonas_fc_garmin.md` criada como referência permanente
 
 ### 1.6 (2026-05-16)
 

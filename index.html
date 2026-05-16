@@ -1384,7 +1384,7 @@ body {
             <th class="num">#TR</th>
             <th class="num">KM</th>
             <th class="num">CAD</th>
-            <th class="num">%Z2</th>
+            <th class="num">%AERÓBICO</th>
             <th class="num">PACE</th>
             <th class="num">+LONGO</th>
           </tr>
@@ -1396,7 +1396,7 @@ body {
             <td class="num">4</td>
             <td class="num">35.2 <span class="weekly-delta">(+0.6)</span></td>
             <td class="num">161.9 <span class="weekly-delta">(+7.4)</span></td>
-            <td class="num">50.2% <span class="weekly-delta">(-17.8)</span></td>
+            <td class="num">69.5% <span class="weekly-delta">(-9.3)</span></td>
             <td class="num">7:06/km</td>
             <td class="num">18.6km</td>
           </tr>
@@ -1406,7 +1406,7 @@ body {
             <td class="num">4</td>
             <td class="num">34.6 <span class="weekly-delta">(-0.9)</span></td>
             <td class="num">154.5 <span class="weekly-delta">(-2.1)</span></td>
-            <td class="num">68.0% <span class="weekly-delta">(+48.9)</span></td>
+            <td class="num">78.8% <span class="weekly-delta">(+49.4)</span></td>
             <td class="num">7:53/km</td>
             <td class="num">15.0km</td>
           </tr>
@@ -1416,7 +1416,7 @@ body {
             <td class="num">4</td>
             <td class="num">35.5 <span class="weekly-delta">(+26.5)</span></td>
             <td class="num">156.6 <span class="weekly-delta">(+0.2)</span></td>
-            <td class="num">19.1% <span class="weekly-delta">(-6.5)</span></td>
+            <td class="num">29.4% <span class="weekly-delta">(-11.4)</span></td>
             <td class="num">6:37/km</td>
             <td class="num">17.0km</td>
           </tr>
@@ -1426,7 +1426,7 @@ body {
             <td class="num">1</td>
             <td class="num">9.1 <span class="weekly-delta">(-4.6)</span></td>
             <td class="num">156.4 <span class="weekly-delta">(-3.7)</span></td>
-            <td class="num">25.6% <span class="weekly-delta">(+15.6)</span></td>
+            <td class="num">40.8% <span class="weekly-delta">(+27.4)</span></td>
             <td class="num">6:37/km</td>
             <td class="num">9.1km</td>
           </tr>
@@ -1436,7 +1436,7 @@ body {
             <td class="num">4</td>
             <td class="num">13.6 <span class="weekly-delta">(-31.1)</span></td>
             <td class="num">160.1 <span class="weekly-delta">(+7.4)</span></td>
-            <td class="num">10.0% <span class="weekly-delta">(-25.4)</span></td>
+            <td class="num">13.4% <span class="weekly-delta">(-28.6)</span></td>
             <td class="num">6:33/km</td>
             <td class="num">5.0km</td>
           </tr>
@@ -1446,7 +1446,7 @@ body {
             <td class="num">6</td>
             <td class="num">44.7 <span class="weekly-delta">(+11.7)</span></td>
             <td class="num">152.7 <span class="weekly-delta">(-2.2)</span></td>
-            <td class="num">35.4% <span class="weekly-delta">(-3.3)</span></td>
+            <td class="num">42.0% <span class="weekly-delta">(-4.3)</span></td>
             <td class="num">6:48/km</td>
             <td class="num">13.6km</td>
           </tr>
@@ -1456,7 +1456,7 @@ body {
             <td class="num">4</td>
             <td class="num">33.0 <span class="weekly-delta">(-3.8)</span></td>
             <td class="num">154.9 <span class="weekly-delta">(-0.7)</span></td>
-            <td class="num">38.7% <span class="weekly-delta">(-11.2)</span></td>
+            <td class="num">46.3% <span class="weekly-delta">(-17.9)</span></td>
             <td class="num">6:40/km</td>
             <td class="num">8.4km</td>
           </tr>
@@ -1466,7 +1466,7 @@ body {
             <td class="num">3</td>
             <td class="num">36.8</td>
             <td class="num">155.6</td>
-            <td class="num">49.9%</td>
+            <td class="num">64.2%</td>
             <td class="num">6:31/km</td>
             <td class="num">14.1km</td>
           </tr>
@@ -1474,7 +1474,7 @@ body {
         </tbody>
       </table>
       </div>
-      <div class="weekly-footnote">Cadência média ponderada por duração · %Z2 sobre tempo total com FC válida · Karvonen FCmax 170 / FCrep 51</div>
+      <div class="weekly-footnote">Cadência média ponderada por duração · %Aeróbico (Z3) = tempo em base aeróbica · zonas Garmin %LTHR (LTHR 153)</div>
     </div>
     
 
@@ -2315,10 +2315,160 @@ body {
 - Reprocessamento retroativo de 55 TCXs: <strong>W19 saltou de 45.3% → 68.0% Z2; W20 de 31.8% → 50.2% Z2</strong> — confirmando que muitos "furos Z3" eram Z2 puro correto<br />
 - Tests do <code>dash_verdict</code> ajustados (24/24 passando)<br />
 - Item antigo do checklist 04/05 marcado como concluído</p>
-<p><strong>Pendência:</strong> propagar no Garmin Connect web (<code>connect.garmin.com/modern/settings/heartRateZones</code>):<br />
-- Método: % Reserva de FC (Karvonen)<br />
-- FCmáx 175 · FCrep 49 · limites 50/60/70/80/90<br />
-- Sincroniza automaticamente com o Forerunner 965 e ajusta zonas em tempo real durante os treinos</p></div>
+<p><strong>Pendência (RESOLVIDA na entrada seguinte das 19:00):</strong> ao tentar configurar no Garmin Connect web/app, atleta descobriu que <strong>Garmin não usa Karvonen %HRR — usa %LTHR</strong> com nomes diferentes. Decisão revertida: alinhar nosso pipeline com o Garmin em vez do contrário. Ver entrada das 19:00.</p>
+<hr />
+<h3>19:00 — Alinhamento total com Garmin %LTHR (descarte do Karvonen)</h3>
+<p><strong>Contexto:</strong> depois de tentar configurar Karvonen no Garmin (recomendação da entrada das 15:30), atleta foi direto no relógio e mandou screenshots mostrando que o Garmin Forerunner 965 já vinha configurado com <strong>%LTHR</strong> (não %HRR) e nomes diferentes: <strong>Aquecimento / Fácil / Aeróbico / Limite / Máximo</strong>.</p>
+<p><strong>Pergunta do atleta:</strong> <em>"Não vai causar confusão usar dois sistemas? Não quero que você fique indicando que estou acima do Z2 quando na verdade estou dentro. Não entendi o motivo de continuar usando Karvonen se o Garmin (base dos índices) usa outro. O que isso impacta na avaliação dos treinos?"</em></p>
+<p><strong>Reconhecimento:</strong> atleta correto. Manter dois sistemas (Karvonen no dashboard + %LTHR no relógio) gera contradição constante. A única razão pra manter Karvonen era inércia de código. Não é razão suficiente.</p>
+<h4>Sistema único definido: Garmin %LTHR (LTHR=153)</h4>
+<div class="md-table-wrap"><table>
+<thead>
+<tr>
+<th>Z</th>
+<th>Nome Garmin</th>
+<th>% LTHR</th>
+<th>Faixa bpm</th>
+<th>Coaching equivalente</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Z1</td>
+<td>Aquecimento</td>
+<td>55-69%</td>
+<td>≤105</td>
+<td>Warmup</td>
+</tr>
+<tr>
+<td>Z2</td>
+<td>Fácil</td>
+<td>69-78%</td>
+<td>106-119</td>
+<td>Recovery</td>
+</tr>
+<tr>
+<td><strong>Z3</strong></td>
+<td><strong>Aeróbico</strong></td>
+<td><strong>78-90%</strong></td>
+<td><strong>120-137</strong></td>
+<td><strong>Base aeróbica = "Z2 do coach"</strong></td>
+</tr>
+<tr>
+<td>Z4</td>
+<td>Limite</td>
+<td>90-103%</td>
+<td>138-157</td>
+<td>Threshold</td>
+</tr>
+<tr>
+<td>Z5</td>
+<td>Máximo</td>
+<td>&gt;103%</td>
+<td>≥158</td>
+<td>VO2max</td>
+</tr>
+</tbody>
+</table></div>
+<h4>Mapping crítico coach ↔ Garmin</h4>
+<p>Quando coach prescrever "Z2 base" — atleta procura <strong>"Z3 Aeróbico"</strong> no relógio (não Z2 Fácil que é recovery). Atleta confirmou interpretação: pace prescrito 7:00-7:30/km bate com base aeróbica (Z3), não recovery (Z2).</p>
+<h4>Impacto na avaliação dos treinos</h4>
+<p><strong>ZERO mudança no que foi feito.</strong> A FC real registrada não muda. Muda só o NOME da zona pra um mesmo valor.</p>
+<p><strong>Releitura dos treinos recentes com Garmin %LTHR:</strong></p>
+<div class="md-table-wrap"><table>
+<thead>
+<tr>
+<th>Treino</th>
+<th>FC média</th>
+<th>Karvonen dizia</th>
+<th><strong>Garmin %LTHR</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>LR longo 16/05 (hoje)</td>
+<td>136.6</td>
+<td>Z2 puro (no teto)</td>
+<td><strong>Z3 Aeróbico (topo)</strong> = base ✅</td>
+</tr>
+<tr>
+<td>LR7 10/05</td>
+<td>131.9</td>
+<td>Z2 conservador</td>
+<td>Z3 Aeróbico ✅</td>
+</tr>
+<tr>
+<td>RRe5 13/05</td>
+<td>123.6</td>
+<td>Z1/Z2 borderline</td>
+<td><strong>Z3 Aeróbico</strong> (não recovery — era base)</td>
+</tr>
+<tr>
+<td>FFR4 12/05</td>
+<td>128.6</td>
+<td>Z2</td>
+<td>Z3 Aeróbico</td>
+</tr>
+<tr>
+<td>HRR4 15/05</td>
+<td>139.5 / max 163</td>
+<td>Z3+Z5 só 2.5%</td>
+<td><strong>Z4 Limite + Z5 Máximo (tocou)</strong></td>
+</tr>
+</tbody>
+</table></div>
+<h4>Mudança técnica executada no pipeline</h4>
+<ul>
+<li><code>aggregate_activities.py</code>: LTHR=153, nomes Aquecimento/Fácil/Aeróbico/Limite/Máximo, bounds derivados de %LTHR padrão</li>
+<li><code>activity.html</code>: mesmo refactor + cores ajustadas (verde agora é Z3 Aeróbico)</li>
+<li><code>dashboard.py</code> (Streamlit legado): mesmo</li>
+<li>Nova coluna <code>weekly_summary.pct_aerobico</code> = % tempo em Z3 (base aeróbica) — substitui <code>pct_z2</code> como métrica principal do macro</li>
+<li><code>dash_template.html</code>: header da tabela semanal mudou de "%Z2" pra "%AERÓBICO"; footnote atualizada</li>
+<li>Reprocessamento retroativo de 55 TCXs:</li>
+<li>W19 saltou pra <strong>78.8% Aeróbico</strong> (era 45.3% no Karvonen 170/51 → 68.0% Karvonen 175/49)</li>
+<li>W20 atual: <strong>69.5% Aeróbico</strong> (era 31.8% → 50.2%)</li>
+<li>Tests 24/24 passando</li>
+</ul>
+<h4>Decisão registrada</h4>
+<ul>
+<li>✅ Sistema único: Garmin %LTHR (sem Karvonen no dashboard)</li>
+<li>✅ Memory <code>feedback_zonas_fc_garmin.md</code> criada como referência permanente</li>
+<li>✅ Mapping coach↔Garmin documentado pra evitar ambiguidade em futuras análises</li>
+<li>✅ Daqui pra frente: análise narrativa usa "Z3 Aeróbico" ou "base aeróbica" em vez de "Z2 base"</li>
+<li>✅ Garmin Connect/relógio NÃO precisa mexer (já estava certo)</li>
+</ul>
+<h4>Métrica W20 atualizada</h4>
+<div class="md-table-wrap"><table>
+<thead>
+<tr>
+<th>Indicador W20</th>
+<th>Valor</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Volume</td>
+<td>35.2 km</td>
+</tr>
+<tr>
+<td>Cadência semanal</td>
+<td>161.9 spm ⬆ (vitória da temporada)</td>
+</tr>
+<tr>
+<td><strong>% Aeróbico (Z3)</strong></td>
+<td><strong>69.5%</strong> — protocolo Z3 base cumprido sólido</td>
+</tr>
+<tr>
+<td>Pace médio</td>
+<td>7:06/km</td>
+</tr>
+<tr>
+<td>Longest</td>
+<td>18.6 km (LR de hoje em grupo)</td>
+</tr>
+</tbody>
+</table></div>
+<p>Esse 69.5% Aeróbico era o que o coach buscava ("longão Z2" = Z3 Aeróbico = ≥70% da semana). <strong>Praticamente no alvo.</strong></p></div>
           
         </article>
         
@@ -5974,7 +6124,7 @@ Alavancas médias: hidratação contínua · respiração 4-7-8 antes de dormir 
 
   
 
-  <div class="footer">RunTechOps · 18:58:18</div>
+  <div class="footer">RunTechOps · 19:44:50</div>
 </div>
 
 <script>

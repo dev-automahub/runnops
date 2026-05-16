@@ -25,18 +25,20 @@ NS = {
     'ns3': 'http://www.garmin.com/xmlschemas/ActivityExtension/v2',
 }
 
-# Karvonen zones — recalibrado 16/05/2026 com dados oficiais do Garmin Connect:
-# FCmax=175 (auto-detected pelo Garmin), FCrep=49 (medida atual). HRR=126.
-# Zonas resultantes: Z1≤123 / Z2 124-136 / Z3 137-148 / Z4 149-161 / Z5 ≥162
+# Zonas Garmin %LTHR (padrão do Forerunner 965) — alinhado 16/05/2026
+# LTHR=153 (auto-detected pelo Garmin). FCmax 175, FCrep 49 (registro para referência).
+# Z1 Aquecimento ≤105 / Z2 Fácil 106-119 / Z3 Aeróbico 120-137 / Z4 Limite 138-157 / Z5 Máximo ≥158
+# Boundaries: 0.55/0.69/0.78/0.90/1.03 de LTHR (padrão Garmin)
+LTHR = 153
 FC_MAX = 175
 FC_REP = 49
-HRR = FC_MAX - FC_REP
+ZONE_NAMES = ["Aquecimento", "Fácil", "Aeróbico", "Limite", "Máximo"]
+# Início de cada zona (primeiro bpm que entra na zona):
 ZONE_BOUNDS = [
-    int(FC_REP + 0.50 * HRR),  # Z1: 112
-    int(FC_REP + 0.60 * HRR),  # Z1/Z2: 124
-    int(FC_REP + 0.70 * HRR),  # Z2/Z3: 137
-    int(FC_REP + 0.80 * HRR),  # Z3/Z4: 149
-    int(FC_REP + 0.90 * HRR),  # Z4/Z5: 162
+    int(0.69 * LTHR) + 1,   # 106 — início Z2 Fácil (Z1: ≤105)
+    int(0.78 * LTHR) + 1,   # 120 — início Z3 Aeróbico
+    int(0.90 * LTHR) + 1,   # 138 — início Z4 Limite
+    int(1.03 * LTHR) + 1,   # 158 — início Z5 Máximo
 ]
 
 
@@ -85,10 +87,16 @@ CREATE TABLE IF NOT EXISTS weekly_summary (
     time_z4_sec INTEGER,
     time_z5_sec INTEGER,
     pct_z2 REAL,
+    pct_aerobico REAL,
     longest_session_km REAL,
     longest_session_id TEXT
 );
 """
+
+# Migração idempotente — coluna pct_aerobico adicionada 16/05/2026
+NEW_WEEK_COLUMNS = [
+    ("pct_aerobico", "REAL"),
+]
 
 
 def extract_workout_code(title):
@@ -168,20 +176,20 @@ def match_session_to_scheduled(conn, session_rows):
 
 
 def _zone_idx(hr):
-    """Retorna 1-5 baseado em Karvonen."""
+    """Retorna 1-5 baseado em zonas Garmin %LTHR.
+    Z1 Aquecimento / Z2 Fácil / Z3 Aeróbico / Z4 Limite / Z5 Máximo.
+    """
     if hr is None:
         return None
-    if hr < ZONE_BOUNDS[0]:
+    if hr < ZONE_BOUNDS[0]:   # <106
         return 1
-    if hr < ZONE_BOUNDS[1]:
-        return 1
-    if hr < ZONE_BOUNDS[2]:
+    if hr < ZONE_BOUNDS[1]:   # 106-119
         return 2
-    if hr < ZONE_BOUNDS[3]:
+    if hr < ZONE_BOUNDS[2]:   # 120-137
         return 3
-    if hr < ZONE_BOUNDS[4]:
+    if hr < ZONE_BOUNDS[3]:   # 138-157
         return 4
-    return 5
+    return 5                  # ≥158
 
 
 def _parse_tcx(path):
@@ -337,6 +345,8 @@ def _aggregate_weeks(sessions):
         z = {f"time_z{i}_sec": sum(s[f"time_z{i}_sec"] for s in sess) for i in range(1, 6)}
         total_zone_time = sum(z.values())
         pct_z2 = round(z["time_z2_sec"] / total_zone_time * 100, 1) if total_zone_time else 0.0
+        # Aeróbico (Z3) é a base aeróbica = "Z2 do coach" — métrica principal do macrociclo
+        pct_aerobico = round(z["time_z3_sec"] / total_zone_time * 100, 1) if total_zone_time else 0.0
 
         longest = max(sess, key=lambda s: s["distance_km"])
 
@@ -351,6 +361,7 @@ def _aggregate_weeks(sessions):
             "avg_pace_sec_per_km": avg_pace,
             **z,
             "pct_z2": pct_z2,
+            "pct_aerobico": pct_aerobico,
             "longest_session_km": longest["distance_km"],
             "longest_session_id": longest["session_id"],
         })
@@ -386,10 +397,14 @@ def main():
     conn.execute(SCHEMA_SESSION)
     conn.execute(SCHEMA_WEEK)
     # Migracao idempotente pra DBs antigos
-    existing = {row[1] for row in conn.execute("PRAGMA table_info(session_summary)").fetchall()}
+    existing_sess = {row[1] for row in conn.execute("PRAGMA table_info(session_summary)").fetchall()}
     for col, coltype in NEW_SESSION_COLUMNS:
-        if col not in existing:
+        if col not in existing_sess:
             conn.execute(f"ALTER TABLE session_summary ADD COLUMN {col} {coltype}")
+    existing_week = {row[1] for row in conn.execute("PRAGMA table_info(weekly_summary)").fetchall()}
+    for col, coltype in NEW_WEEK_COLUMNS:
+        if col not in existing_week:
+            conn.execute(f"ALTER TABLE weekly_summary ADD COLUMN {col} {coltype}")
     conn.commit()
 
     tcx_files = sorted(pasta.glob("*.tcx"))
@@ -418,12 +433,12 @@ def main():
 
     # Resumo terminal
     print("\n=== RESUMO POR SEMANA ===")
-    print(f"{'Semana':<10} {'#Treinos':>10} {'Vol (km)':>10} {'Cad (spm)':>11} {'%Z2':>7} {'Pace':>10} {'Maior':>9}")
+    print(f"{'Semana':<10} {'#Treinos':>10} {'Vol (km)':>10} {'Cad (spm)':>11} {'%Aer':>7} {'Pace':>10} {'Maior':>9}")
     for w in weeks[-8:]:
         pace_str = f"{int((w['avg_pace_sec_per_km'] or 0)//60)}:{int((w['avg_pace_sec_per_km'] or 0) % 60):02d}/km" if w['avg_pace_sec_per_km'] else "—"
         print(
             f"{w['week_id']:<10} {w['sessions_count']:>10} {w['total_distance_km']:>10.1f} "
-            f"{(w['avg_cadence_spm'] or 0):>11.1f} {w['pct_z2']:>6.1f}% {pace_str:>10} "
+            f"{(w['avg_cadence_spm'] or 0):>11.1f} {w['pct_aerobico']:>6.1f}% {pace_str:>10} "
             f"{w['longest_session_km']:>8.1f}km"
         )
     return 0

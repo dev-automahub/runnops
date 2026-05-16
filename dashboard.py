@@ -283,21 +283,25 @@ if not df.empty:
         # 3.2 Distribuição em Zonas (Karvonen do atleta)
         st.markdown("#### 📊 Tempo nas Zonas (Karvonen)")
 
-        # Zonas Karvonen do atleta — ajustar conforme perfil:
-        # FCalvo = FCrep + (% × FCR), onde FCR = FCmáx − FCrep
-        # Recalibrado 16/05/2026 com dados oficiais do Garmin Connect
-        FC_MAX = 175   # auto-detected pelo Garmin (era Tanaka 170)
-        FC_REP = 49    # medida atual (era 51)
-        FCR = FC_MAX - FC_REP  # 126 bpm
+        # Zonas Garmin %LTHR — alinhado com o relógio Forerunner 965 (16/05/2026)
+        # FCalvo = LTHR × %; Z1 Aquecimento ≤105 / Z2 Fácil 106-119 / Z3 Aeróbico 120-137 / Z4 Limite 138-157 / Z5 Máximo ≥158
+        LTHR = 153
+        FC_MAX = 175
+        FC_REP = 49
+
+        z2_lo = int(0.69 * LTHR) + 1   # 106
+        z3_lo = int(0.78 * LTHR) + 1   # 120
+        z4_lo = int(0.90 * LTHR) + 1   # 138
+        z5_lo = int(1.03 * LTHR) + 1   # 158
 
         zones = [
-            (FC_REP + 0.50 * FCR, FC_REP + 0.60 * FCR, "Z1", "Recuperação",      "#A9A9A9"),
-            (FC_REP + 0.60 * FCR, FC_REP + 0.70 * FCR, "Z2", "Aeróbico Base",    "#32CD32"),
-            (FC_REP + 0.70 * FCR, FC_REP + 0.80 * FCR, "Z3", "Limiar Aeróbio",   "#FFD700"),
-            (FC_REP + 0.80 * FCR, FC_REP + 0.90 * FCR, "Z4", "Limiar Anaeróbio", "#FF8C00"),
-            (FC_REP + 0.90 * FCR, FC_MAX,              "Z5", "VO2máx",           "#FF0000"),
+            (0,         z2_lo - 1,  "Z1", "Aquecimento", "#A9A9A9"),
+            (z2_lo,     z3_lo - 1,  "Z2", "Fácil",       "#5E9EFF"),
+            (z3_lo,     z4_lo - 1,  "Z3", "Aeróbico",    "#32CD32"),
+            (z4_lo,     z5_lo - 1,  "Z4", "Limite",      "#FF8C00"),
+            (z5_lo,     FC_MAX + 30, "Z5", "Máximo",     "#FF0000"),
         ]
-        st.caption(f"FCmáx {FC_MAX} | FCrep {FC_REP} | FCR {FCR} — zonas: " +
+        st.caption(f"LTHR {LTHR} | FCmáx {FC_MAX} | FCrep {FC_REP} — zonas: " +
                    " | ".join([f"{z[2]} {int(z[0])}-{int(z[1])}" for z in zones]))
 
         zone_counts = []

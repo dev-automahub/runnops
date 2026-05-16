@@ -147,16 +147,18 @@ h1 { font-size: 28px; margin: 0 0 4px 0; letter-spacing: -0.02em; }
         crossorigin=""></script>
 <script src="https://cdn.plot.ly/plotly-2.35.2.min.js" charset="utf-8"></script>
 <script>
-// Recalibrado 16/05/2026 com dados oficiais do Garmin Connect (FCmax 175 auto-detect, FCrep 49 medida)
+// Zonas Garmin %LTHR (alinhado com o relógio Forerunner 965)
+// LTHR=153, FCmax=175 (referência), FCrep=49. Recalibrado 16/05/2026.
+// Z1 Aquecimento ≤105 / Z2 Fácil 106-119 / Z3 Aeróbico 120-137 / Z4 Limite 138-157 / Z5 Máximo ≥158
+const LTHR = 153;
 const FC_MAX = 175;
 const FC_REP = 49;
-const FCR = FC_MAX - FC_REP;
 const ZONES = [
-  { label: 'Z1', name: 'Recuperação',      min: FC_REP + 0.50*FCR, max: FC_REP + 0.60*FCR, color: '#a9a9a9' },
-  { label: 'Z2', name: 'Aeróbico Base',    min: FC_REP + 0.60*FCR, max: FC_REP + 0.70*FCR, color: '#30d158' },
-  { label: 'Z3', name: 'Limiar Aeróbio',   min: FC_REP + 0.70*FCR, max: FC_REP + 0.80*FCR, color: '#ffd60a' },
-  { label: 'Z4', name: 'Limiar Anaer.',    min: FC_REP + 0.80*FCR, max: FC_REP + 0.90*FCR, color: '#ff9f0a' },
-  { label: 'Z5', name: 'VO2máx',           min: FC_REP + 0.90*FCR, max: FC_MAX,            color: '#ff3b30' },
+  { label: 'Z1', name: 'Aquecimento', min: 0,                              max: Math.floor(0.69*LTHR),     color: '#a9a9a9' },
+  { label: 'Z2', name: 'Fácil',       min: Math.floor(0.69*LTHR) + 1,      max: Math.floor(0.78*LTHR),     color: '#5e9eff' },
+  { label: 'Z3', name: 'Aeróbico',    min: Math.floor(0.78*LTHR) + 1,      max: Math.floor(0.90*LTHR),     color: '#30d158' },
+  { label: 'Z4', name: 'Limite',      min: Math.floor(0.90*LTHR) + 1,      max: Math.floor(1.03*LTHR),     color: '#ff9f0a' },
+  { label: 'Z5', name: 'Máximo',      min: Math.floor(1.03*LTHR) + 1,      max: FC_MAX + 30,               color: '#ff3b30' },
 ];
 
 const TCX_NS = 'http://www.garmin.com/xmlschemas/TrainingCenterDatabase/v2';

@@ -240,7 +240,7 @@
             <th class="num">#TR</th>
             <th class="num">KM</th>
             <th class="num">CAD</th>
-            <th class="num">%Z2</th>
+            <th class="num">%AERÓBICO</th>
             <th class="num">PACE</th>
             <th class="num">+LONGO</th>
           </tr>
@@ -252,7 +252,7 @@
             <td class="num">{{ w.sessions_count }}</td>
             <td class="num">{{ w.total_km }}{% if w.total_km_delta %} <span class="weekly-delta">({{ w.total_km_delta }})</span>{% endif %}</td>
             <td class="num">{{ w.avg_cad }}{% if w.avg_cad_delta %} <span class="weekly-delta">({{ w.avg_cad_delta }})</span>{% endif %}</td>
-            <td class="num">{{ w.pct_z2 }}{% if w.pct_z2_delta %} <span class="weekly-delta">({{ w.pct_z2_delta }})</span>{% endif %}</td>
+            <td class="num">{{ w.pct_aerobico }}{% if w.pct_aerobico_delta %} <span class="weekly-delta">({{ w.pct_aerobico_delta }})</span>{% endif %}</td>
             <td class="num">{{ w.pace_pretty }}</td>
             <td class="num">{{ w.longest_km }}km</td>
           </tr>
@@ -260,7 +260,7 @@
         </tbody>
       </table>
       </div>
-      <div class="weekly-footnote">Cadência média ponderada por duração · %Z2 sobre tempo total com FC válida · Karvonen FCmax 170 / FCrep 51</div>
+      <div class="weekly-footnote">Cadência média ponderada por duração · %Aeróbico (Z3) = tempo em base aeróbica · zonas Garmin %LTHR (LTHR 153)</div>
     </div>
     {% endif %}
 
