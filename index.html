@@ -1948,7 +1948,7 @@ body {
           <div class="journal-content"><h1>Diário 2026-05-17 (dom)</h1>
 <!-- DASH_AUTO_START -->
 <h2>Reportagem matinal</h2>
-<p><em>Auto-gerado por <code>dash_today.py</code> em 10:26 de dom 17 mai.</em></p>
+<p><em>Auto-gerado por <code>dash_today.py</code> em 10:31 de dom 17 mai.</em></p>
 <div class="md-table-wrap"><table>
 <thead>
 <tr>
@@ -2021,13 +2021,88 @@ body {
 <!-- DASH_AUTO_END -->
 
 <h2>O que aconteceu</h2>
-<p><em>(análise pendente — adicionar contexto: como dormiu, sintomas, eventos do dia anterior, sensações ao acordar)</em></p>
+<ul>
+<li><strong>OFF puro respeitado</strong> com pequena recovery walk (≤30 min / ≤3 km) — não viola a recomendação de "sem caminhada longa".</li>
+<li><strong>Recovery fisiológica acontecendo bem:</strong> HRV subiu de 24 → 30 em 24h (+6, dentro de 2 pts do alvo 32). BB max 72 (+21). FCrep 50 (abaixo da baseline 49, sinal forte).</li>
+<li><strong>Sono cumpriu a meta:</strong> <strong>9h39</strong> (+3h37 vs ontem). REM 2h19 + Deep 1h07 = reparação ampla. Pequena dispersão (Awake 20 min) mas dentro do aceitável.</li>
+<li><strong>Disposição ainda baixa (11)</strong> — é a métrica que demora mais a refletir recovery. Recovery Time alto residual do LR longão.</li>
+<li><strong>Caminhada curta</strong> foi a única atividade do dia. <code>lastrun.py 1</code> corretamente filtrou (tipo walking não está na whitelist) — atividade não entra no DB, mas o status fisiológico já mostra a evolução.</li>
+</ul>
 <h2>Decisão / Veredito</h2>
-<p><em>(análise pendente — alinhar com plano da semana, gates de HRV/BB, decisão de treino)</em></p>
+<h3>Quadro fisiológico vs gates (dom OFF)</h3>
+<div class="md-table-wrap"><table>
+<thead>
+<tr>
+<th>Métrica</th>
+<th>Valor</th>
+<th>Gate ideal</th>
+<th>Status</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>HRV</td>
+<td><strong>30</strong></td>
+<td>≥32</td>
+<td>⚠️ falta 2 pts (subindo, trajetória boa)</td>
+</tr>
+<tr>
+<td>BB max</td>
+<td><strong>72</strong></td>
+<td>≥70</td>
+<td>✅</td>
+</tr>
+<tr>
+<td>FCrep</td>
+<td><strong>50</strong></td>
+<td>≤52</td>
+<td>✅ ótimo (1 abaixo da baseline)</td>
+</tr>
+<tr>
+<td>Sono</td>
+<td><strong>9h39</strong></td>
+<td>≥7h30</td>
+<td>✅✅</td>
+</tr>
+<tr>
+<td>Disposição</td>
+<td>11</td>
+<td>≥40</td>
+<td>⚠️ Recovery Time ainda alto</td>
+</tr>
+<tr>
+<td>Veredito auto</td>
+<td>🟡 score 1</td>
+<td>—</td>
+<td>só pela HRV</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>Quadro 4/5 verde + 1 amarelo</strong> (HRV borderline). Trajetória positiva. Recovery em andamento.</p>
+<h3>Projeção pra abertura da W21</h3>
+<p>Manhã de seg 18/05 esperada:<br />
+- HRV: 32-35 (se sono mantiver qualidade hoje)<br />
+- BB max: 75-85<br />
+- FCrep: 49-50<br />
+- Veredito: provável 🟢 score 0 ou 🟡 score 1</p>
+<p><strong>Se HRV ≥30 amanhã → libera abertura da W21 normalmente.</strong> Se cair pra &lt;28 = sinal de fadiga não processada → adia ou faz só atividade Z2 Fácil.</p>
+<h3>Recomendação CONCRETA pra resto do dia</h3>
+<p>Recovery walk curta JÁ feita — ✅ ok. <strong>Pra resto do dia:</strong><br />
+1. <strong>Sem mais atividade</strong> (corrida, força, alongamento intenso) — deixa o sistema neuro-endócrino fechar a recuperação<br />
+2. <strong>Continuar hidratação 4 L</strong> (você está em sequência de carga alta — corpo absorve)<br />
+3. <strong>Carbo leve almoço/jantar</strong> — repor glicogênio que ficou em deficit pós-LR<br />
+4. <strong>Dormir 22h-22h30</strong> — pra ter outra noite ≥8h e cravar HRV ≥32 amanhã<br />
+5. <strong>Telas off cedo</strong> + ambiente fresco no quarto</p>
 <h2>Pendências</h2>
 <ul>
-<li>[ ] <em>(adicionar tarefas/promessas do dia)</em></li>
-</ul></div>
+<li>[ ] <strong>Hoje:</strong> sem mais atividade. Hidratação 4 L. Dormir 22h-22h30.</li>
+<li>[ ] <strong>Segunda 18/05:</strong> abertura da W21. Gate HRV ≥30 manhã.</li>
+<li>[ ] <strong>Terça 19/05:</strong> rodar <code>python scheduled_workouts.py</code> (rotina semanal) pra puxar plano completo do coach pra W21.</li>
+<li>[ ] <strong>Conversa pendente com coach:</strong> recalibração da meta da maratona (4h00 declarada vs Race Predictor 5h02, n=1.18 = inviável). Material completo em <code>diario/2026-05-16.md</code> Análise Interativa 21:30. Decisão NÃO é pra hoje — é pra ter quando contexto for apropriado.</li>
+</ul>
+<hr />
+<h2>Análise Interativa</h2>
+<p><em>(reservado pra Q&amp;A subsequente do dia)</em></p></div>
           
         </article>
         
@@ -6435,7 +6510,7 @@ Alavancas médias: hidratação contínua · respiração 4-7-8 antes de dormir 
 
   
 
-  <div class="footer">RunTechOps · 10:26:43</div>
+  <div class="footer">RunTechOps · 10:31:41</div>
 </div>
 
 <script>
