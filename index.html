@@ -391,6 +391,25 @@ body {
   padding: 14px;
   border-left: 3px solid #5e5ce6;
 }
+.perf-card-clickable {
+  position: relative;
+  cursor: pointer;
+  transition: transform .12s, box-shadow .12s;
+}
+.perf-card-clickable:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.06);
+}
+.perf-card-clickable .perf-label { padding-right: 22px; }
+.perf-card-clickable:hover .pill-help { opacity: 1; background: #d1d1d6; }
+.race-section-clickable { cursor: pointer; }
+.race-help {
+  position: static;
+  display: inline-block;
+  vertical-align: middle;
+  margin-left: 6px;
+}
+.race-section-clickable:hover .race-help { opacity: 1; background: #d1d1d6; }
 .perf-label {
   font-size: 11px;
   letter-spacing: 0.08em;
@@ -893,13 +912,39 @@ body {
 #r-glossario:checked ~ #tab-glossario { display: block; }
 
 /* Active label (tab visualmente selecionada) */
-#r-hoje:checked ~ .tabs .tab-hoje,
-#r-trends:checked ~ .tabs .tab-trends,
-#r-historico:checked ~ .tabs .tab-historico,
-#r-glossario:checked ~ .tabs .tab-glossario {
+#r-hoje:checked ~ .sticky-head .tab-hoje,
+#r-trends:checked ~ .sticky-head .tab-trends,
+#r-historico:checked ~ .sticky-head .tab-historico,
+#r-glossario:checked ~ .sticky-head .tab-glossario {
   background: #1c1c1e;
   color: white;
   opacity: 1;
+}
+
+/* === Sticky head (titulo + tabs congelados no topo) === */
+.sticky-head {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  background: rgba(242, 242, 247, 0.92);
+  backdrop-filter: saturate(180%) blur(14px);
+  -webkit-backdrop-filter: saturate(180%) blur(14px);
+  padding-top: 18px;
+  margin: -32px -24px 18px;
+  padding-left: 24px;
+  padding-right: 24px;
+  padding-bottom: 4px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+}
+.sticky-head .header { margin-bottom: 14px; }
+.sticky-head .tabs { margin-bottom: 14px; }
+@media (max-width: 600px) {
+  .sticky-head {
+    margin: -20px -12px 14px;
+    padding-left: 12px;
+    padding-right: 12px;
+    padding-top: 12px;
+  }
 }
 
 /* === Pills clicaveis (vao pro glossario) === */
@@ -1089,22 +1134,24 @@ body {
 <body>
 <div class="dash">
 
-  <div class="header">
-    <div class="title">Health Dashboard</div>
-  </div>
-
   <!-- Radios pra navegacao CSS-only (sem JS, funciona em qualquer viewer) -->
   <input type="radio" name="dashtab" id="r-hoje" class="dashtab-radio" checked>
   <input type="radio" name="dashtab" id="r-trends" class="dashtab-radio">
   <input type="radio" name="dashtab" id="r-historico" class="dashtab-radio">
   <input type="radio" name="dashtab" id="r-glossario" class="dashtab-radio">
 
-  <div class="tabs" role="tablist">
-    <label for="r-hoje" class="tab tab-hoje">HOJE</label>
-    <label for="r-trends" class="tab tab-trends">TRENDS</label>
-    <label for="r-historico" class="tab tab-historico">HISTÓRICO</label>
-    <label for="r-glossario" class="tab tab-glossario">GLOSSÁRIO</label>
-    <a href="activity.html" class="tab tab-treinos">TREINOS</a>
+  <div class="sticky-head">
+    <div class="header">
+      <div class="title">Health Dashboard</div>
+    </div>
+
+    <div class="tabs" role="tablist">
+      <label for="r-hoje" class="tab tab-hoje">HOJE</label>
+      <label for="r-trends" class="tab tab-trends">TRENDS</label>
+      <label for="r-historico" class="tab tab-historico">HISTÓRICO</label>
+      <label for="r-glossario" class="tab tab-glossario">GLOSSÁRIO</label>
+      <a href="activity.html" class="tab tab-treinos">TREINOS</a>
+    </div>
   </div>
 
   
@@ -1315,33 +1362,37 @@ body {
       <div class="label-tiny perf-section-title">PERFORMANCE GARMIN</div>
 
       <div class="perf-grid">
-        <div class="perf-card">
+        <div class="perf-card perf-card-clickable" onclick="goToGlossary('training-status')">
+          <span class="pill-help">?</span>
           <div class="perf-label">TRAINING STATUS</div>
           <div class="perf-value-big">OVERREACHING</div>
           <div class="perf-sub">OPTIMAL · PRODUCTIVE_2</div>
         </div>
 
-        <div class="perf-card">
+        <div class="perf-card perf-card-clickable" onclick="goToGlossary('acwr')">
+          <span class="pill-help">?</span>
           <div class="perf-label">ACWR (CARGA AGUDA / CRÔNICA)</div>
           <div class="perf-value-big perf-acwr-green">1.20</div>
           <div class="perf-sub">Optimal · ATL 542.0 / CTL 346–649</div>
         </div>
 
-        <div class="perf-card">
+        <div class="perf-card perf-card-clickable" onclick="goToGlossary('vo2-max')">
+          <span class="pill-help">?</span>
           <div class="perf-label">VO2 MAX · IDADE FITNESS</div>
           <div class="perf-value-big">42.0</div>
           <div class="perf-sub">Idade fitness: 49.6</div>
         </div>
 
-        <div class="perf-card">
+        <div class="perf-card perf-card-clickable" onclick="goToGlossary('recovery-time')">
+          <span class="pill-help">?</span>
           <div class="perf-label">RECOVERY TIME</div>
           <div class="perf-value-big">39.8h</div>
           <div class="perf-sub">até próximo treino-chave</div>
         </div>
       </div>
 
-      <div class="race-section">
-        <div class="label-tiny race-section-title">RACE PREDICTOR — METAS DO MACRO</div>
+      <div class="race-section race-section-clickable" onclick="goToGlossary('race-predictor')">
+        <div class="label-tiny race-section-title">RACE PREDICTOR — METAS DO MACRO <span class="pill-help race-help">?</span></div>
         <div class="race-grid">
           
           <div class="race-card race-gray">
@@ -1983,7 +2034,7 @@ body {
           <div class="journal-content"><h1>Diário 2026-05-18 (seg)</h1>
 <!-- DASH_AUTO_START -->
 <h2>Reportagem matinal</h2>
-<p><em>Auto-gerado por <code>dash_today.py</code> em 08:32 de seg 18 mai.</em></p>
+<p><em>Auto-gerado por <code>dash_today.py</code> em 10:51 de seg 18 mai.</em></p>
 <div class="md-table-wrap"><table>
 <thead>
 <tr>
@@ -6860,6 +6911,351 @@ Alavancas médias: hidratação contínua · respiração 4-7-8 antes de dormir 
 </ul></div>
       </article>
       
+      <article class="glossary-entry" id="glossario-training-status">
+        <div class="glossary-header">
+          <h3 class="glossary-title" style="color:#5e5ce6">Training Status</h3>
+          <span class="glossary-category">Performance Garmin</span>
+        </div>
+        <div class="journal-content glossary-content"><p><strong>Training Status</strong> é o veredito sintético do Garmin sobre o que sua carga atual está fazendo com seu condicionamento. Combina <strong>VO2 Max trend</strong> (sua capacidade aeróbica está subindo ou caindo?) + <strong>Acute Load vs Chronic Load</strong> (ACWR) + <strong>HRV Status</strong> + <strong>Sleep</strong>.</p>
+<h3>Os 7 estados possíveis</h3>
+<div class="md-table-wrap"><table>
+<thead>
+<tr>
+<th>Status</th>
+<th>Significado</th>
+<th>O que fazer</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>PRODUCTIVE</strong></td>
+<td>Carga ideal pra ganhar VO2 Max. Em build saudável.</td>
+<td>Continuar o que está fazendo</td>
+</tr>
+<tr>
+<td><strong>MAINTAINING</strong></td>
+<td>Carga preserva fitness, sem grandes ganhos.</td>
+<td>OK por algumas semanas — depois precisa subir carga</td>
+</tr>
+<tr>
+<td><strong>PEAKING</strong></td>
+<td>VO2 Max alto + carga reduzida = pronto pra prova</td>
+<td>Janela de race performance (5-14 dias)</td>
+</tr>
+<tr>
+<td><strong>OVERREACHING</strong></td>
+<td>Carga aguda alta demais vs crônica. Risco de overtraining.</td>
+<td><strong>Reduzir volume/intensidade por 3-7 dias.</strong> Não somar treino pesado</td>
+</tr>
+<tr>
+<td><strong>UNPRODUCTIVE</strong></td>
+<td>Treinando mas VO2 Max não sobe (sinal de fadiga, sono ruim, ou plateau)</td>
+<td>Investigar sono, recovery, possível doença</td>
+</tr>
+<tr>
+<td><strong>DETRAINING</strong></td>
+<td>Carga muito baixa, VO2 Max caindo</td>
+<td>Voltar a treinar com regularidade</td>
+</tr>
+<tr>
+<td><strong>RECOVERY</strong></td>
+<td>Pós-carga pesada — sistema descansando</td>
+<td>Honrar o descanso, não forçar</td>
+</tr>
+</tbody>
+</table></div>
+<h3>VO2 Max Trend (sub-indicador)</h3>
+<p>Aparece junto ao Training Status. Mostra trajetória da capacidade aeróbica nas últimas semanas:</p>
+<ul>
+<li><strong>PRODUCTIVE_1/2/3</strong> → subindo (com magnitude crescente)</li>
+<li><strong>MAINTAINING</strong> → estável</li>
+<li><strong>DETRAINING</strong> → caindo</li>
+</ul>
+<h3>Por que importa</h3>
+<p>Training Status é o <strong>sinal "macro" do plano</strong>. Veredito diário (HRV/BB/FCrep) responde "como estou hoje?". Training Status responde "para onde minha temporada está indo?". Se ficar UNPRODUCTIVE ou OVERREACHING por mais de 7 dias, é hora de reavaliar a estratégia da semana.</p>
+<h3>Gatilhos pra agir</h3>
+<ul>
+<li><strong>OVERREACHING 1-2 dias</strong> → normal pós-semana pesada. Honra o recovery e segue</li>
+<li><strong>OVERREACHING 3+ dias</strong> → reduzir carga ativa. Algo não está fechando</li>
+<li><strong>UNPRODUCTIVE 5+ dias</strong> → revisar sono, alimentação, sinais de doença</li>
+<li><strong>DETRAINING</strong> → voltar a treinar com regularidade (provavelmente teve período off)</li>
+</ul></div>
+      </article>
+      
+      <article class="glossary-entry" id="glossario-acwr">
+        <div class="glossary-header">
+          <h3 class="glossary-title" style="color:#5e5ce6">ACWR — Carga Aguda / Crônica</h3>
+          <span class="glossary-category">Performance Garmin</span>
+        </div>
+        <div class="journal-content glossary-content"><p><strong>ACWR (Acute:Chronic Workload Ratio)</strong> é a razão entre sua <strong>carga aguda</strong> (últimos ~7 dias) e sua <strong>carga crônica</strong> (últimos ~28 dias, média móvel). É um dos indicadores mais validados pela ciência esportiva pra prever <strong>risco de lesão e overtraining</strong>.</p>
+<h3>Os dois componentes</h3>
+<ul>
+<li><strong>ATL (Acute Training Load)</strong> = carga dos últimos ~7 dias. Reflete fadiga recente.</li>
+<li><strong>CTL (Chronic Training Load)</strong> = média ponderada exponencial dos últimos ~28-42 dias. Reflete condicionamento de base ("fitness").</li>
+</ul>
+<p>ACWR = ATL / CTL</p>
+<h3>Como ler</h3>
+<div class="md-table-wrap"><table>
+<thead>
+<tr>
+<th>Faixa</th>
+<th>Status</th>
+<th>Interpretação</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>&lt;0.8</strong></td>
+<td>Detraining</td>
+<td>Carga aguda muito abaixo do que o corpo está acostumado — perdendo fitness</td>
+</tr>
+<tr>
+<td><strong>0.8 – 1.3</strong></td>
+<td><strong>OPTIMAL</strong> ✅</td>
+<td>Sweet spot: estímulo suficiente sem risco elevado</td>
+</tr>
+<tr>
+<td><strong>1.3 – 1.5</strong></td>
+<td>Atenção</td>
+<td>Carga aguda esticando — pode ser produtivo se controlado, monitorar</td>
+</tr>
+<tr>
+<td><strong>&gt;1.5</strong></td>
+<td><strong>RISK ZONE</strong> ⚠️</td>
+<td>Risco de lesão e overtraining sobe <strong>2-4× vs faixa ótima</strong></td>
+</tr>
+</tbody>
+</table></div>
+<h3>Por que 0.8-1.3 é o ideal</h3>
+<p>Estudos com atletas de elite (rugby, futebol, atletismo) mostram que quando ACWR sai dessa faixa em qualquer direção, a taxa de lesão músculo-tendínea sobe significativamente. Acima de 1.5, o corpo recebe estresse maior do que adaptou pra suportar.</p>
+<h3>CTL — o número mais importante</h3>
+<p>CTL é seu "fitness" cumulativo. Sobe lentamente (+2-4 pontos/semana sustentável). Pra amadores rodando maratona em 4h00-4h30, faixa típica:</p>
+<ul>
+<li><strong>CTL 30-40</strong> = iniciante avançado</li>
+<li><strong>CTL 50-65</strong> = intermediário sólido pra meia/maratona</li>
+<li><strong>CTL 70+</strong> = competidor focado, longões consistentes</li>
+</ul>
+<h3>Como subir CTL com segurança</h3>
+<ol>
+<li>Aumentar volume/intensidade gradualmente — alvo +2-4 CTL/semana</li>
+<li>Respeitar semana de regeneração a cada 3-4 semanas (ACWR cai pra 0.7-0.9)</li>
+<li>Não tentar pegar CTL perdido com treinos pesados — risco de spike ACWR</li>
+</ol>
+<h3>Atenção aos limites</h3>
+<ul>
+<li>ACWR ignora <strong>qualidade do treino</strong> (intensidade, terreno, calor)</li>
+<li>HRV/FCrep podem sinalizar overtraining antes do ACWR explodir</li>
+<li>Use ACWR junto com Training Status, não isolado</li>
+</ul></div>
+      </article>
+      
+      <article class="glossary-entry" id="glossario-vo2-max">
+        <div class="glossary-header">
+          <h3 class="glossary-title" style="color:#5e5ce6">VO2 Max &amp; Idade Fitness</h3>
+          <span class="glossary-category">Performance Garmin</span>
+        </div>
+        <div class="journal-content glossary-content"><p><strong>VO2 Max</strong> é o volume máximo de oxigênio que seu corpo consegue captar e utilizar por minuto, normalizado pelo peso (ml/kg/min). É <strong>o melhor indicador isolado de capacidade aeróbica</strong> que existe.</p>
+<h3>Como o Garmin estima</h3>
+<p>Não é medição direta (que exige laboratório com máscara). O Garmin combina:<br />
+- Pace × FC durante corridas regulares<br />
+- Idade, peso, altura, sexo declarados<br />
+- Eficiência aparente (variações de pace pra mesma FC)</p>
+<p>Erro típico: ±2-3 ml/kg/min vs teste de laboratório. <strong>Tendência (subindo/descendo) é mais confiável que valor absoluto</strong>.</p>
+<h3>Faixas pra homens 50+</h3>
+<div class="md-table-wrap"><table>
+<thead>
+<tr>
+<th>VO2 Max</th>
+<th>Classificação</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>&lt;30</td>
+<td>Pobre</td>
+</tr>
+<tr>
+<td>30-35</td>
+<td>Abaixo da média</td>
+</tr>
+<tr>
+<td>35-40</td>
+<td>Médio</td>
+</tr>
+<tr>
+<td>40-45</td>
+<td>Bom</td>
+</tr>
+<tr>
+<td>45-50</td>
+<td>Excelente</td>
+</tr>
+<tr>
+<td>50+</td>
+<td>Elite (raro nessa faixa etária)</td>
+</tr>
+</tbody>
+</table></div>
+<h3>O que sobe VO2 Max</h3>
+<ul>
+<li><strong>Intervalos Z4-Z5</strong> (3-5×3-5min em pace de 10K) — o estímulo mais potente</li>
+<li><strong>Longões aeróbicos</strong> (1h30+ em Z2-Z3) — base que sustenta o teto</li>
+<li><strong>Consistência ao longo de meses</strong> — mudanças significativas em 8-12 semanas</li>
+</ul>
+<h3>O que derruba</h3>
+<ul>
+<li><strong>Inatividade</strong> — perde 1-2 ml/kg/min por semana parado após 7 dias</li>
+<li><strong>Doença prolongada</strong></li>
+<li><strong>Sono cronicamente ruim</strong></li>
+<li><strong>Idade</strong> — declínio natural ~0.5%/ano após 30, mais lento com treino</li>
+</ul>
+<h3>Idade Fitness</h3>
+<p><strong>Fitness Age</strong> = idade biológica estimada pela sua capacidade aeróbica. Calculada como "que idade tem alguém da população geral com seu VO2 Max?".</p>
+<ul>
+<li>Idade Fitness <strong>menor que cronológica</strong> = ✅ você está em melhor forma que a média do seu grupo</li>
+<li>Idade Fitness <strong>maior</strong> = sinal pra investir em aeróbico</li>
+</ul>
+<p>Move 1-2 anos por mês com treino consistente. Sensível a tendências de VO2 Max.</p>
+<h3>Limitações</h3>
+<ul>
+<li>VO2 Max é necessário mas não suficiente pra performance — economia de corrida e cadência também pesam</li>
+<li>Atletas com VO2 Max similar podem ter performances muito diferentes na prova</li>
+<li>Use como <strong>um dos</strong> indicadores, junto com Race Predictor, Training Status, ACWR</li>
+</ul></div>
+      </article>
+      
+      <article class="glossary-entry" id="glossario-recovery-time">
+        <div class="glossary-header">
+          <h3 class="glossary-title" style="color:#5e5ce6">Recovery Time</h3>
+          <span class="glossary-category">Performance Garmin</span>
+        </div>
+        <div class="journal-content glossary-content"><p><strong>Recovery Time</strong> é a estimativa do Garmin em <strong>horas</strong> até seu corpo estar "pronto" pra outro treino-chave (intensidade alta ou volume alto). Calculado após cada atividade com base em:</p>
+<ul>
+<li>Intensidade (FC média + tempo em zonas altas)</li>
+<li>Duração</li>
+<li>Estado autonômico (HRV) atual</li>
+<li>Recovery acumulado da janela recente</li>
+</ul>
+<h3>Como ler</h3>
+<div class="md-table-wrap"><table>
+<thead>
+<tr>
+<th>Recovery Time</th>
+<th>Interpretação</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>0-12h</strong></td>
+<td>Pronto pra outro treino-chave</td>
+</tr>
+<tr>
+<td><strong>12-24h</strong></td>
+<td>Pronto pra atividade leve (Z2 fácil, walking)</td>
+</tr>
+<tr>
+<td><strong>24-48h</strong></td>
+<td>Honrar a recuperação. Pode treinar Z2 leve no fim do período</td>
+</tr>
+<tr>
+<td><strong>48-72h</strong></td>
+<td>Pós-treino muito pesado (longão &gt;2h, intervalos Z5) — descanso</td>
+</tr>
+<tr>
+<td><strong>&gt;72h</strong></td>
+<td>Sinal de sobrecarga. Provável OVERREACHING. Reavaliar</td>
+</tr>
+</tbody>
+</table></div>
+<h3>O que aumenta Recovery Time</h3>
+<ul>
+<li>Treinos em Z4-Z5 (limite/máximo) — peso desproporcional</li>
+<li>Longões &gt;90 min, especialmente acima de 2h</li>
+<li>HRV baixa no momento do treino (corpo já cansado)</li>
+<li>Treinos em calor extremo</li>
+<li>Falta de sono na noite anterior</li>
+</ul>
+<h3>Como acelerar a queda</h3>
+<ul>
+<li><strong>Sono ≥8h</strong> com REM ≥70 min e Deep ≥60 min</li>
+<li><strong>Hidratação 35-40 ml/kg/dia</strong> + eletrólitos pós-treino</li>
+<li><strong>Carbo + proteína</strong> na janela 30-60 min pós-treino</li>
+<li><strong>Movimento leve</strong> (caminhada 20-30 min) — facilita perfusão</li>
+<li><strong>Evitar álcool</strong> — sabota recovery autonômico</li>
+</ul>
+<h3>Importante</h3>
+<p>Recovery Time é <strong>estimativa</strong>, não regra dura. Se HRV/BB voltarem a níveis bons antes do contador zerar, você está pronto. Se Recovery Time zerou mas HRV está caindo, <strong>prefira HRV como verdade</strong> e descanse mais.</p>
+<h3>Sinal de alerta</h3>
+<p>Recovery Time consistentemente &gt;48h por <strong>mais de 3 dias</strong> sugere:<br />
+- Carga acumulada acima da capacidade de adaptação<br />
+- Sono crônico insuficiente<br />
+- Possível doença incipiente</p>
+<p>→ Reduzir carga 30-50% por uma semana e reavaliar.</p></div>
+      </article>
+      
+      <article class="glossary-entry" id="glossario-race-predictor">
+        <div class="glossary-header">
+          <h3 class="glossary-title" style="color:#ff9500">Race Predictor</h3>
+          <span class="glossary-category">Performance Garmin</span>
+        </div>
+        <div class="journal-content glossary-content"><p><strong>Race Predictor</strong> é a estimativa do Garmin de quanto tempo você levaria pra completar 5K, 10K, meia-maratona (21K) e maratona (42K) <strong>hoje</strong>, baseado no seu condicionamento atual.</p>
+<h3>Como o Garmin calcula</h3>
+<ol>
+<li>Usa o <strong>VO2 Max</strong> atual como base</li>
+<li>Aplica modelos publicados (Daniels, Riegel) pra extrapolar performance em cada distância</li>
+<li>Ajusta por dados recentes — pace × FC dos treinos longos, intervalos e tempo runs</li>
+</ol>
+<p><strong>NÃO usa</strong>: terreno, calor, estratégia de pacing, nutrição, dia da prova.</p>
+<h3>Como interpretar</h3>
+<ul>
+<li><strong>Valor absoluto</strong> = potencial teórico em condições ideais. Real geralmente é 2-5% mais lento (calor, multidão, sub-fueling, pacing imperfeito).</li>
+<li><strong>Tendência (delta semanal/mensal)</strong> = mais confiável que valor isolado. Trajetória pra baixo = ganhando fitness.</li>
+</ul>
+<h3>Limites importantes — fórmula Riegel</h3>
+<p>A extrapolação 5K → maratona usa coeficiente <strong>n</strong> na fórmula T₂ = T₁ × (D₂/D₁)^n.</p>
+<div class="md-table-wrap"><table>
+<thead>
+<tr>
+<th>n</th>
+<th>Perfil</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>0.85</strong></td>
+<td>Elite (mantém pace bem em distâncias longas)</td>
+</tr>
+<tr>
+<td><strong>1.02-1.10</strong></td>
+<td>Bem treinado (4h30 maratona viável)</td>
+</tr>
+<tr>
+<td><strong>1.15-1.20</strong></td>
+<td>Amador intermediário (5h00+ típico)</td>
+</tr>
+<tr>
+<td><strong>1.25+</strong></td>
+<td>Iniciante em distâncias longas</td>
+</tr>
+</tbody>
+</table></div>
+<p>Garmin assume n próximo de 1.06 por padrão. Se seu n real for maior (típico em quem fez poucos longões), <strong>maratona real será mais lenta que prevista</strong>.</p>
+<h3>Sinal de progresso real</h3>
+<p>Race Predictor melhorando + Training Status PRODUCTIVE/MAINTAINING + ACWR 0.8-1.3 = build saudável e ganhos reais.</p>
+<p>Race Predictor melhorando + OVERREACHING ou UNPRODUCTIVE = sinal misto, investigar antes de confiar.</p>
+<h3>Como usar pra meta de prova</h3>
+<ol>
+<li><strong>Não confie cegamente na previsão da maratona</strong> — pode ser otimista 5-15% pra quem não tem longão de 30k+ no perna</li>
+<li><strong>5K e 10K são previsões mais precisas</strong> porque dependem menos de aguentar tempo longo</li>
+<li><strong>21K é o gate</strong> — se atleta consegue cravar a previsão da meia, a meia da maratona é mais previsível</li>
+</ol>
+<h3>Atualização</h3>
+<p>Garmin recalcula:<br />
+- Após cada corrida (atualização pequena)<br />
+- Após teste guiado (Lactate Threshold, Race Predictor test) — atualização maior<br />
+- Diariamente com base em VO2 Max + HRV (ajuste fino)</p></div>
+      </article>
+      
       <article class="glossary-entry" id="glossario-veredito">
         <div class="glossary-header">
           <h3 class="glossary-title" style="color:#ff5e3a">Veredito automático</h3>
@@ -6954,7 +7350,7 @@ Alavancas médias: hidratação contínua · respiração 4-7-8 antes de dormir 
 
   
 
-  <div class="footer">RunTechOps · 08:37:10</div>
+  <div class="footer">RunTechOps · 10:51:38</div>
 </div>
 
 <script>

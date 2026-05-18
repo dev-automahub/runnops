@@ -385,6 +385,25 @@ body {
   padding: 14px;
   border-left: 3px solid #5e5ce6;
 }
+.perf-card-clickable {
+  position: relative;
+  cursor: pointer;
+  transition: transform .12s, box-shadow .12s;
+}
+.perf-card-clickable:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.06);
+}
+.perf-card-clickable .perf-label { padding-right: 22px; }
+.perf-card-clickable:hover .pill-help { opacity: 1; background: #d1d1d6; }
+.race-section-clickable { cursor: pointer; }
+.race-help {
+  position: static;
+  display: inline-block;
+  vertical-align: middle;
+  margin-left: 6px;
+}
+.race-section-clickable:hover .race-help { opacity: 1; background: #d1d1d6; }
 .perf-label {
   font-size: 11px;
   letter-spacing: 0.08em;
@@ -887,13 +906,39 @@ body {
 #r-glossario:checked ~ #tab-glossario { display: block; }
 
 /* Active label (tab visualmente selecionada) */
-#r-hoje:checked ~ .tabs .tab-hoje,
-#r-trends:checked ~ .tabs .tab-trends,
-#r-historico:checked ~ .tabs .tab-historico,
-#r-glossario:checked ~ .tabs .tab-glossario {
+#r-hoje:checked ~ .sticky-head .tab-hoje,
+#r-trends:checked ~ .sticky-head .tab-trends,
+#r-historico:checked ~ .sticky-head .tab-historico,
+#r-glossario:checked ~ .sticky-head .tab-glossario {
   background: #1c1c1e;
   color: white;
   opacity: 1;
+}
+
+/* === Sticky head (titulo + tabs congelados no topo) === */
+.sticky-head {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  background: rgba(242, 242, 247, 0.92);
+  backdrop-filter: saturate(180%) blur(14px);
+  -webkit-backdrop-filter: saturate(180%) blur(14px);
+  padding-top: 18px;
+  margin: -32px -24px 18px;
+  padding-left: 24px;
+  padding-right: 24px;
+  padding-bottom: 4px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+}
+.sticky-head .header { margin-bottom: 14px; }
+.sticky-head .tabs { margin-bottom: 14px; }
+@media (max-width: 600px) {
+  .sticky-head {
+    margin: -20px -12px 14px;
+    padding-left: 12px;
+    padding-right: 12px;
+    padding-top: 12px;
+  }
 }
 
 /* === Pills clicaveis (vao pro glossario) === */

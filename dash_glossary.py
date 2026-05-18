@@ -229,6 +229,264 @@ Por ser composto e proprietário, **Readiness pode mascarar sinais discordantes*
 """,
     },
     {
+        "id": "training-status",
+        "title": "Training Status",
+        "aliases": ["TRAINING STATUS", "VO2 MAX TREND"],
+        "category": "Performance Garmin",
+        "color": "#5e5ce6",
+        "body_md": """
+**Training Status** é o veredito sintético do Garmin sobre o que sua carga atual está fazendo com seu condicionamento. Combina **VO2 Max trend** (sua capacidade aeróbica está subindo ou caindo?) + **Acute Load vs Chronic Load** (ACWR) + **HRV Status** + **Sleep**.
+
+### Os 7 estados possíveis
+
+| Status | Significado | O que fazer |
+|---|---|---|
+| **PRODUCTIVE** | Carga ideal pra ganhar VO2 Max. Em build saudável. | Continuar o que está fazendo |
+| **MAINTAINING** | Carga preserva fitness, sem grandes ganhos. | OK por algumas semanas — depois precisa subir carga |
+| **PEAKING** | VO2 Max alto + carga reduzida = pronto pra prova | Janela de race performance (5-14 dias) |
+| **OVERREACHING** | Carga aguda alta demais vs crônica. Risco de overtraining. | **Reduzir volume/intensidade por 3-7 dias.** Não somar treino pesado |
+| **UNPRODUCTIVE** | Treinando mas VO2 Max não sobe (sinal de fadiga, sono ruim, ou plateau) | Investigar sono, recovery, possível doença |
+| **DETRAINING** | Carga muito baixa, VO2 Max caindo | Voltar a treinar com regularidade |
+| **RECOVERY** | Pós-carga pesada — sistema descansando | Honrar o descanso, não forçar |
+
+### VO2 Max Trend (sub-indicador)
+
+Aparece junto ao Training Status. Mostra trajetória da capacidade aeróbica nas últimas semanas:
+
+- **PRODUCTIVE_1/2/3** → subindo (com magnitude crescente)
+- **MAINTAINING** → estável
+- **DETRAINING** → caindo
+
+### Por que importa
+
+Training Status é o **sinal "macro" do plano**. Veredito diário (HRV/BB/FCrep) responde "como estou hoje?". Training Status responde "para onde minha temporada está indo?". Se ficar UNPRODUCTIVE ou OVERREACHING por mais de 7 dias, é hora de reavaliar a estratégia da semana.
+
+### Gatilhos pra agir
+
+- **OVERREACHING 1-2 dias** → normal pós-semana pesada. Honra o recovery e segue
+- **OVERREACHING 3+ dias** → reduzir carga ativa. Algo não está fechando
+- **UNPRODUCTIVE 5+ dias** → revisar sono, alimentação, sinais de doença
+- **DETRAINING** → voltar a treinar com regularidade (provavelmente teve período off)
+""",
+    },
+    {
+        "id": "acwr",
+        "title": "ACWR — Carga Aguda / Crônica",
+        "aliases": ["ACWR", "CARGA AGUDA", "CARGA CRÔNICA", "ATL", "CTL", "ACUTE LOAD", "CHRONIC LOAD"],
+        "category": "Performance Garmin",
+        "color": "#5e5ce6",
+        "body_md": """
+**ACWR (Acute:Chronic Workload Ratio)** é a razão entre sua **carga aguda** (últimos ~7 dias) e sua **carga crônica** (últimos ~28 dias, média móvel). É um dos indicadores mais validados pela ciência esportiva pra prever **risco de lesão e overtraining**.
+
+### Os dois componentes
+
+- **ATL (Acute Training Load)** = carga dos últimos ~7 dias. Reflete fadiga recente.
+- **CTL (Chronic Training Load)** = média ponderada exponencial dos últimos ~28-42 dias. Reflete condicionamento de base ("fitness").
+
+ACWR = ATL / CTL
+
+### Como ler
+
+| Faixa | Status | Interpretação |
+|---|---|---|
+| **<0.8** | Detraining | Carga aguda muito abaixo do que o corpo está acostumado — perdendo fitness |
+| **0.8 – 1.3** | **OPTIMAL** ✅ | Sweet spot: estímulo suficiente sem risco elevado |
+| **1.3 – 1.5** | Atenção | Carga aguda esticando — pode ser produtivo se controlado, monitorar |
+| **>1.5** | **RISK ZONE** ⚠️ | Risco de lesão e overtraining sobe **2-4× vs faixa ótima** |
+
+### Por que 0.8-1.3 é o ideal
+
+Estudos com atletas de elite (rugby, futebol, atletismo) mostram que quando ACWR sai dessa faixa em qualquer direção, a taxa de lesão músculo-tendínea sobe significativamente. Acima de 1.5, o corpo recebe estresse maior do que adaptou pra suportar.
+
+### CTL — o número mais importante
+
+CTL é seu "fitness" cumulativo. Sobe lentamente (+2-4 pontos/semana sustentável). Pra amadores rodando maratona em 4h00-4h30, faixa típica:
+
+- **CTL 30-40** = iniciante avançado
+- **CTL 50-65** = intermediário sólido pra meia/maratona
+- **CTL 70+** = competidor focado, longões consistentes
+
+### Como subir CTL com segurança
+
+1. Aumentar volume/intensidade gradualmente — alvo +2-4 CTL/semana
+2. Respeitar semana de regeneração a cada 3-4 semanas (ACWR cai pra 0.7-0.9)
+3. Não tentar pegar CTL perdido com treinos pesados — risco de spike ACWR
+
+### Atenção aos limites
+
+- ACWR ignora **qualidade do treino** (intensidade, terreno, calor)
+- HRV/FCrep podem sinalizar overtraining antes do ACWR explodir
+- Use ACWR junto com Training Status, não isolado
+""",
+    },
+    {
+        "id": "vo2-max",
+        "title": "VO2 Max & Idade Fitness",
+        "aliases": ["VO2 MAX", "VO2MAX", "FITNESS AGE", "IDADE FITNESS"],
+        "category": "Performance Garmin",
+        "color": "#5e5ce6",
+        "body_md": """
+**VO2 Max** é o volume máximo de oxigênio que seu corpo consegue captar e utilizar por minuto, normalizado pelo peso (ml/kg/min). É **o melhor indicador isolado de capacidade aeróbica** que existe.
+
+### Como o Garmin estima
+
+Não é medição direta (que exige laboratório com máscara). O Garmin combina:
+- Pace × FC durante corridas regulares
+- Idade, peso, altura, sexo declarados
+- Eficiência aparente (variações de pace pra mesma FC)
+
+Erro típico: ±2-3 ml/kg/min vs teste de laboratório. **Tendência (subindo/descendo) é mais confiável que valor absoluto**.
+
+### Faixas pra homens 50+
+
+| VO2 Max | Classificação |
+|---|---|
+| <30 | Pobre |
+| 30-35 | Abaixo da média |
+| 35-40 | Médio |
+| 40-45 | Bom |
+| 45-50 | Excelente |
+| 50+ | Elite (raro nessa faixa etária) |
+
+### O que sobe VO2 Max
+
+- **Intervalos Z4-Z5** (3-5×3-5min em pace de 10K) — o estímulo mais potente
+- **Longões aeróbicos** (1h30+ em Z2-Z3) — base que sustenta o teto
+- **Consistência ao longo de meses** — mudanças significativas em 8-12 semanas
+
+### O que derruba
+
+- **Inatividade** — perde 1-2 ml/kg/min por semana parado após 7 dias
+- **Doença prolongada**
+- **Sono cronicamente ruim**
+- **Idade** — declínio natural ~0.5%/ano após 30, mais lento com treino
+
+### Idade Fitness
+
+**Fitness Age** = idade biológica estimada pela sua capacidade aeróbica. Calculada como "que idade tem alguém da população geral com seu VO2 Max?".
+
+- Idade Fitness **menor que cronológica** = ✅ você está em melhor forma que a média do seu grupo
+- Idade Fitness **maior** = sinal pra investir em aeróbico
+
+Move 1-2 anos por mês com treino consistente. Sensível a tendências de VO2 Max.
+
+### Limitações
+
+- VO2 Max é necessário mas não suficiente pra performance — economia de corrida e cadência também pesam
+- Atletas com VO2 Max similar podem ter performances muito diferentes na prova
+- Use como **um dos** indicadores, junto com Race Predictor, Training Status, ACWR
+""",
+    },
+    {
+        "id": "recovery-time",
+        "title": "Recovery Time",
+        "aliases": ["RECOVERY TIME", "TEMPO DE RECUPERAÇÃO"],
+        "category": "Performance Garmin",
+        "color": "#5e5ce6",
+        "body_md": """
+**Recovery Time** é a estimativa do Garmin em **horas** até seu corpo estar "pronto" pra outro treino-chave (intensidade alta ou volume alto). Calculado após cada atividade com base em:
+
+- Intensidade (FC média + tempo em zonas altas)
+- Duração
+- Estado autonômico (HRV) atual
+- Recovery acumulado da janela recente
+
+### Como ler
+
+| Recovery Time | Interpretação |
+|---|---|
+| **0-12h** | Pronto pra outro treino-chave |
+| **12-24h** | Pronto pra atividade leve (Z2 fácil, walking) |
+| **24-48h** | Honrar a recuperação. Pode treinar Z2 leve no fim do período |
+| **48-72h** | Pós-treino muito pesado (longão >2h, intervalos Z5) — descanso |
+| **>72h** | Sinal de sobrecarga. Provável OVERREACHING. Reavaliar |
+
+### O que aumenta Recovery Time
+
+- Treinos em Z4-Z5 (limite/máximo) — peso desproporcional
+- Longões >90 min, especialmente acima de 2h
+- HRV baixa no momento do treino (corpo já cansado)
+- Treinos em calor extremo
+- Falta de sono na noite anterior
+
+### Como acelerar a queda
+
+- **Sono ≥8h** com REM ≥70 min e Deep ≥60 min
+- **Hidratação 35-40 ml/kg/dia** + eletrólitos pós-treino
+- **Carbo + proteína** na janela 30-60 min pós-treino
+- **Movimento leve** (caminhada 20-30 min) — facilita perfusão
+- **Evitar álcool** — sabota recovery autonômico
+
+### Importante
+
+Recovery Time é **estimativa**, não regra dura. Se HRV/BB voltarem a níveis bons antes do contador zerar, você está pronto. Se Recovery Time zerou mas HRV está caindo, **prefira HRV como verdade** e descanse mais.
+
+### Sinal de alerta
+
+Recovery Time consistentemente >48h por **mais de 3 dias** sugere:
+- Carga acumulada acima da capacidade de adaptação
+- Sono crônico insuficiente
+- Possível doença incipiente
+
+→ Reduzir carga 30-50% por uma semana e reavaliar.
+""",
+    },
+    {
+        "id": "race-predictor",
+        "title": "Race Predictor",
+        "aliases": ["RACE PREDICTOR", "PREVISÃO DE PROVA"],
+        "category": "Performance Garmin",
+        "color": "#ff9500",
+        "body_md": """
+**Race Predictor** é a estimativa do Garmin de quanto tempo você levaria pra completar 5K, 10K, meia-maratona (21K) e maratona (42K) **hoje**, baseado no seu condicionamento atual.
+
+### Como o Garmin calcula
+
+1. Usa o **VO2 Max** atual como base
+2. Aplica modelos publicados (Daniels, Riegel) pra extrapolar performance em cada distância
+3. Ajusta por dados recentes — pace × FC dos treinos longos, intervalos e tempo runs
+
+**NÃO usa**: terreno, calor, estratégia de pacing, nutrição, dia da prova.
+
+### Como interpretar
+
+- **Valor absoluto** = potencial teórico em condições ideais. Real geralmente é 2-5% mais lento (calor, multidão, sub-fueling, pacing imperfeito).
+- **Tendência (delta semanal/mensal)** = mais confiável que valor isolado. Trajetória pra baixo = ganhando fitness.
+
+### Limites importantes — fórmula Riegel
+
+A extrapolação 5K → maratona usa coeficiente **n** na fórmula T₂ = T₁ × (D₂/D₁)^n.
+
+| n | Perfil |
+|---|---|
+| **0.85** | Elite (mantém pace bem em distâncias longas) |
+| **1.02-1.10** | Bem treinado (4h30 maratona viável) |
+| **1.15-1.20** | Amador intermediário (5h00+ típico) |
+| **1.25+** | Iniciante em distâncias longas |
+
+Garmin assume n próximo de 1.06 por padrão. Se seu n real for maior (típico em quem fez poucos longões), **maratona real será mais lenta que prevista**.
+
+### Sinal de progresso real
+
+Race Predictor melhorando + Training Status PRODUCTIVE/MAINTAINING + ACWR 0.8-1.3 = build saudável e ganhos reais.
+
+Race Predictor melhorando + OVERREACHING ou UNPRODUCTIVE = sinal misto, investigar antes de confiar.
+
+### Como usar pra meta de prova
+
+1. **Não confie cegamente na previsão da maratona** — pode ser otimista 5-15% pra quem não tem longão de 30k+ no perna
+2. **5K e 10K são previsões mais precisas** porque dependem menos de aguentar tempo longo
+3. **21K é o gate** — se atleta consegue cravar a previsão da meia, a meia da maratona é mais previsível
+
+### Atualização
+
+Garmin recalcula:
+- Após cada corrida (atualização pequena)
+- Após teste guiado (Lactate Threshold, Race Predictor test) — atualização maior
+- Diariamente com base em VO2 Max + HRV (ajuste fino)
+""",
+    },
+    {
         "id": "veredito",
         "title": "Veredito automático",
         "aliases": ["VEREDITO"],
