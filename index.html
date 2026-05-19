@@ -2046,7 +2046,7 @@ body {
           <div class="journal-content"><h1>Diário 2026-05-19 (ter)</h1>
 <!-- DASH_AUTO_START -->
 <h2>Reportagem matinal</h2>
-<p><em>Auto-gerado por <code>dash_today.py</code> em 06:18 de ter 19 mai.</em></p>
+<p><em>Auto-gerado por <code>dash_today.py</code> em 06:21 de ter 19 mai.</em></p>
 <div class="md-table-wrap"><table>
 <thead>
 <tr>
@@ -2201,12 +2201,115 @@ body {
 <p><strong>Esse é o melhor estado de abertura de semana desde 04/05.</strong> Aproveita.</p>
 <h2>Pendências</h2>
 <ul>
-<li>[ ] <strong>Rodar <code>python scheduled_workouts.py</code></strong> pra puxar W21 (rotina semanal de terça)</li>
-<li>[ ] Se houver treino prescrito hoje, executar normalmente + reportar via <code>lastrun.py</code></li>
+<li>[x] <strong>Rodar <code>python scheduled_workouts.py</code></strong> pra puxar W21 ✅ feito 06:20</li>
+<li>[ ] <strong>Executar FFR5 hoje</strong> (12' Z3 = Z4 Limite Garmin, 138-157 bpm) + reportar via <code>lastrun.py</code></li>
 <li>[ ] Hidratação 4 L</li>
 <li>[ ] Sono ≥7h30 hoje (faltou 19 min na noite passada, é só ajustar 30 min)</li>
 <li>[ ] Monitorar Training Status — confirmar saída de OVERREACHING ao longo do dia</li>
-</ul></div>
+</ul>
+<hr />
+<h2>Análise Interativa</h2>
+<h3>06:20 — Plano da semana W21 puxado</h3>
+<p><strong>Plano completo do coach (18-24/05/2026):</strong></p>
+<div class="md-table-wrap"><table>
+<thead>
+<tr>
+<th>Dia</th>
+<th>Sessão</th>
+<th>Intensidade</th>
+<th>Zona Garmin equivalente</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ter 19/05</td>
+<td><strong>FFR5</strong> — 12' Z3</td>
+<td>Tempo run leve</td>
+<td><strong>Z4 Limite (138-157)</strong></td>
+</tr>
+<tr>
+<td>qua 20/05</td>
+<td><strong>RF5</strong> — 30' Z2</td>
+<td>Recovery fácil</td>
+<td><strong>Z3 Aeróbico (120-137)</strong></td>
+</tr>
+<tr>
+<td>sex 22/05</td>
+<td><strong>HRR6</strong> — 8 × 1' Z5</td>
+<td>Intervalos máximos</td>
+<td><strong>Z5 Máximo (≥158)</strong></td>
+</tr>
+<tr>
+<td>dom 24/05</td>
+<td><strong>LR7</strong> — 17 km Z2</td>
+<td>Longão base</td>
+<td><strong>Z3 Aeróbico (120-137)</strong></td>
+</tr>
+</tbody>
+</table></div>
+<p><em>(seg 18/05 foi alongamento/upper leve, executado · qui 21/05 OFF · sáb 23/05 OFF presumido)</em></p>
+<h4>Distribuição de carga vs W20</h4>
+<div class="md-table-wrap"><table>
+<thead>
+<tr>
+<th>Aspecto</th>
+<th>W20 (passada)</th>
+<th>W21 (atual)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Sessões corrida</td>
+<td>4 (FFR4 + RRe5 + HRR4 + LR longão grupo 18.6km)</td>
+<td>4 (FFR5 + RF5 + HRR6 + LR7 17km)</td>
+</tr>
+<tr>
+<td>Z5 máximo</td>
+<td>10×30"</td>
+<td><strong>8×1' (mais volume Z5)</strong></td>
+</tr>
+<tr>
+<td>Longão</td>
+<td>18.6km (espontâneo, +77% prescrito)</td>
+<td>17km (prescrito, conservador)</td>
+</tr>
+<tr>
+<td>Z3-Z5 (alta intensidade)</td>
+<td>2 sessões</td>
+<td>2 sessões</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>Semelhanças com W20</strong>, mas com 2 diferenças críticas:<br />
+- <strong>HRR6 = 8×1' Z5</strong> vs HRR4 = 10×30" Z5. <strong>Dobra o tempo em Z5 por intervalo</strong> — mais estímulo aeróbico-anaeróbico<br />
+- <strong>LR7 17km prescrito</strong> vs LR espontâneo de 18.6km — coach quer 17km, não esticar de novo</p>
+<h4>Pontos táticos pra W21</h4>
+<p><strong>1. Hoje (FFR5 — 12' Z3):</strong><br />
+- Sistema em alta absoluta (HRV 45, BB 96) — sessão tranquila pra absorver<br />
+- Cadência: testar manter ≥160 (não tem grupo nem visual hoje — replicação do contexto solo)<br />
+- 12' em coach Z3 = Garmin Z4 Limite (138-157). FC alvo ~145-150.</p>
+<p><strong>2. Quarta (RF5 — 30' Z2):</strong><br />
+- Sessão fácil de manutenção<br />
+- Coach Z2 = Garmin Z3 Aeróbico (120-137). FC alvo ~125-135.<br />
+- Boa janela pra testar consolidação da cadência sem pressão de intensidade</p>
+<p><strong>3. Sexta (HRR6 — 8×1' Z5):</strong><br />
+- Intervalos máximos longos (1 min em Z5 é desafiador)<br />
+- Garmin Z5 Máximo ≥158<br />
+- <strong>Lição da HRR4 (15/05)</strong>: pace 4:00 quando deveria 3:30, só 3.3% em Z5 = sub-ótimo. Pra HRR6: <strong>forçar pace abaixo de 3:30 pra cravar Z5 de verdade</strong><br />
+- 8 minutos totais em Z5 vs 5 minutos na HRR4 = +60% volume neuromuscular</p>
+<p><strong>4. Domingo (LR7 — 17km Z2):</strong><br />
+- <strong>Replicação contexto solo</strong> (provável) — sem grupo, sem cadência alheia<br />
+- <strong>Cadência check #2</strong>: 16/05 deu 164.6 em grupo+sem visual. Domingo testa se 162+ se mantém sozinho<br />
+- 17km é volume manejável (vs 18.6km do dom passado)<br />
+- Coach Z2 = Garmin Z3 Aeróbico — 90%+ do tempo entre 120-137 bpm</p>
+<h4>Esperado pro final da W21</h4>
+<ul>
+<li>HRV mantendo ≥35 (se sono regular)</li>
+<li>Training Status: provável PRODUCTIVE ou MAINTAINING (sair de OVERREACHING já é certo hoje/amanhã)</li>
+<li>ACWR voltando pra 1.0-1.2 (faixa OPTIMAL)</li>
+<li>Cadência média semanal ≥161 spm (alvo de consolidação)</li>
+</ul>
+<p><strong>Plano consolidado. Boa execução da semana.</strong></p></div>
           
         </article>
         
@@ -7538,7 +7641,7 @@ Alavancas médias: hidratação contínua · respiração 4-7-8 antes de dormir 
 
   
 
-  <div class="footer">RunTechOps · 06:18:59</div>
+  <div class="footer">RunTechOps · 06:21:27</div>
 </div>
 
 <script>
