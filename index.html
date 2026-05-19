@@ -2046,7 +2046,7 @@ body {
           <div class="journal-content"><h1>Diário 2026-05-19 (ter)</h1>
 <!-- DASH_AUTO_START -->
 <h2>Reportagem matinal</h2>
-<p><em>Auto-gerado por <code>dash_today.py</code> em 06:17 de ter 19 mai.</em></p>
+<p><em>Auto-gerado por <code>dash_today.py</code> em 06:18 de ter 19 mai.</em></p>
 <div class="md-table-wrap"><table>
 <thead>
 <tr>
@@ -2119,12 +2119,93 @@ body {
 <!-- DASH_AUTO_END -->
 
 <h2>O que aconteceu</h2>
-<p><em>(análise pendente — adicionar contexto: como dormiu, sintomas, eventos do dia anterior, sensações ao acordar)</em></p>
+<ul>
+<li><strong>Recovery completa do OVERREACHING de ontem.</strong> Quadro fisiológico <strong>virou todo verde</strong>, com salto significativo em todas as métricas-chave.</li>
+<li><strong>HRV 45 (+14)</strong> — não só cravou o alvo 32, <strong>passou em 13 pontos</strong>. Trajetória 24 (sáb) → 30 (dom) → 31 (seg) → <strong>45 (hoje)</strong> mostra o sistema autonômico estourando pra cima depois da semana pesada + alongamento/mobilidade de ontem.</li>
+<li><strong>BB max 96 (+12)</strong> — quase tudo. Praticamente full battery.</li>
+<li><strong>FCrep 47 (−2 vs baseline 49)</strong> — abaixo da baseline. Sinal <strong>forte</strong> de recovery profunda.</li>
+<li><strong>Sono 7h11</strong> com <strong>Awake só 3 min</strong> e Deep 1h06 — qualidade alta de novo. REM 52min foi mais curto que a média, mas com Deep bom e Awake mínimo, é troca aceitável.</li>
+<li><strong>Disposição 71 (+27)</strong> — saltou. Reflete recovery autonômica + Recovery Time caindo.</li>
+<li><strong>Sem treino reportado hoje</strong> — análise PATH B.</li>
+<li><strong>Decisão de ontem (alongamento+mobilidade+upper leve em vez de Sessão A pesada) validada pelos dados.</strong> A combinação "ouvir o corpo + ouvir os dados" funcionou exatamente como planejada.</li>
+</ul>
 <h2>Decisão / Veredito</h2>
-<p><em>(análise pendente — alinhar com plano da semana, gates de HRV/BB, decisão de treino)</em></p>
+<h3>Quadro fisiológico vs gates</h3>
+<div class="md-table-wrap"><table>
+<thead>
+<tr>
+<th>Métrica</th>
+<th>Valor</th>
+<th>Gate</th>
+<th>Status</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>HRV</td>
+<td><strong>45</strong></td>
+<td>≥32</td>
+<td>✅✅ +13 acima</td>
+</tr>
+<tr>
+<td>BB max</td>
+<td><strong>96</strong></td>
+<td>≥70</td>
+<td>✅✅ no teto</td>
+</tr>
+<tr>
+<td>FCrep</td>
+<td><strong>47</strong></td>
+<td>≤52</td>
+<td>✅ −2 abaixo da baseline</td>
+</tr>
+<tr>
+<td>Sono</td>
+<td><strong>7h11</strong></td>
+<td>≥7h30</td>
+<td>⚠️ −19 min (mas qualidade alta)</td>
+</tr>
+<tr>
+<td>Veredito auto</td>
+<td>🟢 score 0</td>
+<td>—</td>
+<td>luz verde</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>5/5 verde. Sistema 100% pronto pra abrir treino-corrida da W21.</strong></p>
+<h3>Implicações pra Training Status (esperar Garmin atualizar)</h3>
+<p>Com HRV 45 + BB 96 + FCrep 47 + ACWR provavelmente caindo (sem treino ontem):<br />
+- <strong>Training Status deve sair de OVERREACHING</strong> (provável MAINTAINING ou PRODUCTIVE)<br />
+- <strong>Recovery Time deve ter caído pra &lt;10h</strong> (ontem estava 39.8h)<br />
+- ACWR deve estar voltando pra faixa OPTIMAL (0.8-1.3) com o ATL descansando</p>
+<h3>Recomendação CONCRETA pra hoje</h3>
+<p><strong>Hoje é terça</strong> — rotina semanal:</p>
+<ol>
+<li><strong>Rodar <code>python scheduled_workouts.py</code></strong> pra puxar plano W21 do calendário Garmin</li>
+<li><strong>Treino-corrida liberado</strong> com tudo. Se houver sessão prescrita pra hoje (provável FFR ou RRe abertura da semana), executar normalmente</li>
+<li><strong>Hidratação 4 L</strong> continua (carga residual ainda processando)</li>
+<li><strong>Carbo nas refeições</strong> pra repor glicogênio (BB 96 sugere reserva boa, manter)</li>
+</ol>
+<h3>Reflexão sobre o ciclo W20→W21</h3>
+<p>A W20 fechou com:<br />
+- LR de 18.6km com <strong>cadência 164.6 (alta da temporada)</strong><br />
+- HRR4 + FFR4 + RRe5 dentro do prescrito<br />
+- Refactor de zonas Garmin %LTHR<br />
+- Decisão estratégica das meias como "longões de luxo"<br />
+- Recalibração da meta da maratona pra <strong>4h30</strong> (decidida ontem 18/05)</p>
+<p>A W21 abre com:<br />
+- Sistema fisiológico em alta absoluta<br />
+- Quadro mental claro (meta calibrada, sem ansiedade de 4h00)<br />
+- Cadência consolidando-se (próximo LR vai testar replicação em outro contexto)</p>
+<p><strong>Esse é o melhor estado de abertura de semana desde 04/05.</strong> Aproveita.</p>
 <h2>Pendências</h2>
 <ul>
-<li>[ ] <em>(adicionar tarefas/promessas do dia)</em></li>
+<li>[ ] <strong>Rodar <code>python scheduled_workouts.py</code></strong> pra puxar W21 (rotina semanal de terça)</li>
+<li>[ ] Se houver treino prescrito hoje, executar normalmente + reportar via <code>lastrun.py</code></li>
+<li>[ ] Hidratação 4 L</li>
+<li>[ ] Sono ≥7h30 hoje (faltou 19 min na noite passada, é só ajustar 30 min)</li>
+<li>[ ] Monitorar Training Status — confirmar saída de OVERREACHING ao longo do dia</li>
 </ul></div>
           
         </article>
@@ -7457,7 +7538,7 @@ Alavancas médias: hidratação contínua · respiração 4-7-8 antes de dormir 
 
   
 
-  <div class="footer">RunTechOps · 06:17:22</div>
+  <div class="footer">RunTechOps · 06:18:59</div>
 </div>
 
 <script>
