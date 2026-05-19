@@ -1222,21 +1222,21 @@ body {
       <div class="weekplan-head">
         <div class="label-tiny weekplan-title">PLANO DA SEMANA · 2026-W21</div>
         <div class="weekplan-stats">
+          <span class="weekplan-stat weekplan-stat-done">✅ 1 feito</span>
           
-          <span class="weekplan-stat weekplan-stat-today">🔵 1 hoje</span>
           
           <span class="weekplan-stat weekplan-stat-pending">⏳ 3 pendentes</span>
-          
+          <span class="weekplan-stat weekplan-stat-adherence">📊 Aderência: 100%</span>
         </div>
       </div>
       <div class="weekplan-list">
         
-        <div class="weekplan-row weekplan-today">
-          <div class="weekplan-status" title="HOJE">🔵</div>
+        <div class="weekplan-row weekplan-done">
+          <div class="weekplan-status" title="feito">✅</div>
           <div class="weekplan-date">ter 19/05</div>
           <div class="weekplan-body">
             <div class="weekplan-title-row">FFR5 Corrida - 12&#39; Z3</div>
-            
+            <div class="weekplan-real">6.5km · FC 134 · cad 166 · 6:52/km</div>
           </div>
         </div>
         
@@ -1454,6 +1454,16 @@ body {
         <tbody>
           
           <tr class="weekly-current">
+            <td><strong>2026-W21</strong></td>
+            <td class="num">1</td>
+            <td class="num">6.5 <span class="weekly-delta">(-28.6)</span></td>
+            <td class="num">166.3 <span class="weekly-delta">(+4.4)</span></td>
+            <td class="num">66.4% <span class="weekly-delta">(-3.1)</span></td>
+            <td class="num">6:52/km</td>
+            <td class="num">6.5km</td>
+          </tr>
+          
+          <tr class="">
             <td><strong>2026-W20</strong></td>
             <td class="num">4</td>
             <td class="num">35.2 <span class="weekly-delta">(+0.6)</span></td>
@@ -1516,21 +1526,11 @@ body {
           <tr class="">
             <td><strong>2026-W05</strong></td>
             <td class="num">4</td>
-            <td class="num">33.0 <span class="weekly-delta">(-3.8)</span></td>
-            <td class="num">154.9 <span class="weekly-delta">(-0.7)</span></td>
-            <td class="num">46.3% <span class="weekly-delta">(-17.9)</span></td>
+            <td class="num">33.0</td>
+            <td class="num">154.9</td>
+            <td class="num">46.3%</td>
             <td class="num">6:40/km</td>
             <td class="num">8.4km</td>
-          </tr>
-          
-          <tr class="">
-            <td><strong>2026-W03</strong></td>
-            <td class="num">3</td>
-            <td class="num">36.8</td>
-            <td class="num">155.6</td>
-            <td class="num">64.2%</td>
-            <td class="num">6:31/km</td>
-            <td class="num">14.1km</td>
           </tr>
           
         </tbody>
@@ -2046,7 +2046,7 @@ body {
           <div class="journal-content"><h1>Diário 2026-05-19 (ter)</h1>
 <!-- DASH_AUTO_START -->
 <h2>Reportagem matinal</h2>
-<p><em>Auto-gerado por <code>dash_today.py</code> em 06:21 de ter 19 mai.</em></p>
+<p><em>Auto-gerado por <code>dash_today.py</code> em 09:43 de ter 19 mai.</em></p>
 <div class="md-table-wrap"><table>
 <thead>
 <tr>
@@ -2202,7 +2202,7 @@ body {
 <h2>Pendências</h2>
 <ul>
 <li>[x] <strong>Rodar <code>python scheduled_workouts.py</code></strong> pra puxar W21 ✅ feito 06:20</li>
-<li>[ ] <strong>Executar FFR5 hoje</strong> (12' Z3 = Z4 Limite Garmin, 138-157 bpm) + reportar via <code>lastrun.py</code></li>
+<li>[x] <strong>Executar FFR5 hoje</strong> (12' Z3) ✅ feito 10:06 — análise abaixo</li>
 <li>[ ] Hidratação 4 L</li>
 <li>[ ] Sono ≥7h30 hoje (faltou 19 min na noite passada, é só ajustar 30 min)</li>
 <li>[ ] Monitorar Training Status — confirmar saída de OVERREACHING ao longo do dia</li>
@@ -2309,7 +2309,112 @@ body {
 <li>ACWR voltando pra 1.0-1.2 (faixa OPTIMAL)</li>
 <li>Cadência média semanal ≥161 spm (alvo de consolidação)</li>
 </ul>
-<p><strong>Plano consolidado. Boa execução da semana.</strong></p></div>
+<p><strong>Plano consolidado. Boa execução da semana.</strong></p>
+<hr />
+<h3>10:06 — FFR5 executado ✅</h3>
+<p><strong>Dados objetivos:</strong></p>
+<div class="md-table-wrap"><table>
+<thead>
+<tr>
+<th>Métrica</th>
+<th>Valor</th>
+<th>Leitura</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Distância</td>
+<td><strong>6.55 km</strong></td>
+<td>Total da sessão</td>
+</tr>
+<tr>
+<td>Duração</td>
+<td><strong>45 min</strong></td>
+<td>Aquecimento + esforço + cooldown</td>
+</tr>
+<tr>
+<td>FC média</td>
+<td><strong>134</strong></td>
+<td>Topo do Z3 Aeróbico</td>
+</tr>
+<tr>
+<td>FC máxima</td>
+<td><strong>144</strong></td>
+<td>Dentro do Z4 Limite (138-157), não estourou ✅</td>
+</tr>
+<tr>
+<td><strong>Cadência média</strong></td>
+<td><strong>🚀 166.3 spm</strong></td>
+<td><strong>NOVO TOPO ABSOLUTO DA TEMPORADA</strong></td>
+</tr>
+<tr>
+<td>Pace médio</td>
+<td>6:52/km</td>
+<td>Conservador (Z3 + Z4 misto)</td>
+</tr>
+<tr>
+<td>Z4 Limite (esforço prescrito)</td>
+<td><strong>12:48</strong></td>
+<td>Prescrito: 12' → <strong>cravou +6.7%</strong> ✅</td>
+</tr>
+<tr>
+<td>Z3 Aeróbico (aquec/cool)</td>
+<td>29:54</td>
+<td>30 min de aeróbico de qualidade</td>
+</tr>
+<tr>
+<td>Z2 Fácil</td>
+<td>2:03</td>
+<td>Walking inicial</td>
+</tr>
+<tr>
+<td>Z5 Máximo</td>
+<td>0</td>
+<td>Apropriado pra FFR (não é treino de tiros)</td>
+</tr>
+</tbody>
+</table></div>
+<h4>Análise técnica</h4>
+<p><strong>1. Execução do prescrito — EXCELENTE.</strong><br />
+- Coach prescreveu 12' em Z3 dele = Garmin Z4 Limite (138-157 bpm)<br />
+- Você cravou <strong>12:48 em Z4</strong> — passou em 48 segundos do alvo (+6.7%)<br />
+- FC máx 144 ficou no meio do Z4, sem estourar pra Z5<br />
+- Esse é o tipo de execução cirúrgica que constrói base aeróbica-limite</p>
+<p><strong>2. 🚀 CADÊNCIA — NOVO TOPO ABSOLUTO.</strong></p>
+<p>Trajetória da temporada:<br />
+| Dia | Sessão | Cadência | Contexto |<br />
+|---|---|---|---|<br />
+| 05/05 | RFF5 (baseline) | 153 spm | Início do protocolo |<br />
+| 12/05 | FFR4 | 159.4 | Solo, terça |<br />
+| 13/05 | RRe5 | 158.9 | Solo, quarta |<br />
+| 15/05 | HRR4 | 159.2 | Solo, sexta |<br />
+| <strong>16/05</strong> | <strong>LR longão 18.6km</strong> | <strong>164.6</strong> | Grupo, sem visual |<br />
+| <strong>19/05</strong> | <strong>FFR5 (hoje)</strong> | <strong>🎯 166.3</strong> | <strong>Solo, sem visual, treino curto</strong> |</p>
+<p><strong>HIPÓTESE CRÍTICA VALIDADA:</strong> A cadência alta do LR 16/05 <strong>NÃO</strong> foi efeito do grupo. Replicou hoje em contexto solo, e ainda <strong>subiu 1.7 spm</strong>. A adaptação neuromuscular está consolidada.</p>
+<ul>
+<li>Salto total na temporada: 153 → 166.3 = <strong>+13.3 spm em ~2 semanas</strong></li>
+<li>Estava previsto pra sem 4-8 (chegar a 162-165). <strong>Aconteceu na sem 2.</strong></li>
+<li>Próximo gate: alvo da fase "Awareness" era 165+. <strong>Atingido.</strong> Pode mudar pra fase "Refinamento" (alvo 170+).</li>
+</ul>
+<p><strong>3. Aproveitamento aeróbico do bloco.</strong><br />
+- 30 min em Z3 Aeróbico (coach Z2 verdadeiro) = base aeróbica sólida<br />
+- 12:48 em Z4 Limite = estímulo cardiovascular limite-anaeróbico<br />
+- Z5 zerado = correto (FFR não é treino de tiros)<br />
+- Distribuição típica de um tempo run leve, exatamente o que o coach prescreveu</p>
+<h4>O que isso muda na W21</h4>
+<ul>
+<li><strong>Cadência check do dom 24/05 já passou virtualmente.</strong> Replicou sozinho hoje (curto), domingo replica em volume.</li>
+<li><strong>Liberação pra começar a olhar pace na cadência consolidada</strong> — se está sustentando 166 sem visual, próxima alavanca é diminuir tempo de contato com solo + ajustar ritmo</li>
+<li><strong>Pra HRR6 sex (8×1' Z5)</strong>: cadência alta ajuda. Foco vai ser FC ≥158 (que faltou na HRR4)</li>
+</ul>
+<h4>Recomendação pra resto do dia</h4>
+<ul>
+<li>Treino bem feito, sem custo metabólico exagerado (FC máx 144 não esgota)</li>
+<li>Continuar hidratação + carbo nas refeições</li>
+<li>Stretching das pernas (foam roller panturrilha/quadríceps) pra preparar pra qua RF5</li>
+<li>Sono ≥7h30 hoje (já era pendência, agora reforça)</li>
+</ul>
+<p><strong>Sessão 9/10. Único ponto de não-10: pace levemente abaixo do prescrito no esforço (mas FC alvo cumprida — então OK).</strong></p></div>
           
         </article>
         
@@ -7641,7 +7746,7 @@ Alavancas médias: hidratação contínua · respiração 4-7-8 antes de dormir 
 
   
 
-  <div class="footer">RunTechOps · 06:21:27</div>
+  <div class="footer">RunTechOps · 09:43:51</div>
 </div>
 
 <script>
