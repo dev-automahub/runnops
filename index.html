@@ -587,6 +587,14 @@ body {
 .sleep-legend .lg-deep::before  { background: #bf5af2; }
 .sleep-legend .lg-light::before { background: #0a84ff; }
 .sleep-legend .lg-awake::before { background: #ff9f0a; }
+.sleep-total {
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+  text-align: right;
+  margin-top: 6px;
+  opacity: 0.75;
+}
 
 /* === BB curve do dia === */
 .bb-curve-card {
@@ -1164,12 +1172,12 @@ body {
   <div class="tab-content" id="tab-hoje">
 
     <div class="verdict green verdict-clickable" onclick="goToHistorico()">
-      <div class="verdict-label">VEREDITO · TER 19 MAI <span class="verdict-hint">→ ver análise</span></div>
+      <div class="verdict-label">ANÁLISE · TER 19 MAI <span class="verdict-hint">→ ver</span></div>
       <div class="verdict-headline">Pronto pra treinar</div>
       
       <div class="verdict-sub">Sinais coerentes. Executa o plano.</div>
       
-      <div class="verdict-help-link"><span class="pill-help">?</span> <a href="javascript:goToGlossary('veredito')" onclick="event.stopPropagation()">como funciona o veredito</a></div>
+      <div class="verdict-help-link"><span class="pill-help">?</span> <a href="javascript:goToGlossary('veredito')" onclick="event.stopPropagation()">Detalhes da Análise</a></div>
     </div>
 
     
@@ -1287,6 +1295,7 @@ body {
         <span class="lg-light">Light 5h13</span>
         <span class="lg-awake">Awake 3 min</span>
       </div>
+      <div class="sleep-total">Total: 7h11</div>
     </div>
     
 
@@ -2031,7 +2040,6 @@ body {
     <!-- ============ ANALISES DIARIAS (diario MD renderizado) ============ -->
     
     <div class="journals-section">
-      <h2 class="journals-title">Análises diárias</h2>
       <div class="landscape-hint">💡 Em telas estreitas, gira o celular pra leitura com mais conforto.</div>
 
       
@@ -2039,14 +2047,14 @@ body {
         <!-- Hoje (ou ultimo dia) — expandido por padrao -->
         <article class="journal-card journal-today" id="journal-2026-05-19">
           <div class="journal-header">
-            <div class="journal-date">19/05/2026</div>
-            <div class="journal-day">ter 19 mai</div>
+            <div class="journal-date">Diário 19/05/2026</div>
+            <div class="journal-day">Terça</div>
           </div>
           
           <div class="journal-content"><h1>Diário 2026-05-19 (ter)</h1>
 <!-- DASH_AUTO_START -->
 <h2>Reportagem matinal</h2>
-<p><em>Auto-gerado por <code>dash_today.py</code> em 09:43 de ter 19 mai.</em></p>
+<p><em>Auto-gerado 10:55</em></p>
 <div class="md-table-wrap"><table>
 <thead>
 <tr>
@@ -2423,14 +2431,14 @@ body {
         <!-- Dias anteriores — colapsados por padrao via <details> (HTML nativo, sem JS) -->
         <details class="journal-card journal-past" id="journal-2026-05-18">
           <summary class="journal-header">
-            <div class="journal-date">18/05/2026</div>
-            <div class="journal-day">seg 18 mai</div>
+            <div class="journal-date">Diário 18/05/2026</div>
+            <div class="journal-day">Segunda</div>
           </summary>
           
           <div class="journal-content"><h1>Diário 2026-05-18 (seg)</h1>
 <!-- DASH_AUTO_START -->
 <h2>Reportagem matinal</h2>
-<p><em>Auto-gerado por <code>dash_today.py</code> em 21:38 de seg 18 mai.</em></p>
+<p><em>Auto-gerado 21:38</em></p>
 <div class="md-table-wrap"><table>
 <thead>
 <tr>
@@ -2695,14 +2703,14 @@ body {
         <!-- Dias anteriores — colapsados por padrao via <details> (HTML nativo, sem JS) -->
         <details class="journal-card journal-past" id="journal-2026-05-17">
           <summary class="journal-header">
-            <div class="journal-date">17/05/2026</div>
-            <div class="journal-day">dom 17 mai</div>
+            <div class="journal-date">Diário 17/05/2026</div>
+            <div class="journal-day">Domingo</div>
           </summary>
           
           <div class="journal-content"><h1>Diário 2026-05-17 (dom)</h1>
 <!-- DASH_AUTO_START -->
 <h2>Reportagem matinal</h2>
-<p><em>Auto-gerado por <code>dash_today.py</code> em 10:31 de dom 17 mai.</em></p>
+<p><em>Auto-gerado 10:31</em></p>
 <div class="md-table-wrap"><table>
 <thead>
 <tr>
@@ -3002,14 +3010,14 @@ body {
         <!-- Dias anteriores — colapsados por padrao via <details> (HTML nativo, sem JS) -->
         <details class="journal-card journal-past" id="journal-2026-05-16">
           <summary class="journal-header">
-            <div class="journal-date">16/05/2026</div>
-            <div class="journal-day">sáb 16 mai</div>
+            <div class="journal-date">Diário 16/05/2026</div>
+            <div class="journal-day">Sábado</div>
           </summary>
           
           <div class="journal-content"><h1>Diário 2026-05-16 (sáb)</h1>
 <!-- DASH_AUTO_START -->
 <h2>Reportagem matinal</h2>
-<p><em>Auto-gerado por <code>dash_today.py</code> em 14:48 de sáb 16 mai.</em></p>
+<p><em>Auto-gerado 14:48</em></p>
 <div class="md-table-wrap"><table>
 <thead>
 <tr>
@@ -3693,14 +3701,14 @@ body {
         <!-- Dias anteriores — colapsados por padrao via <details> (HTML nativo, sem JS) -->
         <details class="journal-card journal-past" id="journal-2026-05-15">
           <summary class="journal-header">
-            <div class="journal-date">15/05/2026</div>
-            <div class="journal-day">sex 15 mai</div>
+            <div class="journal-date">Diário 15/05/2026</div>
+            <div class="journal-day">Sexta</div>
           </summary>
           
           <div class="journal-content"><h1>Diário 2026-05-15 (sex)</h1>
 <!-- DASH_AUTO_START -->
 <h2>Reportagem matinal</h2>
-<p><em>Auto-gerado por <code>dash_today.py</code> em 10:04 de sex 15 mai.</em></p>
+<p><em>Auto-gerado 10:04</em></p>
 <div class="md-table-wrap"><table>
 <thead>
 <tr>
@@ -3990,14 +3998,14 @@ body {
         <!-- Dias anteriores — colapsados por padrao via <details> (HTML nativo, sem JS) -->
         <details class="journal-card journal-past" id="journal-2026-05-14">
           <summary class="journal-header">
-            <div class="journal-date">14/05/2026</div>
-            <div class="journal-day">qui 14 mai</div>
+            <div class="journal-date">Diário 14/05/2026</div>
+            <div class="journal-day">Quinta</div>
           </summary>
           
           <div class="journal-content"><h1>Diário 2026-05-14 (qui)</h1>
 <!-- DASH_AUTO_START -->
 <h2>Reportagem matinal</h2>
-<p><em>Auto-gerado por <code>dash_today.py</code> em 09:19 de qui 14 mai.</em></p>
+<p><em>Auto-gerado 09:19</em></p>
 <div class="md-table-wrap"><table>
 <thead>
 <tr>
@@ -4312,14 +4320,14 @@ body {
         <!-- Dias anteriores — colapsados por padrao via <details> (HTML nativo, sem JS) -->
         <details class="journal-card journal-past" id="journal-2026-05-13">
           <summary class="journal-header">
-            <div class="journal-date">13/05/2026</div>
-            <div class="journal-day">qua 13 mai</div>
+            <div class="journal-date">Diário 13/05/2026</div>
+            <div class="journal-day">Quarta</div>
           </summary>
           
           <div class="journal-content"><h1>Diário 2026-05-13 (qua)</h1>
 <!-- DASH_AUTO_START -->
 <h2>Reportagem matinal</h2>
-<p><em>Auto-gerado por <code>dash_today.py</code> em 09:13 de qua 13 mai.</em></p>
+<p><em>Auto-gerado 09:13</em></p>
 <div class="md-table-wrap"><table>
 <thead>
 <tr>
@@ -4526,14 +4534,14 @@ body {
         <!-- Dias anteriores — colapsados por padrao via <details> (HTML nativo, sem JS) -->
         <details class="journal-card journal-past" id="journal-2026-05-12">
           <summary class="journal-header">
-            <div class="journal-date">12/05/2026</div>
-            <div class="journal-day">ter 12 mai</div>
+            <div class="journal-date">Diário 12/05/2026</div>
+            <div class="journal-day">Terça</div>
           </summary>
           
           <div class="journal-content"><h1>Diário 2026-05-12 (ter)</h1>
 <!-- DASH_AUTO_START -->
 <h2>Reportagem matinal</h2>
-<p><em>Auto-gerado por <code>dash_today.py</code> em 21:25 de ter 12 mai.</em></p>
+<p><em>Auto-gerado 21:25</em></p>
 <div class="md-table-wrap"><table>
 <thead>
 <tr>
@@ -4740,14 +4748,14 @@ body {
         <!-- Dias anteriores — colapsados por padrao via <details> (HTML nativo, sem JS) -->
         <details class="journal-card journal-past" id="journal-2026-05-11">
           <summary class="journal-header">
-            <div class="journal-date">11/05/2026</div>
-            <div class="journal-day">seg 11 mai</div>
+            <div class="journal-date">Diário 11/05/2026</div>
+            <div class="journal-day">Segunda</div>
           </summary>
           
           <div class="journal-content"><h1>Diário 2026-05-11 (seg)</h1>
 <!-- DASH_AUTO_START -->
 <h2>Reportagem matinal</h2>
-<p><em>Auto-gerado por <code>dash_today.py</code> em 08:56 de seg 11 mai.</em></p>
+<p><em>Auto-gerado 08:56</em></p>
 <div class="md-table-wrap"><table>
 <thead>
 <tr>
@@ -4976,14 +4984,14 @@ body {
         <!-- Dias anteriores — colapsados por padrao via <details> (HTML nativo, sem JS) -->
         <details class="journal-card journal-past" id="journal-2026-05-10">
           <summary class="journal-header">
-            <div class="journal-date">10/05/2026</div>
-            <div class="journal-day">dom 10 mai</div>
+            <div class="journal-date">Diário 10/05/2026</div>
+            <div class="journal-day">Domingo</div>
           </summary>
           
           <div class="journal-content"><h1>Diário 2026-05-10 (dom)</h1>
 <!-- DASH_AUTO_START -->
 <h2>Reportagem matinal</h2>
-<p><em>Auto-gerado por <code>dash_today.py</code> em 17:53 de dom 10 mai.</em></p>
+<p><em>Auto-gerado 17:53</em></p>
 <div class="md-table-wrap"><table>
 <thead>
 <tr>
@@ -5238,14 +5246,14 @@ Colocar <strong>cadência na tela do Garmin</strong> como 1 dos 3 indicadores pr
         <!-- Dias anteriores — colapsados por padrao via <details> (HTML nativo, sem JS) -->
         <details class="journal-card journal-past" id="journal-2026-05-09">
           <summary class="journal-header">
-            <div class="journal-date">09/05/2026</div>
-            <div class="journal-day">sáb 9 mai</div>
+            <div class="journal-date">Diário 09/05/2026</div>
+            <div class="journal-day">Sábado</div>
           </summary>
           
           <div class="journal-content"><h1>Diário 2026-05-09 (sáb) — LR7 day, recuperação consolidada</h1>
 <!-- DASH_AUTO_START -->
 <h2>Reportagem matinal</h2>
-<p><em>Auto-gerado por <code>dash_today.py</code> em 22:04 de sáb 9 mai.</em></p>
+<p><em>Auto-gerado 22:04</em></p>
 <div class="md-table-wrap"><table>
 <thead>
 <tr>
@@ -5437,14 +5445,14 @@ Colocar <strong>cadência na tela do Garmin</strong> como 1 dos 3 indicadores pr
         <!-- Dias anteriores — colapsados por padrao via <details> (HTML nativo, sem JS) -->
         <details class="journal-card journal-past" id="journal-2026-05-08">
           <summary class="journal-header">
-            <div class="journal-date">08/05/2026</div>
-            <div class="journal-day">sex 8 mai</div>
+            <div class="journal-date">Diário 08/05/2026</div>
+            <div class="journal-day">Sexta</div>
           </summary>
           
           <div class="journal-content"><h1>Diário 2026-05-08 (sexta) — Descanso puro</h1>
 <!-- DASH_AUTO_START -->
 <h2>Reportagem matinal</h2>
-<p><em>Auto-gerado por <code>dash_today.py</code> em 17:04 de sex 8 mai.</em></p>
+<p><em>Auto-gerado 17:04</em></p>
 <div class="md-table-wrap"><table>
 <thead>
 <tr>
@@ -5668,8 +5676,8 @@ Readiness 72 mascara: sono bom + tempo de recovery elapsed → Garmin marca "ok"
         <!-- Dias anteriores — colapsados por padrao via <details> (HTML nativo, sem JS) -->
         <details class="journal-card journal-past" id="journal-2026-05-07">
           <summary class="journal-header">
-            <div class="journal-date">07/05/2026</div>
-            <div class="journal-day">qui 7 mai</div>
+            <div class="journal-date">Diário 07/05/2026</div>
+            <div class="journal-day">Quinta</div>
           </summary>
           
           <div class="journal-content"><h1>2026-05-07 (Quinta) — Diário</h1>
@@ -6089,8 +6097,8 @@ Readiness 72 mascara: sono bom + tempo de recovery elapsed → Garmin marca "ok"
         <!-- Dias anteriores — colapsados por padrao via <details> (HTML nativo, sem JS) -->
         <details class="journal-card journal-past" id="journal-2026-05-06">
           <summary class="journal-header">
-            <div class="journal-date">06/05/2026</div>
-            <div class="journal-day">qua 6 mai</div>
+            <div class="journal-date">Diário 06/05/2026</div>
+            <div class="journal-day">Quarta</div>
           </summary>
           
           <div class="journal-content"><h1>Diário 06/05/2026 (Quarta-feira)</h1>
@@ -6382,8 +6390,8 @@ Readiness 72 mascara: sono bom + tempo de recovery elapsed → Garmin marca "ok"
         <!-- Dias anteriores — colapsados por padrao via <details> (HTML nativo, sem JS) -->
         <details class="journal-card journal-past" id="journal-2026-05-05">
           <summary class="journal-header">
-            <div class="journal-date">05/05/2026</div>
-            <div class="journal-day">ter 5 mai</div>
+            <div class="journal-date">Diário 05/05/2026</div>
+            <div class="journal-day">Terça</div>
           </summary>
           
           <div class="journal-content"><h1>Diário — Terça 05/05/2026</h1>
@@ -7746,7 +7754,7 @@ Alavancas médias: hidratação contínua · respiração 4-7-8 antes de dormir 
 
   
 
-  <div class="footer">RunTechOps · 09:43:51</div>
+  <div class="footer">RunnOps · 10:55:53</div>
 </div>
 
 <script>

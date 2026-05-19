@@ -581,6 +581,14 @@ body {
 .sleep-legend .lg-deep::before  { background: #bf5af2; }
 .sleep-legend .lg-light::before { background: #0a84ff; }
 .sleep-legend .lg-awake::before { background: #ff9f0a; }
+.sleep-total {
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+  text-align: right;
+  margin-top: 6px;
+  opacity: 0.75;
+}
 
 /* === BB curve do dia === */
 .bb-curve-card {

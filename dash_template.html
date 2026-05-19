@@ -46,12 +46,12 @@
   <div class="tab-content" id="tab-hoje">
 
     <div class="verdict {{ verdict.color }} verdict-clickable" onclick="goToHistorico()">
-      <div class="verdict-label">VEREDITO · {{ today_pretty_upper }} <span class="verdict-hint">→ ver análise</span></div>
+      <div class="verdict-label">ANÁLISE · {{ today_pretty_upper }} <span class="verdict-hint">→ ver</span></div>
       <div class="verdict-headline">{{ verdict.headline }}</div>
       {% if verdict.subtitle %}
       <div class="verdict-sub">{{ verdict.subtitle }}</div>
       {% endif %}
-      <div class="verdict-help-link"><span class="pill-help">?</span> <a href="javascript:goToGlossary('veredito')" onclick="event.stopPropagation()">como funciona o veredito</a></div>
+      <div class="verdict-help-link"><span class="pill-help">?</span> <a href="javascript:goToGlossary('veredito')" onclick="event.stopPropagation()">Detalhes da Análise</a></div>
     </div>
 
     {% if next_workout %}
@@ -143,6 +143,7 @@
         <span class="lg-light">Light {{ today.sleep_light_pretty|default("—") }}</span>
         <span class="lg-awake">Awake {{ today.sleep_awake_pretty|default("—") }}</span>
       </div>
+      <div class="sleep-total">Total: {{ today.sleep_pretty|default("—") }}</div>
     </div>
     {% endif %}
 
@@ -361,7 +362,6 @@
     <!-- ============ ANALISES DIARIAS (diario MD renderizado) ============ -->
     {% if journals %}
     <div class="journals-section">
-      <h2 class="journals-title">Análises diárias</h2>
       <div class="landscape-hint">💡 Em telas estreitas, gira o celular pra leitura com mais conforto.</div>
 
       {% for j in journals %}
@@ -422,7 +422,7 @@
 
   {% endif %}
 
-  <div class="footer">RunTechOps · {{ generated_at }}</div>
+  <div class="footer">RunnOps · {{ generated_at }}</div>
 </div>
 
 <script>

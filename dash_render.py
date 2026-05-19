@@ -17,8 +17,15 @@ from dash_verdict import (
 
 
 PT_BR_DAY = ["seg", "ter", "qua", "qui", "sex", "sáb", "dom"]
+PT_BR_DAY_FULL = ["Segunda", "Terça", "Quarta", "Quinta", "Sexta", "Sábado", "Domingo"]
 PT_BR_MONTH = ["jan", "fev", "mar", "abr", "mai", "jun",
                "jul", "ago", "set", "out", "nov", "dez"]
+
+
+def _weekday_full(iso_date):
+    """2026-05-19 → 'Terça'"""
+    d = datetime.strptime(iso_date, "%Y-%m-%d")
+    return PT_BR_DAY_FULL[d.weekday()]
 
 
 def _pretty_date(iso_date):
@@ -375,8 +382,8 @@ def build_context(today_row, history_with_verdicts, deltas, override=None, diari
     for j in journals_raw:
         journals.append({
             "date": j["date"],
-            "date_pretty": _date_brazilian(j["date"]),
-            "date_long": _pretty_date(j["date"]),
+            "date_pretty": f"Diário {_date_brazilian(j['date'])}",
+            "date_long": _weekday_full(j["date"]),
             "html": j["html"],
             "has_content": j["html"] is not None,
         })

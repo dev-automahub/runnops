@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Atividade · RunTechOps</title>
+<title>Atividade · RunnOps</title>
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
       integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
       crossorigin=""/>
@@ -373,6 +373,7 @@ function plotHR(points) {
     count: data.filter(p => p.hr >= z.min && p.hr < z.max).length,
   }));
   const totalSec = data.length;
+  const maxMin = Math.max(...zoneCounts.map(z => z.count / 60));
   Plotly.newPlot('chart-zones', [{
     x: zoneCounts.map(z => z.label),
     y: zoneCounts.map(z => z.count / 60),
@@ -380,13 +381,14 @@ function plotHR(points) {
     marker: { color: zoneCounts.map(z => z.color) },
     text: zoneCounts.map(z => `${(z.count/totalSec*100).toFixed(1)}%`),
     textposition: 'outside',
+    cliponaxis: false,
     hovertemplate: '<b>%{x}</b><br>%{y:.1f} min (%{text})<extra></extra>',
   }], {
-    margin: { t: 30, l: 50, r: 20, b: 40 },
+    margin: { t: 40, l: 50, r: 20, b: 40 },
     xaxis: { title: '' },
-    yaxis: { title: 'Tempo (min)', gridcolor: '#e5e5ea' },
+    yaxis: { title: 'Tempo (min)', gridcolor: '#e5e5ea', range: [0, maxMin * 1.18] },
     paper_bgcolor: 'white', plot_bgcolor: 'white',
-    height: 260,
+    height: 280,
   }, { displayModeBar: false, responsive: true });
 }
 
@@ -495,11 +497,11 @@ function renderActivity(parsed, actMeta) {
   content.textContent = '';
   content.appendChild(buildKPIsRow(s));
   content.appendChild(makeMapCard());
-  content.appendChild(makeChartCard('⛰️ Perfil de elevação', null, 'chart-elev'));
   content.appendChild(makeChartCard('❤️ Frequência cardíaca', null, 'chart-hr'));
   content.appendChild(makeChartCard('📊 Tempo nas zonas', null, 'chart-zones'));
   content.appendChild(makeChartCard('👣 Cadência', '(faixa verde = alvo 160-165 spm)', 'chart-cad'));
   content.appendChild(makeChartCard('⏱️ Pace', null, 'chart-pace'));
+  content.appendChild(makeChartCard('⛰️ Perfil de elevação', null, 'chart-elev'));
 
   setTimeout(() => {
     renderMap(parsed.points);

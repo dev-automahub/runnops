@@ -91,7 +91,7 @@ def _build_auto_section(today_row, prev_row, verdict):
     lines.append(AUTO_START)
     lines.append("## Reportagem matinal")
     lines.append("")
-    lines.append(f"_Auto-gerado por `dash_today.py` em {datetime.now().strftime('%H:%M')} de {today_pretty}._")
+    lines.append(f"_Auto-gerado {datetime.now().strftime('%H:%M')}_")
     lines.append("")
     lines.append("| Métrica | Valor | Δ vs ontem |")
     lines.append("|---|---|---|")
