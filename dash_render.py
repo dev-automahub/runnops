@@ -89,7 +89,7 @@ RACE_TARGETS = {
     "5k":  None,             # sem meta dura
     "10k": None,
     "half": (7980, 8220),    # 2h13:00 - 2h17:00 (Meia do Rio 06/06)
-    "marathon": (14400,),    # 4h00:00 declarada (30/08)
+    "marathon": (16200,),    # 4h30:00 declarada (30/08) — recalibrada de 4h00 em 18/05
 }
 
 
