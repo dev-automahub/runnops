@@ -412,11 +412,14 @@ body {
   text-transform: uppercase;
 }
 .perf-value-big {
-  font-size: 26px;
+  font-size: 22px;
   font-weight: 700;
   letter-spacing: -0.02em;
   margin-top: 4px;
-  line-height: 1.1;
+  line-height: 1.15;
+  overflow-wrap: anywhere;
+  word-break: break-word;
+  hyphens: auto;
 }
 .perf-sub {
   font-size: 12px;
