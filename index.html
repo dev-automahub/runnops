@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Health Dashboard — ter 19 mai</title>
+<title>Health Dashboard — qua 20 mai</title>
 <style>/* === Reset minimo === */
 * { box-sizing: border-box; margin: 0; padding: 0; }
 body {
@@ -1171,11 +1171,11 @@ body {
   <!-- ============ ABA HOJE (default visivel) ============ -->
   <div class="tab-content" id="tab-hoje">
 
-    <div class="verdict green verdict-clickable" onclick="goToHistorico()">
-      <div class="verdict-label">ANÁLISE · TER 19 MAI <span class="verdict-hint">→ ver</span></div>
-      <div class="verdict-headline">Pronto pra treinar</div>
+    <div class="verdict orange verdict-clickable" onclick="goToHistorico()">
+      <div class="verdict-label">ANÁLISE · QUA 20 MAI <span class="verdict-hint">→ ver</span></div>
+      <div class="verdict-headline">Descanso recomendado</div>
       
-      <div class="verdict-sub">Sinais coerentes. Executa o plano.</div>
+      <div class="verdict-sub">Sinais fracos: Sono, BB.</div>
       
       <div class="verdict-help-link"><span class="pill-help">?</span> <a href="javascript:goToGlossary('veredito')" onclick="event.stopPropagation()">Detalhes da Análise</a></div>
     </div>
@@ -1187,10 +1187,10 @@ body {
       <div class="next-workout-body">
         <div class="next-workout-label">PRÓXIMO TREINO</div>
         <div class="next-workout-line">
-          <strong>qua 20/05</strong>
-          <span class="next-workout-when">(amanhã)</span>
+          <strong>sex 22/05</strong>
+          <span class="next-workout-when">(em 2 dias)</span>
           
-          — RF5 Corrida - 30&#39; Z2
+          — HRR6 Corrida - 8 x 1&#39; Z5
         </div>
       </div>
     </div>
@@ -1201,26 +1201,26 @@ body {
       <div class="pill" onclick="goToGlossary('sono')">
         <span class="pill-help">?</span>
         <div class="pill-label">SONO</div>
-        <div class="pill-value">7h11</div>
-        <div class="pill-delta delta-up">+35 min</div>
+        <div class="pill-value">4h30</div>
+        <div class="pill-delta delta-down">-161 min</div>
       </div>
       <div class="pill" onclick="goToGlossary('body-battery')">
         <span class="pill-help">?</span>
         <div class="pill-label">BODY BATTERY MAX</div>
-        <div class="pill-value">96</div>
-        <div class="pill-delta delta-up">+12</div>
+        <div class="pill-value">62</div>
+        <div class="pill-delta delta-down">-34</div>
       </div>
       <div class="pill" onclick="goToGlossary('fcrep')">
         <span class="pill-help">?</span>
         <div class="pill-label">FC REPOUSO</div>
-        <div class="pill-value">47</div>
-        <div class="pill-delta delta-up">-2 bpm</div>
+        <div class="pill-value">49</div>
+        <div class="pill-delta delta-down">+2 bpm</div>
       </div>
       <div class="pill" onclick="goToGlossary('disposicao')">
         <span class="pill-help">?</span>
         <div class="pill-label">DISPOSIÇÃO</div>
-        <div class="pill-value">71</div>
-        <div class="pill-delta delta-up">+27</div>
+        <div class="pill-value">46</div>
+        <div class="pill-delta delta-down">-25</div>
       </div>
     </div>
 
@@ -1231,9 +1231,9 @@ body {
         <div class="label-tiny weekplan-title">PLANO DA SEMANA · 2026-W21</div>
         <div class="weekplan-stats">
           <span class="weekplan-stat weekplan-stat-done">✅ 1 feito</span>
+          <span class="weekplan-stat weekplan-stat-today">🔵 1 hoje</span>
           
-          
-          <span class="weekplan-stat weekplan-stat-pending">⏳ 3 pendentes</span>
+          <span class="weekplan-stat weekplan-stat-pending">⏳ 2 pendentes</span>
           <span class="weekplan-stat weekplan-stat-adherence">📊 Aderência: 100%</span>
         </div>
       </div>
@@ -1248,8 +1248,8 @@ body {
           </div>
         </div>
         
-        <div class="weekplan-row weekplan-pending">
-          <div class="weekplan-status" title="pendente">⏳</div>
+        <div class="weekplan-row weekplan-today">
+          <div class="weekplan-status" title="HOJE">🔵</div>
           <div class="weekplan-date">qua 20/05</div>
           <div class="weekplan-body">
             <div class="weekplan-title-row">RF5 Corrida - 30&#39; Z2</div>
@@ -1284,18 +1284,18 @@ body {
     <div class="sleep-card">
       <div class="label-tiny">SONO POR FASE</div>
       <div class="sleep-bar">
-        <div class="sleep-rem" style="width:12.1%"></div>
-        <div class="sleep-deep" style="width:15.3%"></div>
-        <div class="sleep-light" style="width:72.6%"></div>
+        <div class="sleep-rem" style="width:18.9%"></div>
+        <div class="sleep-deep" style="width:19.6%"></div>
+        <div class="sleep-light" style="width:61.5%"></div>
         <div class="sleep-awake" style="width:0.7%"></div>
       </div>
       <div class="sleep-legend">
-        <span class="lg-rem">REM 52 min</span>
-        <span class="lg-deep">Deep 1h06</span>
-        <span class="lg-light">Light 5h13</span>
-        <span class="lg-awake">Awake 3 min</span>
+        <span class="lg-rem">REM 51 min</span>
+        <span class="lg-deep">Deep 53 min</span>
+        <span class="lg-light">Light 2h46</span>
+        <span class="lg-awake">Awake 2 min</span>
       </div>
-      <div class="sleep-total">Total: 7h11</div>
+      <div class="sleep-total">Total: 4h30</div>
     </div>
     
 
@@ -1304,12 +1304,12 @@ body {
       <div>
         <div class="label-tiny">HRV — ÚLTIMA NOITE</div>
         <div class="hero-num-block">
-          <span class="hero-num">45.0</span>
+          <span class="hero-num">37.0</span>
           <span class="hero-unit">ms</span>
         </div>
         <div class="hero-meta">
           
-            <div>↑ 14 ms vs ontem</div>
+            <div>↓ 8 ms vs ontem</div>
           
           <div>alvo ≥32</div>
         </div>
@@ -1319,47 +1319,47 @@ body {
         
         <line class="spark-target" x1="0" y1="80.8" x2="280" y2="80.8"/>
         
-        <path class="spark-line" d="M30.0,96.4 L66.7,84.7 L103.3,57.3 L140.0,112.0 L176.7,88.6 L213.3,84.7 L250.0,30.0"/>
+        <path class="spark-line" d="M30.0,84.7 L66.7,57.3 L103.3,112.0 L140.0,88.6 L176.7,84.7 L213.3,30.0 L250.0,61.2"/>
         
           
-            <circle class="spark-dot" cx="30.0" cy="96.4" r="5"/>
-            <text class="spark-value" x="30.0" y="84.4">28</text>
-            <text class="spark-date" x="30.0" y="135">13</text>
-          
-        
-          
-            <circle class="spark-dot" cx="66.7" cy="84.7" r="5"/>
-            <text class="spark-value" x="66.7" y="72.7">31</text>
-            <text class="spark-date" x="66.7" y="135">14</text>
+            <circle class="spark-dot" cx="30.0" cy="84.7" r="5"/>
+            <text class="spark-value" x="30.0" y="72.7">31</text>
+            <text class="spark-date" x="30.0" y="135">14</text>
           
         
           
-            <circle class="spark-dot" cx="103.3" cy="57.3" r="5"/>
-            <text class="spark-value" x="103.3" y="45.3">38</text>
-            <text class="spark-date" x="103.3" y="135">15</text>
+            <circle class="spark-dot" cx="66.7" cy="57.3" r="5"/>
+            <text class="spark-value" x="66.7" y="45.3">38</text>
+            <text class="spark-date" x="66.7" y="135">15</text>
           
         
           
-            <circle class="spark-dot" cx="140.0" cy="112.0" r="5"/>
-            <text class="spark-value" x="140.0" y="100.0">24</text>
-            <text class="spark-date" x="140.0" y="135">16</text>
+            <circle class="spark-dot" cx="103.3" cy="112.0" r="5"/>
+            <text class="spark-value" x="103.3" y="100.0">24</text>
+            <text class="spark-date" x="103.3" y="135">16</text>
           
         
           
-            <circle class="spark-dot" cx="176.7" cy="88.6" r="5"/>
-            <text class="spark-value" x="176.7" y="76.6">30</text>
-            <text class="spark-date" x="176.7" y="135">17</text>
+            <circle class="spark-dot" cx="140.0" cy="88.6" r="5"/>
+            <text class="spark-value" x="140.0" y="76.6">30</text>
+            <text class="spark-date" x="140.0" y="135">17</text>
           
         
           
-            <circle class="spark-dot" cx="213.3" cy="84.7" r="5"/>
-            <text class="spark-value" x="213.3" y="72.7">31</text>
-            <text class="spark-date" x="213.3" y="135">18</text>
+            <circle class="spark-dot" cx="176.7" cy="84.7" r="5"/>
+            <text class="spark-value" x="176.7" y="72.7">31</text>
+            <text class="spark-date" x="176.7" y="135">18</text>
           
         
           
-            <circle class="spark-dot spark-dot-current" cx="250.0" cy="30.0" r="7"/>
-            <text class="spark-value-current" x="250.0" y="18.0">45</text>
+            <circle class="spark-dot" cx="213.3" cy="30.0" r="5"/>
+            <text class="spark-value" x="213.3" y="18.0">45</text>
+            <text class="spark-date" x="213.3" y="135">19</text>
+          
+        
+          
+            <circle class="spark-dot spark-dot-current" cx="250.0" cy="61.2" r="7"/>
+            <text class="spark-value-current" x="250.0" y="49.2">37</text>
             <text class="spark-date-current" x="250.0" y="135">hoje</text>
           
         
@@ -1384,20 +1384,20 @@ body {
           <span class="pill-help">?</span>
           <div class="perf-label">ACWR (CARGA AGUDA / CRÔNICA)</div>
           <div class="perf-value-big perf-acwr-green">1.10</div>
-          <div class="perf-sub">Optimal · ATL 476.0 / CTL 343–643</div>
+          <div class="perf-sub">Optimal · ATL 513.0 / CTL 359–673</div>
         </div>
 
         <div class="perf-card perf-card-clickable" onclick="goToGlossary('vo2-max')">
           <span class="pill-help">?</span>
           <div class="perf-label">VO2 MAX · IDADE FITNESS</div>
-          <div class="perf-value-big">42.0</div>
-          <div class="perf-sub">Idade fitness: 49.6</div>
+          <div class="perf-value-big">43.0</div>
+          <div class="perf-sub">Idade fitness: 50.2</div>
         </div>
 
         <div class="perf-card perf-card-clickable" onclick="goToGlossary('recovery-time')">
           <span class="pill-help">?</span>
           <div class="perf-label">RECOVERY TIME</div>
-          <div class="perf-value-big">13.5h</div>
+          <div class="perf-value-big">7.0h</div>
           <div class="perf-sub">até próximo treino-chave</div>
         </div>
       </div>
@@ -1408,34 +1408,34 @@ body {
           
           <div class="race-card race-gray">
             <div class="race-label">5K</div>
-            <div class="race-time">27:29</div>
-            <div class="race-pace">5:30/km</div>
+            <div class="race-time">27:27</div>
+            <div class="race-pace">5:29/km</div>
             
             
           </div>
           
           <div class="race-card race-gray">
             <div class="race-label">10K</div>
-            <div class="race-time">58:26</div>
-            <div class="race-pace">5:51/km</div>
+            <div class="race-time">58:21</div>
+            <div class="race-pace">5:50/km</div>
             
             
           </div>
           
           <div class="race-card race-green">
             <div class="race-label">21K</div>
-            <div class="race-time">2h13:56</div>
-            <div class="race-pace">6:21/km</div>
+            <div class="race-time">2h13:34</div>
+            <div class="race-pace">6:20/km</div>
             <div class="race-target">alvo 2h13:00–2h17:00</div>
             <div class="race-delta">dentro da meta</div>
           </div>
           
           <div class="race-card race-red">
             <div class="race-label">MARATONA</div>
-            <div class="race-time">5h04:38</div>
-            <div class="race-pace">7:13/km</div>
+            <div class="race-time">5h03:12</div>
+            <div class="race-pace">7:11/km</div>
             <div class="race-target">alvo 4h30:00</div>
-            <div class="race-delta">+34:38 vs meta 4h30:00</div>
+            <div class="race-delta">+33:12 vs meta 4h30:00</div>
           </div>
           
         </div>
@@ -1564,54 +1564,54 @@ body {
     <div class="trend-card">
       <div class="trend-card-head">
         <div class="label-tiny" style="color:#ff3b30">HRV OVERNIGHT</div>
-        <div class="trend-meta">média 32 · alvo ≥32 · atual 45</div>
+        <div class="trend-meta">média 34 · alvo ≥32 · atual 37</div>
       </div>
       
       <svg viewBox="0 0 600 220" style="width:100%;height:220px" class="spark-hrv">
         
         <line class="spark-target" x1="0" y1="126.1" x2="600" y2="126.1"/>
         
-        <path class="spark-line" d="M44.0,147.0 L129.3,131.3 L214.7,94.7 L300.0,168.0 L385.3,136.6 L470.7,131.3 L556.0,58.0"/>
+        <path class="spark-line" d="M44.0,131.3 L129.3,94.7 L214.7,168.0 L300.0,136.6 L385.3,131.3 L470.7,58.0 L556.0,99.9"/>
         
           
-            <circle class="spark-dot" cx="44.0" cy="147.0" r="6"/>
-            <text class="spark-value" x="44.0" y="125.0">28</text>
-            <text class="spark-date" x="44.0" y="208">qua 13</text>
-          
-        
-          
-            <circle class="spark-dot" cx="129.3" cy="131.3" r="6"/>
-            <text class="spark-value" x="129.3" y="109.30000000000001">31</text>
-            <text class="spark-date" x="129.3" y="208">qui 14</text>
+            <circle class="spark-dot" cx="44.0" cy="131.3" r="6"/>
+            <text class="spark-value" x="44.0" y="109.30000000000001">31</text>
+            <text class="spark-date" x="44.0" y="208">qui 14</text>
           
         
           
-            <circle class="spark-dot" cx="214.7" cy="94.7" r="6"/>
-            <text class="spark-value" x="214.7" y="72.7">38</text>
-            <text class="spark-date" x="214.7" y="208">sex 15</text>
+            <circle class="spark-dot" cx="129.3" cy="94.7" r="6"/>
+            <text class="spark-value" x="129.3" y="72.7">38</text>
+            <text class="spark-date" x="129.3" y="208">sex 15</text>
           
         
           
-            <circle class="spark-dot" cx="300.0" cy="168.0" r="6"/>
-            <text class="spark-value" x="300.0" y="146.0">24</text>
-            <text class="spark-date" x="300.0" y="208">sáb 16</text>
+            <circle class="spark-dot" cx="214.7" cy="168.0" r="6"/>
+            <text class="spark-value" x="214.7" y="146.0">24</text>
+            <text class="spark-date" x="214.7" y="208">sáb 16</text>
           
         
           
-            <circle class="spark-dot" cx="385.3" cy="136.6" r="6"/>
-            <text class="spark-value" x="385.3" y="114.6">30</text>
-            <text class="spark-date" x="385.3" y="208">dom 17</text>
+            <circle class="spark-dot" cx="300.0" cy="136.6" r="6"/>
+            <text class="spark-value" x="300.0" y="114.6">30</text>
+            <text class="spark-date" x="300.0" y="208">dom 17</text>
           
         
           
-            <circle class="spark-dot" cx="470.7" cy="131.3" r="6"/>
-            <text class="spark-value" x="470.7" y="109.30000000000001">31</text>
-            <text class="spark-date" x="470.7" y="208">seg 18</text>
+            <circle class="spark-dot" cx="385.3" cy="131.3" r="6"/>
+            <text class="spark-value" x="385.3" y="109.30000000000001">31</text>
+            <text class="spark-date" x="385.3" y="208">seg 18</text>
           
         
           
-            <circle class="spark-dot spark-dot-current" cx="556.0" cy="58.0" r="9"/>
-            <text class="spark-value-current" x="556.0" y="36.0">45</text>
+            <circle class="spark-dot" cx="470.7" cy="58.0" r="6"/>
+            <text class="spark-value" x="470.7" y="36.0">45</text>
+            <text class="spark-date" x="470.7" y="208">ter 19</text>
+          
+        
+          
+            <circle class="spark-dot spark-dot-current" cx="556.0" cy="99.9" r="9"/>
+            <text class="spark-value-current" x="556.0" y="77.9">37</text>
             <text class="spark-date-current" x="556.0" y="208">hoje</text>
           
         
@@ -1622,54 +1622,54 @@ body {
     <div class="trend-card">
       <div class="trend-card-head">
         <div class="label-tiny" style="color:#0a84ff">SONO</div>
-        <div class="trend-meta">média 7h26 · alvo ≥8h · atual 7h11</div>
+        <div class="trend-meta">média 7h03 · alvo ≥8h · atual 4h30</div>
       </div>
       
       <svg viewBox="0 0 600 220" style="width:100%;height:220px" class="spark-sleep">
         
-        <line class="spark-target" x1="0" y1="108.2" x2="600" y2="108.2"/>
+        <line class="spark-target" x1="0" y1="93.2" x2="600" y2="93.2"/>
         
-        <path class="spark-line" d="M44.0,132.0 L129.3,127.4 L214.7,107.7 L300.0,168.0 L385.3,58.0 L470.7,150.8 L556.0,133.0"/>
-        
-          
-            <circle class="spark-dot" cx="44.0" cy="132.0" r="6"/>
-            <text class="spark-value" x="44.0" y="110.0">7h13</text>
-            <text class="spark-date" x="44.0" y="208">qua 13</text>
-          
+        <path class="spark-line" d="M44.0,106.8 L129.3,92.9 L214.7,135.2 L300.0,58.0 L385.3,123.1 L470.7,110.7 L556.0,168.0"/>
         
           
-            <circle class="spark-dot" cx="129.3" cy="127.4" r="6"/>
-            <text class="spark-value" x="129.3" y="105.4">7h22</text>
-            <text class="spark-date" x="129.3" y="208">qui 14</text>
+            <circle class="spark-dot" cx="44.0" cy="106.8" r="6"/>
+            <text class="spark-value" x="44.0" y="84.8">7h22</text>
+            <text class="spark-date" x="44.0" y="208">qui 14</text>
           
         
           
-            <circle class="spark-dot" cx="214.7" cy="107.7" r="6"/>
-            <text class="spark-value" x="214.7" y="85.7">8h01</text>
-            <text class="spark-date" x="214.7" y="208">sex 15</text>
+            <circle class="spark-dot" cx="129.3" cy="92.9" r="6"/>
+            <text class="spark-value" x="129.3" y="70.9">8h01</text>
+            <text class="spark-date" x="129.3" y="208">sex 15</text>
           
         
           
-            <circle class="spark-dot" cx="300.0" cy="168.0" r="6"/>
-            <text class="spark-value" x="300.0" y="146.0">6h02</text>
-            <text class="spark-date" x="300.0" y="208">sáb 16</text>
+            <circle class="spark-dot" cx="214.7" cy="135.2" r="6"/>
+            <text class="spark-value" x="214.7" y="113.19999999999999">6h02</text>
+            <text class="spark-date" x="214.7" y="208">sáb 16</text>
           
         
           
-            <circle class="spark-dot" cx="385.3" cy="58.0" r="6"/>
-            <text class="spark-value" x="385.3" y="36.0">9h39</text>
-            <text class="spark-date" x="385.3" y="208">dom 17</text>
+            <circle class="spark-dot" cx="300.0" cy="58.0" r="6"/>
+            <text class="spark-value" x="300.0" y="36.0">9h39</text>
+            <text class="spark-date" x="300.0" y="208">dom 17</text>
           
         
           
-            <circle class="spark-dot" cx="470.7" cy="150.8" r="6"/>
-            <text class="spark-value" x="470.7" y="128.8">6h36</text>
-            <text class="spark-date" x="470.7" y="208">seg 18</text>
+            <circle class="spark-dot" cx="385.3" cy="123.1" r="6"/>
+            <text class="spark-value" x="385.3" y="101.1">6h36</text>
+            <text class="spark-date" x="385.3" y="208">seg 18</text>
           
         
           
-            <circle class="spark-dot spark-dot-current" cx="556.0" cy="133.0" r="9"/>
-            <text class="spark-value-current" x="556.0" y="111.0">7h11</text>
+            <circle class="spark-dot" cx="470.7" cy="110.7" r="6"/>
+            <text class="spark-value" x="470.7" y="88.7">7h11</text>
+            <text class="spark-date" x="470.7" y="208">ter 19</text>
+          
+        
+          
+            <circle class="spark-dot spark-dot-current" cx="556.0" cy="168.0" r="9"/>
+            <text class="spark-value-current" x="556.0" y="146.0">4h30</text>
             <text class="spark-date-current" x="556.0" y="208">hoje</text>
           
         
@@ -1680,54 +1680,54 @@ body {
     <div class="trend-card">
       <div class="trend-card-head">
         <div class="label-tiny" style="color:#bf5af2">BODY BATTERY MAX</div>
-        <div class="trend-meta">média 78 · alvo ≥70 · atual 96</div>
+        <div class="trend-meta">média 77 · alvo ≥70 · atual 62</div>
       </div>
       
       <svg viewBox="0 0 600 220" style="width:100%;height:220px" class="spark-bb">
         
         <line class="spark-target" x1="0" y1="121.6" x2="600" y2="121.6"/>
         
-        <path class="spark-line" d="M44.0,116.7 L129.3,84.9 L214.7,75.1 L300.0,168.0 L385.3,116.7 L470.7,87.3 L556.0,58.0"/>
+        <path class="spark-line" d="M44.0,84.9 L129.3,75.1 L214.7,168.0 L300.0,116.7 L385.3,87.3 L470.7,58.0 L556.0,141.1"/>
         
           
-            <circle class="spark-dot" cx="44.0" cy="116.7" r="6"/>
-            <text class="spark-value" x="44.0" y="94.7">72</text>
-            <text class="spark-date" x="44.0" y="208">qua 13</text>
-          
-        
-          
-            <circle class="spark-dot" cx="129.3" cy="84.9" r="6"/>
-            <text class="spark-value" x="129.3" y="62.900000000000006">85</text>
-            <text class="spark-date" x="129.3" y="208">qui 14</text>
+            <circle class="spark-dot" cx="44.0" cy="84.9" r="6"/>
+            <text class="spark-value" x="44.0" y="62.900000000000006">85</text>
+            <text class="spark-date" x="44.0" y="208">qui 14</text>
           
         
           
-            <circle class="spark-dot" cx="214.7" cy="75.1" r="6"/>
-            <text class="spark-value" x="214.7" y="53.099999999999994">89</text>
-            <text class="spark-date" x="214.7" y="208">sex 15</text>
+            <circle class="spark-dot" cx="129.3" cy="75.1" r="6"/>
+            <text class="spark-value" x="129.3" y="53.099999999999994">89</text>
+            <text class="spark-date" x="129.3" y="208">sex 15</text>
           
         
           
-            <circle class="spark-dot" cx="300.0" cy="168.0" r="6"/>
-            <text class="spark-value" x="300.0" y="146.0">51</text>
-            <text class="spark-date" x="300.0" y="208">sáb 16</text>
+            <circle class="spark-dot" cx="214.7" cy="168.0" r="6"/>
+            <text class="spark-value" x="214.7" y="146.0">51</text>
+            <text class="spark-date" x="214.7" y="208">sáb 16</text>
           
         
           
-            <circle class="spark-dot" cx="385.3" cy="116.7" r="6"/>
-            <text class="spark-value" x="385.3" y="94.7">72</text>
-            <text class="spark-date" x="385.3" y="208">dom 17</text>
+            <circle class="spark-dot" cx="300.0" cy="116.7" r="6"/>
+            <text class="spark-value" x="300.0" y="94.7">72</text>
+            <text class="spark-date" x="300.0" y="208">dom 17</text>
           
         
           
-            <circle class="spark-dot" cx="470.7" cy="87.3" r="6"/>
-            <text class="spark-value" x="470.7" y="65.3">84</text>
-            <text class="spark-date" x="470.7" y="208">seg 18</text>
+            <circle class="spark-dot" cx="385.3" cy="87.3" r="6"/>
+            <text class="spark-value" x="385.3" y="65.3">84</text>
+            <text class="spark-date" x="385.3" y="208">seg 18</text>
           
         
           
-            <circle class="spark-dot spark-dot-current" cx="556.0" cy="58.0" r="9"/>
-            <text class="spark-value-current" x="556.0" y="36.0">96</text>
+            <circle class="spark-dot" cx="470.7" cy="58.0" r="6"/>
+            <text class="spark-value" x="470.7" y="36.0">96</text>
+            <text class="spark-date" x="470.7" y="208">ter 19</text>
+          
+        
+          
+            <circle class="spark-dot spark-dot-current" cx="556.0" cy="141.1" r="9"/>
+            <text class="spark-value-current" x="556.0" y="119.1">62</text>
             <text class="spark-date-current" x="556.0" y="208">hoje</text>
           
         
@@ -1738,54 +1738,54 @@ body {
     <div class="trend-card">
       <div class="trend-card-head">
         <div class="label-tiny" style="color:#30d158">FC REPOUSO</div>
-        <div class="trend-meta">média 49 · alvo ~49 · atual 47</div>
+        <div class="trend-meta">média 49 · alvo ~49 · atual 49</div>
       </div>
       
       <svg viewBox="0 0 600 220" style="width:100%;height:220px" class="spark-fcrep">
         
         <line class="spark-target" x1="0" y1="124.0" x2="600" y2="124.0"/>
         
-        <path class="spark-line" d="M44.0,124.0 L129.3,124.0 L214.7,146.0 L300.0,58.0 L385.3,102.0 L470.7,124.0 L556.0,168.0"/>
+        <path class="spark-line" d="M44.0,124.0 L129.3,146.0 L214.7,58.0 L300.0,102.0 L385.3,124.0 L470.7,168.0 L556.0,124.0"/>
         
           
             <circle class="spark-dot" cx="44.0" cy="124.0" r="6"/>
             <text class="spark-value" x="44.0" y="102.0">49</text>
-            <text class="spark-date" x="44.0" y="208">qua 13</text>
+            <text class="spark-date" x="44.0" y="208">qui 14</text>
           
         
           
-            <circle class="spark-dot" cx="129.3" cy="124.0" r="6"/>
-            <text class="spark-value" x="129.3" y="102.0">49</text>
-            <text class="spark-date" x="129.3" y="208">qui 14</text>
+            <circle class="spark-dot" cx="129.3" cy="146.0" r="6"/>
+            <text class="spark-value" x="129.3" y="124.0">48</text>
+            <text class="spark-date" x="129.3" y="208">sex 15</text>
           
         
           
-            <circle class="spark-dot" cx="214.7" cy="146.0" r="6"/>
-            <text class="spark-value" x="214.7" y="124.0">48</text>
-            <text class="spark-date" x="214.7" y="208">sex 15</text>
+            <circle class="spark-dot" cx="214.7" cy="58.0" r="6"/>
+            <text class="spark-value" x="214.7" y="36.0">52</text>
+            <text class="spark-date" x="214.7" y="208">sáb 16</text>
           
         
           
-            <circle class="spark-dot" cx="300.0" cy="58.0" r="6"/>
-            <text class="spark-value" x="300.0" y="36.0">52</text>
-            <text class="spark-date" x="300.0" y="208">sáb 16</text>
+            <circle class="spark-dot" cx="300.0" cy="102.0" r="6"/>
+            <text class="spark-value" x="300.0" y="80.0">50</text>
+            <text class="spark-date" x="300.0" y="208">dom 17</text>
           
         
           
-            <circle class="spark-dot" cx="385.3" cy="102.0" r="6"/>
-            <text class="spark-value" x="385.3" y="80.0">50</text>
-            <text class="spark-date" x="385.3" y="208">dom 17</text>
+            <circle class="spark-dot" cx="385.3" cy="124.0" r="6"/>
+            <text class="spark-value" x="385.3" y="102.0">49</text>
+            <text class="spark-date" x="385.3" y="208">seg 18</text>
           
         
           
-            <circle class="spark-dot" cx="470.7" cy="124.0" r="6"/>
-            <text class="spark-value" x="470.7" y="102.0">49</text>
-            <text class="spark-date" x="470.7" y="208">seg 18</text>
+            <circle class="spark-dot" cx="470.7" cy="168.0" r="6"/>
+            <text class="spark-value" x="470.7" y="146.0">47</text>
+            <text class="spark-date" x="470.7" y="208">ter 19</text>
           
         
           
-            <circle class="spark-dot spark-dot-current" cx="556.0" cy="168.0" r="9"/>
-            <text class="spark-value-current" x="556.0" y="146.0">47</text>
+            <circle class="spark-dot spark-dot-current" cx="556.0" cy="124.0" r="9"/>
+            <text class="spark-value-current" x="556.0" y="102.0">49</text>
             <text class="spark-date-current" x="556.0" y="208">hoje</text>
           
         
@@ -1796,54 +1796,54 @@ body {
     <div class="trend-card">
       <div class="trend-card-head">
         <div class="label-tiny" style="color:#ff9500">DISPOSIÇÃO</div>
-        <div class="trend-meta">média 49 · alvo ≥65 · atual 71</div>
+        <div class="trend-meta">média 45 · alvo ≥65 · atual 46</div>
       </div>
       
       <svg viewBox="0 0 600 220" style="width:100%;height:220px" class="spark-ready">
         
         <line class="spark-target" x1="0" y1="79.1" x2="600" y2="79.1"/>
         
-        <path class="spark-line" d="M44.0,64.0 L129.3,58.0 L214.7,89.6 L300.0,168.0 L385.3,160.5 L470.7,110.7 L556.0,70.1"/>
+        <path class="spark-line" d="M44.0,58.0 L129.3,89.6 L214.7,168.0 L300.0,160.5 L385.3,110.7 L470.7,70.1 L556.0,107.7"/>
         
           
-            <circle class="spark-dot" cx="44.0" cy="64.0" r="6"/>
-            <text class="spark-value" x="44.0" y="42.0">75</text>
-            <text class="spark-date" x="44.0" y="208">qua 13</text>
-          
-        
-          
-            <circle class="spark-dot" cx="129.3" cy="58.0" r="6"/>
-            <text class="spark-value" x="129.3" y="36.0">79</text>
-            <text class="spark-date" x="129.3" y="208">qui 14</text>
+            <circle class="spark-dot" cx="44.0" cy="58.0" r="6"/>
+            <text class="spark-value" x="44.0" y="36.0">79</text>
+            <text class="spark-date" x="44.0" y="208">qui 14</text>
           
         
           
-            <circle class="spark-dot" cx="214.7" cy="89.6" r="6"/>
-            <text class="spark-value" x="214.7" y="67.6">58</text>
-            <text class="spark-date" x="214.7" y="208">sex 15</text>
+            <circle class="spark-dot" cx="129.3" cy="89.6" r="6"/>
+            <text class="spark-value" x="129.3" y="67.6">58</text>
+            <text class="spark-date" x="129.3" y="208">sex 15</text>
           
         
           
-            <circle class="spark-dot" cx="300.0" cy="168.0" r="6"/>
-            <text class="spark-value" x="300.0" y="146.0">6</text>
-            <text class="spark-date" x="300.0" y="208">sáb 16</text>
+            <circle class="spark-dot" cx="214.7" cy="168.0" r="6"/>
+            <text class="spark-value" x="214.7" y="146.0">6</text>
+            <text class="spark-date" x="214.7" y="208">sáb 16</text>
           
         
           
-            <circle class="spark-dot" cx="385.3" cy="160.5" r="6"/>
-            <text class="spark-value" x="385.3" y="138.5">11</text>
-            <text class="spark-date" x="385.3" y="208">dom 17</text>
+            <circle class="spark-dot" cx="300.0" cy="160.5" r="6"/>
+            <text class="spark-value" x="300.0" y="138.5">11</text>
+            <text class="spark-date" x="300.0" y="208">dom 17</text>
           
         
           
-            <circle class="spark-dot" cx="470.7" cy="110.7" r="6"/>
-            <text class="spark-value" x="470.7" y="88.7">44</text>
-            <text class="spark-date" x="470.7" y="208">seg 18</text>
+            <circle class="spark-dot" cx="385.3" cy="110.7" r="6"/>
+            <text class="spark-value" x="385.3" y="88.7">44</text>
+            <text class="spark-date" x="385.3" y="208">seg 18</text>
           
         
           
-            <circle class="spark-dot spark-dot-current" cx="556.0" cy="70.1" r="9"/>
-            <text class="spark-value-current" x="556.0" y="48.099999999999994">71</text>
+            <circle class="spark-dot" cx="470.7" cy="70.1" r="6"/>
+            <text class="spark-value" x="470.7" y="48.099999999999994">71</text>
+            <text class="spark-date" x="470.7" y="208">ter 19</text>
+          
+        
+          
+            <circle class="spark-dot spark-dot-current" cx="556.0" cy="107.7" r="9"/>
+            <text class="spark-value-current" x="556.0" y="85.7">46</text>
             <text class="spark-date-current" x="556.0" y="208">hoje</text>
           
         
@@ -1880,6 +1880,16 @@ body {
           </tr>
         </thead>
         <tbody>
+          
+          <tr data-date="2026-05-20" onclick="jumpToJournal(this.dataset.date)">
+            <td>20/05/2026</td>
+            <td class="cell-green">37</td>
+            <td>4h30</td>
+            <td class="cell-amber">62</td>
+            <td class="cell-green">49</td>
+            <td>46</td>
+            <td class="cell-orange">Descanso recomendado</td>
+          </tr>
           
           <tr data-date="2026-05-19" onclick="jumpToJournal(this.dataset.date)">
             <td>19/05/2026</td>
@@ -2045,11 +2055,106 @@ body {
       
         
         <!-- Hoje (ou ultimo dia) — expandido por padrao -->
-        <article class="journal-card journal-today" id="journal-2026-05-19">
+        <article class="journal-card journal-today" id="journal-2026-05-20">
           <div class="journal-header">
+            <div class="journal-date">Diário 20/05/2026</div>
+            <div class="journal-day">Quarta</div>
+          </div>
+          
+          <div class="journal-content"><h1>Diário 2026-05-20 (qua)</h1>
+<!-- DASH_AUTO_START -->
+<h2>Reportagem matinal</h2>
+<p><em>Auto-gerado 07:11</em></p>
+<div class="md-table-wrap"><table>
+<thead>
+<tr>
+<th>Métrica</th>
+<th>Valor</th>
+<th>Δ vs ontem</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>HRV overnight</td>
+<td><strong>37 ms</strong></td>
+<td>−8 ⬇</td>
+</tr>
+<tr>
+<td>BB max / min</td>
+<td><strong>62 / 29</strong></td>
+<td>−34 ⬇</td>
+</tr>
+<tr>
+<td>FCrep</td>
+<td><strong>49 bpm</strong></td>
+<td>+2 ⬆</td>
+</tr>
+<tr>
+<td>Sleep Score</td>
+<td><strong>59</strong></td>
+<td>—</td>
+</tr>
+<tr>
+<td>Sono total</td>
+<td><strong>4h30</strong></td>
+<td>−161 ⬇</td>
+</tr>
+<tr>
+<td>REM</td>
+<td><strong>51 min</strong></td>
+<td>—</td>
+</tr>
+<tr>
+<td>Deep</td>
+<td><strong>53 min</strong></td>
+<td>—</td>
+</tr>
+<tr>
+<td>Light</td>
+<td><strong>2h46</strong></td>
+<td>—</td>
+</tr>
+<tr>
+<td>Awake</td>
+<td><strong>2 min</strong></td>
+<td>—</td>
+</tr>
+<tr>
+<td>Stress avg / max</td>
+<td><strong>21 / 65</strong></td>
+<td>—</td>
+</tr>
+<tr>
+<td>Disposição (Garmin Readiness)</td>
+<td><strong>46</strong></td>
+<td>−25 ⬇</td>
+</tr>
+</tbody>
+</table></div>
+<h3>Veredito automático</h3>
+<p>🟠 <strong>Descanso recomendado</strong> (score 4)</p>
+<p><em>Sinais fracos: Sono, BB.</em></p>
+<!-- DASH_AUTO_END -->
+
+<h2>O que aconteceu</h2>
+<p><em>(análise pendente — adicionar contexto: como dormiu, sintomas, eventos do dia anterior, sensações ao acordar)</em></p>
+<h2>Decisão / Veredito</h2>
+<p><em>(análise pendente — alinhar com plano da semana, gates de HRV/BB, decisão de treino)</em></p>
+<h2>Pendências</h2>
+<ul>
+<li>[ ] <em>(adicionar tarefas/promessas do dia)</em></li>
+</ul></div>
+          
+        </article>
+        
+      
+        
+        <!-- Dias anteriores — colapsados por padrao via <details> (HTML nativo, sem JS) -->
+        <details class="journal-card journal-past" id="journal-2026-05-19">
+          <summary class="journal-header">
             <div class="journal-date">Diário 19/05/2026</div>
             <div class="journal-day">Terça</div>
-          </div>
+          </summary>
           
           <div class="journal-content"><h1>Diário 2026-05-19 (ter)</h1>
 <!-- DASH_AUTO_START -->
@@ -2424,7 +2529,7 @@ body {
 </ul>
 <p><strong>Sessão 9/10. Único ponto de não-10: pace levemente abaixo do prescrito no esforço (mas FC alvo cumprida — então OK).</strong></p></div>
           
-        </article>
+        </details>
         
       
         
@@ -7754,7 +7859,7 @@ Alavancas médias: hidratação contínua · respiração 4-7-8 antes de dormir 
 
   
 
-  <div class="footer">RunnOps · 17:55:09</div>
+  <div class="footer">RunnOps · 07:11:35</div>
 </div>
 
 <script>
